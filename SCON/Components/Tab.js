@@ -7,33 +7,54 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-export function exHome({navigation}) {
-  return (
-    <View style={{flex: 3, alignItems: 'center', justifyContent: 'center'}}>
-      <Button onPress={() => navigation.navigate('Home')} title="Home" />
-    </View>
-  );
-}
+
+
 
 
 export function TabScreen({navigation}) {
   return (
     <Tab.Navigator
       screenOptions={{
-          headerStyle: {
-            backgroundColor: '#E6E6FA',
-          },
+        //   headerStyle: {
+        //     backgroundColor: '#B2F0FA',
+        //   },
           headerTintColor: 'black',
           headerTitleStyle: {
             fontWeight: 'bold',
             fontSize: 20,
           },
-          tabBarInactiveBackgroundColor: '#E6E6FA',
-          tabBarActiveTintColor: '#FF9F5C'
+          tabBarActiveTintColor: '#17D3F0',
+		  tabBarInactiveTintColor: '#848484'
+		//   tabBarInactiveBackgroundColor: '#848484',
       }}>
-      <Tab.Screen name="exHome" component={exHome} />
-      <Tab.Screen name="exHome2" component={exHome} />
-      <Tab.Screen name="exHome3" component={exHome} />
+      <Tab.Screen name="exHome" component={ExHome} />
+      <Tab.Screen name="exHome2" component={ExHome2} />
+      <Tab.Screen name="exHome3" component={ExHome3} />
     </Tab.Navigator>
   );
+}
+
+
+// example
+export function ExHome({navigation}) {
+	return (
+	  <View style={{flex: 3, alignItems: 'center', justifyContent: 'center'}}>
+		<Button onPress={() => navigation.navigate('Home')} title="Home" />
+	  </View>
+	);
+}
+export function ExHome2({navigation}) {
+	return (
+	  <View style={{flex: 3, alignItems: 'center', justifyContent: 'center'}}>
+		<Button onPress={() => navigation.navigate('Home')} title="Home" />
+	  </View>
+	);
+}
+
+export function ExHome3({navigation}) {
+	return (
+	  <View style={{flex: 3, alignItems: 'center', justifyContent: 'center'}}>
+		<Button onPress={() => navigation.navigate('Home')} title="Home" />
+	  </View>
+	);
 }
