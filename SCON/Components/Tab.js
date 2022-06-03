@@ -7,6 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import { HomeScreen } from '../Views/Home';
 import { SearchScreen } from '../Views/Search';
+import { RankScreen } from '../Views/Rank';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,8 @@ export function TabScreen({navigation}) {
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="exHome3" component={ExHome3} />
+      <Tab.Screen name="Rank" component={RankScreen} />
+      <Tab.Screen name="MyPage" component={RankScreen} />
     </Tab.Navigator>
   );
 }
