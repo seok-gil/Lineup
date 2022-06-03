@@ -12,7 +12,7 @@ import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 
 export function NickName({ navigation }) {
 	return (
-		<View>
+		<View style={{flexDirection: 'row',}}>
 			<Image source={DefaultProfile} style={styles.image}/>
 			<Text> 닉네임</Text>
 			<Text> email</Text>

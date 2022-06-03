@@ -4,10 +4,11 @@ import {Button,
 	StyleSheet,
 } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import { HomeScreen } from '../Views/Home';
+import { SearchScreen } from '../Views/Search';
 
 const Tab = createBottomTabNavigator();
-
 
 
 export function TabScreen({navigation}) {
@@ -26,8 +27,8 @@ export function TabScreen({navigation}) {
 		  tabBarInactiveTintColor: '#848484'
 		//   tabBarInactiveBackgroundColor: '#848484',
       }}>
-      <Tab.Screen name="exHome" component={HomeScreen} />
-      <Tab.Screen name="exHome2" component={ExHome2} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="exHome3" component={ExHome3} />
     </Tab.Navigator>
   );
@@ -47,7 +48,7 @@ export function ExHome2({navigation}) {
 export function ExHome3({navigation}) {
 	return (
 	  <View style={{flex: 3, alignItems: 'center', justifyContent: 'center'}}>
-		<Button onPress={() => navigation.navigate('Home')} title="Home" />
+		<Button onPress={() => navigation.navigate('Search')} title="Serach" />
 	  </View>
 	);
 }
