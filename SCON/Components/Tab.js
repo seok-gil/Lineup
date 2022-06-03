@@ -4,10 +4,9 @@ import {Button,
 	StyleSheet,
 } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { HomeScreen } from '../Views/Home';
 
 const Tab = createBottomTabNavigator();
-
-
 
 
 
@@ -27,7 +26,7 @@ export function TabScreen({navigation}) {
 		  tabBarInactiveTintColor: '#848484'
 		//   tabBarInactiveBackgroundColor: '#848484',
       }}>
-      <Tab.Screen name="exHome" component={ExHome} />
+      <Tab.Screen name="exHome" component={HomeScreen} />
       <Tab.Screen name="exHome2" component={ExHome2} />
       <Tab.Screen name="exHome3" component={ExHome3} />
     </Tab.Navigator>
@@ -36,13 +35,7 @@ export function TabScreen({navigation}) {
 
 
 // example
-export function ExHome({navigation}) {
-	return (
-	  <View style={{flex: 3, alignItems: 'center', justifyContent: 'center'}}>
-		<Button onPress={() => navigation.navigate('Home')} title="Home" />
-	  </View>
-	);
-}
+
 export function ExHome2({navigation}) {
 	return (
 	  <View style={{flex: 3, alignItems: 'center', justifyContent: 'center'}}>
