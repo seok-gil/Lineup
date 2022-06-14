@@ -6,12 +6,16 @@ import {Button,
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import { HomeScreen } from '../Views/Home';
+import { LoginScreen } from '../Views/Login'; 
 import { SearchScreen } from '../Views/Search';
-import {  RankScreen } from '../Views/Rank';
+import { RankScreen } from '../Views/Rank';
 import { MyPageScreen } from '../Views/MyPage';
 
 const Tab = createBottomTabNavigator();
 
+export function StartScreen(){
+
+}
 
 export function TabScreen({navigation}) {
   return (
@@ -30,6 +34,7 @@ export function TabScreen({navigation}) {
 		//   tabBarInactiveBackgroundColor: '#848484',
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Login" component={LoginScreen} /> 
       <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="Rank" component={RankScreen} />
       <Tab.Screen name="MyPage" component={MyPageScreen} />
