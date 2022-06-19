@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
 import {
-	Button,
 	View,
+	Text,
+	TouchableOpacity,
 	StyleSheet,
 } from 'react-native';
 
-import { AlertIcon, SettingIcon, NickName } from './index';
+import { NickName } from './index';
 
-export function Head({ navigation }) {
+
+function AlertIcon({ alert, navigation }) {
+	console.log(alert)
+	if (alert)
+
+		return (
+			<View style={{ flexDirection: 'row' }}>
+				{alert === true && (<Text> alertON@@</Text>)}
+				{alert === false && (<Text> alertOFF@@</Text>)}
+				<TouchableOpacity onPress={() => navigation.navigate('Alert')}>
+					<Text>Alert</Text>
+				</TouchableOpacity>
+			</View>
+		);
+}
+
+
+export function Head({ Data, navigation }) {
 	return (
 		<View>
 			<View style={{ flexDirection: 'row', }}>
-				<AlertIcon navigation={navigation} />
-				<SettingIcon navigation={navigation} />
+				<AlertIcon alert={Data.alert} navigation={navigation} />
 			</View>
-			<NickName />
+			<NickName user={Data.user} />
 		</View>
 	);
 }

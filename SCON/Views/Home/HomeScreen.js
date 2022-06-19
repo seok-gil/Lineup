@@ -11,10 +11,12 @@ import {
 import { Head, Body } from './index';
 
 export function HomeScreen({ navigation }) {
+	const Data = require('../../Assets/Data/HomeScreen.json');
+
 	return (
 		<View >
-			<Head navigation={navigation} />
-			<Body navigation={navigation} />
+			<Head Data={Data} navigation={navigation} />
+			<Body Data={Data} navigation={navigation} />
 		</View>
 	);
 }

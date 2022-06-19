@@ -1,0 +1,26 @@
+{
+	"user_id": "1",
+	"alert": true,
+	"user": {
+		"user_name": "닉네임",
+		"email": "aaa@aa.com",
+		"user_code": "0",
+		"user_goPlayer": true
+	},
+	"follow": [
+		{
+			"player_id": "2023",
+			"player_name": "이진우",
+			"img_url": "ProfileDefault",
+			"player_major": "배트민턴 선수",
+			"player_belong": "선수소속명"
+		},
+		{
+			"player_id": "2023",
+			"player_name": "이진우2",
+			"img_url": "ProfileDefault",
+			"player_major": "배트민턴 선수2",
+			"player_belong": "선수소속명2"
+		}
+	]
+}

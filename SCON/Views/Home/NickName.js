@@ -10,12 +10,16 @@ import {
 
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 
-export function NickName({ navigation }) {
+export function NickName({ user }) {
+	const name = user.user_name
+	const email = user.email
 	return (
 		<View style={{flexDirection: 'row',}}>
 			<Image source={DefaultProfile} style={styles.image}/>
-			<Text> 닉네임</Text>
-			<Text> email</Text>
+			<View style={{flexDirection: 'column',}}>
+				<Text> {name} </Text>
+				<Text> {email} </Text>
+			</View>
 		</View>
 	);
 }
