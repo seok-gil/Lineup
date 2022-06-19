@@ -4,7 +4,7 @@
 	"user": {
 		"user_name": "닉네임",
 		"email": "aaa@aa.com",
-		"user_code": "0",
+		"user_code": 1,
 		"user_goPlayer": true
 	},
 	"follow": [
@@ -21,6 +21,6 @@
 			"img_url": "ProfileDefault",
 			"player_major": "배트민턴 선수2",
 			"player_belong": "선수소속명2"
-		}
+		},
 	]
 }

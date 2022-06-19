@@ -14,9 +14,10 @@ export function HomeScreen({ navigation }) {
 	const Data = require('../../Assets/Data/HomeScreen.json');
 
 	return (
-		<View >
-			<Head Data={Data} navigation={navigation} />
-			<Body Data={Data} navigation={navigation} />
+		<View style={{flex:3}}>
+			<Head Data={Data} navigation={navigation} style={{flex:1}}/>
+			<Body Data={Data} navigation={navigation} style={{flex:2}}/>
 		</View>
 	);
 }
+
