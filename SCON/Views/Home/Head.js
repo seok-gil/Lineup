@@ -9,10 +9,12 @@ import { AlertIcon, SettingIcon, NickName } from './index';
 
 export function Head({ navigation }) {
 	return (
-		<View >
-			<AlertIcon/>
-			<SettingIcon/>
-			<NickName/>
+		<View>
+			<View style={{ flexDirection: 'row', }}>
+				<AlertIcon navigation={navigation} />
+				<SettingIcon navigation={navigation} />
+			</View>
+			<NickName />
 		</View>
 	);
 }

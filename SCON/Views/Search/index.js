@@ -1,3 +1,3 @@
 import { SearchScreen } from "./SearchScreen"
-
-export { SearchScreen }
+import { SearchStackScreen } from "./SearchStack"
+export { SearchStackScreen, SearchScreen }

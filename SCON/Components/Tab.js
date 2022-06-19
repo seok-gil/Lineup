@@ -5,17 +5,13 @@ import {Button,
 } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import { HomeScreen } from '../Views/Home';
-import { LoginScreen } from '../Views/Login'; 
-import { SearchScreen } from '../Views/Search';
-import { RankScreen } from '../Views/Rank';
-import { MyPageScreen } from '../Views/MyPage';
-
+import { HomeStackScreen } from '../Views/Home';
+import { SearchStackScreen } from '../Views/Search';
+import {  RankScreen } from '../Views/Rank';
+import { MyPageStackScreen } from '../Views/MyPage';
+import { NotiScreen } from "../Views/Noti"
 const Tab = createBottomTabNavigator();
 
-export function StartScreen(){
-
-}
 
 export function TabScreen({navigation}) {
   return (
@@ -30,14 +26,14 @@ export function TabScreen({navigation}) {
             fontSize: 20,
           },
           tabBarActiveTintColor: '#17D3F0',
-		  tabBarInactiveTintColor: '#848484'
+		  tabBarInactiveTintColor: '#848484',
 		//   tabBarInactiveBackgroundColor: '#848484',
+          // headerShown: false,
       }}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Login" component={LoginScreen} /> 
-      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="HomeStack" component={HomeStackScreen} options={{headerShown:false}}/>
+      <Tab.Screen name="SearchStack" component={SearchStackScreen} options={{headerShown:false}}/>
       <Tab.Screen name="Rank" component={RankScreen} />
-      <Tab.Screen name="MyPage" component={MyPageScreen} />
+      <Tab.Screen name="MyPageStack" component={MyPageStackScreen} options={{headerShown:false}}/>
     </Tab.Navigator>
   );
 }

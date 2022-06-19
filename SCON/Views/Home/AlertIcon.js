@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
 	Button,
 	View,
@@ -7,6 +8,6 @@ import {
 
 export function AlertIcon({ navigation }) {
 	return (
-		<Button onPress={() => navigation.navigate('/')} title="Alert" />
+		<Button onPress={() => navigation.navigate('Alert')} title="Alert" />
 	);
 }

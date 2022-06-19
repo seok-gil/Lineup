@@ -23,7 +23,7 @@ export function NickName({ navigation }) {
 const styles = StyleSheet.create({
 	image: {
 	  width: '30%',
-	  height: '30%',
+	  height: '100%',
 	  resizeMode: 'contain'
 	},
   });

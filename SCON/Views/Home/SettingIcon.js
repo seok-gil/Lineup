@@ -7,6 +7,6 @@ import {
 
 export function SettingIcon({ navigation }) {
 	return (
-		<Button onPress={() => navigation.navigate('/')} title="Setting" />
+		<Button onPress={() => navigation.navigate('MyPageStack')} title="myPage" />
 	);
 }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import {
 	Button,
 	View,
@@ -10,8 +12,8 @@ import { Head, Body } from './index';
 export function HomeScreen({ navigation }) {
 	return (
 		<View >
-			<Head/>
-			<Body/>
+			<Head navigation={navigation} />
+			<Body navigation={navigation} />
 		</View>
 	);
 }

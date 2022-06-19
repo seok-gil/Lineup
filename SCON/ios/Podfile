@@ -19,6 +19,9 @@ target 'SCON' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+
+  pod 'react-native-viewpager', :path => '../node_modules/@react-native-community/viewpager'
+
   target 'SCONTests' do
     inherit! :complete
     # Pods for testing
