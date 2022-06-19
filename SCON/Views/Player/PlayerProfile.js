@@ -41,13 +41,15 @@ function PlayerData({ navigation }) {
 		</View>
 	)
 }
-function PlayerStatus() {
-	return (
-		<Text>
-			응원에 보답하는ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-		</Text>
-	)
-}
+// function PlayerStatus() {
+// 	return (
+// 		<Text>
+// 			응원에 보답하는ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+// 		</Text>
+// 	)
+// }
+
+
 export function PlayerProfile({ navigation }) {
 	return (
 		<View>
@@ -56,7 +58,6 @@ export function PlayerProfile({ navigation }) {
 				<PlayerProfileTab />
 				<PlayerData navigation={navigation} />
 			</View>
-			<PlayerStatus />
 		</View>
 
 	)
