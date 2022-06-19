@@ -11,7 +11,7 @@ import {
 import { PlayerProfile, PlayerFeeds } from "./"
 
 
-function PlayerFollow() {
+function PlayerFollow({navigation}) {
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('Player', { names: ['Brent', 'Satya', 'Michaś'] })}>
 			<Text>팔로우</Text>
@@ -25,6 +25,8 @@ export function PlayerScreen({navigation}) {
 			<PlayerProfile navigation={navigation}/>
 			<PlayerFollow />
 			<PlayerFeeds navigation={navigation}/>
+			<PlayerFeeds navigation={navigation}/>
+
 		</View>
 	);
 }

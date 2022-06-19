@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useRef } from 'react';
 
 import {
 	Button,
@@ -7,7 +7,7 @@ import {
 	StyleSheet,
 	Text,
 	Image,
-	TextInput
+	TextInput,
 } from 'react-native';
 
 
@@ -27,16 +27,29 @@ export function SearchId({ navigation }) {
 	)
 }
 
-export function SerachInput({ value }) {
-	const [name, setName] = useState('');
+export function SerachInput() {
+	const searchRef = useRef();
+	const [inputs, setInputs] = useState({
+		search: '',
+	});
+	const onChange = (keyvalue, e) => {
+		const { text } = e.nativeEvent
+		setInputs({
+			...inputs,
+			[keyvalue]: text
+		});
+	}
+	
 	return (
 		<View style={{ flexDirection: 'row' }}>
 			<Image source={SearchIcon} />
 			<TextInput
-				value={value}
+				value={inputs.search}
 				placeholder={'검색'}
 				placeholderTextColor='#C5C8CE'
-				onChangeText={text => setName(text)} />
+				onChange={(e) => onChange("search", e)}
+				onSubmitEditing={() => searchRef.current.focus()}
+			/>
 		</View>
 	)
 }
