@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {
 	Button,
 	View,
+	Text,
 	StyleSheet,
 } from 'react-native';
 
