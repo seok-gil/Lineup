@@ -12,26 +12,61 @@ import {
 import SearchIcon from '../../Assets/Images/SearchIcon.png'
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 
-export function SearchId({ navigation }) {
+function ViewPlayer({ player, navigation }) {
+	const player_name = player.player_name
+	const player_major = player.player_major
+	const player_belong = player.player_belong
+
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('Player', { names: ['Brent', 'Satya', 'Michaś'] })}>
 			<View style={{ flexDirection: 'row', }}>
 				<Image source={DefaultProfile} style={styles.image} />
 				<View style={{ flexDirection: 'column' }}>
-					<Text> 닉네임</Text>
-					<Text> 수영선수</Text>
+					<Text> {player_name}</Text>
+					<Text> {player_major} / {player_belong} </Text>
 				</View>
 			</View>
 		</TouchableOpacity>
 	)
 }
 
+function SearchId({ inputs, navigation }) {
+	const search = inputs.search
+	const data = require('../../Assets/Data/Search.json').player
+	const [more, setMore] = useState(false)
 
-export function SerachInput({ value }) {
+	const onClickMore = () => {
+		if (!more)
+			setMore(true)
+		else
+			setMore(false)
+	}
+	return (
+		<View>
+			{data.filter((player) => {
+				if (search == null)
+					return player
+				else if (player.player_name.includes(search) || player.player_major.includes(search) || player.player_belong.includes(search)) {
+					return player
+				}
+			}).map((player, index) => {
+				if (index >= 4 && !more)
+					return false
+				return (<ViewPlayer player={player} navigation={navigation} />)
+			})
+			}
+			<TouchableOpacity onPress={() => onClickMore()}>
+				{!more && (<Text>결과 모두 보기</Text>)}
+				{more && (<Text>결과 접기</Text>)}
+			</TouchableOpacity>
+		</View>
+	)
+}
+
+
+function SerachInput({ inputs, setInputs }) {
 	const searchRef = useRef();
-	const [inputs, setInputs] = useState({
-		search: '',
-	});
+
 	const onChange = (keyvalue, e) => {
 		const { text } = e.nativeEvent
 		setInputs({
@@ -39,7 +74,7 @@ export function SerachInput({ value }) {
 			[keyvalue]: text
 		});
 	}
-	
+
 	return (
 		<View style={{ flexDirection: 'row' }}>
 			<Image source={SearchIcon} />
@@ -50,48 +85,21 @@ export function SerachInput({ value }) {
 				onChange={(e) => onChange("search", e)}
 				onSubmitEditing={() => searchRef.current.focus()}
 			/>
-			<Text> search : {inputs.search}</Text>
 		</View>
 	)
 }
 
 
-export default function InputSample() {
-	const secondRef = useRef();
-	const [inputs, setInputs] = useState({
-		name: '',
-		nickname: ''
-	});
-
-	const { name, nickname } = inputs;
-
-	const onChange = (keyvalue, e) => {
-		const { text } = e.nativeEvent
-		setInputs({
-			...inputs,
-			[keyvalue]: text
-		});
-	};
-
-	return (
-		<View>
-			<TextInput
-				style={styles.input}
-				onChange={(e) => onChange("name", e)}
-				value={name}
-				onSubmitEditing={() => secondRef.current.focus()}
-			/>
-			<Text>name: {name}, nickname: {nickname}</Text>
-		</View>
-	)
-}
 
 export function SearchScreen({ navigation }) {
+	const Data = require('../../Assets/Data/Search.json').player;
+	const [inputs, setInputs] = useState({
+		search: '',
+	});
 	return (
 		<View style={{ flex: 3, flexDirection: 'column' }}>
-			<InputSample />
-			<SerachInput />
-			<SearchId navigation={navigation} />
+			<SerachInput inputs={inputs} setInputs={setInputs} />
+			<SearchId inputs={inputs} navigation={navigation} />
 		</View>
 	);
 }
