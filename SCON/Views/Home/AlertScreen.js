@@ -5,8 +5,6 @@ import {
 	TouchableOpacity
 } from 'react-native';
 
-import { Data } from "../../Assets/Data/Alert.json"
-
 function AlertHead({ alert }) {
 	const read = alert.read
 	return (
