@@ -1,40 +1,61 @@
 import React, { Component } from 'react';
 import {
-	Button,
 	View,
 	Text,
-	StyleSheet,
+	TouchableOpacity
 } from 'react-native';
 
-function AlertHead() {
+function AlertHead({ alert }) {
+	const read = alert.read
 	return (
-		<Text>선수 대회 알림</Text>
+		<Text>{read}{alert.type}</Text>
 	);
 }
 
-function AlertBody() {
+function AlertBody({ alert }) {
 	return (
 		<View>
-			<Text>강석원 선수의 ~~~</Text>
-			<Text>2022.05.04</Text>
+			<Text>{alert.content}</Text>
+			<Text>{alert.createdAt}</Text>
 		</View>
 	);
 }
-function Alert() {
+
+function Alert({ alert }) {
+	if (!alert)
+		return (<View />)
+	const onClickX = (alert_id) => {
+		console.log(alert_id)
+	}
 	return (
 		<View >
-			<AlertHead/>
-			<AlertBody/>
+			<AlertHead alert={alert} />
+			<AlertBody alert={alert} />
+			<TouchableOpacity onPress={() => onClickX(alert.alert_id)}>
+				<Text>x</Text>
+			</TouchableOpacity>
 		</View>
 	);
 }
 
 export function AlertScreen({ navigation }) {
+	const Data = require('../../Assets/Data/Alert.json').alert;
+	
+	const onClickAll = () => {
+		console.log("all")
+	}
 	return (
 		<View >
 			<Text>쌓여있는 알림을 확인해보세요</Text>
-			<Alert/>
-			<Alert/>
+			<TouchableOpacity onPress={() => onClickAll(alert.alert_id)}>
+				<Text>모두 삭제</Text>
+			</TouchableOpacity>
+			{
+				Data.map((alert, index) => {
+					if (alert)
+						return (<Alert alert={alert} />)
+				})
+			}
 		</View>
 	);
 }

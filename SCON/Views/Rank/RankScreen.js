@@ -7,17 +7,11 @@ import {
 	StyleSheet,
 } from 'react-native';
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
+import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Swiper from 'react-native-swiper'
 
-export function RankHead() {
-	return (
-		<View style={{ flexDirection: 'row' }}>
-			<Button onPress={() => navigation.navigate('Home')} title="Day" />
-			<Button onPress={() => navigation.navigate('Home')} title="Week" />
-			<Button onPress={() => navigation.navigate('Home')} title="MONTH" />
-			<Button onPress={() => navigation.navigate('Home')} title="ALL" />
-		</View>
-	)
-}
+
 export function RankFirst() {
 	return (
 		<View style={{ flexDirection: 'column' }}>
@@ -33,7 +27,6 @@ export function RankSecond() {
 	return (
 		<View style={{ flexDirection: 'column' }}>
 			<Text>2</Text>
-
 			<Image source={DefaultProfile} style={styles.image} />
 			<Text> 이등</Text>
 			<Text> 수영</Text>
@@ -50,16 +43,16 @@ export function RankThird() {
 			<Text> 수영</Text>
 		</View>
 	);
-}	
+}
 
-export function RankETC() {
+function RankETC() {
 	return (
 		<View style={{ flexDirection: 'row' }}>
 			<Text>4</Text>
-		<Image source={DefaultProfile} style={styles.image2} />
-		<Text> 홍길동</Text>
-		<Text> 수영</Text>
-	</View>
+			<Image source={DefaultProfile} style={styles.image2} />
+			<Text> 홍길동</Text>
+			<Text> 수영</Text>
+		</View>
 	)
 }
 
@@ -67,27 +60,29 @@ export function RankBody() {
 	return (
 		<View style={{ flexDirection: 'column' }}>
 			<View style={{ flexDirection: 'row' }}>
-			<RankFirst />
-			<RankSecond/>
-			<RankThird/>
+				<RankFirst />
+				<RankSecond />
+				<RankThird />
 			</View>
-			<RankETC/>
-			<RankETC/>
-			<RankETC/>
-			<RankETC/>
-
+			<RankETC />
+			<RankETC />
+			<RankETC />
+			<RankETC />
 		</View >
-
-
 	)
 }
+
+const RankStack = createMaterialTopTabNavigator();
+
 export function RankScreen({ navigation }) {
 	return (
-		<View >
-			<RankHead />
-			<RankBody />
-		</View>
-	);
+		<RankStack.Navigator>
+			<RankStack.Screen name="Day" component={RankBody} />
+			<RankStack.Screen name="Week" component={RankBody} />
+			<RankStack.Screen name="Month" component={RankBody} />
+			<RankStack.Screen name="All" component={RankBody} />
+		</RankStack.Navigator>
+	)
 }
 
 const styles = StyleSheet.create({
