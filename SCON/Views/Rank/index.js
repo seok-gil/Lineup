@@ -1,3 +1,4 @@
+import { RankStackScreen} from "./RankStack"
 import { RankScreen } from "./RankScreen"
 
-export { RankScreen }
+export { RankStackScreen, RankScreen }
