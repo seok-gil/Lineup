@@ -5,72 +5,66 @@ import {
 	Image,
 	Text,
 	StyleSheet,
+	ScrollView,
+	TouchableOpacity,
 } from 'react-native';
+
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
-import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Swiper from 'react-native-swiper'
 
+function RankETC({ player, navigation }) {
+	const view = []
+	console.log(player.length)
+	function ETC({ player, index }){
+		return (
+		<TouchableOpacity onPress={() => navigation.navigate('Player', { names: ['Brent', 'Satya', 'Michaś'] })}>
+			<View style={{ flexDirection: 'row' }}>
+				<Text>{index}</Text>
+				<Image source={DefaultProfile} style={styles.image2} />
+				<Text> {player.player_name}</Text>
+				<Text> {player.player_player_major}</Text>
+				<Text> 좋아요 X {player.player_like} </Text>
+			</View>
+			</TouchableOpacity>
+		)
+	}
+	for (let i = 3; i < player.length ; ++i)
+		view.push(<ETC key={`rankETC`} player={player[i]} index={i} navigation={navigation} />);
+	return (view)
+}
 
-export function RankFirst() {
+function RankMedal({ player, rank, navigation }) {
 	return (
-		<View style={{ flexDirection: 'column' }}>
-			<Text>1</Text>
+		<TouchableOpacity onPress={() => navigation.navigate('Player', { names: ['Brent', 'Satya', 'Michaś'] })}>
+			<Text>{rank}</Text>
 			<Image source={DefaultProfile} style={styles.image} />
-			<Text> 일등</Text>
-			<Text> 수영</Text>
-		</View>
+			<Text> {player.player_name}</Text>
+			<Text> {player.player_player_major}</Text>
+			<Text> 좋아요 X {player.player_like} </Text>
+		</TouchableOpacity>
 	);
 }
 
-export function RankSecond() {
-	return (
-		<View style={{ flexDirection: 'column' }}>
-			<Text>2</Text>
-			<Image source={DefaultProfile} style={styles.image} />
-			<Text> 이등</Text>
-			<Text> 수영</Text>
-		</View>
-	);
-}
-
-export function RankThird() {
-	return (
-		<View style={{ flexDirection: 'column' }}>
-			<Text>3</Text>
-			<Image source={DefaultProfile} style={styles.image} />
-			<Text> 삼등</Text>
-			<Text> 수영</Text>
-		</View>
-	);
-}
-
-function RankETC() {
-	return (
-		<View style={{ flexDirection: 'row' }}>
-			<Text>4</Text>
-			<Image source={DefaultProfile} style={styles.image2} />
-			<Text> 홍길동</Text>
-			<Text> 수영</Text>
-		</View>
-	)
-}
-
-export function RankBody() {
+function RankBody({ navigation, route }) {
+	const Data = require('../../Assets/Data/Rank.json').player;
+	Data.sort(function (a, b) {
+		return parseFloat(b.player_like) - parseFloat(a.player_like)
+	});
 	return (
 		<View style={{ flexDirection: 'column' }}>
 			<View style={{ flexDirection: 'row' }}>
-				<RankFirst />
-				<RankSecond />
-				<RankThird />
+				<RankMedal player={Data[0]} rank="1" navigation={navigation}/>
+				<RankMedal player={Data[1]} rank="2" navigation={navigation}/>
+				<RankMedal player={Data[2]} rank="3" navigation={navigation}/>
 			</View>
-			<RankETC />
-			<RankETC />
-			<RankETC />
-			<RankETC />
+			<ScrollView>
+				<RankETC player={Data} navigation={navigation}/>
+			</ScrollView>
 		</View >
 	)
 }
+
+
 
 const RankStack = createMaterialTopTabNavigator();
 

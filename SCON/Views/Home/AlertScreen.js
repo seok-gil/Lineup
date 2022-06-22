@@ -45,7 +45,7 @@ export function AlertScreen({ navigation }) {
 		console.log("all")
 	}
 	return (
-		<View >
+		<View key={`Alert`}>
 			<Text>쌓여있는 알림을 확인해보세요</Text>
 			<TouchableOpacity onPress={() => onClickAll(alert.alert_id)}>
 				<Text>모두 삭제</Text>
