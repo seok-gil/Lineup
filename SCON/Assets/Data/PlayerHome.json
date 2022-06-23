@@ -1,0 +1,42 @@
+{
+	"player": {
+		"player_id": "13",
+		"profile_url":"",
+		"major": "수영선수",
+		"belong": "소속",
+		"score": "12",
+		"rank": "3",
+		"rank_type": "ALL",
+		"fan": "104"
+	},
+	"feed": [
+		{
+			"feed_id" : "0",
+			"content" : "강석원 선수의 대회 참가일정이 등록되었어요.",
+			"like_cnt" : "1",
+			"coment_cnt" :"23",
+			"createdAt": "2021-06-23T09:49:25.214Z"
+		},
+		{
+			"feed_id" : "1",
+			"content" : "경기전 부상..대회가 몇일 안남았는데 어떡하지 ㅠㅠ",
+			"like_cnt" : "13",
+			"coment_cnt" :"23",
+			"createdAt": "2021-04-23T09:49:25.214Z"
+		},
+		{
+			"feed_id" : "2",
+			"content" : "경기가 종료되었습니다 결과를 확인할까요?",
+			"like_cnt" : "133",
+			"coment_cnt" :"213",
+			"createdAt": "2021-05-23T09:49:25.214Z"
+		},
+		{
+			"feed_id" : "3",
+			"content" : "경기전 부상..대회가 몇일 안남았는데 어떡하지 ㅠㅠ123",
+			"like_cnt" : "3",
+			"coment_cnt" :"233",
+			"createdAt": "2021-03-23T09:49:25.214Z"
+		}
+	]
+}

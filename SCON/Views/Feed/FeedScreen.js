@@ -12,32 +12,61 @@ import {
 
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 
-function FeedBody() {
+function FeedBody({ data}) {
+
 	return (
+		<View>
 		<Text>
-			강원석 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-			응원메시지 남길까요?
+			{data.content}
 		</Text>
+		<View style={{ flexDirection: 'row' }}>
+				<TouchableOpacity onPress={() => navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })} style={{ flexDirection: 'row' }}>
+					<Text>하트</Text>
+					<Text>{data.like_cnt}</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })} style={{ flexDirection: 'row' }}>
+					<Text>댓글</Text>
+					<Text>{data.coment_cnt}</Text>
+				</TouchableOpacity>
+			</View>
+		</View>
 	)
 }
 
-function CommentList() {
+function FeedComment ({ comment, navigation }) {
+	console.log(comment)
 	return (
+		<>
 		<Text>
-			대단해요!
-			대단해요!
-			대단해요!
-			대단해요!
-			대단해요!
-			대단해요!
-			대단해요!
-			대단해요!
-			대단해요!
+			{comment.user_id} : {comment.comment_content}
 		</Text>
+		</>
 	)
 }
 
-function FeedComment({value}) {
+function CommentList({ data, navigation }) {
+	const view = []
+	console.log(data)
+	const commentlist = () => {
+		for (let i = 0; i < data.length; ++i) {
+			view.push(
+				<FeedComment
+					key={`player-comment-${i}`}
+					comment={data[i]}
+					navigation={navigation}
+				/>
+			);
+		}
+		return view
+	}
+	return (
+		<View>
+			{commentlist()}
+		</View>
+	)
+}
+
+function CommentRegist({value}) {
 	const [name, setName] = useState('');
 	return (
 		<View style={{flexDirection: 'row'}}>
@@ -52,11 +81,12 @@ function FeedComment({value}) {
 }
 
 export function FeedScreen({ navigation }) {
+	const Data = require('../../Assets/Data/Feed.json').Feed
 	return (
 		<View style={{ flex: 3, flexDirection: 'column' }}>
-			<FeedBody/>
-			<FeedComment/>
-			<CommentList/>
+			<FeedBody data={Data}/>
+			<CommentRegist/>
+			<CommentList data={Data.comment}/>
 		</View>
 	);
 }
