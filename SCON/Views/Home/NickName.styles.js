@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   },
 
   nameText: {
+    marginBottom: 3,
     width: 150,
     fontSize: 20,
     fontWeight: '700',
