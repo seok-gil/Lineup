@@ -13,8 +13,8 @@ import { PlayerProfile, PlayerFeeds } from "./"
 
 function PlayerFollow({navigation}) {
 	return (
-		<TouchableOpacity onPress={() => navigation.navigate('Player', { names: ['Brent', 'Satya', 'Michaś'] })}>
-			<Text>나의 라인업에 추가하기</Text>
+		<TouchableOpacity onPress={() => navigation.navigate('StoryScreen', { names: ['Brent', 'Satya', 'Michaś'] })}>
+			<Text>스토리 추가하기 </Text>
 		</TouchableOpacity>
 	)
 }
@@ -24,7 +24,7 @@ export function PlayerScreen({navigation}) {
 	return (
 		<View>
 			<PlayerProfile profile={Data.player} navigation={navigation}/>
-			<PlayerFollow />
+			<PlayerFollow navigation={navigation} />
 			<PlayerFeeds feed={Data.feed} navigation={navigation}/>
 		</View>
 	);
