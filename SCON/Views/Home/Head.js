@@ -8,17 +8,16 @@ import NotiImage from '../../Assets/Images/NotiImage.png'; // svg로 교체 추�
 import styles from './Head.styles';
 
 function AlertIcon({alert, navigation}) {
-  if (alert)
-    return (
-      <View style={[styles.alignment, styles.alertWrapper]}>
-        <TouchableOpacity onPress={() => navigation.navigate('Alert')}>
-          <View style={styles.alertIconWrapper}>
-            <Image source={NotiImage} />
-            {alert ? <View style={styles.alertBadge} /> : <></>}
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
+  return (
+    <View style={[styles.alignment, styles.alertWrapper]}>
+      <TouchableOpacity onPress={() => navigation.navigate('Alert')}>
+        <View style={styles.alertIconWrapper}>
+          <Image source={NotiImage} />
+          {alert ? <View style={styles.alertBadge} /> : <></>}
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 export function Head({Data, navigation}) {
