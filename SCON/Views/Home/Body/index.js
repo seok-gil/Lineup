@@ -14,7 +14,9 @@ function FollowCardList({Data, navigation}) {
 
   if (user_code == 1)
     view.push(
-      <View style={styles.swiperCardWrapper}>
+      <View
+        style={styles.swiperCardWrapper}
+        key={`player-my-card-${user_code}`}>
         <PlayerMyCard key={`player-card`} navigation={navigation} />
       </View>,
     );
@@ -22,9 +24,10 @@ function FollowCardList({Data, navigation}) {
     for (let i = 0; i < 3; i++) {
       if (follow[i])
         view.push(
-          <View style={styles.swiperCardWrapper}>
+          <View
+            style={styles.swiperCardWrapper}
+            key={`player-card-${user_code}`}>
             <PlayerCard
-              key={`player-card-${user_code}`}
               user_code={user_code}
               card={follow[i]}
               index={i + user_code}
@@ -34,9 +37,10 @@ function FollowCardList({Data, navigation}) {
         );
       else
         view.push(
-          <View style={styles.swiperCardWrapper}>
+          <View
+            style={styles.swiperCardWrapper}
+            key={`empty-card-${user_code}`}>
             <EmptyCard
-              key={`empty-card-${user_code}`}
               user_code={user_code}
               index={i + user_code}
               navigation={navigation}
