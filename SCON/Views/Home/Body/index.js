@@ -52,7 +52,6 @@ function FollowCardList({Data, navigation}) {
       style={styles.swiperWrapper}
       containerStyle={styles.containerWrapper}
       dotStyle={styles.dot}
-      dotsWrap
       activeDotStyle={styles.activeDot}
       loop={false}>
       {playercard()}
