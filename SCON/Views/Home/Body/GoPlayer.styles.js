@@ -3,6 +3,9 @@ import {colors} from '../../../Styles';
 
 const styles = StyleSheet.create({
   goPlayerWrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     flexDirection: 'row',
     backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
     paddingVertical: 6,
