@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 
   alignment: {
-    paddingHorizontal: 15,
+    paddingHorizontal: 20,
     flexGrow: 1,
     flexBasis: 1,
     justifyContent: 'center',
