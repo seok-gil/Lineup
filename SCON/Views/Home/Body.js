@@ -1,6 +1,6 @@
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png';
 import AddPlayer from '../../Assets/Images/AddPlayer.png';
-import React, {Component, useState} from 'react';
+import React, { Component, useState } from 'react';
 import {
   Button,
   View,
@@ -13,49 +13,49 @@ import {
 
 import Swiper from 'react-native-swiper';
 
-function PlayerCard({card, user_code, index, navigation}) {
+function PlayerCard({ card, user_code, index, navigation }) {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('Player')}
-      style={{flexDirection: 'row'}}>
+      style={{ flexDirection: 'row' }}>
       <Text>{card.player_name}</Text>
-      {index == 0 && <Text style={{flex: 1}}>@@@null@@@</Text>}
-      {index != 0 && <Text style={{flex: 1}}>@@@prev@@@</Text>}
+      {index == 0 && <Text style={{ flex: 1 }}>@@@null@@@</Text>}
+      {index != 0 && <Text style={{ flex: 1 }}>@@@prev@@@</Text>}
       <Image source={DefaultProfile} style={styles.image} />
-      {index == 2 + user_code && <Text style={{flex: 1}}>@@@null@@@</Text>}
-      {index != 2 + user_code && <Text style={{flex: 1}}>@@@next@@@</Text>}
+      {index == 2 + user_code && <Text style={{ flex: 1 }}>@@@null@@@</Text>}
+      {index != 2 + user_code && <Text style={{ flex: 1 }}>@@@next@@@</Text>}
     </TouchableOpacity>
   );
 }
 
-function EmptyCard({user_code, index, navigation}) {
+function EmptyCard({ user_code, index, navigation }) {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('SearchStack')}
-      style={{flexDirection: 'row'}}>
-      {index == 0 && <Text style={{flex: 1}}>@@@null@@@</Text>}
-      {index != 0 && <Text style={{flex: 1}}>@@@prev@@@</Text>}
+      style={{ flexDirection: 'row' }}>
+      {index == 0 && <Text style={{ flex: 1 }}>@@@null@@@</Text>}
+      {index != 0 && <Text style={{ flex: 1 }}>@@@prev@@@</Text>}
       <Image source={AddPlayer} style={styles.image2} />
-      {index == 2 + user_code && <Text style={{flex: 1}}>@@@null@@@</Text>}
-      {index != 2 + user_code && <Text style={{flex: 1}}>@@@next@@@</Text>}
+      {index == 2 + user_code && <Text style={{ flex: 1 }}>@@@null@@@</Text>}
+      {index != 2 + user_code && <Text style={{ flex: 1 }}>@@@next@@@</Text>}
     </TouchableOpacity>
   );
 }
 
-function PlayerMyCard({view, navigation}) {
+function PlayerMyCard({ view, navigation }) {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('Player')}
-      style={{flexDirection: 'row'}}>
-      <Text style={{flex: 1}}>@@@null@@@</Text>
+      style={{ flexDirection: 'row' }}>
+      <Text style={{ flex: 1 }}>@@@null@@@</Text>
       <Text>MyPage</Text>
       <Image source={DefaultProfile} style={styles.image2} />
-      <Text style={{flex: 1}}>@@@next@@@</Text>
+      <Text style={{ flex: 1 }}>@@@next@@@</Text>
     </TouchableOpacity>
   );
 }
 
-function FollowCardList({Data, navigation}) {
+function FollowCardList({ Data, navigation }) {
   const view = [];
   const follow = Data.follow;
   const user_code = Data.user.user_code;
@@ -63,7 +63,7 @@ function FollowCardList({Data, navigation}) {
   if (user_code == 1)
     view.push(<PlayerMyCard key={`player-card`} navigation={navigation} />);
   const playercard = () => {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; ++i) {
       if (follow[i])
         view.push(
           <PlayerCard
@@ -94,12 +94,12 @@ function FollowCardList({Data, navigation}) {
   );
 }
 
-function GoPlayer({setgoPlayer, navigation}) {
+function GoPlayer({ setgoPlayer, navigation }) {
   const onClick = () => {
     setgoPlayer(false);
   };
   return (
-    <View style={{flexDirection: 'row'}}>
+    <View style={{ flexDirection: 'row' }}>
       <TouchableOpacity onPress={() => navigation.navigate('PlayerRegist')}>
         <Text>선수로 등록하시겠어요?</Text>
       </TouchableOpacity>
@@ -110,13 +110,13 @@ function GoPlayer({setgoPlayer, navigation}) {
   );
 }
 
-export function Body({Data, navigation}) {
+export function Body({ Data, navigation }) {
   const user_code = Data.user.user_code;
   const view = [];
   const [goPlayer, setgoPlayer] = useState(Data.user.user_goPlayer);
 
   return (
-    <View style={{flex: 3}}>
+    <View style={{ flex: 3 }}>
       {user_code == 1 && goPlayer == true && (
         <GoPlayer navigation={navigation} setgoPlayer={setgoPlayer} />
       )}

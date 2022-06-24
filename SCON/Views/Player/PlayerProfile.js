@@ -14,49 +14,43 @@ import {
 
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 
-function PlayerProfileTab() {
+function PlayerProfileTab({profile}) {
 	return (
 		<View style={{ flexDirection: 'row', }}>
 			<Image source={DefaultProfile} style={styles.image} />
 			<View style={{ flexDirection: 'column', }}>
-				<Text> 닉네임</Text>
-				<Text> 수영선수</Text>
+				<Text> {profile.major}</Text>
+				<Text> {profile.belong}</Text>
 			</View>
 		</View>
 	)
 }
 
-function PlayerData({ navigation }) {
+function PlayerData({ profile, navigation }) {
 	return (
 		<View style={{ flexDirection: 'row' }}>
 			<TouchableOpacity onPress={() => navigation.navigate('Record', { names: ['Brent', 'Satya', 'Michaś'] })}>
-				<Text>전적 12</Text>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => navigation.navigate('Rank', { names: ['Brent', 'Satya', 'Michaś'] })}>
-				<Text>순위 7</Text>
+				<Text>전적</Text>
+				<Text> {profile.score}</Text>
 			</TouchableOpacity>
 			<TouchableOpacity onPress={() => navigation.navigate('Fan', { names: ['Brent', 'Satya', 'Michaś'] })}>
-				<Text>팬 104</Text>
+				<Text>팬</Text>
+				<Text>{profile.fan}</Text>
+			</TouchableOpacity>
+			<TouchableOpacity onPress={() => navigation.navigate('Rank', { names: ['Brent', 'Satya', 'Michaś'] })}>
+				<Text>{profile.rank_type}</Text>
+				<Text> {profile.rank}위</Text>
 			</TouchableOpacity>
 		</View>
 	)
 }
-// function PlayerStatus() {
-// 	return (
-// 		<Text>
-// 			응원에 보답하는ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-// 		</Text>
-// 	)
-// }
 
-
-export function PlayerProfile({ navigation }) {
+export function PlayerProfile({ profile, navigation }) {
 	return (
 		<View>
-
 			<View style={{ flexDirection: 'row' }}>
-				<PlayerProfileTab />
-				<PlayerData navigation={navigation} />
+				<PlayerProfileTab profile={profile}/>
+				<PlayerData profile={profile } navigation={navigation} />
 			</View>
 		</View>
 
