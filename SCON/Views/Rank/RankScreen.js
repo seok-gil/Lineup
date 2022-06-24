@@ -29,7 +29,7 @@ function RankETC({ player, navigation }) {
 		)
 	}
 	for (let i = 3; i < player.length ; ++i)
-		view.push(<ETC key={`rankETC`} player={player[i]} index={i} navigation={navigation} />);
+		view.push(<ETC key={`rankETC${i}`} player={player[i]} index={i} navigation={navigation} />);
 	return (view)
 }
 
@@ -58,7 +58,7 @@ function RankBody({ navigation, route }) {
 				<RankMedal player={Data[2]} rank="3" navigation={navigation}/>
 			</View>
 			<ScrollView>
-				<RankETC player={Data} navigation={navigation}/>
+				<RankETC keu={`rankEtc`} player={Data} navigation={navigation}/>
 			</ScrollView>
 		</View >
 	)

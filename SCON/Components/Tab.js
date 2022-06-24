@@ -26,7 +26,7 @@ export function TabScreen({navigation}) {
             fontSize: 20,
           },
           tabBarActiveTintColor: '#17D3F0',
-		  tabBarInactiveTintColor: '#848484',
+		      tabBarInactiveTintColor: '#848484',
 		//   tabBarInactiveBackgroundColor: '#848484',
           headerShown: false,
       }}>

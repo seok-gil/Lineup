@@ -11,38 +11,58 @@ import Gold from '../../Assets/Images/GoldMedal.png'
 import Silver from '../../Assets/Images/SilverMedal.png'
 import Bronze from '../../Assets/Images/BronzeMedal.png'
 
-function RecordHead() {
+function RecordHead({ medal }) {
 	return (
-		<View style={{flexDirection:'row'}}>
+		<View style={{ flexDirection: 'row' }}>
 			<Text>선수전적</Text>
-			<View style={{flexDirection:'row'}}>
+			<View style={{ flexDirection: 'row' }}>
 				<Image source={Gold}></Image>
-				<Text> 1</Text>
+				<Text> {medal.gold}</Text>
 				<Image source={Silver}></Image>
-				<Text> 2</Text>
+				<Text> {medal.silver}</Text>
 				<Image source={Bronze}></Image>
-				<Text> 3</Text>
+				<Text> {medal.bronze}</Text>
 			</View>
 		</View>
 	)
 }
+function RecordList({ record }) {
+	const view = [];
 
+	const playercard = () => {
+		for (let i = 0; i < record.length; i++) {
+			view.push(
+				<View key={`record`} style={{ flexDirection: 'column' }}>
+					<Text>
+						{record[i].host}{" "}
+						{record[i].competition}{" "}
+						{record[i].major}{" "}
+						{record[i].game_detail}{" "}
+						{record[i].score}
+					</Text>
+					<Text>
+						{record[i].start} ~
+						{record[i].end}
+					</Text>
+				</View>
+			)
+		};
+		return view;
+	}
 
-function RecordList() {
 	return (
 		<View>
-			<Text>
-			교육감기 수영대회 계영 400m 5위
-			</Text>
+			{playercard()}
 		</View>
-	)
+	);
 }
 
 export function RecordScreen({ navigation }) {
+	const Data = require('../../Assets/Data/Record.json');
 	return (
-		<View style={{flexDirection:'column'}}>
-			<RecordHead/>
-			<RecordList/>
+		<View style={{ flexDirection: 'column' }}>
+			<RecordHead medal={Data.Medal} />
+			<RecordList record={Data.Record} />
 		</View>
 	);
 }

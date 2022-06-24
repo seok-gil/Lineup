@@ -14,19 +14,18 @@ import { PlayerProfile, PlayerFeeds } from "./"
 function PlayerFollow({navigation}) {
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('Player', { names: ['Brent', 'Satya', 'Michaś'] })}>
-			<Text>팔로우</Text>
+			<Text>나의 라인업에 추가하기</Text>
 		</TouchableOpacity>
 	)
 }
 
 export function PlayerScreen({navigation}) {
+	const Data = require('../../Assets/Data/PlayerHome.json')
 	return (
 		<View>
-			<PlayerProfile navigation={navigation}/>
+			<PlayerProfile profile={Data.player} navigation={navigation}/>
 			<PlayerFollow />
-			<PlayerFeeds navigation={navigation}/>
-			<PlayerFeeds navigation={navigation}/>
-
+			<PlayerFeeds feed={Data.feed} navigation={navigation}/>
 		</View>
 	);
 }
