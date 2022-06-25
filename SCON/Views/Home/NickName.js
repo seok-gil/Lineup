@@ -1,35 +1,24 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import {
-	Button,
-	Text,
-	View,
-	Image,
-	StyleSheet,
-} from 'react-native';
+import {Button, Text, View, Image} from 'react-native';
 
-import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
+import DefaultProfile from '../../Assets/Images/ProfileDefault.png';
+import styles from './NickName.styles';
 
-export function NickName({ user }) {
-	const name = user.user_name
-	const email = user.email
-	return (
-		<View style={{flexDirection: 'row',}}>
-			<Image source={DefaultProfile} style={styles.image}/>
-			<View style={{flexDirection: 'column',}}>
-				<Text> {name} </Text>
-				<Text> {email} </Text>
-			</View>
-		</View>
-	);
+export function NickName({user}) {
+  const name = user.user_name;
+  const email = user.email;
+  return (
+    <View style={styles.viewWrapper}>
+      <Image source={DefaultProfile} style={styles.image} />
+      <View style={styles.viewProfileInfo}>
+        <Text style={styles.nameText} numberOfLines={1} ellipsizeMode="tail">
+          {name}
+        </Text>
+        <Text style={styles.emailText} numberOfLines={1} ellipsizeMode="tail">
+          {email}
+        </Text>
+      </View>
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-	image: {
-	  width: '30%',
-	  height: '100%',
-	  resizeMode: 'contain'
-	},
-  });
-  
-  
