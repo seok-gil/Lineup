@@ -12,7 +12,7 @@ import { PlayerScreen } from '../Player';
 import { FanScreen } from '../Fan';
 import { RecordScreen } from '../Record';
 import { FeedScreen } from "../Feed"
-import { FeedRegist, StoryScreen, CompetitionRegist, CompetitionResult } from "../Story"
+import { FeedRegist, StoryScreen, CompetitionRegist, CompetitionResult, CompetitionResultDetail } from "../Story"
 
 const HomeStack = createStackNavigator();
 
@@ -29,6 +29,7 @@ export function HomeStackScreen() {
 		<HomeStack.Screen name="FeedRegist" component={FeedRegist} />
 		<HomeStack.Screen name="CompetitionRegist" component={CompetitionRegist} />
 		<HomeStack.Screen name="CompetitionResult" component={CompetitionResult} />
+		<HomeStack.Screen name="CompetitionResultDetail" component={CompetitionResultDetail} />
 	  </HomeStack.Navigator>
 	);
 }
