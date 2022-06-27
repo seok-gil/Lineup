@@ -101,10 +101,6 @@ export function CardList({ Data, navigation }) {
         {Array.from({length:card.length}, (_, i) => i).map((i) => (
           <Indicator key={`indicator_${i}`} focused={i} />
         ))}
-        <View></View>
-        <Text>
-          {page} / {card.length}
-        </Text>
       </View>
     </View>
   )
