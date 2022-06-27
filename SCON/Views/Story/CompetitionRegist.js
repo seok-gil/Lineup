@@ -30,7 +30,7 @@ export function CompetitionRegist({ navigation }) {
 	}
 
 	return (
-		<View>
+		<SafeAreaView>
 			<View style={{ flexDirection: 'column' }}>
 				<Text> 대회기간 </Text>
 				<View style={{ flexDirection: 'row' }}>
@@ -81,7 +81,7 @@ export function CompetitionRegist({ navigation }) {
 					<Text> + </Text>
 				</TouchableOpacity>
 			</View>
-		</View>
+		</SafeAreaView>
 	);
 }
 

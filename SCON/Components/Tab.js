@@ -12,7 +12,6 @@ import { MyPageStackScreen } from '../Views/MyPage';
 import { NotiScreen } from "../Views/Noti"
 const Tab = createBottomTabNavigator();
 
-
 export function TabScreen({navigation}) {
   return (
     <Tab.Navigator
@@ -30,9 +29,9 @@ export function TabScreen({navigation}) {
 		//   tabBarInactiveBackgroundColor: '#848484',
           headerShown: false,
       }}>
-      <Tab.Screen name="HomeStack" component={HomeStackScreen} />
+      <Tab.Screen name="HomeStack" component={HomeStackScreen}/>
       <Tab.Screen name="SearchStack" component={SearchStackScreen} />
-      <Tab.Screen name="Rank" component={RankStackScreen} />
+      <Tab.Screen name="RankStack" component={RankStackScreen} />
       <Tab.Screen name="MyPageStack" component={MyPageStackScreen} />
     </Tab.Navigator>
   );

@@ -5,7 +5,9 @@ import {
 	View,
 	TouchableOpacity,
 	StyleSheet,
-	Text
+	Text,
+	SafeAreaView,
+
 } from 'react-native';
 
 import { PlayerProfile, PlayerFeeds } from "./"
@@ -22,10 +24,10 @@ function PlayerFollow({navigation}) {
 export function PlayerScreen({navigation}) {
 	const Data = require('../../Assets/Data/PlayerHome.json')
 	return (
-		<View>
+		<SafeAreaView>
 			<PlayerProfile profile={Data.player} navigation={navigation}/>
 			<PlayerFollow navigation={navigation} />
 			<PlayerFeeds feed={Data.feed} navigation={navigation}/>
-		</View>
+		</SafeAreaView>
 	);
 }

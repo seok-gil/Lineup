@@ -8,6 +8,7 @@ import {
 	Text,
 	StyleSheet,
 	TouchableOpacity,
+	SafeAreaView,
 } from 'react-native';
 
 
@@ -20,7 +21,7 @@ export function FeedRegist({ navigation }) {
 	}
 
 	return (
-		<View style={{ flexDirection: 'column' }}>
+		<SafeAreaView style={{ flexDirection: 'column' }}>
 			<Text>
 				내용
 			</Text>
@@ -34,6 +35,6 @@ export function FeedRegist({ navigation }) {
 			<TouchableOpacity onPress={() => navigation.navigate('CompetitionResult')}>
 				<Text> 확인 </Text>
 			</TouchableOpacity>
-		</View>
+		</SafeAreaView>
 	);
 }

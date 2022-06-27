@@ -11,6 +11,7 @@ import {
 
 import SearchIcon from '../../Assets/Images/SearchIcon.png'
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
+import { SafeAreaView } from 'react-navigation';
 
 function ViewPlayer({ player, navigation }) {
 	const player_name = player.player_name
@@ -52,7 +53,7 @@ function SearchId({ inputs, navigation }) {
 			}).map((player, index) => {
 				if (index >= 4 && !more)
 					return false
-				return (<ViewPlayer player={player} navigation={navigation} />)
+				return (<ViewPlayer key={index} player={player} navigation={navigation} />)
 			})
 			}
 			<TouchableOpacity onPress={() => onClickMore()}>
@@ -97,10 +98,10 @@ export function SearchScreen({ navigation }) {
 		search: '',
 	});
 	return (
-		<View style={{ flex: 3, flexDirection: 'column' }}>
+		<SafeAreaView style={{ flexDirection: 'column' }}>
 			<SerachInput inputs={inputs} setInputs={setInputs} />
 			<SearchId inputs={inputs} navigation={navigation} />
-		</View>
+		</SafeAreaView>
 	);
 }
 

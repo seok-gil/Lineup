@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
 	View,
 	Text,
-	TouchableOpacity
+	TouchableOpacity,
+	FlatList
 } from 'react-native';
 
 function AlertHead({ alert }) {
