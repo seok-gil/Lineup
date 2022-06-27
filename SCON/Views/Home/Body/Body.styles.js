@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     color: colors.THEME_SKYBLUE,
   },
 
-  swiperWrapper: {},
+  swiperWrapper: { },
 
   swiperCardWrapper: {
     justifyContent: 'center',
@@ -52,18 +52,6 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
-  dot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-  },
-
-  activeDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.THEME_SKYBLUE,
-  },
 });
 
 export default styles;

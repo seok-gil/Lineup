@@ -6,6 +6,7 @@ import {
 	Text,
 	StyleSheet,
 	ScrollView,
+	SafeAreaView,
 	TouchableOpacity,
 } from 'react-native';
 
@@ -51,7 +52,7 @@ function RankBody({ navigation, route }) {
 		return parseFloat(b.player_like) - parseFloat(a.player_like)
 	});
 	return (
-		<View style={{ flexDirection: 'column' }}>
+		<SafeAreaView style={{ flexDirection: 'column' }}>
 			<View style={{ flexDirection: 'row' }}>
 				<RankMedal player={Data[0]} rank="1" navigation={navigation}/>
 				<RankMedal player={Data[1]} rank="2" navigation={navigation}/>
@@ -60,7 +61,7 @@ function RankBody({ navigation, route }) {
 			<ScrollView>
 				<RankETC keu={`rankEtc`} player={Data} navigation={navigation}/>
 			</ScrollView>
-		</View >
+		</SafeAreaView >
 	)
 }
 

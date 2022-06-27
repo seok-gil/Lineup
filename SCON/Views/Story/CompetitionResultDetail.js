@@ -8,6 +8,7 @@ import {
 	StyleSheet,
 	Modal,
 	TouchableOpacity,
+	SafeAreaView,
 
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -57,7 +58,7 @@ export function CompetitionResultDetail({ navigation }) {
 	}
 
 	return (
-		<View style={{ flex: 3 }}>
+		<SafeAreaView style={{ flex: 3 }}>
 			<Text>대회</Text>
 			<Text>{Data.name}</Text>
 			<Text>종목</Text>
@@ -125,7 +126,7 @@ export function CompetitionResultDetail({ navigation }) {
 					</View>
 				</View>
 			</Modal >
-		</View >
+		</SafeAreaView >
 	);
 }
 

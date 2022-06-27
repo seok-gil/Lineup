@@ -19,7 +19,7 @@ const HomeStack = createStackNavigator();
 export function HomeStackScreen() {
 	return (
 	  <HomeStack.Navigator>
-		<HomeStack.Screen name="Home" component={HomeScreen} />
+		<HomeStack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
 		<HomeStack.Screen name="Alert" component={AlertScreen} />
 		<HomeStack.Screen name="Player" component={PlayerScreen} />
 		<HomeStack.Screen name="Record" component={RecordScreen} />
