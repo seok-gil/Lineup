@@ -35,14 +35,6 @@ const styles = StyleSheet.create({
     maxWidth: 200,
     opacity: 0.5,
   },
-
-  input: {
-    height: 50,
-    width: 200,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
 });
 
 export default styles;
