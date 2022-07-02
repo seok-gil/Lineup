@@ -9,11 +9,9 @@ import {
 	Modal,
 	TouchableOpacity,
 	SafeAreaView,
-	CheckBox,
-
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-
+import CheckBox from '@react-native-community/checkbox';
 
 export function CompetitionResultDetail({ navigation }) {
 	const Data = require('../../Assets/Data/CompetitionResultDetail.json').competition
