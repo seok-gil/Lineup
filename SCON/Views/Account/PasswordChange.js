@@ -12,7 +12,8 @@ import {
 export function PasswordChange({ navigation }) {
 	return (
 		<View style={{ flexDirection: 'column', }}>
-			<Text>비밀번호 변경</Text>
+			<Text>새로운 비밀번호로 변경해주세요.</Text>
+			<Text>8~16자의 영문, 숫자, 특수기호를 조합하여 사용.</Text>
 		</View>
 	);
 }
