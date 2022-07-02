@@ -3,11 +3,15 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../../../Styles';
 
 const styles = StyleSheet.create({
+  alertWrapper: {
+    backgroundColor: colors.WHITE,
+    height: '100%',
+  },
+
   alertTop: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 20,
-    backgroundColor: colors.WHITE,
     borderBottomWidth: 1,
     borderBottomColor: colors.GRAYE6,
   },
