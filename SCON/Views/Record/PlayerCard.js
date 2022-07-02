@@ -1,15 +1,17 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
+import styles from './PlayerCard.styles';
+
 const PlayerCard = ({record}) => {
   return (
-    <View key={`record`} style={{flexDirection: 'column'}}>
-      <Text>
+    <View key={`record`} style={styles.playerCardWrapper}>
+      <Text style={styles.playerCardInfo}>
         {record.host} {record.competition} {record.major} {record.game_detail}{' '}
         {record.score}
       </Text>
-      <Text>
-        {record.start} ~{record.end}
+      <Text style={styles.playerCardDate}>
+        {record.start} ~ {record.end}
       </Text>
     </View>
   );
