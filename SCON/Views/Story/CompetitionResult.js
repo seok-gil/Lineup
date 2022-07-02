@@ -9,7 +9,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Modal,
-
+  SafeAreaView
 } from 'react-native';
 
 

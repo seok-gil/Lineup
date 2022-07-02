@@ -68,9 +68,6 @@ export function CardList({ Data, navigation }) {
   const gap = (screenWidth - 223 - 46 * 2) / 2
   
   function Indicator ({ focused }) {
-    console.log(page)
-    console.log(focused)
-
     if (focused === page)
       return (
         <View style={styles.activeDot}/>

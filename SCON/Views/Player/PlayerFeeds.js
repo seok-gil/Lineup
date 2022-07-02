@@ -10,7 +10,6 @@ import {
 
 
 function PlayerFeed({ feed, navigation }) {
-	console.log(feed.createdAt)
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('Feed', { names: ['Brent', 'Satya', 'Michaś'] })}>
 			<Text>{feed.content}</Text>
