@@ -28,12 +28,13 @@ const styles = StyleSheet.create({
     maxWidth: 200,
     fontWeight: '700',
     marginBottom: 5,
+    color: colors.TEXT_DARK,
   },
 
   playerDescription: {
     fontSize: 11,
     maxWidth: 200,
-    opacity: 0.5,
+    color: colors.TEXT_LIGHT,
   },
 });
 

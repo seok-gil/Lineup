@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   expandText: {
     fontSize: 13,
     fontWeight: '500',
+    color: colors.TEXT_DARK,
   },
 });
 

@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   recordHeadTitle: {
     fontWeight: '700',
     fontSize: 18,
+    color: colors.TEXT_DARK,
   },
 
   recordHeadMedals: {
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
   medalNum: {
     fontWeight: '500',
     marginRight: 5,
+    color: colors.TEXT_DARK,
   },
 });
 
