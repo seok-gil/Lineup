@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
   Button,
   View,
@@ -8,14 +8,20 @@ import {
 } from 'react-native';
 
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
+import { PhotoPick } from "../../Components/PhotoPick"
 
 export function ProfileScreen({ navigation }) {
   const data = require('../../Assets/Data/Profile.json').profile
-  console.log(data)
+  const [userPhoto, setUserPhoto] = useState(DefaultProfile)
+  const [backPhoto, setBackPhoto] = useState(DefaultProfile)
+
+  console.log(backPhoto)
   return (
     <View style={{ flexDirection: 'column', }}>
-      <Image source={DefaultProfile} style={styles.image} />
-      <Image source={DefaultProfile} style={styles.image} />
+      <PhotoPick text="배경 이미지 설정" setPhoto={setBackPhoto}/>
+      <Image source={userPhoto} style={styles.image} />
+      <PhotoPick text="프로필 이미지 설정" setPhoto={setUserPhoto}/>
+      <Image source={backPhoto} style={styles.image} />
       <Text>이름</Text>
       <Text>{data.name}</Text>
       <Text>이메일 계정</Text>
