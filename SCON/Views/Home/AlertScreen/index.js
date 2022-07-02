@@ -19,9 +19,10 @@ export function AlertScreen({navigation}) {
           <Text style={styles.alertDeleteAll}>모두 삭제</Text>
         </TouchableOpacity>
       </View>
-      {Data.map((alert, index) => {
-        if (alert) return <AlertComponent alert={alert} />;
-      })}
+      {Data.map(
+        (alert, index) =>
+          alert && <AlertComponent key={`alert-${index}`} alert={alert} />,
+      )}
     </View>
   );
 }
