@@ -1,4 +1,4 @@
 import { TabScreen } from "./Tab"
+import { PhotoPick } from "./PhotoPick"
 
-
-export { TabScreen }
+export { TabScreen, PhotoPick }
