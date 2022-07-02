@@ -9,13 +9,13 @@ import {
 	Modal,
 	TouchableOpacity,
 	SafeAreaView,
-
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-
+import CheckBox from '@react-native-community/checkbox';
 
 export function CompetitionResultDetail({ navigation }) {
 	const Data = require('../../Assets/Data/CompetitionResultDetail.json').competition
+	const [isSelected, setSelection] = useState(false);
 	const [modal, setModal] = useState({
 		open: false,
 		modal_item: ''
@@ -98,8 +98,8 @@ export function CompetitionResultDetail({ navigation }) {
 									value={modal.open}
 									placeholder={'예) 4위-30위'}
 									placeholderTextColor='#C5C8CE'
-									onChange={(e) => onChange("search", e)}
-									>
+									openModal={(e) => openModal("search")}
+								>
 								</TextInput>
 							</View>
 						</View>
@@ -108,13 +108,21 @@ export function CompetitionResultDetail({ navigation }) {
 								기록, 스코어 등
 							</Text>
 							<TextInput
-									value={modal.open}
-									placeholder={'예) 27초 11.7'}
-									placeholderTextColor='#C5C8CE'
-									onChange={(e) => onChange("search", e)}
-									>
-								</TextInput>
+								value={modal.open}
+								placeholder={'예) 27초 11.7'}
+								placeholderTextColor='#C5C8CE'
+								onChange={(e) => openModal("search")}
+							>
+							</TextInput>
 						</View>
+						<View>
+
+						<CheckBox  value={isSelected}
+                            onChange={()=> openModal("search")} />
+						</View>
+						<TouchableOpacity onPress={() => { openModal() }} >
+							<Text> 결과를 입력하지 않겠습니다.</Text>
+						</TouchableOpacity>
 						<View style={{ flexDirection: 'row' }}>
 							<TouchableOpacity onPress={() => { openModal() }} >
 								<Text> 취소</Text>
@@ -154,5 +162,20 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		//반경 지정
 		shadowRadius: 3.84,
-	}
+	},
+	container: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	  },
+	  checkboxContainer: {
+		flexDirection: "row",
+		marginBottom: 20,
+	  },
+	  checkbox: {
+		alignSelf: "center",
+	  },
+	  label: {
+		margin: 8,
+	  },
 })

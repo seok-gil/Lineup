@@ -6,7 +6,6 @@ import {
 	View,
 	StyleSheet,
 } from 'react-native';
-
 import { HomeScreen, AlertScreen } from './index';
 import { PlayerScreen } from '../Player';
 import { FanScreen } from '../Fan';
@@ -16,7 +15,7 @@ import { FeedRegist, StoryScreen, CompetitionRegist, CompetitionResult, Competit
 
 const HomeStack = createStackNavigator();
 
-export function HomeStackScreen() {
+export function HomeStackScreen({navigation}) {
 	return (
 	  <HomeStack.Navigator>
 		<HomeStack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>

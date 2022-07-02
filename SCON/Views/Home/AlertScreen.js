@@ -1,3 +1,5 @@
+
+import { NavigationContainer,useNavigationState } from '@react-navigation/native';
 import React, { Component } from 'react';
 import {
 	View,
@@ -41,7 +43,8 @@ function Alert({ alert }) {
 
 export function AlertScreen({ navigation }) {
 	const Data = require('../../Assets/Data/Alert.json').alert;
-	
+	const index = useNavigationState(state => state);
+	// console.log(index)
 	const onClickAll = () => {
 		console.log("all")
 	}

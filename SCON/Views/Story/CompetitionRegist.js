@@ -9,7 +9,7 @@ import {
 	StyleSheet,
 	TextInput,
 	TouchableOpacity,
-
+	SafeAreaView
 } from 'react-native';
 
 export function CompetitionRegist({ navigation }) {
