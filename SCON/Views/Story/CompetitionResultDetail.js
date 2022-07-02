@@ -98,7 +98,7 @@ export function CompetitionResultDetail({ navigation }) {
 									value={modal.open}
 									placeholder={'예) 4위-30위'}
 									placeholderTextColor='#C5C8CE'
-									onChange={(e) => onChange("search", e)}
+									openModal={(e) => openModal("search")}
 								>
 								</TextInput>
 							</View>
@@ -111,17 +111,14 @@ export function CompetitionResultDetail({ navigation }) {
 								value={modal.open}
 								placeholder={'예) 27초 11.7'}
 								placeholderTextColor='#C5C8CE'
-								onChange={(e) => onChange("search", e)}
+								onChange={(e) => openModal("search")}
 							>
 							</TextInput>
 						</View>
 						<View>
 
-						<CheckBox
-							value={isSelected}
-							onValueChange={setSelection}
-							style={styles.checkbox}
-							/>
+						<CheckBox  value={isSelected}
+                            onChange={()=> openModal("search")} />
 						</View>
 						<TouchableOpacity onPress={() => { openModal() }} >
 							<Text> 결과를 입력하지 않겠습니다.</Text>
