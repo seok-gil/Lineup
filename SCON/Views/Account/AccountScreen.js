@@ -10,10 +10,12 @@ import {
 
 
 export function AccountScreen({ navigation }) {
+
 	return (
 		<View style={{ flexDirection: 'column', }}>
 			<TouchableOpacity>
 				<Text>로그아웃</Text>
+				<Text>aa@nave.com</Text>
 			</TouchableOpacity>
 			<TouchableOpacity onPress={() => navigation.navigate('PasswordChange')}>
 				<Text>비밀번호변경</Text>
