@@ -15,7 +15,6 @@ export function ProfileScreen({ navigation }) {
   const [userPhoto, setUserPhoto] = useState(DefaultProfile)
   const [backPhoto, setBackPhoto] = useState(DefaultProfile)
 
-  console.log(backPhoto)
   return (
     <View style={{ flexDirection: 'column', }}>
       <PhotoPick text="배경 이미지 설정" setPhoto={setBackPhoto}/>

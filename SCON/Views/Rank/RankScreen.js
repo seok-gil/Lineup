@@ -15,7 +15,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 function RankETC({ player, navigation }) {
 	const view = []
-	console.log(player.length)
 	function ETC({ player, index }){
 		return (
 		<TouchableOpacity onPress={() => navigation.navigate('Player', { names: ['Brent', 'Satya', 'Michaś'] })}>

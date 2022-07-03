@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavigationContainer, useNavigationState } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer,useNavigationState } from '@react-navigation/native';
+import { createStackNavigator, Header } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native';
 import { TabScreen } from './Components';
 import { NotiScreen } from './Views/Noti';

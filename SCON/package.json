@@ -22,7 +22,6 @@
     "react-native-pager-view": "^5.4.24",
     "react-native-reanimated": "^2.8.0",
     "react-native-screens": "^3.13.1",
-    "react-native-swiper": "^1.6.0",
     "react-native-tab-view": "^3.1.1",
     "react-navigation": "^4.4.4"
   },
