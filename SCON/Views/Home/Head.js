@@ -28,7 +28,7 @@ export function Head({Data, navigation}) {
         <View style={[styles.alignment, styles.imageWrapper]}>
           <Image source={LogoImage} />
         </View>
-        <AlertIcon alert={Data.alert} navigation={navigation} />
+        <AlertIcon key={`Alert`} alert={Data.alert} navigation={navigation} />
       </View>
       <NickName user={Data.user} />
     </View>

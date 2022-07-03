@@ -5,6 +5,7 @@ import {
 	View,
 	TouchableOpacity,
 	StyleSheet,
+	SafeAreaView,
 	Text,
 	Image,
 	TextInput
@@ -83,10 +84,10 @@ function CommentRegist({value}) {
 export function FeedScreen({ navigation }) {
 	const Data = require('../../Assets/Data/Feed.json').Feed
 	return (
-		<View style={{ flex: 3, flexDirection: 'column' }}>
+		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
 			<FeedBody data={Data}/>
 			<CommentRegist/>
 			<CommentList data={Data.comment}/>
-		</View>
+		</SafeAreaView>
 	);
 }

@@ -8,13 +8,15 @@ import {
 	Text,
 	Image,
 	TextInput,
+	SafeAreaView
 } from 'react-native';
 
 
 import SearchIcon from '../../Assets/Images/SearchIcon.png'
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 
-export function SearchId({ navigation }) {
+export function SearchId({ data, navigation }) {
+	console.log(data)
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })}>
 			<View style={{ flexDirection: 'row', }}>
@@ -55,11 +57,12 @@ export function SerachInput() {
 }
 
 export function FanScreen({ navigation }) {
+	const data = require('../../Assets/Data/Fan.json').Fan
 	return (
-		<View style={{ flex: 3, flexDirection: 'column' }}>
+		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
 			<SerachInput />
-			<SearchId navigation={navigation} />
-		</View>
+			<SearchId data={data} navigation={navigation} />
+		</SafeAreaView>
 	);
 }
 const styles = StyleSheet.create({
