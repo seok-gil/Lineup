@@ -34,7 +34,7 @@ export function MypageTab({ navigation }) {
 			<TouchableOpacity onPress={() => navigation.navigate('InquiryTab')}>
 				<Text>문의 하기</Text>
 			</TouchableOpacity>
-			<TouchableOpacity onPress={() => navigation.navigate('AccountStack')}>
+			<TouchableOpacity onPress={() => navigation.navigate('AccountScreen')}>
 				<Text>계정 관리</Text>
 			</TouchableOpacity>
 		</View>

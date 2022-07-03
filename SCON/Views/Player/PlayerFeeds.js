@@ -11,7 +11,7 @@ import {
 
 function PlayerFeed({ feed, navigation }) {
 	return (
-		<TouchableOpacity onPress={() => navigation.navigate('Feed', { names: ['Brent', 'Satya', 'Michaś'] })}>
+		<TouchableOpacity onPress={() => navigation.navigate('FeedScreen')}>
 			<Text>{feed.content}</Text>
 			<View style={{ flexDirection: 'row' }}>
 				<TouchableOpacity onPress={() => navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })} style={{ flexDirection: 'row' }}>

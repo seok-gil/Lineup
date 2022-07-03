@@ -10,7 +10,7 @@ import styles from './Head.styles';
 function AlertIcon({alert, navigation}) {
   return (
     <View style={[styles.alignment, styles.alertWrapper]}>
-      <TouchableOpacity onPress={() => navigation.navigate('Alert')}>
+      <TouchableOpacity onPress={() => navigation.navigate('AlertScreen')}>
         <View style={styles.alertIconWrapper}>
           <Image source={NotiIcon} />
           {alert ? <View style={styles.alertBadge} /> : <></>}

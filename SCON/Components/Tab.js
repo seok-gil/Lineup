@@ -6,10 +6,10 @@ import {Button,
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useNavigationState} from '@react-navigation/native';
 
-import { HomeStackScreen } from '../Views/Home';
-import { SearchStackScreen } from '../Views/Search';
-import {  RankStackScreen } from '../Views/Rank';
-import { MyPageStackScreen } from '../Views/MyPage';
+import { HomeScreen } from '../Views/Home';
+import { SearchScreen } from '../Views/Search';
+import { RankScreen } from '../Views/Rank';
+import { MyPageScreen } from '../Views/MyPage';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,12 +29,12 @@ export function TabScreen({navigation}) {
           tabBarActiveTintColor: '#17D3F0',
 		      tabBarInactiveTintColor: '#848484',
 		//   tabBarInactiveBackgroundColor: '#848484',
-          headerShown: false,
+          // headerShown: false,
         }}>
-      <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-      <Tab.Screen name="SearchStack" component={SearchStackScreen} />
-      <Tab.Screen name="RankStack" component={RankStackScreen} />
-      <Tab.Screen name="MyPageStack" component={MyPageStackScreen} />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="SearchScreen" component={SearchScreen} />
+      <Tab.Screen name="RankScreen" component={RankScreen} />
+      <Tab.Screen name="MyPageScreen" component={MyPageScreen} />
     </Tab.Navigator>
   );
 }
