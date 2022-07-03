@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 
 import {NickName} from './index';
 import LogoImage from '../../Assets/Images/LineupLogo.png'; // svg로 교체 추천
-import NotiImage from '../../Assets/Images/NotiImage.png'; // svg로 교체 추천
+import NotiIcon from '../../Assets/Images/NotiIcon.png'; // svg로 교체 추천
 
 import styles from './Head.styles';
 
@@ -12,7 +12,7 @@ function AlertIcon({alert, navigation}) {
     <View style={[styles.alignment, styles.alertWrapper]}>
       <TouchableOpacity onPress={() => navigation.navigate('Alert')}>
         <View style={styles.alertIconWrapper}>
-          <Image source={NotiImage} />
+          <Image source={NotiIcon} />
           {alert ? <View style={styles.alertBadge} /> : <></>}
         </View>
       </TouchableOpacity>
