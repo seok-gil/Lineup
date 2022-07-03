@@ -15,7 +15,8 @@ import {
 import SearchIcon from '../../Assets/Images/SearchIcon.png'
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 
-export function SearchId({ navigation }) {
+export function SearchId({ data, navigation }) {
+	console.log(data)
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })}>
 			<View style={{ flexDirection: 'row', }}>
@@ -56,10 +57,11 @@ export function SerachInput() {
 }
 
 export function FanScreen({ navigation }) {
+	const data = require('../../Assets/Data/Fan.json').Fan
 	return (
 		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
 			<SerachInput />
-			<SearchId navigation={navigation} />
+			<SearchId data={data} navigation={navigation} />
 		</SafeAreaView>
 	);
 }
