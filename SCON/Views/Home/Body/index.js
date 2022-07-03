@@ -1,71 +1,13 @@
-import React, {useState} from 'react';
-import {View, Text} from 'react-native';
-import Swiper from 'react-native-swiper';
+import React, { useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, Image, Dimensions } from 'react-native';
 
-import {GoPlayer} from './GoPlayer';
-import {PlayerCard, EmptyCard, PlayerMyCard} from './Card';
+import { GoPlayer } from './GoPlayer';
+import { CardList } from "./CardList"
 
 import styles from './Body.styles';
 
-function FollowCardList({Data, navigation}) {
-  const view = [];
-  const follow = Data.follow;
+export function Body({ Data, navigation }) {
   const user_code = Data.user.user_code;
-
-  if (user_code == 1)
-    view.push(
-      <View
-        style={styles.swiperCardWrapper}
-        key={`player-my-card-${user_code}`}>
-        <PlayerMyCard key={`player-card`} navigation={navigation} />
-      </View>,
-    );
-  const playercard = () => {
-    for (let i = 0; i < 3; i++) {
-      if (follow[i])
-        view.push(
-          <View
-            style={styles.swiperCardWrapper}
-            key={`player-card-${user_code}`}>
-            <PlayerCard
-              user_code={user_code}
-              card={follow[i]}
-              index={i + user_code}
-              navigation={navigation}
-            />
-          </View>,
-        );
-      else
-        view.push(
-          <View
-            style={styles.swiperCardWrapper}
-            key={`empty-card-${user_code}`}>
-            <EmptyCard
-              user_code={user_code}
-              index={i + user_code}
-              navigation={navigation}
-            />
-          </View>,
-        );
-    }
-    return view;
-  };
-
-  return (
-    <Swiper
-      style={styles.swiperWrapper}
-      containerStyle={styles.containerWrapper}
-      dotStyle={styles.dot}
-      activeDotStyle={styles.activeDot}
-      loop={false}>
-      {playercard()}
-    </Swiper>
-  );
-}
-
-export function Body({Data, navigation}) {
-  const user_code = Data.user.user_code;
-  const view = [];
   const [goPlayer, setgoPlayer] = useState(Data.user.user_goPlayer);
 
   return (
@@ -90,7 +32,7 @@ export function Body({Data, navigation}) {
             : '본인 계정관리는 물론 선수 3명을 팔로우 할 수 있습니다'}
         </Text>
       </View>
-      <FollowCardList Data={Data} navigation={navigation} />
+      <CardList Data={Data} navigation={navigation} />
     </View>
   );
 }

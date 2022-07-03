@@ -5,6 +5,7 @@ import {
 	Image,
 	Text,
 	StyleSheet,
+	SafeAreaView
 } from 'react-native';
 
 import Gold from '../../Assets/Images/GoldMedal.png'
@@ -60,10 +61,10 @@ function RecordList({ record }) {
 export function RecordScreen({ navigation }) {
 	const Data = require('../../Assets/Data/Record.json');
 	return (
-		<View style={{ flexDirection: 'column' }}>
+		<SafeAreaView style={{ flexDirection: 'column' }}>
 			<RecordHead medal={Data.Medal} />
 			<RecordList record={Data.Record} />
-		</View>
+		</SafeAreaView>
 	);
 }
 

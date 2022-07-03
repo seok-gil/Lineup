@@ -8,6 +8,7 @@ import {
 	Text,
 	Image,
 	TextInput,
+	SafeAreaView
 } from 'react-native';
 
 
@@ -56,10 +57,10 @@ export function SerachInput() {
 
 export function FanScreen({ navigation }) {
 	return (
-		<View style={{ flex: 3, flexDirection: 'column' }}>
+		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
 			<SerachInput />
 			<SearchId navigation={navigation} />
-		</View>
+		</SafeAreaView>
 	);
 }
 const styles = StyleSheet.create({
