@@ -2,7 +2,6 @@ import React, {useRef} from 'react';
 import {Button, View, TextInput, Image} from 'react-native';
 
 import SearchIcon from '../../Assets/Images/SearchIcon.png';
-
 import styles from './SearchInput.styles';
 
 function SearchInput({inputs, setInputs}) {

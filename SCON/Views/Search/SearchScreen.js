@@ -16,7 +16,7 @@ export function SearchScreen({navigation}) {
       <View style={styles.searchScreenTop}>
         <SearchInput inputs={inputs} setInputs={setInputs} />
       </View>
-      <SearchID inputs={inputs} navigation={navigation} />
+      <SearchID key={`searchID`}inputs={inputs} navigation={navigation} />
     </View>
   );
 }
