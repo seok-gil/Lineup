@@ -6,7 +6,6 @@ import SearchIcon from '../../Assets/Images/SearchIcon.png';
 
 
 export function PasswordChange({ navigation }) {
-  const searchRef = useRef(null);
   const [form, setForm] = useState({
     oldPassword: '',
     newPassword: '',
@@ -41,11 +40,13 @@ export function PasswordChange({ navigation }) {
       }
     }
     if (key == 'newPassword') {
+      console.log(validator.isLength(text, 8, 12))
       if (validator.isLength(text, 8, 12)) {
         setValidate({
           ...validate,
           [key]: true,
         });
+
       }
       else if (!validator.isLength(text, 8, 12)) {
         setValidate({
@@ -55,7 +56,7 @@ export function PasswordChange({ navigation }) {
       }
     }
     
-    if (form.newPassword != '' && (form.confirmPassword == form.newPassword))
+    if (form.newPassword != null && (form.confirmPassword == form.newPassword))
       setValidate({
         ...validate,
         ['confirmPassword']: true,
@@ -96,12 +97,9 @@ export function PasswordChange({ navigation }) {
         : <Image source={SearchIcon} />}
       <TextInput
         value={form.newPassword}
-        ref={searchRef}
         placeholder={'신규 비밀번호'}
         placeholderTextColor="#C5C8CE"
         onChange={e => onInput('newPassword', e)}
-      onSubmitEditing={() => searchRef.current.focus()}
-
       />
       {validate.newPassword == false
         ? (<><Text>올바른 비밀번호가 아닙니다.</Text><Image source={SearchIcon} /></>)
