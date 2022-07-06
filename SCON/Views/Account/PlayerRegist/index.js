@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { useState } from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { BirthForm } from "./BirthForm"
+import { GenderForm } from "./GenderForm"
+
 
 export function PlayerRegist({ navigation }) {
 	const [form, setForm] = useState({
@@ -38,36 +40,21 @@ export function PlayerRegist({ navigation }) {
 				onChange={e => onInput('name', e)}
 			/>
 			<BirthForm form={form} setForm={setForm}/>
-			<Text>성별</Text>
-			<TextInput
-				value={form.name}
-				placeholder={'여자/남자 선택해주세요'}
-				placeholderTextColor="#C5C8CE"
-				onChange={e => onInput('name', e)}
-			/>
+			<GenderForm form={form} setForm={setForm}/>
 			<Text>종목</Text>
 			<TextInput
-				value={form.name}
+				value={form.major}
 				placeholder={'종목을 선택해주세요'}
 				placeholderTextColor="#C5C8CE"
-				onChange={e => onInput('name', e)}
+				onChange={e => onInput('major', e)}
 			/>
 			<Text>소속</Text>
 			<TextInput
-				value={form.name}
+				value={form.belong}
 				placeholder={'소속명을 입력해주세요'}
 				placeholderTextColor="#C5C8CE"
-				onChange={e => onInput('name', e)}
+				onChange={e => onInput('belong', e)}
 			/>
 		</View>
 	);
 }
-
-
-const styles = StyleSheet.create({
-	image: {
-		width: '100%',
-		height: '30%',
-		resizeMode: 'contain'
-	},
-});

@@ -18,6 +18,7 @@ export function BirthForm({ form, setForm }) {
     setForm({...form, birth : dateString})
     hideDatePicker();
   };
+
   const hideDatePicker = () => {
     setPickOn(false);
   };
@@ -29,7 +30,6 @@ export function BirthForm({ form, setForm }) {
           value={form.birth}
           placeholder={'생년월일을 선택해주세요'}
           placeholderTextColor="#C5C8CE"
-          // onChange={e => onInput('birth', e)}
         />
       <DateTimePickerModal
         isVisible={pickOn}
@@ -42,12 +42,3 @@ export function BirthForm({ form, setForm }) {
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  image: {
-    width: '100%',
-    height: '30%',
-    resizeMode: 'contain'
-  },
-});
