@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
-import { ButtonComponent } from '../../Components';
+import { ButtonBig } from '../../Components';
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 export function Withdrawal() {
   const [password, setPassword] = useState('')
@@ -23,7 +23,7 @@ export function Withdrawal() {
         onChange={e => onInput(e)}
       />
       <Text>현재 사용중인 비밀번호와 일치하지 않습니다.</Text>
-      <ButtonComponent/>
+      <ButtonBig/>
     </View>
   );
 }

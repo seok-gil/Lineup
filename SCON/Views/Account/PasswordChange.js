@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'reac
 import validator from 'validator'
 
 import SearchIcon from '../../Assets/Images/SearchIcon.png';
-import { ButtonComponent } from "../../Components"
+import { ButtonBig } from "../../Components"
 
 export function PasswordChange({ navigation }) {
   const [form, setForm] = useState({
@@ -113,7 +113,7 @@ export function PasswordChange({ navigation }) {
       {validate.confirmPassword == false
         ? (<><Text>상단 비밀번호와 일치하지 않습니다.</Text><Image source={SearchIcon} /></>)
         : <Image source={SearchIcon} />}
-			<ButtonComponent/>
+			<ButtonBig/>
     </View>
   );
 }
