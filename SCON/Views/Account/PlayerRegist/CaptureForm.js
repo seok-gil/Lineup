@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { View, Text, Alert, TouchableOpacity, Image } from 'react-native';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import photo from '../Assets/Images/photo.png'
+import React, { Component, useState } from 'react';
+import { View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
+// import { PhotoPick} from '../../../Components'
+import DefaultProfile from '../../../Assets/Images/ProfileDefault.png'
 
 export function PhotoPick({ text, setPhoto }) {
-  
   const onClick = () => {
     Alert.alert(
       text,
@@ -47,8 +46,21 @@ export function PhotoPick({ text, setPhoto }) {
   return (
     <View>
       <TouchableOpacity onPress={onClick}>
-        <Image source={photo} />
+        <Text>
+          선수 등록 캡쳐 화면 업로드
+        </Text>
       </TouchableOpacity>
     </View>
   )
+}
+
+
+export function CaptureForm({ form, setForm }) {
+  const [playerPhoto, setPlayerPhoto] = useState(DefaultProfile)
+  return (
+    <View style={{ flexDirection: 'column', }}>
+      <Image source={DefaultProfile} />
+      <PhotoPick text="선수 이미지" setPhoto={setPlayerPhoto} />
+    </View>
+  );
 }

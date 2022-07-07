@@ -10,7 +10,6 @@ import {
 
 
 export function AccountScreen({ navigation }) {
-
 	return (
 		<View style={{ flexDirection: 'column', }}>
 			<TouchableOpacity>

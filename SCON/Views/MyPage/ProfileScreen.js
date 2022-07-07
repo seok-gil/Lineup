@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
+
 import { PhotoPick } from "../../Components/PhotoPick"
 
 export function ProfileScreen({ navigation }) {

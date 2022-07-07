@@ -1,4 +1,4 @@
 import { TabScreen } from "./Tab"
 import { PhotoPick } from "./PhotoPick"
-
-export { TabScreen, PhotoPick }
+import { ButtonComponent } from "./ButtonComponent"
+export { TabScreen, PhotoPick,ButtonComponent }
