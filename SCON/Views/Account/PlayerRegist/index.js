@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { BirthForm } from "./BirthForm"
 import { GenderForm } from "./GenderForm"
-
-
+import { ButtonComponent } from "../../../Components"
+import { CaptureForm } from "./CaptureForm"
 export function PlayerRegist({ navigation }) {
 	const [form, setForm] = useState({
 		name: '',
@@ -26,12 +26,12 @@ export function PlayerRegist({ navigation }) {
 			...form,
 			[key]: text,
 		});
-		console.log(form)
 	}
 	return (
 		<View style={{ flexDirection: 'column', }}>
 			<Text>운동선수 확인을 시작합니다.</Text>
 			<Text>확인된 내용이 실제와 다르면 이용이 제한됩니다.</Text>
+			<CaptureForm/>
 			<Text>이름</Text>
 			<TextInput
 				value={form.name}
@@ -55,6 +55,7 @@ export function PlayerRegist({ navigation }) {
 				placeholderTextColor="#C5C8CE"
 				onChange={e => onInput('belong', e)}
 			/>
+			<ButtonComponent/>
 		</View>
 	);
 }
