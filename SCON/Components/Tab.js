@@ -31,7 +31,7 @@ export function TabScreen({navigation}) {
 		//   tabBarInactiveBackgroundColor: '#848484',
           // headerShown: false,
         }}>
-      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} options={{headerShown:false}}/>
       <Tab.Screen name="SearchScreen" component={SearchScreen} />
       <Tab.Screen name="RankScreen" component={RankScreen} />
       <Tab.Screen name="MyPageScreen" component={MyPageScreen} />

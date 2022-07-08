@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavigationContainer,useNavigationState } from '@react-navigation/native';
+import { NavigationContainer, useNavigationState } from '@react-navigation/native';
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native';
 import { TabScreen } from './Components';
@@ -12,7 +12,7 @@ import { RecordScreen } from './Views/Record';
 import { FanScreen } from "./Views/Fan"
 import { FeedScreen } from './Views/Feed';
 import { StoryScreen, FeedRegist, CompetitionRegist, CompetitionResult, CompetitionResultDetail } from './Views/Story';
-import { ProfileScreen } from './Views/MyPage'; 
+import { ProfileScreen } from './Views/MyPage';
 import { AccountScreen, PasswordChange, PlayerRegist, Withdrawal } from './Views/Account';
 const AppStack = createStackNavigator();
 
@@ -35,18 +35,18 @@ export default function App() {
         <AppStack.Screen name="InquiryTab" component={InquiryTabScreen} />
         <AppStack.Screen name="Profile" component={ProfileScreen} />
         <AppStack.Screen name="Noti" component={NotiScreen} />
-		    <AppStack.Screen name="AccountScreen" component={AccountScreen} />
+        <AppStack.Screen name="AccountScreen" component={AccountScreen} />
         <AppStack.Screen name="PasswordChange" component={PasswordChange} />
         <AppStack.Screen name="PlayerRegist" component={PlayerRegist} />
-		  <AppStack.Screen name="Withdrawal" component={Withdrawal} />
+        <AppStack.Screen name="Withdrawal" component={Withdrawal} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
 }
 /*
 <AppStack.Screen name="PasswordChange" component={PasswordChange} />
-		<AppStack.Screen name="PlayerRegist" component={PlayerRegist} />
-		<AppStack.Screen name="Withdrawal" component={Withdrawal} />
+    <AppStack.Screen name="PlayerRegist" component={PlayerRegist} />
+    <AppStack.Screen name="Withdrawal" component={Withdrawal} />
 <AppStack.Screen name="Profile" component={ProfileScreen} />
-		    <AppStack.Screen name="AccountStack" component={AccountScreen} />
+        <AppStack.Screen name="AccountStack" component={AccountScreen} />
     */
