@@ -1,6 +1,0 @@
-module Pods_SCON_SCONTests {
-  umbrella header "Pods-SCON-SCONTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
