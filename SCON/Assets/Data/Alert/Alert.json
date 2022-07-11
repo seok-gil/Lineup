@@ -1,0 +1,29 @@
+{
+	"success": true,
+  	"data":
+		[
+			{
+				"alarmId" : 785,
+				"type" : "댓글",
+				"content" : "알림 내용",
+				"date" : "yyyy-MM-dd",
+				"check" : false
+			},
+			{
+				"alarmId" : 620,
+				"type" : "피드",
+				"content" : "알림 내용",
+				"date" : "yyyy-MM-dd",
+				"check" : false
+			},
+			{
+				"alarmId" : 611,
+				"type" : "댓글",
+				"content" : "알림 내용",
+				"date" : "yyyy-MM-dd",
+				"check" : true
+			}
+		],
+  "error": null,
+  "serverDateTime": "yyyy-MM-dd HH:mm:ss"
+}

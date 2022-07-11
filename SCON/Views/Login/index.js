@@ -38,7 +38,7 @@ export function LoginPage({navigation}) {
         onChange={e => onInput('password', e)}
       />
       {validate.email == false && (<Text>비밀번호가 틀렸습니다.</Text>)}
-      <ButtonBig />
+      <ButtonBig onPress={() => navigation.navigate('Tab')}/>
       <TouchableOpacity onPress={() => navigation.navigate('RegistAccpet')}>
         <Text>회원가입</Text>
       </TouchableOpacity>

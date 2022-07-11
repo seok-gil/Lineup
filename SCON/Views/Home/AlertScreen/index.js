@@ -1,18 +1,26 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
+import { ApiFetch } from '../../../Components/API/ApiFetch';
 
 import AlertComponent from './AlertComponent';
 
 import styles from './AlertScreen.styles';
 
 export function AlertScreen({navigation}) {
-  const Data = require('../../../Assets/Data/Alert.json').alert;
+  //dummy
+  const Data = require('../../../Assets/Data/Alert/Alert.json').data;
+
+    let res = ApiFetch({method: 'GET', url : 'https://httpbin.org/get', headers : {"Authorization": "token"}, body : null})
+    console.log ("[")
+    console.log (res.json)
+    console.log ("]")
+
 
   const onClickAll = () => {
     console.log('all');
   };
   return (
-    <View key={`Alert`} style={styles.alertWrapper}>
+    <SafeAreaView key={`Alert`} style={styles.alertWrapper}>
       <View style={styles.alertTop}>
         <Text style={styles.alertTitle}>쌓여있는 알림을 확인해보세요</Text>
         <TouchableOpacity onPress={() => onClickAll(alert.alert_id)}>
@@ -23,6 +31,6 @@ export function AlertScreen({navigation}) {
         (alert, index) =>
           alert && <AlertComponent key={`alert-${index}`} alert={alert} />,
       )}
-    </View>
+    </SafeAreaView>
   );
 }
