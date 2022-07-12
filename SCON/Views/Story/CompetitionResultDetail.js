@@ -1,5 +1,4 @@
 import React, { Component, useState } from 'react';
-// import Modal from "react-native-modal";
 
 import {
 	Button,

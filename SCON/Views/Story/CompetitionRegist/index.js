@@ -1,25 +1,20 @@
 import React, { Component, useState } from 'react';
 import { useForm } from 'react-hook-form'
-import { createStackNavigator } from '@react-navigation/stack';
+import { Calendar } from './Calender';
 
-import {
-	Button,
-	View,
-	Text,
-	StyleSheet,
-	TextInput,
-	TouchableOpacity,
-	SafeAreaView
-} from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
+
+import calendarIMG from '../../../Assets/Images/calendar.png';
 
 export function CompetitionRegist({ navigation }) {
+	const [startDate, setStartDate] = useState('')
+	const [endDate, setEndDate] = useState('')
 	const [form, setForm] = useState({
-		start: '',
-		end: '',
 		place: '',
 		name: '',
 		detail: [''],
 	})
+	const [calendar, setCalender] = useState(false)
 	const onChange = (keyvalue, e) => {
 		const { text } = e.nativeEvent
 		setForm({
@@ -30,27 +25,31 @@ export function CompetitionRegist({ navigation }) {
 	}
 
 	return (
-		<SafeAreaView>
-			<View style={{ flexDirection: 'column' }}>
+		<SafeAreaView style={{ flex: 3 }}>
+			<View style={{ flexDirection: 'column'}}>
 				<Text> 대회기간 </Text>
-				<View style={{ flexDirection: 'row' }}>
-					<TextInput
-						value={form.start}
-						placeholder={' YYYY / MM / DD'}
-						placeholderTextColor='#C5C8CE'
-						onChange={(e) => onChange("start", e)}
-					/>
-					<Text>
-						{" "}~{" "}
-					</Text>
-					<TextInput
-						value={form.end}
-						placeholder={' YYYY / MM / DD'}
-						placeholderTextColor='#C5C8CE'
-						onChange={(e) => onChange("end", e)}
-					/>
-					<TouchableOpacity>
-						<Text> 달력 </Text>
+				<View >
+					<TouchableOpacity onPress={() => {
+						setCalender(true)
+						console.log(calendar)
+					}}
+				style={{ flexDirection: 'row' }}>
+						<TextInput
+							value={startDate}
+							placeholder={' YYYY / MM / DD'}
+							placeholderTextColor='#C5C8CE'
+							onChange={(e) => onChange("start", e)}
+						/>
+						<Text>
+							{" "}~{" "}
+						</Text>
+						<TextInput
+							value={endDate}
+							placeholder={' YYYY / MM / DD'}
+							placeholderTextColor='#C5C8CE'
+							onChange={(e) => setCalender(false)}
+						/>
+						<Image source={calendarIMG} />
 					</TouchableOpacity>
 				</View>
 				<Text> 대회 장소</Text>
@@ -67,7 +66,7 @@ export function CompetitionRegist({ navigation }) {
 					placeholderTextColor='#C5C8CE'
 					onChange={(e) => onChange("name", e)}
 				/>
-				<Text> 대회 장소</Text>
+				<Text> 세부 종목</Text>
 				<TextInput
 					value={form.detail}
 					placeholder={'예) 100m 달리기'}
@@ -81,6 +80,8 @@ export function CompetitionRegist({ navigation }) {
 					<Text> + </Text>
 				</TouchableOpacity>
 			</View>
+			<Calendar calendar={calendar} setCalender={setCalender} setStartDate={setStartDate} setEndDate={setEndDate} />
+
 		</SafeAreaView>
 	);
 }

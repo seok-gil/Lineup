@@ -46,7 +46,8 @@ export function PasswordChange({ navigation }) {
           ...validate,
           [key]: true,
         });
-
+        console.log("test", key)
+        console.log(validate)
       }
       else if (!validator.isLength(text, 8, 12)) {
         setValidate({
@@ -56,28 +57,28 @@ export function PasswordChange({ navigation }) {
       }
     }
     
-    if (form.newPassword != null && (form.confirmPassword == form.newPassword))
-      setValidate({
-        ...validate,
-        ['confirmPassword']: true,
-      });
-    else if (form.confirmPassword != form.newPassword)
-      setValidate({
-        ...validate,
-        ['confirmPassword']: false,
-      });
-    if (validate.oldPassword && validate.newPassword && validate.confirmPassword)
-      setValidate({
-        ...validate,
-        ['button']: true,
-      });
-    else
-      setValidate({
-        ...validate,
-        ['button']: false,
-      });
-      console.log(form)
-      console.log(validate)
+    // if (form.newPassword != null && (form.confirmPassword == form.newPassword))
+    //   setValidate({
+    //     ...validate,
+    //     ['confirmPassword']: true,
+    //   });
+    // else if (form.confirmPassword != form.newPassword)
+    //   setValidate({
+    //     ...validate,
+    //     ['confirmPassword']: false,
+    //   });
+    // if (validate.oldPassword && validate.newPassword && validate.confirmPassword)
+    //   setValidate({
+    //     ...validate,
+    //     ['button']: true,
+    //   });
+    // else
+    //   setValidate({
+    //     ...validate,
+    //     ['button']: false,
+    //   });
+      console.log("form",form)
+      console.log("val", validate)
   };
 
 
