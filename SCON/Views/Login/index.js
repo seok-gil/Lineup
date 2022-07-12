@@ -30,7 +30,7 @@ export function LoginPage({navigation}) {
         placeholderTextColor="#C5C8CE"
         onChange={e => onInput('email', e)}
       />
-      {validate.email == false && (<Text>현재 비밀번호와 일치하지 않습니다.</Text>)}
+      {validate.email == false && (<Text>가입 된 정보가 없습니다. 다시 입력해주세요.</Text>)}
       <TextInput
         value={form.password}
         placeholder={'비밀번호 입력'}
@@ -38,7 +38,7 @@ export function LoginPage({navigation}) {
         onChange={e => onInput('password', e)}
       />
       {validate.email == false && (<Text>비밀번호가 틀렸습니다.</Text>)}
-      <ButtonBig onPress={() => navigation.navigate('Tab')}/>
+      <ButtonBig text={'로그인'}onPress={() => navigation.navigate('Tab')}/>
       <TouchableOpacity onPress={() => navigation.navigate('RegistAccpet')}>
         <Text>회원가입</Text>
       </TouchableOpacity>

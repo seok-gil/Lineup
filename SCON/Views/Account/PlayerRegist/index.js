@@ -55,7 +55,7 @@ export function PlayerRegist({ navigation }) {
         placeholderTextColor="#C5C8CE"
         onChange={e => onInput('belong', e)}
       />
-      <ButtonBig />
+      <ButtonBig text={'버튼'}/>
     </View>
   );
 }

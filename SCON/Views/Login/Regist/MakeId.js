@@ -53,7 +53,7 @@ export function MakeId({ navigation }) {
         onChange={e => onInput('certification', e)}
       />
       {validate.certification == false && (<Text>인증번호가 일치하지 않습니다.</Text>)}
-      <ButtonBig onPress={() =>navigation.navigate('Password')} />
+      <ButtonBig text={'다음'}onPress={() =>navigation.navigate('Password')} />
     </SafeAreaView>
   );
 }

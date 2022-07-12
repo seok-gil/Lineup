@@ -41,7 +41,7 @@ export function ForgetPassword({ navigation }) {
         onChange={e => onInput('certification', e)}
       />
       {validate.certification == false && (<Text>인증번호가 일치하지 않습니다.</Text>)}
-      <ButtonBig onPress={() => navigation.navigate('PasswordReset')} />
+      <ButtonBig text={'다음'} onPress={() => navigation.navigate('PasswordReset')} />
     </SafeAreaView>
   );
 }

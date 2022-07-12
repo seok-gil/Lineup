@@ -23,7 +23,7 @@ export function Withdrawal() {
         onChange={e => onInput(e)}
       />
       <Text>현재 사용중인 비밀번호와 일치하지 않습니다.</Text>
-      <ButtonBig/>
+      <ButtonBig text={'버튼'}/>
     </View>
   );
 }

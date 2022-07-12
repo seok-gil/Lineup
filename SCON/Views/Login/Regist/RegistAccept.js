@@ -42,7 +42,7 @@ export function RegistAccept({ navigation }) {
       <CheckBox value={accept.privacy}
         onValueChange={() => onClick('privacy')} />
       <Text>(필수)개인정보 수집 및 이용동의</Text>
-      <ButtonBig onPress={() =>navigation.navigate('MakeId')} />
+      <ButtonBig text={'다음'} onPress={() =>navigation.navigate('MakeId')} />
     </SafeAreaView>
   );
 }
