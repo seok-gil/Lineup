@@ -10,6 +10,7 @@ import {
 	TouchableOpacity,
 	SafeAreaView,
 } from 'react-native';
+import { ButtonBig } from '../../Components';
 
 
 export function FeedRegist({ navigation }) {
@@ -32,9 +33,7 @@ export function FeedRegist({ navigation }) {
 				onChange={(e) => onChange("search", e)}
 				onSubmitEditing={() => searchRef.current.focus()}
 			/>
-			<TouchableOpacity onPress={() => navigation.navigate('CompetitionResult')}>
-				<Text> 확인 </Text>
-			</TouchableOpacity>
+			<ButtonBig text={'확인'} onPress={() => navigation.navigate('CompetitionResult')}/>
 		</SafeAreaView>
 	);
 }

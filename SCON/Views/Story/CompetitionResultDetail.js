@@ -1,5 +1,4 @@
 import React, { Component, useState } from 'react';
-// import Modal from "react-native-modal";
 
 import {
 	Button,
@@ -118,7 +117,7 @@ export function CompetitionResultDetail({ navigation }) {
 						<View>
 
 						<CheckBox  value={isSelected}
-                            onChange={()=> openModal("search")} />
+                            onValueChange={()=> openModal("search")} />
 						</View>
 						<TouchableOpacity onPress={() => { openModal() }} >
 							<Text> 결과를 입력하지 않겠습니다.</Text>

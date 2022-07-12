@@ -1,0 +1,29 @@
+{
+	"success": true,
+  	"data":
+		[
+			{
+				"alarmId" : 785,
+				"type" : "댓글",
+				"content" : "강석원 선수의  제 22회 대통령배 종합수영경기 자유형 50m 결승 경기가 3일 남았습니다. 응원 댓글을 달아주세요!",
+				"date" : "yyyy-MM-dd",
+				"check" : false
+			},
+			{
+				"alarmId" : 620,
+				"type" : "피드",
+				"content" : "강석원 선수가 당신의 댓글에 답글을 달았습니다. 내용을 확인 해보세요!",
+				"date" : "yyyy-MM-dd",
+				"check" : false
+			},
+			{
+				"alarmId" : 611,
+				"type" : "댓글",
+				"content" : "알림 내용",
+				"date" : "yyyy-MM-dd",
+				"check" : true
+			}
+		],
+  "error": null,
+  "serverDateTime": "yyyy-MM-dd HH:mm:ss"
+}

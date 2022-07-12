@@ -9,23 +9,23 @@ import XIcon from '../../../Assets/Images/XIcon.png';
 function AlertComponent({alert}) {
   if (!alert) return <View />;
 
-  const onClickX = alert_id => {
-    console.log(alert_id);
+  const onClickX = alarmId => {
+    console.log(alarmId);
   };
 
   return (
     <View
       style={[
         styles.alertComponentWrapper,
-        alert.read ? styles.alertRead : styles.alertNotRead,
+        alert.check ? styles.alertRead : styles.alertNotRead,
       ]}>
       <View style={styles.alertComponentTop}>
         <Image
-          source={alert.type === '댓글 알림' ? ChatBubbleIcon : SmileIcon}
+          source={alert.type === '댓글' ? ChatBubbleIcon : SmileIcon}
           style={styles.alertComponentImage}
         />
         <Text style={styles.alertTitle}>
-          {alert.read}
+          {alert.check}
           {alert.type}
         </Text>
       </View>
@@ -33,7 +33,7 @@ function AlertComponent({alert}) {
         <Text style={styles.alertContent}>{alert.content}</Text>
         <View style={styles.alertComponentBottom}>
           <Text style={styles.alertCreatedAt}>{alert.createdAt}</Text>
-          <TouchableOpacity onPress={() => onClickX(alert.alert_id)}>
+          <TouchableOpacity onPress={() => onClickX(alert.alarmId)}>
             <Image source={XIcon} style={styles.alertXIcon} />
           </TouchableOpacity>
         </View>

@@ -1,0 +1,34 @@
+{
+	"success": true,
+	"data": {
+		"userId": 123,
+		"nickname": "bob",
+		"email": "abc123@gmail.com",
+		"profilePic": "profileURL",
+		"existAlarm": true,
+		"player": {
+			"playerId": 12,
+			"name": "홍길동",
+			"sport": "수영",
+			"belong": "서울"
+		},
+		"follow": [
+			{
+				"playerId": 8,
+				"name": "둘리",
+				"sport": "달리기",
+				"belong": "경주",
+				"profilePic": "profileURL"
+			},
+			{
+				"playerId": 10,
+				"name": "김이박",
+				"sport": "펜싱",
+				"belong": "서울",
+				"profilePic": "profileURL"
+			}
+		]
+	},
+	"error": null,
+	"serverDateTime": "yyyy-MM-dd HH:mm:ss"
+}
