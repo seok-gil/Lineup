@@ -1,70 +1,22 @@
-import React, { Component } from 'react';
-import {
-	Button,
-	View,
-	Image,
-	Text,
-	StyleSheet,
-	SafeAreaView
-} from 'react-native';
+import React from 'react';
+import {View, Text} from 'react-native';
 
-import Gold from '../../Assets/Images/GoldMedal.png'
-import Silver from '../../Assets/Images/SilverMedal.png'
-import Bronze from '../../Assets/Images/BronzeMedal.png'
+import RecordHead from './RecordHead';
+import PlayerCard from './PlayerCard';
 
-function RecordHead({ medal }) {
-	return (
-		<View style={{ flexDirection: 'row' }}>
-			<Text>선수전적</Text>
-			<View style={{ flexDirection: 'row' }}>
-				<Image source={Gold}></Image>
-				<Text> {medal.gold}</Text>
-				<Image source={Silver}></Image>
-				<Text> {medal.silver}</Text>
-				<Image source={Bronze}></Image>
-				<Text> {medal.bronze}</Text>
-			</View>
-		</View>
-	)
+import Data from '../../Assets/Data/Record.json';
+import styles from './RecordScreen.styles';
+
+export function RecordScreen({navigation}) {
+  console.log(Data);
+  return (
+    <View style={styles.recordScreenWrapper}>
+      <RecordHead medal={Data.Medal} />
+      <View>
+        {Data.Record.map(record => (
+          <PlayerCard key={`player-card-${record.record_id}`} record={record} />
+        ))}
+      </View>
+    </View>
+  );
 }
-function RecordList({ record }) {
-	const view = [];
-
-	const playercard = () => {
-		for (let i = 0; i < record.length; i++) {
-			view.push(
-				<View key={`record`} style={{ flexDirection: 'column' }}>
-					<Text>
-						{record[i].host}{" "}
-						{record[i].competition}{" "}
-						{record[i].major}{" "}
-						{record[i].game_detail}{" "}
-						{record[i].score}
-					</Text>
-					<Text>
-						{record[i].start} ~
-						{record[i].end}
-					</Text>
-				</View>
-			)
-		};
-		return view;
-	}
-
-	return (
-		<View>
-			{playercard()}
-		</View>
-	);
-}
-
-export function RecordScreen({ navigation }) {
-	const Data = require('../../Assets/Data/Record.json');
-	return (
-		<SafeAreaView style={{ flexDirection: 'column' }}>
-			<RecordHead medal={Data.Medal} />
-			<RecordList record={Data.Record} />
-		</SafeAreaView>
-	);
-}
-
