@@ -1,12 +1,13 @@
 import {StyleSheet} from 'react-native';
 
-import {colors, listElementStyle} from '../../Styles';
+import {colors} from '../../Styles';
 
 const styles = StyleSheet.create({
   feedRegistWrapper: {
     backgroundColor: colors.WHITE,
     flex: 1,
   },
+
   feedInnerWrapper: {
     height: '100%',
     flexDirection: 'column',
@@ -14,13 +15,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 30,
   },
+
   feedRegistTextWrapper: {
     width: '100%',
   },
+
   feedRegistLabel: {
     fontWeight: '700',
     marginBottom: 16,
   },
+
   feedRegistTextInput: {
     width: '100%',
     height: 150,
@@ -31,7 +35,6 @@ const styles = StyleSheet.create({
     borderColor: colors.GRAYE6,
     borderRadius: 5,
   },
-  feedRegistPlaceholder: {},
 });
 
 export default styles;

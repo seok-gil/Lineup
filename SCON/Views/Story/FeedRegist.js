@@ -28,7 +28,7 @@ export function FeedRegist({navigation}) {
             style={styles.feedRegistTextInput}
             value={feed}
             placeholder={'어떤 말을 남기고 싶으신가요?'}
-            placeholderTextColor="#C5C8CE"
+            placeholderTextColor="#C9C9C9"
             onChange={e => onChange('search', e)}
             onSubmitEditing={() => searchRef.current.focus()}
           />
