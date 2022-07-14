@@ -1,18 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, Modal, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
+
+import CompetitionElement from './CompetitionElement';
+import Calendar from './Calendar';
+import ResultModal from './ResultModal';
 
 import {competition} from '../../../Assets/Data/CompetitionResultList.json';
-import CompetitionElement from './CompetitionElement';
-
 import styles from './CompetitionResult.styles';
-
-export function Calendar({startDay, endDay}) {
-  return (
-    <View>
-      <Text>aa</Text>
-    </View>
-  );
-}
 
 export function CompetitionResult({navigation}) {
   const [calendar, setCalendar] = useState({
@@ -26,16 +20,7 @@ export function CompetitionResult({navigation}) {
       {competition.map((item, index) => {
         return <CompetitionElement data={item} key={index} />;
       })}
-      <Modal
-        // animationType='slide'
-        transparent={true}
-        visible={calendar.open}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Calendar />
-          </View>
-        </View>
-      </Modal>
+      <ResultModal />
     </SafeAreaView>
   );
 }
