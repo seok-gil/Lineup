@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 
 import {Button, Text, View, Image} from 'react-native';
 
-import DefaultProfile from '../../Assets/Images/ProfileDefault.png';
 import styles from './NickName.styles';
+import {DefaultProfileImage} from '../../Assets/Images';
 
 export function NickName({user}) {
   const name = user.user_name;
   const email = user.email;
   return (
     <View style={styles.viewWrapper}>
-      <Image source={DefaultProfile} style={styles.image} />
+      <Image source={DefaultProfileImage} style={styles.image} />
       <View style={styles.viewProfileInfo}>
         <Text style={styles.nameText} numberOfLines={1} ellipsizeMode="tail">
           {name}

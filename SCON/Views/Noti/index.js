@@ -8,8 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import down from '../../Assets/Images/downIcon.png';
-import up from '../../Assets/Images/upIcon.png';
+import {DownIcon} from '../../Assets/Icons';
 
 function NotiOne({data}) {
   const [expand, setExpand] = useState(false);
@@ -21,8 +20,8 @@ function NotiOne({data}) {
       <Text> {data.title} </Text>
       <Text> {data.createdAt} </Text>
       <TouchableOpacity onPress={onClick}>
-        {!expand && <Image source={down} />}
-        {expand && <Image source={up} />}
+        {!expand && <Image source={DownIcon} />}
+        {expand && <Image source={DownIcon} /> /* TODO: UPIcon: 180도 회전 */}
       </TouchableOpacity>
       {expand && <Text> {data.content} </Text>}
     </View>

@@ -1,26 +1,20 @@
-import React, { Component, useState } from 'react';
-import {
-  Button,
-  View,
-  Image,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import React, {Component, useState} from 'react';
+import {Button, View, Image, Text, StyleSheet} from 'react-native';
 
-import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
+import {DefaultProfileImage} from '../../Assets/Images';
 
-import { PhotoPick } from "../../Components/PhotoPick"
+import {PhotoPick} from '../../Components/PhotoPick';
 
-export function ProfileScreen({ navigation }) {
-  const data = require('../../Assets/Data/Profile.json').profile
-  const [userPhoto, setUserPhoto] = useState(DefaultProfile)
-  const [backPhoto, setBackPhoto] = useState(DefaultProfile)
+export function ProfileScreen({navigation}) {
+  const data = require('../../Assets/Data/Profile.json').profile;
+  const [userPhoto, setUserPhoto] = useState(DefaultProfileImage);
+  const [backPhoto, setBackPhoto] = useState(DefaultProfileImage);
 
   return (
-    <View style={{ flexDirection: 'column', }}>
-      <PhotoPick text="배경 이미지 설정" setPhoto={setBackPhoto}/>
+    <View style={{flexDirection: 'column'}}>
+      <PhotoPick text="배경 이미지 설정" setPhoto={setBackPhoto} />
       <Image source={userPhoto} style={styles.image} />
-      <PhotoPick text="프로필 이미지 설정" setPhoto={setUserPhoto}/>
+      <PhotoPick text="프로필 이미지 설정" setPhoto={setUserPhoto} />
       <Image source={backPhoto} style={styles.image} />
       <Text>이름</Text>
       <Text>{data.name}</Text>
@@ -42,6 +36,6 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '30%',
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
 });

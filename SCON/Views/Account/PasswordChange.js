@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import validator from 'validator';
 
-import searchIcon from '../../Assets/Icons/searchIcon.png';
+import {SearchIcon} from '../../Assets/Icons';
 import {ButtonComponent} from '../../Components';
 
 export function PasswordChange({navigation}) {

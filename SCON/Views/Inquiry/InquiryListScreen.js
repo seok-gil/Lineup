@@ -9,8 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import down from '../../Assets/Images/downIcon.png';
-import up from '../../Assets/Images/upIcon.png';
+import {DownIcon} from '../../Assets/Icons';
 
 function InquiryOne({data}) {
   const [expand, setExpand] = useState(false);
@@ -49,8 +48,8 @@ function InquiryOne({data}) {
 
       <Text> {data.createdAt} </Text>
       <TouchableOpacity onPress={onClick}>
-        {!expand && <Image source={down} />}
-        {expand && <Image source={up} />}
+        {!expand && <Image source={DownIcon} />}
+        {expand && <Image source={DownIcon} />}
       </TouchableOpacity>
       <View>
         {expand && <ExpandQ data={data} />}

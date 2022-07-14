@@ -7,9 +7,10 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import DefaultProfile from '../../../Assets/Images/ProfileDefault.png';
-import AddIcon from '../../../Assets/Images/addIcon.png';
+
 import styles from './Card.styles';
+import {DefaultProfileImage} from '../../../Assets/Images';
+import {AddIcon} from '../../../Assets/Icons';
 
 export function CardList({Data, navigation}) {
   const follow = Data.follow;
@@ -23,7 +24,7 @@ export function CardList({Data, navigation}) {
     if (follow[i]) card.push(follow[i]);
     else card.push(emptyData);
   }
-
+  // TODO: 이부분 고쳐야함
   function PlayerCard({item}) {
     if (item) {
       if (item.user_name)
@@ -31,7 +32,10 @@ export function CardList({Data, navigation}) {
           <TouchableOpacity
             onPress={() => navigation.navigate('Player')}
             style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
-            <Image source={DefaultProfile} style={styles.playerCardImage} />
+            <Image
+              source={DefaultProfileImage}
+              style={styles.playerCardImage}
+            />
             <Text style={styles.nameText}>이진우</Text>
             <Text style={styles.nameText}>수영선수</Text>
             <Text style={styles.nameText}>선수소속명</Text>
@@ -42,7 +46,10 @@ export function CardList({Data, navigation}) {
           <TouchableOpacity
             onPress={() => navigation.navigate('Player')}
             style={[styles.cardWrapper, styles.playerCardWrapper]}>
-            <Image source={DefaultProfile} style={styles.playerCardImage} />
+            <Image
+              source={DefaultProfileImage}
+              style={styles.playerCardImage}
+            />
             <Text style={styles.nameText}>{item.player_name}</Text>
           </TouchableOpacity>
         );

@@ -11,8 +11,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import searchIcon from '../../Assets/Icons/searchIcon.png';
-import DefaultProfile from '../../Assets/Images/ProfileDefault.png';
+import {SearchIcon} from '../../Assets/Icons';
+import {DefaultProfileImage} from '../../Assets/Images';
 
 export function SearchId({data, navigation}) {
   console.log(data);
@@ -22,7 +22,7 @@ export function SearchId({data, navigation}) {
         navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
       }>
       <View style={{flexDirection: 'row'}}>
-        <Image source={DefaultProfile} style={styles.image} />
+        <Image source={DefaultProfileImage} style={styles.image} />
         <View style={{flexDirection: 'column'}}>
           <Text> 팬닉네임</Text>
         </View>

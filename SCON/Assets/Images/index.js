@@ -1,13 +1,5 @@
-import BronzeMedalImage from './bronzeMedal.png';
-import SilverMedalImage from './silverMedal.png';
-import GoldMedalImage from './goldMedal.png';
-import LineupLogoImage from './lineupLogo.png';
-import DefaultProfileImage from './defaultProfile.png';
-
-export {
-  BronzeMedalImage,
-  SilverMedalImage,
-  GoldMedalImage,
-  LineupLogoImage,
-  DefaultProfileImage,
-};
+export {default as BronzeMedalImage} from './bronzeMedal.png';
+export {default as SilverMedalImage} from './silverMedal.png';
+export {default as GoldMedalImage} from './goldMedal.png';
+export {default as LineupLogoImage} from './lineupLogo.png';
+export {default as DefaultProfileImage} from './defaultProfile.png';

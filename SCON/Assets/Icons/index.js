@@ -1,21 +1,10 @@
-import AddIcon from './addIcon.png';
-import ChatBubbleIcon from './chatBubbleIcon.png';
-import DownIcon from './downIcon.png';
-import LabelIcon from './labelIcon.png';
-import NotiIcon from './notiIcon.png';
-import PhotoIcon from './photoIcon.png';
-import SearchIcon from './searchIcon.png';
-import SmileIcon from './smileIcon.png';
-import XIcon from './xIcon.png';
-
-export {
-  AddIcon,
-  ChatBubbleIcon,
-  DownIcon,
-  LabelIcon,
-  NotiIcon,
-  PhotoIcon,
-  SearchIcon,
-  SmileIcon,
-  XIcon,
-};
+export {default as AddIcon} from './addIcon.png';
+export {default as ChatBubbleIcon} from './chatBubbleIcon.png';
+export {default as DownIcon} from './downIcon.png';
+export {default as LabelIcon} from './labelIcon.png';
+export {default as NotiIcon} from './notiIcon.png';
+export {default as PhotoIcon} from './photoIcon.png';
+export {default as SearchIcon} from './searchIcon.png';
+export {default as SmileIcon} from './smileIcon.png';
+export {default as XIcon} from './xIcon.png';
+export {default as AlertIcon} from './alertIcon.png';
