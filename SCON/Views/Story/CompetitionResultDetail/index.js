@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-
 import {View, Text, SafeAreaView} from 'react-native';
+
 import CompetitionResultModal from './CompetitionResultModal';
-import {competition} from '../../../Assets/Data/CompetitionResultDetail.json';
 import DetailInfo from './DetailInfo';
+import {competition} from '../../../Assets/Data/CompetitionResultDetail.json';
+
+import styles from './CompetitionResultDetail.styles';
 
 export function CompetitionResultDetail({navigation}) {
   const [isSelected, setSelection] = useState(false);
@@ -26,17 +28,15 @@ export function CompetitionResultDetail({navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 3}}>
-      <Text>대회</Text>
-      <Text>{competition.name}</Text>
-      <Text>종목</Text>
-      {competition.detail.map((item, index) => {
-        return (
-          <View style={{flexDirection: 'row'}}>
-            <DetailInfo item={item} key={index} />
-          </View>
-        );
-      })}
+    <SafeAreaView style={styles.competitionResultWrapper}>
+      <View style={styles.competitionResultInner}>
+        <Text style={styles.competitionLabels}>대회</Text>
+        <Text style={styles.leagueTitle}>{competition.name}</Text>
+        <Text style={styles.competitionLabels}>종목</Text>
+        {competition.detail.map((item, index) => {
+          return <DetailInfo item={item} key={index} openModal={openModal} />;
+        })}
+      </View>
       <CompetitionResultModal
         modal={modal}
         openModal={openModal}

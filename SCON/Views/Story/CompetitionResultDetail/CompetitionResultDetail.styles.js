@@ -1,41 +1,28 @@
 import {StyleSheet} from 'react-native';
 
+import {colors} from '../../../Styles/constants';
+
 const styles = StyleSheet.create({
-  centeredView: {
+  competitionResultWrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
+    backgroundColor: colors.WHITE,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    shadowColor: '#000',
-    //그림자의 영역 지정
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    //불투명도 지정
-    shadowOpacity: 0.25,
-    //반경 지정
-    shadowRadius: 3.84,
+
+  competitionResultInner: {
+    height: '100%',
+    padding: 30,
   },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+
+  competitionLabels: {
+    color: colors.TEXT_DARK,
+    marginBottom: 8,
   },
-  checkboxContainer: {
-    flexDirection: 'row',
+
+  leagueTitle: {
+    color: colors.TEXT_DARK,
+    fontWeight: '700',
     marginBottom: 20,
   },
-  checkbox: {
-    alignSelf: 'center',
-  },
-  label: {
-    margin: 8,
-  },
 });
+
+export default styles;
