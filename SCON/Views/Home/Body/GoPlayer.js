@@ -1,9 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 
-import AlertIcon from '../../../Assets/Images/AlertIcon.png'; // svg로 수정 추천
-import XIcon from '../../../Assets/Images/XIcon.png'; // svg로 수정 추천
 import styles from './GoPlayer.styles';
+import {AlertIcon, XIcon} from '../../../Assets/Icons';
 
 export function GoPlayer({setgoPlayer, navigation}) {
   const onClick = () => {

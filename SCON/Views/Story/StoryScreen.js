@@ -1,29 +1,38 @@
-import React, { Component } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
-import {
-	Button,
-	View,
-	Text,
-	StyleSheet,
-	TouchableOpacity,
-	SafeAreaView
-} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 
+import StoryElement from './StoryElement';
 
-export function StoryScreen({ navigation }) {
-	return (
-		<SafeAreaView style={{ flex: 3 }}>
-			<TouchableOpacity onPress={() => navigation.navigate('FeedRegist', { names: ['Brent', 'Satya', 'Michaś'] })}>
-				<Text>피드</Text>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => navigation.navigate('CompetitionRegist', { names: ['Brent', 'Satya', 'Michaś'] })}>
-				<Text>대회 일정</Text>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => navigation.navigate('CompetitionResult', { names: ['Brent', 'Satya', 'Michaś'] })}>
-				<Text>대회 결과</Text>
-			</TouchableOpacity>
-		</SafeAreaView>
-	);
+import styles from './StoryScreen.styles';
+import FeedIcon from './assets/feedIcon.png';
+import ResultIcon from './assets/resultIcon.png';
+import ScheduleIcon from './assets/scheduleIcon.png';
+
+export function StoryScreen({navigation}) {
+  return (
+    <SafeAreaView style={styles.storyScreenWrapper}>
+      <StoryElement
+        navigation={navigation}
+        text="피드"
+        imageSrc={FeedIcon}
+        navlink={'FeedRegist'}
+        names={['Brent', 'Satya', 'Michaś']}
+      />
+      <StoryElement
+        navigation={navigation}
+        text="대회 일정"
+        imageSrc={ScheduleIcon}
+        navlink={'CompetitionRegist'}
+        names={['Brent', 'Satya', 'Michaś']}
+      />
+      <StoryElement
+        navigation={navigation}
+        text="대회 결과"
+        imageSrc={ResultIcon}
+        navlink={'CompetitionResult'}
+        names={['Brent', 'Satya', 'Michaś']}
+      />
+    </SafeAreaView>
+  );
 }
-
