@@ -1,20 +1,18 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 
-const DetailInfo = ({item}) => {
+import styles from './DetailInfo.styles';
+import {CircleAddIcon} from '../../../Assets/Icons';
+
+const DetailInfo = ({item, openModal}) => {
   return (
-    <View style={{flexDirection: 'row'}}>
-      {item.input ? (
-        <View style={{flexDirection: 'row'}}>
-          <Text>{item.name}</Text>
-          <Text>
-            ({item.score} {item.score_detail})
-          </Text>
-        </View>
-      ) : (
-        <Text>{item.name}</Text>
-      )}
-      <TouchableOpacity onPress={() => openModal(item)}>
-        <Text>수정</Text>
+    <View style={styles.detailWrapper}>
+      <Text style={styles.leagueTypeText}>{item.name}</Text>
+      <TouchableOpacity
+        style={styles.inputButtonWrapper}
+        onPress={() => openModal(item)}>
+        <Image source={CircleAddIcon} style={styles.addIcon} />
+        <Text style={styles.buttonInnerText}>입력하기</Text>
       </TouchableOpacity>
     </View>
   );

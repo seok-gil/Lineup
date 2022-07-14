@@ -8,3 +8,4 @@ export {default as SearchIcon} from './searchIcon.png';
 export {default as SmileIcon} from './smileIcon.png';
 export {default as XIcon} from './xIcon.png';
 export {default as AlertIcon} from './alertIcon.png';
+export {default as CircleAddIcon} from './circleAddIcon.png';
