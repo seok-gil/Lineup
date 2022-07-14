@@ -1,6 +1,6 @@
-import { useState } from "react";
 
 async function ApiFetch({method, url, headers, body}) {
+
 	try {
 		let res = await fetch(url , {
 			method: method,
@@ -8,11 +8,12 @@ async function ApiFetch({method, url, headers, body}) {
 			body : body
 		})
 		let resChecked
+
 		if (res.ok) {
-			// console.log("Request successful");
+			console.log("Request successful");
 			resChecked = res;
 			let data = await resChecked.json();
-			return (data.data[0].attributes.data)
+			return (data)
 		}
 		else {
 			console.log("Request unsuccessful");

@@ -12,6 +12,8 @@ export function RegistAccept({ navigation }) {
   })
 
   const onClick = (key) => {
+    console.log(key)
+    console.log(accept)
     if (key != 'all') {
       SetAccpet({
         ...accept,
