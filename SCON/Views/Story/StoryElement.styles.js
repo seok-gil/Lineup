@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {colors, listElementStyle} from '../../Styles';
+import {listElementStyle} from '../../Styles';
 
 const styles = StyleSheet.create({
   storyElementWrapper: {
