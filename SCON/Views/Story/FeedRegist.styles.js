@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 30,
   },
-  textInputWrapper: {},
   feedRegistLabel: {
     fontWeight: '700',
     marginBottom: 16,
@@ -21,6 +20,8 @@ const styles = StyleSheet.create({
   feedRegistTextInput: {
     width: '100%',
     height: 150,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     textAlignVertical: 'top',
     borderWidth: 1,
     borderColor: colors.GRAYE6,

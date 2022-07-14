@@ -22,7 +22,7 @@ export function FeedRegist({navigation}) {
   return (
     <SafeAreaView style={styles.feedRegistWrapper}>
       <View style={styles.feedInnerWrapper}>
-        <View style={styles.textInputWrapper}>
+        <View>
           <Text style={styles.feedRegistLabel}>내용</Text>
           <TextInput
             style={styles.feedRegistTextInput}
