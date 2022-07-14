@@ -16,6 +16,7 @@ export function PhotoPick({text, setPhoto}) {
             if (result.didCancel) {
               return null;
             }
+            console.log(result);
             const localUri = result.assets[0].uri;
             const uriPath = localUri.split('//').pop();
             const imageName = localUri.split('/').pop();

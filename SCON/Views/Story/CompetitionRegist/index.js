@@ -21,6 +21,7 @@ export function CompetitionRegist({ navigation }) {
 			...form,
 			[keyvalue]: text
 		});
+		console.log(form)
 	}
 
 	return (
@@ -30,6 +31,7 @@ export function CompetitionRegist({ navigation }) {
 				<View >
 					<TouchableOpacity onPress={() => {
 						setCalender(true)
+						console.log(calendar)
 					}}
 				style={{ flexDirection: 'row' }}>
 						<TextInput
