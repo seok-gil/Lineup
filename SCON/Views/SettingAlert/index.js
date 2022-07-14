@@ -21,7 +21,6 @@ export function SettingAlertScreen({ navigation }) {
 			...alert,
 			[key]: set
 		})
-		console.log(alert.feed)
 	}
 	return (
 		<View style={styles.container}>

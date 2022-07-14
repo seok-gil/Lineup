@@ -33,7 +33,6 @@ export function CompetitionResult({ navigation }) {
   })
 
   const CompetitionOne = ({ data }) => {
-    console.log(data.input)
     let input = data.input
     return (
       <View>
