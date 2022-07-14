@@ -20,7 +20,8 @@ function AlertIcon({alert, navigation}) {
   );
 }
 
-export function Head({Data, navigation}) {
+export function Head({data, navigation}) {
+  if (!data) return <View />;
   return (
     <View>
       <View style={styles.headerWrapper}>
@@ -28,9 +29,9 @@ export function Head({Data, navigation}) {
         <View style={[styles.alignment, styles.imageWrapper]}>
           <Image source={LineupLogoImage} />
         </View>
-        <AlertIcon key={`Alert`} alert={Data.existAlarm} navigation={navigation} />
+        <AlertIcon key={`Alert`} alert={data.existAlarm} navigation={navigation} />
       </View>
-      <NickName user={Data} />
+      <NickName user={data} />
     </View>
   );
 }
