@@ -1,8 +1,8 @@
 import React from 'react';
 import {TouchableOpacity, View, Image, Text} from 'react-native';
 
-import DefaultProfile from '../../../Assets/Images/ProfileDefault.png';
 import styles from './ViewPlayer.styles';
+import {DefaultProfileImage} from '../../../Assets/Images';
 
 function ViewPlayer({player, navigation}) {
   const {player_name, player_major, player_belong} = player;
@@ -13,7 +13,7 @@ function ViewPlayer({player, navigation}) {
         navigation.navigate('Player', {names: ['Brent', 'Satya', 'Michaś']})
       }>
       <View style={styles.viewPlayerWrapper}>
-        <Image source={DefaultProfile} style={styles.viewPlayerImage} />
+        <Image source={DefaultProfileImage} style={styles.viewPlayerImage} />
         <View style={styles.viewPlayerInfo}>
           <Text
             style={styles.playerName}
