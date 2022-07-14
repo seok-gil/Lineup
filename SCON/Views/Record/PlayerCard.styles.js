@@ -1,13 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../Styles';
+import {colors, listElementStyle} from '../../Styles';
 
 const styles = StyleSheet.create({
   playerCardWrapper: {
+    ...listElementStyle,
     flexDirection: 'column',
-    borderBottomColor: colors.GRAYE6,
-    borderBottomWidth: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 25,
   },
 
   playerCardInfo: {

@@ -1,0 +1,10 @@
+export {default as AddIcon} from './addIcon.png';
+export {default as ChatBubbleIcon} from './chatBubbleIcon.png';
+export {default as DownIcon} from './downIcon.png';
+export {default as LabelIcon} from './labelIcon.png';
+export {default as NotiIcon} from './notiIcon.png';
+export {default as PhotoIcon} from './photoIcon.png';
+export {default as SearchIcon} from './searchIcon.png';
+export {default as SmileIcon} from './smileIcon.png';
+export {default as XIcon} from './xIcon.png';
+export {default as AlertIcon} from './alertIcon.png';

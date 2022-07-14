@@ -1,8 +1,8 @@
 import React, {useRef} from 'react';
 import {Button, View, TextInput, Image} from 'react-native';
 
-import SearchIcon from '../../Assets/Images/SearchIcon.png';
 import styles from './SearchInput.styles';
+import {SearchIcon} from '../../Assets/Icons';
 
 function SearchInput({inputs, setInputs}) {
   const searchRef = useRef();

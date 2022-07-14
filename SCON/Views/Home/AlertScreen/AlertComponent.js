@@ -2,9 +2,8 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 
 import styles from './AlertComponent.styles';
-import SmileIcon from '../../../Assets/Images/SmileIcon.png';
-import ChatBubbleIcon from '../../../Assets/Images/ChatBubbleIcon.png';
-import XIcon from '../../../Assets/Images/XIcon.png';
+
+import {SmileIcon, ChatBubbleIcon, XIcon} from '../../../Assets/Icons';
 
 function AlertComponent({alert}) {
   if (!alert) return <View />;

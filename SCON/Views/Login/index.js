@@ -1,6 +1,10 @@
 import React, { Component, useState } from 'react';
 import { SafeAreaView, View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
-import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
+import { DefaultProfileImage } from '../../Assets/Images'
+
+
+import {SearchIcon} from '../../Assets/Icons';
+
 import { ButtonBig } from "../../Components"
 
 export function LoginPage({navigation}) {
@@ -23,7 +27,7 @@ export function LoginPage({navigation}) {
   })
   return (
     <SafeAreaView style={{ flexDirection: 'column', }}>
-      <Image source={DefaultProfile} />
+      <Image source={DefaultProfileImage} />
       <TextInput
         value={form.email}
         placeholder={'이메일 입력'}
