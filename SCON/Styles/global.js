@@ -16,8 +16,8 @@ export const listElementStyleNarrow = {
 
 export const globalButtonStyle = {
   width: 300,
-  height: 40,
-  borderRadius: 20,
+  height: 45,
+  borderRadius: 25,
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: colors.THEME_SKYBLUE,
