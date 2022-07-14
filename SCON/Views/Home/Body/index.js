@@ -7,8 +7,8 @@ import { CardList } from "./CardList"
 import styles from './Body.styles';
 
 export function Body({ Data, navigation }) {
-  const user_code = Data.user.user_code;
-  const [goPlayer, setgoPlayer] = useState(Data.user.user_goPlayer);
+  const user_code = Data.user_code;
+  const [goPlayer, setgoPlayer] = useState(Data.user_goPlayer);
 
   return (
     <View style={styles.bodyWrapper}>

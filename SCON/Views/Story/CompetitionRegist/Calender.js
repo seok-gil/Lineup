@@ -18,19 +18,19 @@ export function Calendar({ calendar, setCalender, setStartDate, setEndDate }) {
 		}
 	}
 	return (
-			<Modal visible={calendar} transparent={false} >
-				<View style={styles.centeredView}>
-					<View style={styles.modalView}>
-			<CalendarPicker
-				allowRangeSelection={true}
-				todayBackgroundColor="#f2e6ff"
-				selectedDayColor="#7300e6"
-				selectedDayTextColor="#FFFFFF"
-				onDateChange={onDateChange}
-			/>
+		<Modal visible={calendar} transparent={false} >
+			<View style={styles.centeredView}>
+				<View style={styles.modalView}>
+					<CalendarPicker
+						allowRangeSelection={true}
+						todayBackgroundColor="#f2e6ff"
+						selectedDayColor="#7300e6"
+						selectedDayTextColor="#FFFFFF"
+						onDateChange={onDateChange}
+					/>
+				</View>
 			</View>
-			</View>
-			</Modal>
+		</Modal>
 	)
 }
 
@@ -63,15 +63,15 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
-	  },
-	  checkboxContainer: {
+	},
+	checkboxContainer: {
 		flexDirection: "row",
 		marginBottom: 20,
-	  },
-	  checkbox: {
+	},
+	checkbox: {
 		alignSelf: "center",
-	  },
-	  label: {
+	},
+	label: {
 		margin: 8,
-	  },
+	},
 })

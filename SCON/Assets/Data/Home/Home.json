@@ -1,31 +1,26 @@
 {
 	"success": true,
 	"data": {
-		"userId": 123,
-		"nickname": "bob",
-		"email": "abc123@gmail.com",
-		"profilePic": "profileURL",
-		"existAlarm": true,
-		"player": {
-			"playerId": 12,
-			"name": "홍길동",
-			"sport": "수영",
-			"belong": "서울"
-		},
+		"user_id": "1",
+		"alert": true,
+		"user_name": "닉네임",
+		"email": "aaa@aa.com",
+		"user_code": 1,
+		"user_goPlayer": true,
 		"follow": [
 			{
-				"playerId": 8,
-				"name": "둘리",
-				"sport": "달리기",
-				"belong": "경주",
-				"profilePic": "profileURL"
+				"player_id": "2023",
+				"player_name": "이진우",
+				"img_url": "ProfileDefaualt",
+				"player_major": "배트민턴 선수",
+				"player_belong": "선수소속명"
 			},
 			{
-				"playerId": 10,
-				"name": "김이박",
-				"sport": "펜싱",
-				"belong": "서울",
-				"profilePic": "profileURL"
+				"player_id": "2023",
+				"player_name": "이진우2",
+				"img_url": "ProfileDefault",
+				"player_major": "배트민턴 선수2",
+				"player_belong": "선수소속명2"
 			}
 		]
 	},
