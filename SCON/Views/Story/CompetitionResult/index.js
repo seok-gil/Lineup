@@ -22,7 +22,7 @@ export function CompetitionResult({navigation}) {
           <CompetitionElement data={item} key={index} navigation={navigation} />
         );
       })}
-      <ResultModal />
+      <ResultModal calendar={calendar} />
     </SafeAreaView>
   );
 }

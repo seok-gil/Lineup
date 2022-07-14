@@ -5,13 +5,7 @@ import Calendar from './Calendar';
 
 import styles from './ResultModal.styles';
 
-function ResultModal() {
-  const [calendar, setCalendar] = useState({
-    open: false,
-    start: '',
-    end: '',
-  });
-
+function ResultModal({calendar}) {
   return (
     <Modal
       // animationType='slide'
