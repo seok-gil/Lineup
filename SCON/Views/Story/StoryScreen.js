@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-import {View, Text, TouchableOpacity, SafeAreaView, Image} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 import StoryElement from './StoryElement';
 
@@ -13,18 +13,21 @@ export function StoryScreen({navigation}) {
   return (
     <SafeAreaView style={styles.storyScreenWrapper}>
       <StoryElement
+        navigation={navigation}
         text="피드"
         imageSrc={FeedIcon}
         navlink={'FeedRegist'}
         names={['Brent', 'Satya', 'Michaś']}
       />
       <StoryElement
+        navigation={navigation}
         text="대회 일정"
         imageSrc={ScheduleIcon}
         navlink={'CompetitionRegist'}
         names={['Brent', 'Satya', 'Michaś']}
       />
       <StoryElement
+        navigation={navigation}
         text="대회 결과"
         imageSrc={ResultIcon}
         navlink={'CompetitionResult'}
