@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { NavigationContainer, useNavigationState } from '@react-navigation/native';
 import { createStackNavigator, Header } from '@react-navigation/stack';
-import { SafeAreaView } from 'react-native';
+import { LoginPage } from './Views/Login';
+import { RegistAccept, MakeId, Password }  from "./Views/Login/Regist"
+import { ForgetPassword, PasswordReset }  from "./Views/Login/PasswordReset"
 import { TabScreen } from './Components';
 import { NotiScreen } from './Views/Noti';
 import { SettingAlertScreen } from './Views/SettingAlert';
@@ -20,6 +22,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator >
+        <AppStack.Screen name="LoginPage" component={LoginPage} />
+        <AppStack.Screen name="RegistAccpet" component={RegistAccept} />
+        <AppStack.Screen name="MakeId" component={MakeId} />
+        <AppStack.Screen name="Password" component={Password} />
+        <AppStack.Screen name="ForgetPassword" component={ForgetPassword} />
+        <AppStack.Screen name="PasswordReset" component={PasswordReset} />
         <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
         <AppStack.Screen name="AlertScreen" component={AlertScreen} />
         <AppStack.Screen name="Player" component={PlayerScreen} />

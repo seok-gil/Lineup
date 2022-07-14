@@ -6,7 +6,7 @@ import styles from './NickName.styles';
 import {DefaultProfileImage} from '../../Assets/Images';
 
 export function NickName({user}) {
-  const name = user.user_name;
+  const name = user.nickname;
   const email = user.email;
   return (
     <View style={styles.viewWrapper}>

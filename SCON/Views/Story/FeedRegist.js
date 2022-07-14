@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import { ButtonBig } from '../../Components';
 
 import styles from './FeedRegist.styles';
 import {globalButtonStyle, globalButtonTextStyle} from '../../Styles';

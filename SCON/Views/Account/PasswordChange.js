@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import validator from 'validator';
 
+import { ButtonBig } from "../../Components"
 import {SearchIcon} from '../../Assets/Icons';
-import {ButtonComponent} from '../../Components';
 
 export function PasswordChange({navigation}) {
   const [form, setForm] = useState({
@@ -134,7 +134,7 @@ export function PasswordChange({navigation}) {
       ) : (
         <Image source={SearchIcon} />
       )}
-      <ButtonComponent />
+			<ButtonBig component={'button'}/>
     </View>
   );
 }

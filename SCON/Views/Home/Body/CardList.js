@@ -15,7 +15,7 @@ import {AddIcon} from '../../../Assets/Icons';
 export function CardList({Data, navigation}) {
   const follow = Data.follow;
   const card = [];
-  const user_code = Data.user.user_code;
+  const user_code = 1;
   const emptyData = {player_id: null};
   const [page, setPage] = useState(0);
 

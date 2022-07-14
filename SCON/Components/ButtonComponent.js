@@ -1,12 +1,12 @@
 import React, { Component, useState } from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
-export function ButtonComponent() {
+export function ButtonBig({text,onPress}) {
   return (
     <View>
-		<TouchableOpacity>
+		<TouchableOpacity onPress={onPress}>
 			<Text>
-			ButtonComponent
+				{text}
 			</Text>
 		</TouchableOpacity>
     </View>
