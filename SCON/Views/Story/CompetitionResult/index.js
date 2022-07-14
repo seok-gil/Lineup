@@ -18,7 +18,9 @@ export function CompetitionResult({navigation}) {
   return (
     <SafeAreaView style={styles.competitionResultWrapper}>
       {competition.map((item, index) => {
-        return <CompetitionElement data={item} key={index} />;
+        return (
+          <CompetitionElement data={item} key={index} navigation={navigation} />
+        );
       })}
       <ResultModal />
     </SafeAreaView>

@@ -3,7 +3,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 
 import styles from './CompetitionElement.styles';
 
-const CompetitionElement = ({data}) => {
+const CompetitionElement = ({data, navigation}) => {
   console.log(data.input);
   let input = data.input;
   return (
