@@ -7,7 +7,7 @@ import styles from './Card.styles';
 export function CardList({ Data, navigation }) {
   const follow = Data.follow;
   const card = [];
-  const user_code = Data.user.user_code;
+  const user_code = Data.user_code;
   const emptyData = { "player_id": null }
   const [page, setPage] = useState(0);
   

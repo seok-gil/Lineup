@@ -30,7 +30,7 @@ function SearchID({inputs, navigation}) {
         })
         .map((player, index) => {
           if (index >= 4 && !more) return false;
-          return <ViewPlayer player={player} navigation={navigation} />;
+          return <ViewPlayer key={`view${index}`}player={player} navigation={navigation} />;
         })}
       <TouchableOpacity onPress={() => onClickMore()}>
         <View style={styles.searchExpand}>
