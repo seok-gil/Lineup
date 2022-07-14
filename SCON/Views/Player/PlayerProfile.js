@@ -15,7 +15,7 @@ import {DefaultProfileImage} from '../../Assets/Images';
 function PlayerProfileTab({profile}) {
   return (
     <View style={{flexDirection: 'row'}}>
-      <Image source={DefaultProfile} style={styles.image} />
+      <Image source={DefaultProfileImage} style={styles.image} />
       <View style={{flexDirection: 'column'}}>
         <Text> {profile.major}</Text>
         <Text> {profile.belong}</Text>
