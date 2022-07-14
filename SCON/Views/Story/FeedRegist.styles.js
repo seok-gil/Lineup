@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   feedRegistLabel: {
     fontWeight: '700',
     marginBottom: 16,
+    color: colors.TEXT_DARK,
   },
 
   feedRegistTextInput: {

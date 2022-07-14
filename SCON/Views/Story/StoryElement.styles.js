@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {listElementStyle} from '../../Styles';
+import {colors, listElementStyle} from '../../Styles';
 
 const styles = StyleSheet.create({
   storyElementWrapper: {
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
 
   storyTextWrapper: {
     flex: 1,
+    color: colors.TEXT_DARK,
   },
 
   storyText: {
