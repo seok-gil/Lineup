@@ -6,11 +6,9 @@ import { CardList } from "./CardList"
 
 import styles from './Body.styles';
 
-export function Body({ data, navigation }) {
-  if (!data) return <View />;
-  const user_code = data.player ? 1 : 1 ;
-  //TODO goPlayer
-  const [goPlayer, setgoPlayer] = useState(true);
+export function Body({ Data, navigation }) {
+  const user_code = Data.user_code;
+  const [goPlayer, setgoPlayer] = useState(Data.user_goPlayer);
 
   return (
     <View style={styles.bodyWrapper}>
@@ -34,7 +32,7 @@ export function Body({ data, navigation }) {
             : '본인 계정관리는 물론 선수 3명을 팔로우 할 수 있습니다'}
         </Text>
       </View>
-      <CardList data={data} navigation={navigation} />
+      <CardList Data={Data} navigation={navigation} />
     </View>
   );
 }
