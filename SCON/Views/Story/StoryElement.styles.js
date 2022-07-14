@@ -8,12 +8,14 @@ const styles = StyleSheet.create({
   },
   storyIcon: {
     marginRight: 15,
+    width: 16,
+    resizeMode: 'contain',
   },
   storyTextWrapper: {
     flex: 1,
   },
-  storytext: {
-    flex: 1,
+  storyText: {
+    fontWeight: '700',
   },
   rightIcon: {
     width: 11,
