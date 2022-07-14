@@ -13,3 +13,17 @@ export const listElementStyleNarrow = {
   ...listElementStyle,
   paddingVertical: 12,
 };
+
+export const globalButtonStyle = {
+  width: 300,
+  height: 40,
+  borderRadius: 20,
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: colors.THEME_SKYBLUE,
+};
+
+export const globalButtonTextStyle = {
+  fontWeight: '700',
+  color: colors.WHITE,
+};
