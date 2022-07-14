@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {colors, listElementStyle} from '../../../Styles';
 
 const styles = StyleSheet.create({
-  viewPlayerWrapper: {...listElementStyle, paddingVertical: 12},
+  viewPlayerWrapper: {...listElementStyle},
 
   viewPlayerImage: {
     width: 50,
