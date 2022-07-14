@@ -10,8 +10,12 @@ const styles = StyleSheet.create({
   feedInnerWrapper: {
     height: '100%',
     flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'space-between',
     padding: 30,
+  },
+  feedRegistTextWrapper: {
+    width: '100%',
   },
   feedRegistLabel: {
     fontWeight: '700',
