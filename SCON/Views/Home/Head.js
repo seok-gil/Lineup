@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 
 import {NickName} from './index';
 import LogoImage from '../../Assets/Images/LineupLogo.png'; // svg로 교체 추천
-import NotiIcon from '../../Assets/Images/NotiIcon.png'; // svg로 교체 추천
+import notiIcon from '../../Assets/Icons/notiIcon.png'; // svg로 교체 추천
 
 import styles from './Head.styles';
 

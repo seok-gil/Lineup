@@ -1,2 +1,2 @@
 export {colors} from './constants';
-export {listElementStyle} from './global';
+export {listElementStyle, listElementStyleNarrow} from './global';
