@@ -12,3 +12,27 @@ export function ButtonBig({text,onPress}) {
     </View>
   );
 }
+
+export function ButtonMiddleOn({text,onPress}) {
+	return (
+	  <View>
+		  <TouchableOpacity onPress={onPress}>
+			  <Text>
+				  {text}
+			  </Text>
+		  </TouchableOpacity>
+	  </View>
+	);
+  }
+
+export function ButtonMiddleOff({text,onPress}) {
+	return (
+	  <View>
+		  <TouchableOpacity onPress={onPress}>
+			  <Text>
+				  {text}
+			  </Text>
+		  </TouchableOpacity>
+	  </View>
+	);
+  }

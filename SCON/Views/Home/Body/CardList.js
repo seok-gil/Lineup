@@ -16,7 +16,7 @@ export function CardList({ data, navigation }) {
   const follow = data.follow;
   const card = [];
   const user_code = data.player ? 1 : 1;
-  const emptyData = { player_id: null };
+  const emptyData = { playerId: null };
   const [page, setPage] = useState(0);
   if (user_code == 1) card.push(data.player);
   for (let i = 0; i < 3; i++) {
@@ -28,7 +28,7 @@ export function CardList({ data, navigation }) {
       if (item.playerId && !item.profilePic) // Myplayer
         return (
           <TouchableOpacity
-            onPress={() => navigation.navigate('Player', {playerId : playerId})}
+            onPress={() => navigation.navigate('Player', {playerId : item.playerId})}
             style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
             <Image
               source={DefaultProfileImage} //TODO player url
@@ -56,7 +56,7 @@ export function CardList({ data, navigation }) {
       else if (item.playerId == null) {
         return (
           <TouchableOpacity
-            onPress={() => navigation.navigate('SearchStack')}
+            onPress={() => navigation.navigate('SearchScreen')}
             style={[styles.cardWrapper, styles.emptyCardWrapper]}>
             <Image source={AddIcon} style={styles.emptyCardImage} />
           </TouchableOpacity>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Image,
@@ -9,54 +9,82 @@ import {
   Touch,
 } from 'react-native';
 
-import {DefaultProfileImage} from '../../Assets/Images';
+import { DefaultProfileImage } from '../../Assets/Images';
 
-function PlayerProfileTab({profile}) {
+
+
+
+function PlayerProfileTab({ data }) {
   return (
-    <View style={{flexDirection: 'row'}}>
+    <View style={{ flexDirection: 'row' }}>
       <Image source={DefaultProfileImage} style={styles.image} />
-      <View style={{flexDirection: 'column'}}>
-        <Text> {profile.major}</Text>
-        <Text> {profile.belong}</Text>
+      <View style={{ flexDirection: 'column' }}>
+        <Text> {data.sport}</Text>
+        <Text> {data.belong}</Text>
       </View>
     </View>
   );
 }
 
-function PlayerData({profile, navigation}) {
+function PlayerData({ data, navigation }) {
+
+  const [rank, setRank] = useState({
+    "type": '',
+    "rank": '',
+  })
+
+  useEffect(() => {
+    const ranks = data.ranks
+    const arr = []
+    for (var i in ranks)
+      arr.push([i, ranks[i]])
+    arr.sort(function (a, b) {
+      return a[1] - b[1];
+    });
+    console.log(arr[0])
+    if (arr[0]) {
+      setRank({
+        "type": arr[0][0],
+        "rank": arr[0][1]
+      })
+      console.log(rank, "aaaa")
+    }
+  }, [data])
+
+
   return (
-    <View style={{flexDirection: 'row'}}>
+    <View style={{ flexDirection: 'row' }}>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate('Record', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('Record', { names: ['Brent', 'Satya', 'Michaś'] })
         }>
         <Text>전적</Text>
-        <Text> {profile.score}</Text>
+        <Text> {data.recordCnt}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate('Fan', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('Fan', { names: ['Brent', 'Satya', 'Michaś'] })
         }>
         <Text>팬</Text>
-        <Text>{profile.fan}</Text>
+        <Text>{data.followCnt}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate('Rank', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('Rank', { names: ['Brent', 'Satya', 'Michaś'] })
         }>
-        <Text>{profile.rank_type}</Text>
-        <Text> {profile.rank}위</Text>
+        <Text>{rank.type.toUpperCase()}</Text>
+        <Text> {rank.rank}위</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
-export function PlayerProfile({profile, navigation}) {
+export function PlayerProfile({ data, navigation }) {
   return (
     <View>
-      <View style={{flexDirection: 'row'}}>
-        <PlayerProfileTab profile={profile} />
-        <PlayerData profile={profile} navigation={navigation} />
+      <View style={{ flexDirection: 'row' }}>
+        <PlayerProfileTab data={data} />
+        <PlayerData data={data} navigation={navigation} />
       </View>
     </View>
   );
