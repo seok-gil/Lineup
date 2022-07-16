@@ -1,5 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {colors, globalInputStyle} from '../../../Styles';
+import {
+  colors,
+  globalAsteriskStyle,
+  globalInputStyle,
+  globalLabelStyle,
+} from '../../../Styles';
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -29,19 +34,13 @@ const styles = StyleSheet.create({
   },
 
   titleStrong: {
-    color: colors.TEXT_DARK,
+    ...globalLabelStyle,
     fontWeight: '700',
-    fontSize: 13,
   },
 
-  titleNormal: {
-    color: colors.TEXT_DARK,
-    fontSize: 13,
-  },
+  titleNormal: globalLabelStyle,
 
-  asterisk: {
-    color: colors.THEME_SKYBLUE,
-  },
+  asterisk: globalAsteriskStyle,
 
   rankWrapper: {
     flexDirection: 'row',
