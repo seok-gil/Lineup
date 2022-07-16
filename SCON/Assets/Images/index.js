@@ -4,4 +4,4 @@ export {default as GoldMedalImage} from './goldMedal.png';
 export {default as LineupLogoImage} from './lineupLogo.png';
 export {default as DefaultProfileImage} from './defaultProfile.png';
 export {default as CalendarImage} from './calendar.png';
-export {default as GrayMedal} from './grayMedal';
+export {default as GrayMedalImage} from './grayMedal.png';
