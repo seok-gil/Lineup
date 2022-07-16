@@ -8,7 +8,6 @@ import Data from '../../Assets/Data/Record.json';
 import styles from './RecordScreen.styles';
 
 export function RecordScreen({navigation}) {
-  console.log(Data);
   return (
     <View style={styles.recordScreenWrapper}>
       <RecordHead medal={Data.Medal} />
