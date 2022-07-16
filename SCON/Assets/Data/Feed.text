@@ -1,0 +1,82 @@
+
+{
+	"feedId" : 1,
+	"content" : "피드 내용",
+	"likeCnt" : 45,
+	"iLike" : 12345,
+	"commentCnt" : 10,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "feed"
+}
+{
+	"feedId" : 2,
+	"content" : "피드 내용 : 대회",
+	"likeCnt" : 20,
+	"iLike" : null,
+	"commentCnt" : 12,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "event"
+}
+{
+	"feedId" : 3,
+	"content" : "피드 내용 : 대회 결과",
+	"likeCnt" : 42,
+	"iLike" : null,
+	"commentCnt" : 40,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "record"
+}
+{
+	"feedId" : 4,
+	"content" : "피드 내용",
+	"likeCnt" : 45,
+	"iLike" : 12345,
+	"commentCnt" : 10,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "feed"
+}
+{
+	"feedId" : 5,
+	"content" : "피드 내용 : 대회",
+	"likeCnt" : 20,
+	"iLike" : null,
+	"commentCnt" : 12,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "event"
+}
+{
+	"feedId" : 6,
+	"content" : "피드 내용 : 대회 결과",
+	"likeCnt" : 42,
+	"iLike" : null,
+	"commentCnt" : 40,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "record"
+}
+{
+	"feedId" : 7,
+	"content" : "피드 내용",
+	"likeCnt" : 45,
+	"iLike" : 12345,
+	"commentCnt" : 10,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "feed"
+}
+{
+	"feedId" : 8,
+	"content" : "피드 내용 : 대회",
+	"likeCnt" : 20,
+	"iLike" : null,
+	"commentCnt" : 12,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "event"
+}
+{
+	"feedId" : 9,
+	"content" : "피드 내용 : 대회 결과",
+	"likeCnt" : 42,
+	"iLike" : null,
+	"commentCnt" : 40,
+	"date" : "yyyy-MM-dd HH:mm:ss",
+	"type" : "record"
+}

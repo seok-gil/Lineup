@@ -13,16 +13,20 @@ import { DefaultProfileImage } from '../../../Assets/Images';
 import { AddIcon } from '../../../Assets/Icons';
 
 export function CardList({ data, navigation }) {
+  if (!data) return (<View/>)
+  
   const follow = data.follow;
   const card = [];
   const user_code = data.player ? 1 : 1;
   const emptyData = { playerId: null };
   const [page, setPage] = useState(0);
   if (user_code == 1) card.push(data.player);
+  
   for (let i = 0; i < 3; i++) {
-    if (follow[i]) card.push(follow[i]);
+    if (follow && follow[i]) card.push(follow[i]);
     else card.push(emptyData);
   }
+
   function PlayerCard({ item }) {
     if (item) {
       if (item.playerId && !item.profilePic) // Myplayer
@@ -42,7 +46,7 @@ export function CardList({ data, navigation }) {
       else if (item.playerId != null)
         return (
           <TouchableOpacity
-            onPress={() => navigation.navigate('Player', {playerId : playerId})}
+            onPress={() => navigation.navigate('Player', {playerId : item.playerId})}
             style={[styles.cardWrapper, styles.playerCardWrapper]}>
             <Image
               source={DefaultProfileImage}

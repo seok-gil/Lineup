@@ -30,11 +30,14 @@ export function HomeScreen({ navigation }) {
         setData(thing)
       }))
   },[])
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      {/* <Head data={data[0]} navigation={navigation} /> */}
-      {/* <Body data={data[0]} navigation={navigation} /> */}
-    </SafeAreaView>
-  );
+  if (data)
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <Head data={data} navigation={navigation} />
+        <Body data={data} navigation={navigation} />
+      </SafeAreaView>
+    );
+  else
+    return (<SafeAreaView />)
 }
 
