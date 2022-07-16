@@ -31,3 +31,12 @@ export const globalInputStyle = {
   fontSize: 11,
   borderRadius: 3,
 };
+
+export const globalLabelStyle = {
+  color: colors.TEXT_DARK,
+  fontSize: 13,
+};
+
+export const globalAsteriskStyle = {
+  color: colors.THEME_SKYBLUE,
+};
