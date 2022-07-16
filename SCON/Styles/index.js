@@ -3,4 +3,5 @@ export {
   listElementStyle,
   globalButtonStyle,
   globalButtonTextStyle,
+  globalInputStyle,
 } from './global';

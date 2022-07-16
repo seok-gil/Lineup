@@ -22,3 +22,12 @@ export const globalButtonTextStyle = {
   fontWeight: '700',
   color: colors.WHITE,
 };
+
+export const globalInputStyle = {
+  borderWidth: 1,
+  borderColor: colors.GRAYC9,
+  paddingHorizontal: 8,
+  paddingVertical: 4,
+  fontSize: 11,
+  borderRadius: 3,
+};

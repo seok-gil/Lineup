@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../../Styles/constants';
+import {colors, globalInputStyle} from '../../../Styles';
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -68,16 +68,10 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
 
-  rankInput: {
-    borderWidth: 1,
-    borderColor: colors.GRAYC9,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    fontSize: 11,
-    borderRadius: 3,
-  },
+  rankInput: globalInputStyle,
 
   scoreInput: {
+    ...globalInputStyle,
     marginTop: 10,
     marginBottom: 20,
   },

@@ -58,7 +58,7 @@ const CompetitionResultModal = ({modal, openModal, isSelected}) => {
             <View style={styles.scoreWrapper}>
               <Text style={styles.titleStrong}>기록, 스코어 등</Text>
               <TextInput
-                style={{...styles.rankInput, ...styles.scoreInput}}
+                style={styles.scoreInput}
                 value={modal.open}
                 placeholder={'예) 27초 11.7'}
                 placeholderTextColor="#0E0E0E66"
