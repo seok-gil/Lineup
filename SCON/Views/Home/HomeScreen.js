@@ -32,8 +32,8 @@ export function HomeScreen({ navigation }) {
   },[])
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Head data={data[0]} navigation={navigation} />
-      <Body data={data[0]} navigation={navigation} />
+      {/* <Head data={data[0]} navigation={navigation} /> */}
+      {/* <Body data={data[0]} navigation={navigation} /> */}
     </SafeAreaView>
   );
 }

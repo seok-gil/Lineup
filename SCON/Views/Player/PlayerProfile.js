@@ -29,8 +29,8 @@ function PlayerProfileTab({ data }) {
 function PlayerData({ data, navigation }) {
 
   const [rank, setRank] = useState({
-    "type": '',
-    "rank": '',
+    "type": 'ALL',
+    "rank": '0',
   })
 
   useEffect(() => {
@@ -41,13 +41,11 @@ function PlayerData({ data, navigation }) {
     arr.sort(function (a, b) {
       return a[1] - b[1];
     });
-    console.log(arr[0])
     if (arr[0]) {
       setRank({
         "type": arr[0][0],
         "rank": arr[0][1]
       })
-      console.log(rank, "aaaa")
     }
   }, [data])
 
