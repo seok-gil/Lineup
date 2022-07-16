@@ -6,13 +6,13 @@ import { View, TouchableOpacity, SafeAreaView, Text, Image } from 'react-native'
 import { CommentRegist, CommentList } from "./Comment"
 
 import {Comment, HeartEmpty} from '../../Assets/Icons';
-
+import  {Time} from "../../Components"
 function FeedBody({ data }) {
   if (!data) return (<View />)
   return (
     <View>
       <Text>{data.content}</Text>
-      <Text>{data.date}</Text>
+				<Time time ={data.date} />
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity
           onPress={() =>

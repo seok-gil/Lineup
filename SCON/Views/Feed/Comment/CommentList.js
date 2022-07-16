@@ -11,7 +11,7 @@ import {
 import { CommentModal, Reply } from "./"
 import { HeartSEmpty, HeartSFilled } from '../../../Assets/Icons';
 import { DefaultProfileImage } from '../../../Assets/Images';
-
+import { Time } from "../../../Components/Time"
 function FeedComment({ comment }) {
 	if (!comment) return <View />
 	return (
@@ -19,7 +19,7 @@ function FeedComment({ comment }) {
 			<View style={{ flexDirection: 'row' }}>
 				<Image source={DefaultProfileImage} />
 				<Text> {comment.writer.닉네임} </Text>
-				<Text> {comment.commentDate} </Text>
+				<Time time = {comment.commentDate}/>
 				<CommentModal />
 			</View>
 			<Text>{comment.commentContent}</Text>
@@ -55,8 +55,6 @@ export function CommentList({ navigation }) {
 				body: null
 			})
 				.then((thing => {
-					console.log("temp\n", temp)
-					console.log("thing\n", thing)
 					temp.push(thing)
 				}))
 		}
