@@ -35,7 +35,7 @@ export function CardList({ data, navigation }) {
             onPress={() => navigation.navigate('Player', {playerId : item.playerId})}
             style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
             <Image
-              source={DefaultProfileImage} //TODO player url
+              source={{uri: item.profilePic}} //TODO player url
               style={styles.playerCardImage}
             />
             <Text style={styles.nameText}>{item.name}</Text>
@@ -49,7 +49,7 @@ export function CardList({ data, navigation }) {
             onPress={() => navigation.navigate('Player', {playerId : item.playerId})}
             style={[styles.cardWrapper, styles.playerCardWrapper]}>
             <Image
-              source={DefaultProfileImage}
+              source={{uri: item.profilePic}} //TODO player url
               style={styles.playerCardImage}
             />
             <Text style={styles.nameText}>{item.name}</Text>
