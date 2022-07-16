@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
 
 import { CommentModal, Reply } from "./"
 import { HeartSEmpty, HeartSFilled } from '../../../Assets/Icons';
-import { DefaultProfileImage } from '../../../Assets/Images';
 import { Time } from "../../../Components/Time"
 
+
+//TODO heart EMPTY FILLED
 export function CommentOne({ comment }) {
 	if (!comment) return <View />
 	return (
