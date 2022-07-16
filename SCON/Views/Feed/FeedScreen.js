@@ -1,95 +1,60 @@
-import React, {Component, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { ApiFetchOne } from '../../Components/API/ApiFetch';
 
-import {
-  Button,
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  Image,
-  TextInput,
-} from 'react-native';
+import { View, TouchableOpacity, SafeAreaView, Text, Image } from 'react-native';
 
-import {DefaultProfileImage} from '../../Assets/Images';
+import { CommentRegist, CommentList } from "./Comment"
 
-function FeedBody({data}) {
+import {Comment, HeartEmpty} from '../../Assets/Icons';
+
+function FeedBody({ data }) {
+  if (!data) return (<View />)
   return (
     <View>
       <Text>{data.content}</Text>
-      <View style={{flexDirection: 'row'}}>
+      <Text>{data.date}</Text>
+      <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
+            navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })
           }
-          style={{flexDirection: 'row'}}>
-          <Text>하트</Text>
-          <Text>{data.like_cnt}</Text>
+          style={{ flexDirection: 'row' }}>
+          <Image source={HeartEmpty}/>
+          <Text>{data.likeCnt}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
+            navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })
           }
-          style={{flexDirection: 'row'}}>
-          <Text>댓글</Text>
-          <Text>{data.coment_cnt}</Text>
+          style={{ flexDirection: 'row' }}>
+          <Image source={Comment}/>
+          <Text>{data.commentCnt}</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
 
-function FeedComment({comment, navigation}) {
-  console.log(comment);
-  return (
-    <>
-      <Text>
-        {comment.user_id} : {comment.comment_content}
-      </Text>
-    </>
-  );
-}
 
-function CommentList({data, navigation}) {
-  const view = [];
-  console.log(data);
-  const commentlist = () => {
-    for (let i = 0; i < data.length; ++i) {
-      view.push(
-        <FeedComment
-          key={`player-comment-${i}`}
-          comment={data[i]}
-          navigation={navigation}
-        />,
-      );
-    }
-    return view;
-  };
-  return <View>{commentlist()}</View>;
-}
+export function FeedScreen({ route, navigation }) {
+  const [data, setData] = useState([])
 
-function CommentRegist({value}) {
-  const [name, setName] = useState('');
+  useEffect(() => {
+    ApiFetchOne({
+      method: 'GET',
+      url: `http://localhost:1337/api/feeds/${route.params.feedId}`,
+      headers: { "Authorization": "token" },
+      body: null
+    })
+      .then((thing => {
+        setData(thing)
+      }))
+  }, [])
   return (
-    <View style={{flexDirection: 'row'}}>
-      <Image source={DefaultProfileImage} />
-      <TextInput
-        value={value}
-        placeholder={'댓글 쓰기'}
-        placeholderTextColor="#C5C8CE"
-        onChangeText={text => setName(text)}
-      />
-    </View>
-  );
-}
-
-export function FeedScreen({navigation}) {
-  const Data = require('../../Assets/Data/Feed.json').Feed;
-  return (
-    <SafeAreaView style={{flex: 3, flexDirection: 'column'}}>
-      <FeedBody data={Data} />
+    <SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
+      <FeedBody data={data} />
       <CommentRegist />
-      <CommentList data={Data.comment} />
+      <CommentList navigation={navigation}/>
     </SafeAreaView>
   );
 }

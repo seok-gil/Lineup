@@ -1,33 +1,30 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { ApiFetchOne } from '../../Components/API/ApiFetch';
+import { SafeAreaView } from 'react-native';
+import { PlayerProfile, PlayerFeeds, PlayerFollow } from "./"
 
-import {
-	Button,
-	View,
-	TouchableOpacity,
-	StyleSheet,
-	Text,
-	SafeAreaView,
+export function PlayerScreen({ navigation, route }) {
+	const [data, setData] = useState([])
+	useEffect(() => {
+		ApiFetchOne({
+			method: 'GET',
+			url: `http://localhost:1337/api/player-homes/${route.params.playerId}`,
+			headers: { "Authorization": "token" },
+			body: null
+		})
+			.then((thing => {
+				setData(thing)
+			}))
+	}, [])
 
-} from 'react-native';
-
-import { PlayerProfile, PlayerFeeds } from "./"
-
-
-function PlayerFollow({navigation}) {
-	return (
-		<TouchableOpacity onPress={() => navigation.navigate('StoryScreen', { names: ['Brent', 'Satya', 'Michaś'] })}>
-			<Text>스토리 추가하기 </Text>
-		</TouchableOpacity>
-	)
-}
-
-export function PlayerScreen({navigation}) {
-	const Data = require('../../Assets/Data/PlayerHome.json')
-	return (
-		<SafeAreaView>
-			<PlayerProfile profile={Data.player} navigation={navigation}/>
-			<PlayerFollow navigation={navigation} />
-			<PlayerFeeds feed={Data.feed} navigation={navigation}/>
-		</SafeAreaView>
-	);
+	if (data)
+		return (
+			<SafeAreaView>
+				<PlayerProfile data={data} navigation={navigation} />
+				<PlayerFollow data={data} navigation={navigation} />
+				<PlayerFeeds playerId={route.params.playerId} navigation={navigation}/>
+			</SafeAreaView>
+		);
+	else
+		return (<SafeAreaView />)
 }

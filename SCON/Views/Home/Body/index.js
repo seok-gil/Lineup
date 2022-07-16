@@ -11,7 +11,6 @@ export function Body({ data, navigation }) {
   const user_code = data.player ? 1 : 1 ;
   //TODO goPlayer
   const [goPlayer, setgoPlayer] = useState(true);
-
   return (
     <View style={styles.bodyWrapper}>
       {user_code === 1 && goPlayer === true && (
