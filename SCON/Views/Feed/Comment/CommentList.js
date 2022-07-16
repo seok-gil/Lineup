@@ -12,33 +12,7 @@ import { CommentModal, Reply } from "./"
 import { HeartSEmpty, HeartSFilled } from '../../../Assets/Icons';
 import { DefaultProfileImage } from '../../../Assets/Images';
 import { Time } from "../../../Components/Time"
-function FeedComment({ comment }) {
-	if (!comment) return <View />
-	return (
-		<View>
-			<View style={{ flexDirection: 'row' }}>
-				<Image source={DefaultProfileImage} />
-				<Text> {comment.writer.닉네임} </Text>
-				<Time time = {comment.commentDate}/>
-				<CommentModal />
-			</View>
-			<Text>{comment.commentContent}</Text>
-			<View style={{ flexDirection: 'row' }}>
-				<Image source={HeartSEmpty} />
-				<Text>좋아요{comment.commentLikeCnt}개 </Text>
-				<TouchableOpacity onPress={() => onclick}>
-					<Text>답글 숨기기 </Text>
-				</TouchableOpacity>
-				<TouchableOpacity onPress={() => onclick}>
-					<Text>답글 달기 </Text>
-				</TouchableOpacity>
-			</View>
-			{comment.replys.map((item) => {
-				return (<Reply reply={item} />)
-			})}
-		</View>
-	);
-}
+import { CommentOne } from "./CommentOne"
 
 export function CommentList({ navigation }) {
 	const [data, setData] = useState([])
@@ -67,7 +41,7 @@ export function CommentList({ navigation }) {
 		if (data) {
 			for (let i = 0; i < data.length; ++i) {
 				view.push(
-					<FeedComment
+					<CommentOne
 						key={`player-comment-${i}`}
 						comment={data[i]}
 						navigation={navigation}

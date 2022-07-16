@@ -14,7 +14,6 @@ export function PlayerProfileTab({ data }) {
 	);
   }
 
-
   const styles = StyleSheet.create({
 	image: {
 	  width: '30%',
