@@ -71,7 +71,7 @@ const CompetitionResultModal = ({modal, openModal, isSelected}) => {
                   onValueChange={() => openModal('search')}
                 />
               </View>
-              <TouchableOpacity onPress={openModal}>
+              <TouchableOpacity onPress={() => openModal()}>
                 <Text style={styles.checkboxLabel}>
                   결과입력을 하지 않겠습니다.
                 </Text>
@@ -79,10 +79,14 @@ const CompetitionResultModal = ({modal, openModal, isSelected}) => {
             </View>
           </View>
           <View style={styles.modalBottom}>
-            <TouchableOpacity onPress={openModal} style={styles.cancelButton}>
+            <TouchableOpacity
+              onPress={() => openModal()}
+              style={styles.cancelButton}>
               <Text style={styles.buttonText}> 취소</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={openModal} style={styles.submitButton}>
+            <TouchableOpacity
+              onPress={() => openModal()}
+              style={styles.submitButton}>
               <Text style={styles.buttonText}> 확인 </Text>
             </TouchableOpacity>
           </View>
