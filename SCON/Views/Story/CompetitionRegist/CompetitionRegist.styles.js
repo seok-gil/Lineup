@@ -1,9 +1,59 @@
 import {StyleSheet} from 'react-native';
 
-import {colors, listElementStyle} from '../../../Styles';
+import {colors, globalInputStyle} from '../../../Styles';
 
 const styles = StyleSheet.create({
-  // TODO: 세부종목 완성되면 시작
+  competitionRegistWrapper: {
+    flex: 1,
+    backgroundColor: colors.WHITE,
+  },
+
+  competitionRegistInner: {
+    flexDirection: 'column',
+    height: '100%',
+    padding: 30,
+  },
+
+  inputLabelStyle: {
+    color: colors.TEXT_DARK,
+    fontSize: 13,
+    marginBottom: 5,
+    fontWeight: '700',
+  },
+
+  inputStyle: {
+    ...globalInputStyle,
+    fontSize: 13,
+    marginBottom: 15,
+  },
+
+  rangeInputStyle: {
+    ...globalInputStyle,
+    fontSize: 13,
+  },
+
+  dateRangeWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+
+  waveText: {
+    color: colors.TEXT_LIGHT,
+    marginHorizontal: 5,
+  },
+
+  calendarImageStyle: {
+    width: 16,
+    resizeMode: 'contain',
+    marginLeft: 5,
+  },
+
+  borderLine: {
+    borderWidth: 1,
+    borderColor: colors.GRAYE6,
+    marginBottom: 15,
+  },
 });
 
 export default styles;
