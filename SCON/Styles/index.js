@@ -1,7 +1,7 @@
 export {colors} from './constants';
 export {
   listElementStyle,
-  listElementStyleNarrow,
   globalButtonStyle,
   globalButtonTextStyle,
+  globalInputStyle,
 } from './global';

@@ -1,6 +1,7 @@
 export const colors = {
   WHITE: '#ffffff',
   BLACK: '#000000',
+  BLACK_FADED: '#000000AA',
   GRAYF6: '#F6F6F6',
   GRAYE6: '#E6E6E6',
   GRAYC9: '#C9C9C9',
