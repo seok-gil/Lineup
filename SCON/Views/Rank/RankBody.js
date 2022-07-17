@@ -19,14 +19,17 @@ function RankBody({navigation, route}) {
         <RankMedal player={player[2]} rank={3} navigation={navigation} />
       </View>
       <ScrollView>
-        {player.map((player, index) => (
-          <ETC
-            player={player}
-            index={index}
-            key={`rankETC${index}`}
-            navigation={navigation}
-          />
-        ))}
+        {player.map(
+          (player, index) =>
+            index > 3 && (
+              <ETC
+                player={player}
+                index={index}
+                key={`rankETC${index}`}
+                navigation={navigation}
+              />
+            ),
+        )}
       </ScrollView>
     </SafeAreaView>
   );
