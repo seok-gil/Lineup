@@ -10,6 +10,8 @@ export {default as XIcon} from './xIcon.png';
 export {default as AlertIcon} from './alertIcon.png';
 export {default as CircleAddIcon} from './circleAddIcon.png';
 export {default as CircleAddIconBlue} from './circleAddIconBlue.png';
+export {default as CrownIcon} from './crownIcon.png';
+export {default as HeartIcon} from './heartIcon.png';
 export {default as ViewMore} from './viewMore.png';
 export {default as HeartEmpty} from './heartEmpty.png';
 export {default as HeartSEmpty} from './heartSEmpty.png';
