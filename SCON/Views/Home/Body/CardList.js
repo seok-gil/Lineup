@@ -43,7 +43,9 @@ export function CardList({data, navigation}) {
         horizontal
         snapToAlignment="start"
         decelerationRate="fast"
-        renderItem={PlayerCard}
+        renderItem={({item}) => (
+          <PlayerCard item={item} navigation={navigation} />
+        )}
         onScroll={onScroll}
         pagingEnabled
         showsHorizontalScrollIndicator={false}

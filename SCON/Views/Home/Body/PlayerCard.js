@@ -4,7 +4,7 @@ import {Text, TouchableOpacity, Image} from 'react-native';
 import styles from './PlayerCard.styles';
 import {AddIcon} from '../../../Assets/Icons';
 
-function PlayerCard({item}) {
+function PlayerCard({navigation, item}) {
   if (!item) return null;
   if (item.playerId && !item.profilePic)
     // Myplayer
