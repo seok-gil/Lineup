@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
   },
 
   rank: {
+    color: colors.TEXT_DARK,
+    fontSize: 17,
     marginBottom: 10,
   },
 
@@ -55,7 +57,10 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
 
-  boldText: {...globalTextStyle, fontWeight: '700'},
+  boldText: {
+    color: colors.TEXT_DARK,
+    fontWeight: '700',
+  },
 });
 
 export default styles;
