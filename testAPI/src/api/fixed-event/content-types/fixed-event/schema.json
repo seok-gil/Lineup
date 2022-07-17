@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fixed_events",
+  "info": {
+    "singularName": "fixed-event",
+    "pluralName": "fixed-events",
+    "displayName": "fixed_events"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

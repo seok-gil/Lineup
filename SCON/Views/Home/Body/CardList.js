@@ -14,7 +14,6 @@ import { AddIcon } from '../../../Assets/Icons';
 
 export function CardList({ data, navigation }) {
   if (!data) return (<View/>)
-  
   const follow = data.follow;
   const card = [];
   const user_code = data.player ? 1 : 1;
@@ -35,7 +34,7 @@ export function CardList({ data, navigation }) {
             onPress={() => navigation.navigate('Player', {playerId : item.playerId})}
             style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
             <Image
-              source={DefaultProfileImage} //TODO player url
+              source={{uri: item.profilePic}} //TODO player url
               style={styles.playerCardImage}
             />
             <Text style={styles.nameText}>{item.name}</Text>
@@ -49,7 +48,7 @@ export function CardList({ data, navigation }) {
             onPress={() => navigation.navigate('Player', {playerId : item.playerId})}
             style={[styles.cardWrapper, styles.playerCardWrapper]}>
             <Image
-              source={DefaultProfileImage}
+              source={{uri: item.profilePic}} //TODO player url
               style={styles.playerCardImage}
             />
             <Text style={styles.nameText}>{item.name}</Text>

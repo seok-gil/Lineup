@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ApiFetchOne } from '../../Components/API/ApiFetch';
 import { SafeAreaView } from 'react-native';
-import { PlayerProfile, PlayerFeeds, PlayerFollow } from "./"
+import { PlayerFeeds, PlayerFollow, PlayerProfile} from "./"
 
 export function PlayerScreen({ navigation, route }) {
 	const [data, setData] = useState([])

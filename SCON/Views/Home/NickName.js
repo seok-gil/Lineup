@@ -10,7 +10,7 @@ export function NickName({user}) {
   const email = user.email;
   return (
     <View style={styles.viewWrapper}>
-      <Image source={DefaultProfileImage} style={styles.image} />
+      <Image source={{uri : user.profilePic}} style={styles.image} />
       <View style={styles.viewProfileInfo}>
         <Text style={styles.nameText} numberOfLines={1} ellipsizeMode="tail">
           {name}

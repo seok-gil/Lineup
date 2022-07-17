@@ -15,7 +15,6 @@ import {SearchIcon} from '../../Assets/Icons';
 import {DefaultProfileImage} from '../../Assets/Images';
 
 export function SearchId({data, navigation}) {
-  console.log(data);
   return (
     <TouchableOpacity
       onPress={() =>

@@ -5,6 +5,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { ButtonBig } from '../../../Components';
 import { PlayerFeed } from "./PlayerFeed"
 import { PlayerFixedFeed } from "./PlayerFixedFeeds"
+
 export function PlayerFeeds({ playerId, feed, navigation }) {
 	const [data, setData] = useState([])
 	const [nextFeed, setNextFeed] = useState(2)
