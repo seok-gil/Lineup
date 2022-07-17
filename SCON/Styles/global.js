@@ -32,7 +32,7 @@ export const globalInputStyle = {
   borderRadius: 3,
 };
 
-export const globalLabelStyle = {
+export const globalBoldTextStyle = {
   color: colors.TEXT_DARK,
   fontSize: 13,
 };
