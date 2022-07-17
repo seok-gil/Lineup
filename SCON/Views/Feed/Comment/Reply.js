@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ApiFetchOne } from '../../Components/API/ApiFetch';
 
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-import { DefaultProfileImage } from '../../../Assets/Images';
 import { ViewMore, ReplyIcon } from "../../../Assets/Icons/"
 import { Time } from '../../../Components';
 

@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ApiFetchOne } from '../../../Components/API/ApiFetch';
 import { ButtonBig } from '../../../Components';
-import {
-	View,
-	TouchableOpacity,
-	Text,
-	Image,
-} from 'react-native';
+import { View } from 'react-native';
 
-import { CommentModal, Reply } from "./"
-import { HeartSEmpty, HeartSFilled } from '../../../Assets/Icons';
-import { DefaultProfileImage } from '../../../Assets/Images';
-import { Time } from "../../../Components/Time"
 import { CommentOne } from "./CommentOne"
 
 export function CommentList({ navigation }) {
