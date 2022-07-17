@@ -10,38 +10,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {DefaultProfileImage} from '../../Assets/Images';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-
-function RankETC({player, navigation}) {
-  const view = [];
-  function ETC({player, index}) {
-    return (
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate('Player', {names: ['Brent', 'Satya', 'Michaś']})
-        }>
-        <View style={{flexDirection: 'row'}}>
-          <Text>{index}</Text>
-          <Image source={DefaultProfileImage} style={styles.image2} />
-          <Text> {player.player_name}</Text>
-          <Text> {player.player_player_major}</Text>
-          <Text> 좋아요 X {player.player_like} </Text>
-        </View>
-      </TouchableOpacity>
-    );
-  }
-  for (let i = 3; i < player.length; ++i)
-    view.push(
-      <ETC
-        key={`rankETC${i}`}
-        player={player[i]}
-        index={i}
-        navigation={navigation}
-      />,
-    );
-  return view;
-}
+import ETC from './ETC';
 
 function RankMedal({player, rank, navigation}) {
   return (
@@ -71,7 +41,14 @@ function RankBody({navigation, route}) {
         <RankMedal player={Data[2]} rank="3" navigation={navigation} />
       </View>
       <ScrollView>
-        <RankETC keu={`rankEtc`} player={Data} navigation={navigation} />
+        {Data.map((player, index) => (
+          <ETC
+            player={player}
+            index={index}
+            key={`rankETC${index}`}
+            navigation={navigation}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
