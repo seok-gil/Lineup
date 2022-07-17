@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
 
-import {colors, listElementStyleNarrow} from '../../../Styles';
+import {colors, listElementStyle} from '../../../Styles';
 
 const styles = StyleSheet.create({
-  viewPlayerWrapper: {...listElementStyleNarrow},
+  viewPlayerWrapper: {...listElementStyle},
 
   viewPlayerImage: {
     width: 50,

@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   playerCardWrapper: {
     ...listElementStyle,
     flexDirection: 'column',
+    alignItems: 'flex-start',
   },
 
   playerCardInfo: {
