@@ -10,7 +10,6 @@ async function ApiFetch({method, url, headers, body}) {
 			// console.log("Request successful");
 			resChecked = res;
 			let data = await resChecked.json();
-			console.log("api",data.data[0].attributes.data)
 			return (data.data[0].attributes.data)
 		}
 		else {
@@ -37,6 +36,7 @@ async function ApiFetchOne({method, url, headers, body}) {
 			return (data.data.attributes.data)
 		}
 		else {
+			console.log(url)
 			console.log("Request unsuccessful");
 		}
 	}
