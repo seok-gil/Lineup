@@ -14,7 +14,6 @@ import { AddIcon } from '../../../Assets/Icons';
 
 export function CardList({ data, navigation }) {
   if (!data) return (<View/>)
-  
   const follow = data.follow;
   const card = [];
   const user_code = data.player ? 1 : 1;

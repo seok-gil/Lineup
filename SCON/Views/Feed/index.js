@@ -20,13 +20,13 @@ export function FeedScreen({ route, navigation }) {
 			}))
 	}, [])
 	if (data)
-	return (
-		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
-			<FeedBody data={data} />
-			<CommentRegist />
-			<CommentList navigation={navigation} />
-		</SafeAreaView>
-	);
-	else 
-	return ( <SafeAreaView/>)
+		return (
+			<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
+				<FeedBody data={data} />
+				<CommentRegist />
+				<CommentList navigation={navigation} />
+			</SafeAreaView>
+		);
+	else
+		return (<SafeAreaView />)
 }

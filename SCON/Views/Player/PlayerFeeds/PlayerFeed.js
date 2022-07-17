@@ -5,6 +5,7 @@ import { Time } from "../../../Components/"
 
 export function PlayerFeed({ feed, navigation }) {
 	if (!feed) return (<View />)
+	console.log("feed",feed)
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('FeedScreen', { feedId: `${feed.feedId}` })}>
 			<Text>{feed.content}</Text>

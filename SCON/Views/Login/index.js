@@ -1,16 +1,17 @@
 import React, { Component, useState } from 'react';
 import { SafeAreaView, View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
-import { DefaultProfileImage } from '../../Assets/Images'
-
-
-import {SearchIcon} from '../../Assets/Icons';
-
+import { LineupLogoImage } from '../../Assets/Images'
+import validator from 'validator';
 import { ButtonBig } from "../../Components"
 
 export function LoginPage({navigation}) {
   const [form, setForm] = useState({
     email: '',
     password: '',
+  })
+  const [validate, setValidate] = useState({
+    email: false,
+    password: false,
   })
 
   const onInput = (key, e) => {
@@ -21,13 +22,15 @@ export function LoginPage({navigation}) {
     });
   }
 
-  const [validate, setValidate] = useState({
-    email: false,
-    password: false,
-  })
+
+  const onLogin = () => {
+    if (!validate.email && !validate.password)
+      navigation.navigate('Tab')
+  }
+
   return (
     <SafeAreaView style={{ flexDirection: 'column', }}>
-      <Image source={DefaultProfileImage} />
+      <Image source={LineupLogoImage} />
       <TextInput
         value={form.email}
         placeholder={'이메일 입력'}
@@ -42,7 +45,7 @@ export function LoginPage({navigation}) {
         onChange={e => onInput('password', e)}
       />
       {validate.email == false && (<Text>비밀번호가 틀렸습니다.</Text>)}
-      <ButtonBig text={'로그인'}onPress={() => navigation.navigate('Tab')}/>
+      <ButtonBig text={'로그인'} onPress={onLogin}/>
       <TouchableOpacity onPress={() => navigation.navigate('RegistAccpet')}>
         <Text>회원가입</Text>
       </TouchableOpacity>
