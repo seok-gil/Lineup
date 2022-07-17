@@ -3,7 +3,7 @@ import {
   colors,
   globalAsteriskStyle,
   globalInputStyle,
-  globalBoldTextStyle,
+  globalTextStyle,
 } from '../../../Styles';
 
 const styles = StyleSheet.create({
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
   },
 
   titleStrong: {
-    ...globalBoldTextStyle,
+    ...globalTextStyle,
     fontWeight: '700',
   },
 
-  titleNormal: globalBoldTextStyle,
+  titleNormal: globalTextStyle,
 
   asterisk: globalAsteriskStyle,
 

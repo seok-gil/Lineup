@@ -1,17 +1,13 @@
 import {StyleSheet} from 'react-native';
 
-import {
-  colors,
-  globalAsteriskStyle,
-  globalBoldTextStyle,
-} from '../../../Styles';
+import {colors, globalAsteriskStyle, globalTextStyle} from '../../../Styles';
 
 const styles = StyleSheet.create({
   labelWrapper: {
     flexDirection: 'row',
   },
   inputLabelStyle: {
-    ...globalBoldTextStyle,
+    ...globalTextStyle,
     fontWeight: '700',
     marginBottom: 3,
     marginRight: 3,

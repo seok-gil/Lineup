@@ -12,11 +12,11 @@ function RankBody({navigation, route}) {
     return parseFloat(b.player_like) - parseFloat(a.player_like);
   });
   return (
-    <SafeAreaView style={{flexDirection: 'column'}}>
-      <View style={{flexDirection: 'row'}}>
-        <RankMedal player={player[0]} rank="1" navigation={navigation} />
-        <RankMedal player={player[1]} rank="2" navigation={navigation} />
-        <RankMedal player={player[2]} rank="3" navigation={navigation} />
+    <SafeAreaView style={styles.rankBodyWrapper}>
+      <View style={styles.rankMedalWrapper}>
+        <RankMedal player={player[1]} rank={2} navigation={navigation} />
+        <RankMedal player={player[0]} rank={1} navigation={navigation} />
+        <RankMedal player={player[2]} rank={3} navigation={navigation} />
       </View>
       <ScrollView>
         {player.map((player, index) => (

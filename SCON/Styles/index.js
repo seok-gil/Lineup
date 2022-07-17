@@ -4,6 +4,6 @@ export {
   globalButtonStyle,
   globalButtonTextStyle,
   globalInputStyle,
-  globalBoldTextStyle,
+  globalTextStyle,
   globalAsteriskStyle,
 } from './global';
