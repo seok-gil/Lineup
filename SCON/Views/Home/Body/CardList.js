@@ -1,16 +1,9 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-} from 'react-native';
+import {View, FlatList, Dimensions} from 'react-native';
 
 import PlayerCard from './PlayerCard';
 
-import styles from './Card.styles';
+import styles from './CardList.styles';
 
 export function CardList({data, navigation}) {
   if (!data) return <View />;
@@ -59,8 +52,8 @@ export function CardList({data, navigation}) {
           paddingHorizontal: offset + gap / 2,
         }}
       />
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        {Array.from({length: card.length}, (_, i) => i).map(i => (
+      <View style={styles.indicatorWrapper}>
+        {Array.from({length: card.length}, (_, i) => (
           <Indicator key={`indicator_${i}`} focused={i} />
         ))}
       </View>
