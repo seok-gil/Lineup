@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 import { ViewMore, ReplyIcon } from "../../../Assets/Icons/"
-import { TimeRelative } from '../../../Components';
+import { TimeRelative } from '../../../Components/Time';
 
 export function Reply({ reply }) {
 	return (

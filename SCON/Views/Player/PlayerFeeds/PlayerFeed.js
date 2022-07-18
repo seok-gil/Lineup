@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import {Comment, HeartEmpty} from '../../../Assets/Icons';
-import { TimeRelative } from "../../../Components/"
+import { TimeRelative } from "../../../Components/Time"
 
 export function PlayerFeed({ feed, navigation }) {
 	if (!feed) return (<View />)
