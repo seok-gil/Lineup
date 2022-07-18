@@ -31,16 +31,16 @@ export function RegistAccept({ navigation }) {
   return (
     <SafeAreaView style={{ flexDirection: 'column', }}>
       <Text>서비스를 이용하기 위해서 약관동의가 필요합니다.</Text>
-      <CheckBox value={accept.all}
+      <CheckBox value={accept.all} boxType='square'
         onValueChange={() => onClick('all')} />
       <Text>모두 확인, 동의합니다.</Text>
-      <CheckBox value={accept.service}
+      <CheckBox value={accept.service} boxType='square'
         onValueChange={() => onClick('service')} />
       <Text>(필수)서비스 이용약관</Text>
-      <CheckBox value={accept.privacy}
+      <CheckBox value={accept.privacy} boxType='square'
         onValueChange={() => onClick('privacy')} />
       <Text>(필수)개인정보 수집 및 이용동의</Text>
-      <ButtonBig text={'다음'} onPress={() =>navigation.navigate('MakeId')} />
+      <ButtonBig text={'다음'} onPress={() => navigation.navigate('MakeId')} />
     </SafeAreaView>
   );
 }

@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "admin_homes",
+  "info": {
+    "singularName": "admin-home",
+    "pluralName": "admin-homes",
+    "displayName": "AdminHome"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

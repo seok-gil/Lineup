@@ -16,12 +16,15 @@ import { FeedScreen } from './Views/Feed';
 import { StoryScreen, FeedRegist, CompetitionRegist, CompetitionResult, CompetitionResultDetail } from './Views/Story';
 import { ProfileScreen } from './Views/MyPage';
 import { AccountScreen, PasswordChange, PlayerRegist, Withdrawal } from './Views/Account';
+import { AdminTabScreen, AdminNotiTabScreen, RegistMemberTabScreen, Reports, Reporter, PlayerRegistTabScreen, PlayerReigstDetail, Inquiry } from './Views/Admin';
+
 const AppStack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator >
+        <AppStack.Screen name="AdminTab" component={AdminTabScreen} options={{ headerShown: false }} />
         <AppStack.Screen name="LoginPage" component={LoginPage} />
         <AppStack.Screen name="RegistAccpet" component={RegistAccept} />
         <AppStack.Screen name="MakeId" component={MakeId} />
@@ -47,14 +50,14 @@ export default function App() {
         <AppStack.Screen name="PasswordChange" component={PasswordChange} />
         <AppStack.Screen name="PlayerRegist" component={PlayerRegist} />
         <AppStack.Screen name="Withdrawal" component={Withdrawal} />
+        <AppStack.Screen name="AdminNotiTab" component={AdminNotiTabScreen}/>
+        <AppStack.Screen name="RegistMemberTab" component={RegistMemberTabScreen}/>
+        <AppStack.Screen name="Report" component={Reports}/>
+        <AppStack.Screen name="Reporter" component={Reporter}/>
+        <AppStack.Screen name="RegistTab" component={PlayerRegistTabScreen}/>
+        <AppStack.Screen name="PlayerReigstDetail" component={PlayerReigstDetail}/>
+        <AppStack.Screen name="Inquiry" component={Inquiry}/>
       </AppStack.Navigator>
     </NavigationContainer>
   );
 }
-/*
-<AppStack.Screen name="PasswordChange" component={PasswordChange} />
-    <AppStack.Screen name="PlayerRegist" component={PlayerRegist} />
-    <AppStack.Screen name="Withdrawal" component={Withdrawal} />
-<AppStack.Screen name="Profile" component={ProfileScreen} />
-        <AppStack.Screen name="AccountStack" component={AccountScreen} />
-    */

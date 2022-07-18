@@ -68,6 +68,7 @@ const CompetitionResultModal = ({modal, openModal, isSelected}) => {
               <View style={styles.checkbox}>
                 <CheckBox
                   value={isSelected}
+                  boxType='square'
                   onValueChange={() => openModal('search')}
                 />
               </View>

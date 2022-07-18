@@ -30,9 +30,6 @@ export function PasswordReset({ navigation }) {
         placeholderTextColor="#C5C8CE"
         onChange={e => onInput('email', e)}
       />
-      <TouchableOpacity onPress={() => console.log("이메일전송")}>
-        <Text>##############</Text>
-      </TouchableOpacity>
       {validate.password == false && (<Text>올바른 비밀번호가 아닙니다.</Text>)}
       <TextInput
         value={form.certification}
@@ -41,7 +38,7 @@ export function PasswordReset({ navigation }) {
         onChange={e => onInput('certification', e)}
       />
       {validate.certification == false && (<Text>상단 비밀번호와 일치하지 않습니다.</Text>)}
-      <ButtonBig onPress={() => navigation.navigate('TabScreen')} />
+      <ButtonBig text={"확인"} onPress={() => navigation.navigate('Tab')} />
     </SafeAreaView>
   );
 }
