@@ -27,7 +27,16 @@ export function PlayerFeeds({ playerId, feed, navigation }) {
 		setLastFeed(nextFeed)
 		setData(temp)
 	}, [nextFeed])
-	
+		// for (var i = lastFeed; i < nextFeed; ++i) {
+		// 	data.push(
+		// 	ApiFetchOne({
+		// 		method: 'GET',
+		// 		url: `http://localhost:1337/api/feeds/${i}`,
+		// 		headers: { "Authorization": "token" },
+		// 		body: null
+		// 	}))
+		// }
+
 	const view = []
 	const feedlist = () => {
 		for (let i = 0; i < data.length; ++i) {

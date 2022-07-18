@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
 
 import { CommentModal, Reply } from "./"
 import { HeartSEmpty, HeartSFilled } from '../../../Assets/Icons';
-import { TimeRelative } from "../../../Components"
+import { TimeRelative } from "../../../Components/Time"
 
 
 //TODO heart EMPTY FILLED
