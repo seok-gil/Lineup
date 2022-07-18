@@ -22,7 +22,6 @@ export function LoginPage({navigation}) {
     });
   }
 
-
   const onLogin = () => {
     if (!validate.email && !validate.password)
       navigation.navigate('Tab')

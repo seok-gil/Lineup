@@ -14,7 +14,6 @@ function SearchInput({inputs, setInputs}) {
       [keyvalue]: text,
     });
   };
-
   return (
     <View style={styles.searchInputWrapper}>
       <Image source={SearchIcon} style={styles.searchInputIcon} />

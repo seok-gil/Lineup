@@ -5,7 +5,6 @@ import {SmileIcon, ChatBubbleIcon, XIcon} from '../../../Assets/Icons';
 import { ApiFetch } from '../../../Components/API/ApiFetch';
 
 function AlertComponent({alert}) {
-  console.log("alert", alert)
   if (!alert) return <View />;
 
   //TODO delete alarmAPI

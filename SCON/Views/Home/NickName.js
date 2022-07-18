@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {Button, Text, View, Image} from 'react-native';
 
 import styles from './NickName.styles';
-import {DefaultProfileImage} from '../../Assets/Images';
 
 export function NickName({user}) {
   const name = user.nickname;
