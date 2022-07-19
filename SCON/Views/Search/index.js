@@ -5,6 +5,7 @@ import SearchInput from './SearchInput';
 import SearchID from './SearchID';
 
 import styles from './SearchScreen.styles';
+import {ViewPlayer} from "./SearchID/ViewPlayer"
 
 export function SearchScreen({navigation,data}) {
   console.log(data)

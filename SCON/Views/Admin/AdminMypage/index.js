@@ -17,6 +17,7 @@ export function AdminMypage({ navigation }) {
       setData(thing);
     });
   }, []);
+  
   if (!data) return <SafeAreaView/>
   return (
     <SafeAreaView>

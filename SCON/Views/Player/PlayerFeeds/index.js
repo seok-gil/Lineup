@@ -27,16 +27,7 @@ export function PlayerFeeds({ playerId, feed, navigation }) {
 		setLastFeed(nextFeed)
 		setData(temp)
 	}, [nextFeed])
-		// for (var i = lastFeed; i < nextFeed; ++i) {
-		// 	data.push(
-		// 	ApiFetchOne({
-		// 		method: 'GET',
-		// 		url: `http://localhost:1337/api/feeds/${i}`,
-		// 		headers: { "Authorization": "token" },
-		// 		body: null
-		// 	}))
-		// }
-
+	
 	const view = []
 	const feedlist = () => {
 		for (let i = 0; i < data.length; ++i) {
@@ -52,8 +43,8 @@ export function PlayerFeeds({ playerId, feed, navigation }) {
 	}
 	return (
 		<View>
-			<ButtonBig onPress={() => setNextFeed(nextFeed + 2) } text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`}/>
-			<PlayerFixedFeed navigation={navigation}/>
+			<ButtonBig onPress={() => setNextFeed(nextFeed + 2)} text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`} />
+			<PlayerFixedFeed navigation={navigation} />
 			{feedlist()}
 		</View>
 	)
