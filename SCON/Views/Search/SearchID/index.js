@@ -6,7 +6,7 @@ import ViewPlayer from './ViewPlayer';
 
 import styles from './SearchID.styles';
 
-function SearchID({inputs, navigation}) {
+function SearchID({ inputs, navigation}) {
   const {search} = inputs;
   const data = require('../../../Assets/Data/Search.json').player;
   const [more, setMore] = useState(false);

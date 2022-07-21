@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "player_regists",
+  "info": {
+    "singularName": "player-regist",
+    "pluralName": "player-regists",
+    "displayName": "playerRegist"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

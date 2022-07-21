@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, TouchableOpacity, SafeAreaView, Text, Image } from 'react-native';
 import { Comment, HeartEmpty } from '../../Assets/Icons';
-import { Time } from "../../Components"
+import { TimeRelative } from "../../Components/Time"
 
 export function FeedBody({ data }) {
   if (!data) return (<View />)
   return (
     <View>
       <Text>{data.content}</Text>
-      <Time time={data.date} />
+      <TimeRelative time={data.date} />
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity
           onPress={() =>

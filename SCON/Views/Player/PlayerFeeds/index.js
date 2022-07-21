@@ -43,8 +43,8 @@ export function PlayerFeeds({ playerId, feed, navigation }) {
 	}
 	return (
 		<View>
-			<ButtonBig onPress={() => setNextFeed(nextFeed + 2) } text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`}/>
-			<PlayerFixedFeed navigation={navigation}/>
+			<ButtonBig onPress={() => setNextFeed(nextFeed + 2)} text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`} />
+			<PlayerFixedFeed navigation={navigation} />
 			{feedlist()}
 		</View>
 	)

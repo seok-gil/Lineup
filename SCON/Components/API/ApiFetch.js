@@ -10,11 +10,10 @@ async function ApiFetch({method, url, headers, body}) {
 			// console.log("Request successful");
 			resChecked = res;
 			let data = await resChecked.json();
-			console.log("api",data.data[0].attributes.data)
 			return (data.data[0].attributes.data)
 		}
 		else {
-			console.log("Request unsuccessful");
+			console.log("Request unsuccessful1");
 		}
 	}
 	catch (err) {
@@ -34,10 +33,12 @@ async function ApiFetchOne({method, url, headers, body}) {
 			// console.log("Request successful");
 			resChecked = res;
 			let data = await resChecked.json();
+			// console.log("APIONE", data)
 			return (data.data.attributes.data)
 		}
 		else {
-			console.log("Request unsuccessful");
+			console.log(url)
+			console.log("Request unsuccessful2");
 		}
 	}
 	catch (err) {
@@ -45,6 +46,28 @@ async function ApiFetchOne({method, url, headers, body}) {
 	}
 }
 
+async function ApiFetchArr({method, url, headers, body}) {
+	try {
+		let res = await fetch(url , {
+			method: method,
+			headers: headers,
+			body : body
+		})
+		let resChecked
+		if (res.ok) {
+			// console.log("Request successful");
+			resChecked = res;
+			let data = await resChecked.json();
+			return (data.data.attributes.data)
+		}
+		else {
+			console.log("Request unsuccessful3");
+		}
+	}
+	catch (err) {
+		console.log(err);
+	}
+}
 /*
 ///////////////////////////////////////////////////////GET
 fetch("https://jsonplaceholder.typicode.com/posts/1")
@@ -86,4 +109,4 @@ fetch("https://jsonplaceholder.typicode.com/posts/1", {
 	.then((data) => console.log(data))
 */
 
-export { ApiFetch, ApiFetchOne }
+export { ApiFetch, ApiFetchOne, ApiFetchArr }

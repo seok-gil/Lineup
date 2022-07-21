@@ -1,6 +1,19 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import validator from 'validator';
+
 export function Time(time) {
+
+	var year = time.time.slice(0, 4)
+	var month = time.time.slice(5, 7)
+	var day = time.time.slice(8, 10)
+	var relativeTime = year + '-' + month + '-' + day
+
+	return (<Text>{relativeTime}</Text>)
+}
+
+
+export function TimeRelative(time) {
 	var year = time.time.slice(0, 4)
 	var month = time.time.slice(5, 7)
 	var day = time.time.slice(8, 10)

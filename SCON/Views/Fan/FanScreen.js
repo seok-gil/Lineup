@@ -1,36 +1,30 @@
 import React, {Component, useState, useRef} from 'react';
 
-import {
-  Button,
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  Image,
-  TextInput,
-  SafeAreaView,
-} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text, Image, TextInput, SafeAreaView} from 'react-native';
 
 import {SearchIcon} from '../../Assets/Icons';
 import {DefaultProfileImage} from '../../Assets/Images';
 
 export function SearchId({data, navigation}) {
+  if (!data) return <View />
+
+  console.log(data)
   return (
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
       }>
       <View style={{flexDirection: 'row'}}>
-        <Image source={DefaultProfileImage} style={styles.image} />
+        <Image source={{uri:data.profilePic}} style={styles.image} />
         <View style={{flexDirection: 'column'}}>
-          <Text> 팬닉네임</Text>
+          <Text> {data.nickname}</Text>
         </View>
       </View>
     </TouchableOpacity>
   );
 }
 
-export function SerachInput() {
+export function SearchInput() {
   const searchRef = useRef();
   const [inputs, setInputs] = useState({
     search: '',
@@ -57,15 +51,7 @@ export function SerachInput() {
   );
 }
 
-export function FanScreen({navigation}) {
-  const data = require('../../Assets/Data/Fan.json').Fan;
-  return (
-    <SafeAreaView style={{flex: 3, flexDirection: 'column'}}>
-      <SerachInput />
-      <SearchId data={data} navigation={navigation} />
-    </SafeAreaView>
-  );
-}
+
 const styles = StyleSheet.create({
   image: {
     width: '10%',

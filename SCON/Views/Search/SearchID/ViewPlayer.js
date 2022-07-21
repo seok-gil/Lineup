@@ -6,7 +6,6 @@ import {DefaultProfileImage} from '../../../Assets/Images';
 
 function ViewPlayer({player, navigation}) {
   const {player_name, player_major, player_belong} = player;
-
   return (
     <TouchableOpacity
       onPress={() =>
