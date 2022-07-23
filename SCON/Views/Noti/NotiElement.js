@@ -24,11 +24,10 @@ function NotiElement({data}) {
             <Text style={styles.notiTitle}>{data.title} </Text>
             <Text style={styles.notiCreated}>{data.createdAt} </Text>
           </View>
-          {expand ? (
-            <Image style={styles.upIcon} source={DownIcon} />
-          ) : (
-            <Image style={styles.downIcon} source={DownIcon} />
-          )}
+          <Image
+            style={expand ? styles.upIcon : styles.downIcon}
+            source={DownIcon}
+          />
         </View>
       </TouchableOpacity>
       {expand && (
