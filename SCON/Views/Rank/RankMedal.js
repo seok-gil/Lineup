@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, View, Text, TouchableOpacity} from 'react-native';
-import {CrownIcon, HeartIcon} from '../../Assets/Icons';
+import {CrownIcon, HeartSFilledIcon} from '../../Assets/Icons';
 
 import {DefaultProfileImage} from '../../Assets/Images';
 import {globalTextStyle} from '../../Styles';
@@ -32,7 +32,7 @@ function RankMedal({player, rank, navigation}) {
       </View>
       <Text style={styles.playerFrom}>소속</Text>
       <View style={styles.likes}>
-        <Image source={HeartIcon} style={styles.heart} />
+        <Image source={HeartSFilledIcon} style={styles.heart} />
         <Text style={styles.boldText}>{player.player_like}</Text>
       </View>
     </TouchableOpacity>

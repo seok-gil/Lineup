@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 
 import styles from './ETC.styles';
-import {HeartIcon} from '../../Assets/Icons';
+import {HeartSFilledIcon} from '../../Assets/Icons';
 import {DefaultProfileImage} from '../../Assets/Images';
 
 function ETC({player, index, navigation}) {
@@ -23,7 +23,7 @@ function ETC({player, index, navigation}) {
           <Text style={styles.from}>소속</Text>
         </View>
         <View style={styles.likeCount}>
-          <Image source={HeartIcon} style={styles.heart} />
+          <Image source={HeartSFilledIcon} style={styles.heart} />
           <Text style={styles.likes}>{player.player_like} </Text>
         </View>
       </View>
