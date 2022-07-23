@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import { ButtonBig } from '../../Components';
+import {ButtonBig} from '../../Components';
 
 import styles from './FeedRegist.styles';
 import {globalButtonStyle, globalButtonTextStyle} from '../../Styles';
@@ -26,6 +26,7 @@ export function FeedRegist({navigation}) {
         <View style={styles.feedRegistTextWrapper}>
           <Text style={styles.feedRegistLabel}>내용</Text>
           <TextInput
+            multiline={true}
             style={styles.feedRegistTextInput}
             value={feed}
             placeholder={'어떤 말을 남기고 싶으신가요?'}
@@ -35,9 +36,9 @@ export function FeedRegist({navigation}) {
           />
         </View>
         <TouchableOpacity
-          style={globalButtonStyle}
+          style={styles.feedRegistButton}
           onPress={() => navigation.navigate('CompetitionResult')}>
-          <Text style={globalButtonTextStyle}> 확인 </Text>
+          <Text style={styles.feedRegistButtonText}> 확인 </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

@@ -1,6 +1,11 @@
 import {StyleSheet} from 'react-native';
 
-import {colors} from '../../Styles';
+import {
+  colors,
+  globalButtonStyle,
+  globalButtonTextStyle,
+  globalLargeInputStyle,
+} from '../../Styles';
 
 const styles = StyleSheet.create({
   feedRegistWrapper: {
@@ -26,16 +31,11 @@ const styles = StyleSheet.create({
     color: colors.TEXT_DARK,
   },
 
-  feedRegistTextInput: {
-    width: '100%',
-    height: 150,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    textAlignVertical: 'top',
-    borderWidth: 1,
-    borderColor: colors.GRAYE6,
-    borderRadius: 5,
-  },
+  feedRegistTextInput: globalLargeInputStyle,
+
+  feedRegistButton: globalButtonStyle,
+
+  feedRegistButtonText: globalButtonTextStyle,
 });
 
 export default styles;

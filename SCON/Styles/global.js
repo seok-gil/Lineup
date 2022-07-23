@@ -32,6 +32,15 @@ export const globalInputStyle = {
   borderRadius: 3,
 };
 
+export const globalLargeInputStyle = {
+  ...globalInputStyle,
+  width: '100%',
+  height: 150,
+  fontSize: 14,
+  textAlignVertical: 'top',
+  borderRadius: 5,
+};
+
 export const globalTextStyle = {
   color: colors.TEXT_DARK,
   fontSize: 13,
