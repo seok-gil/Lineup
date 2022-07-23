@@ -20,3 +20,6 @@ export {default as CommentIcon} from './comment.png';
 export {default as ReplyIcon} from './reply.png';
 export {default as PinnedIcon} from './pined.png';
 export {default as TagIcon} from './dDay.png';
+export {default as LogoutIcon} from './logoutIcon.png';
+export {default as MegaphoneIcon} from './megaphoneIcon.png';
+export {default as QnAIcon} from './qnaIcon.png';
