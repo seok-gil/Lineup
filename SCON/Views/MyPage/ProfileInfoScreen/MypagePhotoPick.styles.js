@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {colors} from '../../Styles/constants';
+import {colors} from '../../../Styles/constants';
 
 export const backgroundPhotoPickStyles = StyleSheet.create({
   photoPickWrapper: {
