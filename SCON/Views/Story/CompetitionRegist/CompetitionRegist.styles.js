@@ -23,14 +23,10 @@ const styles = StyleSheet.create({
 
   inputStyle: {
     ...globalInputStyle,
-    fontSize: 13,
     marginBottom: 15,
   },
 
-  rangeInputStyle: {
-    ...globalInputStyle,
-    fontSize: 13,
-  },
+  rangeInputStyle: globalInputStyle,
 
   dateRangeWrapper: {
     flexDirection: 'row',

@@ -28,7 +28,7 @@ export const globalInputStyle = {
   borderColor: colors.GRAYC9,
   paddingHorizontal: 8,
   paddingVertical: 4,
-  fontSize: 11,
+  fontSize: 13,
   borderRadius: 3,
 };
 

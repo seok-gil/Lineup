@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   textInputStyle: {
     ...globalInputStyle,
     width: '100%',
-    fontSize: 13,
   },
 
   xIconWrapper: {
