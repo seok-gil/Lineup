@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors, globalTextStyle} from '../../Styles';
+import {colors} from '../../Styles';
 
 const styles = StyleSheet.create({
   rankMedalWrapper: {
