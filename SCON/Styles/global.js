@@ -26,8 +26,7 @@ export const globalButtonTextStyle = {
 export const globalInputStyle = {
   borderWidth: 1,
   borderColor: colors.GRAYC9,
-  paddingHorizontal: 8,
-  paddingVertical: 4,
+  padding: 8,
   fontSize: 13,
   borderRadius: 3,
 };
