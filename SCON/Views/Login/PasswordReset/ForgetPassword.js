@@ -1,14 +1,11 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   View,
-  Image,
   Text,
-  Alert,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {ButtonBig} from '../../../Components';
 
 import styles from './ForgetPassword.styles';
 
@@ -30,6 +27,7 @@ export function ForgetPassword({navigation}) {
       [key]: text,
     });
   };
+
   return (
     <SafeAreaView style={styles.forgetWrapper}>
       <View style={styles.forgetInner}>

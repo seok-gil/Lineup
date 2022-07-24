@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,11 +8,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-// import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
-import CheckBox from '@react-native-community/checkbox';
 import styles from './MakeID.styles';
+import validator from 'validator';
 
-export function MakeId({navigation}) {
+export function MakeId({ navigation }) {
   const [form, setForm] = useState({
     nickname: '',
     email: '',
@@ -25,13 +24,21 @@ export function MakeId({navigation}) {
     certification: false,
   });
 
+  const [post, setPost] = useState(false)
+
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
+    const { text } = e.nativeEvent;
     setForm({
       ...form,
       [key]: text,
     });
   };
+
+  useEffect(() => {
+    if (validator.isEmail(form.email))
+      setPost(true)
+  }, [form.email])
+
   return (
     <SafeAreaView style={styles.makeIDwrapper}>
       <View style={styles.makeIDInner}>
@@ -62,7 +69,12 @@ export function MakeId({navigation}) {
             />
             <TouchableOpacity
               onPress={() => console.log('이메일전송')}
-              style={styles.sendButton}>
+              disabled={!post}
+              style={
+                post ?
+                  styles.sendButton
+                  : styles.sendButton
+              }>
               <Text style={styles.sendButtonText}>전송</Text>
             </TouchableOpacity>
           </View>
@@ -88,6 +100,7 @@ export function MakeId({navigation}) {
           )}
         </View>
         <TouchableOpacity
+          // disabled = {!validate.nickname && !validate.email && !validate.certification}
           onPress={() => navigation.navigate('Password')}
           style={
             validate.nickname && validate.email && validate.certification

@@ -5,26 +5,30 @@ import CheckBox from '@react-native-community/checkbox';
 import styles from './RegistAccept.styles';
 
 export function RegistAccept({navigation}) {
-  const [accept, SetAccpet] = useState({
+  const [accept, setAccept] = useState({
     all: false,
     service: false,
     privacy: false,
   });
 
   const onClick = key => {
+    var temp = accept
     if (key != 'all') {
-      SetAccpet({
-        ...accept,
-        [key]: !accept[key],
-      });
+      temp[key] = !accept[key]
+      console.log(key,temp)
+      if (temp.service && temp.privacy) {
+        temp['all'] = true
+        console.log(temp)
+      }
     }
-    if (key == 'all') {
-      SetAccpet({
+    else if (key == 'all') {
+      temp = {
         all: !accept['all'],
         service: !accept['all'],
         privacy: !accept['all'],
-      });
+      }
     }
+    setAccept(temp)
   };
 
   return (
@@ -67,6 +71,7 @@ export function RegistAccept({navigation}) {
           </View>
         </View>
         <TouchableOpacity
+          disabled={!accept.privacy && !accept.service}
           onPress={() => navigation.navigate('MakeId')}
           style={
             accept.privacy && accept.service
