@@ -1,17 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, View, Text} from 'react-native';
 
-import { PlayerProfileTab } from "./PlayerProfileTab"
-import { PlayerData } from './PlayerData';
+import PlayerData from './PlayerData';
+import PlayerFollowButton from './PlayerFollowButton';
+import styles from './PlayerProfile.styles';
 
-export function PlayerProfile({ data, navigation }) {
-	return (
-	  <View>
-		<View style={{ flexDirection: 'row' }}>
-		  <PlayerProfileTab data={data} />
-		  <PlayerData data={data} navigation={navigation} />
-		</View>
-	  </View>
-	);
-  }
-  
+import {DefaultProfileImage, SwimmingBackground} from '../../../Assets/Images';
+
+function PlayerProfile({data, navigation}) {
+  return (
+    <View style={styles.profileInnerWrapper}>
+      <Image source={SwimmingBackground} style={styles.backgroundImage} />
+      <Image source={DefaultProfileImage} style={styles.profileImage} />
+      <View style={styles.profileBottom}>
+        <View style={styles.playerInfo}>
+          <View style={styles.playerInfoLeft}>
+            <Text style={styles.playerMajor}>수영선수 {/* data.sport */}</Text>
+            <Text style={styles.playerSchool}>
+              강원체육고등학교 {/* data.belong */}
+            </Text>
+          </View>
+          <PlayerData data={data} navigation={navigation} />
+        </View>
+        <PlayerFollowButton data={data} navigation={navigation} />
+      </View>
+    </View>
+  );
+}
+
+export default PlayerProfile;
