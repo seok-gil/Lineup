@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {CommentIcon, HeartEmpty} from '../../../Assets/Icons';
+import {CommentIcon, HeartEmptyIcon} from '../../../Assets/Icons';
 import {TimeRelative} from '../../../Components/Time';
+
+import styles from './PlayerFeed.styles';
 
 export function PlayerFeed({feed, navigation}) {
   if (!feed) return <View />;
@@ -9,24 +11,25 @@ export function PlayerFeed({feed, navigation}) {
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('FeedScreen', {feedId: `${feed.feedId}`})
-      }>
-      <Text>{feed.content}</Text>
-      <View style={{flexDirection: 'row'}}>
+      }
+      style={styles.feedWrapper}>
+      <Text style={styles.feedContent}>{feed.content}</Text>
+      <View style={styles.feedLikedBox}>
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
           }
-          style={{flexDirection: 'row'}}>
-          <Image source={HeartEmpty} />
-          <Text>{feed.likeCnt}</Text>
+          style={styles.feedLikedBox}>
+          <Image source={HeartEmptyIcon} style={styles.likeIcon} />
+          <Text style={styles.likeText}>{feed.likeCnt}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
           }
-          style={{flexDirection: 'row'}}>
-          <Image source={CommentIcon} />
-          <Text>{feed.commentCnt}</Text>
+          style={styles.feedLikedBox}>
+          <Image source={CommentIcon} style={styles.likeIcon} />
+          <Text style={styles.likeText}>{feed.commentCnt}</Text>
           <TimeRelative time={feed.date} />
         </TouchableOpacity>
       </View>

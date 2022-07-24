@@ -52,7 +52,7 @@ export function PlayerFixedFeed({navigation}) {
             onPress={() =>
               navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
             }
-            style={styles.feedLikeBoxInner}>
+            style={styles.feedLikedBox}>
             <Image source={HeartEmptyIcon} style={styles.likeIcon} />
             <Text style={styles.likeText}>{data.likeCnt}</Text>
           </TouchableOpacity>
@@ -60,7 +60,7 @@ export function PlayerFixedFeed({navigation}) {
             onPress={() =>
               navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
             }
-            style={styles.feedLikeBoxInner}>
+            style={styles.feedLikedBox}>
             <Image source={CommentIcon} style={styles.likeIcon} />
             <Text style={styles.likeText}>{data.commentCnt} </Text>
           </TouchableOpacity>
