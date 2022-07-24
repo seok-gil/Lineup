@@ -24,7 +24,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator >
-        {/* <AppStack.Screen name="AdminTab" component={AdminTabScreen} options={{ headerShown: false }} /> */}
+        <AppStack.Screen name="AdminTab" component={AdminTabScreen} options={{ headerShown: false }} />
         <AppStack.Screen name="LoginPage" component={LoginPage} />
         <AppStack.Screen name="RegistAccpet" component={RegistAccept} />
         <AppStack.Screen name="MakeId" component={MakeId} />
