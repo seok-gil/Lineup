@@ -1,5 +1,4 @@
-import React, {Component, useState} from 'react';
-import {useForm} from 'react-hook-form';
+import React, {useState} from 'react';
 import {Calendar} from './Calender';
 
 import {
@@ -12,8 +11,9 @@ import {
 } from 'react-native';
 
 import styles from './CompetitionRegist.styles';
-import {calendarIMG} from '../../../Assets/Images';
-// TODO: 세부종목 부분 완성되면 시작
+import {CalendarImage} from '../../../Assets/Images';
+import DetailEventElement from './DetailEventElement';
+import CompetitionRegistLabel from './CompetitionRegistLabel';
 
 export function CompetitionRegist({navigation}) {
   const [startDate, setStartDate] = useState('');
@@ -33,58 +33,53 @@ export function CompetitionRegist({navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 3}}>
-      <View style={{flexDirection: 'column'}}>
-        <Text> 대회기간 </Text>
-        <View>
-          <TouchableOpacity
-            onPress={() => {
-              setCalender(true);
-            }}
-            style={{flexDirection: 'row'}}>
-            <TextInput
-              value={startDate}
-              placeholder={' YYYY / MM / DD'}
-              placeholderTextColor="#C5C8CE"
-              onChange={e => onChange('start', e)}
-            />
-            <Text> ~ </Text>
-            <TextInput
-              value={endDate}
-              placeholder={' YYYY / MM / DD'}
-              placeholderTextColor="#C5C8CE"
-              onChange={e => setCalender(false)}
-            />
-            <Image source={calendarIMG} />
-          </TouchableOpacity>
-        </View>
-        <Text> 대회 장소</Text>
+    <SafeAreaView style={styles.competitionRegistWrapper}>
+      <View style={styles.competitionRegistInner}>
+        <CompetitionRegistLabel text="대회 기간" isAsterisk />
+        <TouchableOpacity
+          style={styles.dateRangeWrapper}
+          onPress={() => {
+            setCalender(true);
+          }}>
+          <TextInput
+            style={styles.rangeInputStyle}
+            value={startDate}
+            placeholder={' YYYY / MM / DD'}
+            placeholderTextColor="#0E0E0E66"
+            onChange={e => onChange('start', e)}
+          />
+          <Text style={styles.waveText}>~</Text>
+          <TextInput
+            style={styles.rangeInputStyle}
+            value={endDate}
+            placeholder={' YYYY / MM / DD'}
+            placeholderTextColor="#0E0E0E66"
+            onChange={e => setCalender(false)}
+          />
+          <Image source={CalendarImage} style={styles.calendarImageStyle} />
+        </TouchableOpacity>
+        <CompetitionRegistLabel text="대회 장소" isAsterisk />
         <TextInput
+          style={styles.inputStyle}
           value={form.place}
           placeholder={'예) 인천문학박태환수영장'}
-          placeholderTextColor="#C5C8CE"
+          placeholderTextColor="#0E0E0E66"
           onChange={e => onChange('place', e)}
         />
-        <Text> 대회 명</Text>
+        <CompetitionRegistLabel text="대회명" isAsterisk />
         <TextInput
+          style={styles.inputStyle}
           value={form.name}
           placeholder={'예) 제 22회 대통령배 종합수영경기'}
-          placeholderTextColor="#C5C8CE"
+          placeholderTextColor="#0E0E0E66"
           onChange={e => onChange('name', e)}
         />
-        <Text> 세부 종목</Text>
-        <TextInput
-          value={form.detail}
-          placeholder={'예) 100m 달리기'}
-          placeholderTextColor="#C5C8CE"
-          onChange={e => onChange('detail', e)}
-        />
-        <TouchableOpacity>
-          <Text> X </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text> + </Text>
-        </TouchableOpacity>
+        <View style={styles.borderLine} />
+        <CompetitionRegistLabel text="세부 종목" isAsterisk />
+
+        <DetailEventElement form={form} />
+        <DetailEventElement form={form} />
+        <DetailEventElement form={form} isLastOne />
       </View>
       <Calendar
         calendar={calendar}

@@ -9,12 +9,17 @@ export {default as SmileIcon} from './smileIcon.png';
 export {default as XIcon} from './xIcon.png';
 export {default as AlertIcon} from './alertIcon.png';
 export {default as CircleAddIcon} from './circleAddIcon.png';
-
-export {default as ViewMore} from "./viewMore.png";
-export {default as HeartEmpty} from "./heartEmpty.png";
-export {default as HeartSEmpty} from "./heartSEmpty.png";
-export {default as HeartSFilled} from "./heartSFilled.png";
-export {default as Comment} from "./comment.png"
-export {default as ReplyIcon} from "./reply.png"
-export {default as Pined} from "./pined.png"
-export {default as Dday} from "./dDay.png"
+export {default as CircleAddIconBlue} from './circleAddIconBlue.png';
+export {default as CrownIcon} from './crownIcon.png';
+export {default as HeartIcon} from './heartIcon.png';
+export {default as ViewMore} from './viewMore.png';
+export {default as HeartEmptyIcon} from './heartEmpty.png';
+export {default as HeartSEmptyIcon} from './heartSEmpty.png';
+export {default as HeartSFilledIcon} from './heartSFilled.png';
+export {default as CommentIcon} from './comment.png';
+export {default as ReplyIcon} from './reply.png';
+export {default as PinnedIcon} from './pined.png';
+export {default as TagIcon} from './dDay.png';
+export {default as LogoutIcon} from './logoutIcon.png';
+export {default as MegaphoneIcon} from './megaphoneIcon.png';
+export {default as QnAIcon} from './qnaIcon.png';

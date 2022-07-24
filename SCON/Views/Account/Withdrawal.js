@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { ButtonBig } from '../../Components';
+import {ButtonBig} from '../../Components';
 import {DefaultProfileImage} from '../../Assets/Images';
 
 export function Withdrawal() {
@@ -31,11 +31,11 @@ export function Withdrawal() {
       <TextInput
         value={password}
         placeholder={'비밀번호'}
-        placeholderTextColor="#C5C8CE"
+        placeholderTextColor="#0E0E0E66"
         onChange={e => onInput(e)}
       />
       <Text>현재 사용중인 비밀번호와 일치하지 않습니다.</Text>
-      <ButtonBig text={'버튼'}/>
+      <ButtonBig text={'버튼'} />
     </View>
   );
 }

@@ -1,6 +1,5 @@
-import { InquiryTabScreen } from "./InquiryTab"
-import { InquiryScreen } from "./InquiryScreen"
-import { InquiryListScreen } from "./InquiryListScreen"
+import {InquiryTabScreen} from './InquiryTab';
+import {InquiryScreen} from './InquiryScreen';
+import {InquiryListScreen} from './InquiryListScreen';
 
-
-export { InquiryTabScreen, InquiryScreen, InquiryListScreen }
+export {InquiryTabScreen, InquiryScreen, InquiryListScreen};

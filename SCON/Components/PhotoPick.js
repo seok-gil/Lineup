@@ -3,7 +3,13 @@ import {View, Text, Alert, TouchableOpacity, Image} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {PhotoIcon} from '../Assets/Icons';
 
-export function PhotoPick({text, setPhoto}) {
+const DEFAULT_STYLE = {
+  photoPickWrapper: {},
+  photoPickImage: {},
+  photoPickTouchable: {},
+};
+
+export function PhotoPick({text, setPhoto, styles = DEFAULT_STYLE}) {
   const onClick = () => {
     Alert.alert(
       text,
@@ -43,9 +49,9 @@ export function PhotoPick({text, setPhoto}) {
     );
   };
   return (
-    <View>
-      <TouchableOpacity onPress={onClick}>
-        <Image source={PhotoIcon} />
+    <View style={styles.photoPickWrapper}>
+      <TouchableOpacity onPress={onClick} style={styles.photoPickTouchable}>
+        <Image source={PhotoIcon} style={styles.photoPickImage} />
       </TouchableOpacity>
     </View>
   );

@@ -1,39 +1,16 @@
 import React, {Component, useState} from 'react';
-import {
-  Button,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import {View} from 'react-native';
 
-import {DownIcon} from '../../Assets/Icons';
+import NotiElement from './NotiElement';
+import {noti as data} from '../../Assets/Data/Noti.json';
 
-function NotiOne({data}) {
-  const [expand, setExpand] = useState(false);
-  const onClick = () => {
-    setExpand(!expand);
-  };
-  return (
-    <View>
-      <Text> {data.title} </Text>
-      <Text> {data.createdAt} </Text>
-      <TouchableOpacity onPress={onClick}>
-        {!expand && <Image source={DownIcon} />}
-        {expand && <Image source={DownIcon} /> /* TODO: UPIcon: 180도 회전 */}
-      </TouchableOpacity>
-      {expand && <Text> {data.content} </Text>}
-    </View>
-  );
-}
+import styles from './Noti.styles';
 
 export function NotiScreen({navigation}) {
-  const data = require('../../Assets/Data/Noti.json').noti;
   return (
-    <View>
+    <View style={styles.notiWrapper}>
       {data.map((item, index) => {
-        return <NotiOne key={index} data={item} />;
+        return <NotiElement key={index} data={item} />;
       })}
     </View>
   );

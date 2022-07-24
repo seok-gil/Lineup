@@ -11,7 +11,7 @@ export const listElementStyle = {
 
 export const globalButtonStyle = {
   width: 300,
-  height: 45,
+  height: 40,
   borderRadius: 25,
   alignItems: 'center',
   justifyContent: 'center',
@@ -26,8 +26,25 @@ export const globalButtonTextStyle = {
 export const globalInputStyle = {
   borderWidth: 1,
   borderColor: colors.GRAYC9,
-  paddingHorizontal: 8,
-  paddingVertical: 4,
-  fontSize: 11,
+  padding: 8,
+  fontSize: 13,
   borderRadius: 3,
+};
+
+export const globalLargeInputStyle = {
+  ...globalInputStyle,
+  width: '100%',
+  height: 150,
+  fontSize: 14,
+  textAlignVertical: 'top',
+  borderRadius: 5,
+};
+
+export const globalTextStyle = {
+  color: colors.TEXT_DARK,
+  fontSize: 13,
+};
+
+export const globalAsteriskStyle = {
+  color: colors.THEME_SKYBLUE,
 };

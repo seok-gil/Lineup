@@ -1,144 +1,144 @@
 {
-	"player": [
-		{
-			"player_id": "0",
-			"player_name": "이진우",
-			"img_url": "ProfileDefaualt",
-			"player_major": "배트민턴 선수",
-			"player_like": "302"
-		},
-		{
-			"player_id": "1",
-			"player_name": "김진우",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "123"
-		},
-		{
-			"player_id": "2",
-			"player_name": "김진석",
-			"img_url": "ProfileDefault",
-			"player_major": "수영 선수",
-			"player_like": "22"
-		},
-		{
-			"player_id": "3",
-			"player_name": "이진수",
-			"img_url": "ProfileDefault",
-			"player_major": "축구 선수",
-			"player_like": "45"
-		},
-		{
-			"player_id": "4",
-			"player_name": "박남길",
-			"img_url": "ProfileDefault",
-			"player_major": "테니스 선수",
-			"player_like": "77"
-		},
-		{
-			"player_id": "5",
-			"player_name": "기민기",
-			"img_url": "ProfileDefault",
-			"player_major": "야구 선수",
-			"player_like": "1"
-		},
-		{
-			"player_id": "6",
-			"player_name": "김남길",
-			"img_url": "ProfileDefault",
-			"player_major": "축구 선수",
-			"player_like": "231"
-		},
-		{
-			"player_id": "7",
-			"player_name": "김수영",
-			"img_url": "ProfileDefault",
-			"player_major": "수영 선수",
-			"player_like": "512"
-		},
-		{
-			"player_id": "8",
-			"player_name": "이진우",
-			"img_url": "ProfileDefault",
-			"player_major": "축구선수",
-			"player_like": "32"
-		},
-		{
-			"player_id": "9",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "98"
-		},
-		{
-			"player_id": "10",
-			"player_name": "김행길1",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "22"
-		},
-		{
-			"player_id": "11",
-			"player_name": "김행길2",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "3"
-		},
-		{
-			"player_id": "12",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "14"
-		},
-		{
-			"player_id": "13",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "8"
-		},
-		{
-			"player_id": "14",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "1"
-		},
-		{
-			"player_id": "15",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "3"
-		},
-		{
-			"player_id": "16",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "8"
-		},
-		{
-			"player_id": "17",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "1"
-		},
-		{
-			"player_id": "18",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "8"
-		},
-		{
-			"player_id": "19",
-			"player_name": "김행길",
-			"img_url": "ProfileDefault",
-			"player_major": "배트민턴 선수",
-			"player_like": "8"
-		}
-	]
+  "player": [
+    {
+      "player_id": "0",
+      "player_name": "이진우",
+      "img_url": "ProfileDefaualt",
+      "player_major": "배트민턴",
+      "player_like": "302"
+    },
+    {
+      "player_id": "1",
+      "player_name": "김진우",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "123"
+    },
+    {
+      "player_id": "2",
+      "player_name": "김진석",
+      "img_url": "ProfileDefault",
+      "player_major": "수영",
+      "player_like": "22"
+    },
+    {
+      "player_id": "3",
+      "player_name": "이진수",
+      "img_url": "ProfileDefault",
+      "player_major": "축구",
+      "player_like": "45"
+    },
+    {
+      "player_id": "4",
+      "player_name": "박남길",
+      "img_url": "ProfileDefault",
+      "player_major": "테니스",
+      "player_like": "77"
+    },
+    {
+      "player_id": "5",
+      "player_name": "기민기",
+      "img_url": "ProfileDefault",
+      "player_major": "야구",
+      "player_like": "1"
+    },
+    {
+      "player_id": "6",
+      "player_name": "김남길",
+      "img_url": "ProfileDefault",
+      "player_major": "축구",
+      "player_like": "231"
+    },
+    {
+      "player_id": "7",
+      "player_name": "김수영",
+      "img_url": "ProfileDefault",
+      "player_major": "수영",
+      "player_like": "512"
+    },
+    {
+      "player_id": "8",
+      "player_name": "이진우",
+      "img_url": "ProfileDefault",
+      "player_major": "축구선수",
+      "player_like": "32"
+    },
+    {
+      "player_id": "9",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "98"
+    },
+    {
+      "player_id": "10",
+      "player_name": "김행길1",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "22"
+    },
+    {
+      "player_id": "11",
+      "player_name": "김행길2",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "3"
+    },
+    {
+      "player_id": "12",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "14"
+    },
+    {
+      "player_id": "13",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "8"
+    },
+    {
+      "player_id": "14",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "1"
+    },
+    {
+      "player_id": "15",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "3"
+    },
+    {
+      "player_id": "16",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "8"
+    },
+    {
+      "player_id": "17",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "1"
+    },
+    {
+      "player_id": "18",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "8"
+    },
+    {
+      "player_id": "19",
+      "player_name": "김행길",
+      "img_url": "ProfileDefault",
+      "player_major": "배트민턴",
+      "player_like": "8"
+    }
+  ]
 }

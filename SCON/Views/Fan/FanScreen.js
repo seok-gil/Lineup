@@ -43,7 +43,7 @@ export function SearchInput() {
       <TextInput
         value={inputs.search}
         placeholder={'검색'}
-        placeholderTextColor="#C5C8CE"
+        placeholderTextColor="#0E0E0E66"
         onChange={e => onChange('search', e)}
         onSubmitEditing={() => searchRef.current.focus()}
       />
