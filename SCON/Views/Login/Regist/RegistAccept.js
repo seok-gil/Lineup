@@ -1,46 +1,82 @@
-import React, { Component, useState } from 'react';
-import { SafeAreaView, View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native';
 // import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
-import { ButtonBig } from "../../../Components"
+import {ButtonBig} from '../../../Components';
 import CheckBox from '@react-native-community/checkbox';
+import styles from './RegistAccept.styles';
 
-export function RegistAccept({ navigation }) {
+export function RegistAccept({navigation}) {
   const [accept, SetAccpet] = useState({
     all: false,
     service: false,
     privacy: false,
-  })
+  });
 
-  const onClick = (key) => {
+  const onClick = key => {
     if (key != 'all') {
       SetAccpet({
         ...accept,
-        [key]: !accept[key]
-      })
+        [key]: !accept[key],
+      });
     }
     if (key == 'all') {
       SetAccpet({
         all: !accept['all'],
         service: !accept['all'],
-        privacy: !accept['all']
-      })
+        privacy: !accept['all'],
+      });
     }
-  }
-
+  };
 
   return (
-    <SafeAreaView style={{ flexDirection: 'column', }}>
-      <Text>서비스를 이용하기 위해서 약관동의가 필요합니다.</Text>
-      <CheckBox value={accept.all} boxType='square'
-        onValueChange={() => onClick('all')} />
-      <Text>모두 확인, 동의합니다.</Text>
-      <CheckBox value={accept.service} boxType='square'
-        onValueChange={() => onClick('service')} />
-      <Text>(필수)서비스 이용약관</Text>
-      <CheckBox value={accept.privacy} boxType='square'
-        onValueChange={() => onClick('privacy')} />
-      <Text>(필수)개인정보 수집 및 이용동의</Text>
-      <ButtonBig text={'다음'} onPress={() => navigation.navigate('MakeId')} />
+    <SafeAreaView style={styles.registWrapper}>
+      <View style={styles.registTop}>
+        <Text style={styles.registTopText}>
+          서비스를 이용하기 위해서 약관동의가 필요합니다.
+        </Text>
+      </View>
+      <View style={styles.registMiddle}>
+        <View style={styles.registMiddleTop}>
+          <View style={styles.checkWrapper}>
+            <CheckBox
+              value={accept.all}
+              boxType="square"
+              onValueChange={() => onClick('all')}
+              style={styles.checkbox}
+            />
+            <Text style={styles.checkAllText}>모두 확인, 동의합니다.</Text>
+          </View>
+          <View style={styles.checkWrapperSmall}>
+            <CheckBox
+              value={accept.service}
+              boxType="square"
+              onValueChange={() => onClick('service')}
+              style={styles.checkbox}
+            />
+            <Text style={styles.checkText}>(필수)서비스 이용약관</Text>
+          </View>
+          <View style={styles.checkWrapperSmall}>
+            <CheckBox
+              value={accept.privacy}
+              boxType="square"
+              onValueChange={() => onClick('privacy')}
+              style={styles.checkbox}
+            />
+            <Text style={styles.checkText}>
+              (필수)개인정보 수집 및 이용동의
+            </Text>
+          </View>
+        </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('MakeId')}
+          style={
+            accept.privacy && accept.service
+              ? styles.loginButton
+              : styles.loginButtonNotAvailable
+          }>
+          <Text style={styles.loginButtonText}>다음</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

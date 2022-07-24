@@ -1,12 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {
-  colors,
-  globalButtonStyle,
-  globalButtonTextStyle,
-  globalTextStyle,
-  listElementStyle,
-} from '../../Styles';
+import {colors, globalButtonStyle, globalButtonTextStyle} from '../../Styles';
 
 const styles = StyleSheet.create({
   loginWrapper: {
@@ -54,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  loginButton: globalButtonStyle,
+  loginButton: {...globalButtonStyle, marginTop: 10},
 
   loginButtonText: globalButtonTextStyle,
 
