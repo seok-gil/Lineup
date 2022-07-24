@@ -1,7 +1,9 @@
 import React from 'react';
 import {ApiFetchOne} from '../../Components/API/ApiFetch';
 import {SafeAreaView} from 'react-native';
-import {PlayerFeeds, PlayerFollow, PlayerProfile} from './';
+
+import PlayerProfile from './PlayerProfile';
+import PlayerFeeds from './PlayerFeeds';
 
 export function PlayerScreen({navigation, route}) {
   const data = ApiFetchOne({
@@ -15,7 +17,6 @@ export function PlayerScreen({navigation, route}) {
   return (
     <SafeAreaView>
       <PlayerProfile data={data} navigation={navigation} />
-      <PlayerFollow data={data} navigation={navigation} />
       <PlayerFeeds playerId={route.params.playerId} navigation={navigation} />
     </SafeAreaView>
   );
