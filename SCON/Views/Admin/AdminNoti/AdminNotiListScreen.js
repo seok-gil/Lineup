@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { ApiFetchOne } from '../../../Components/API/ApiFetch';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, View, Text } from 'react-native';
+
 import { AdminOne } from "./AdminNotiOne"
 
 export function AdminNotiListScreen({ navigation }) {
   const [data, setData] = useState([]);
   const [lastFeed, setLastFeed] = useState(1)
   const [nextFeed, setNextFeed] = useState(10)
+  var temp = data
 
-  useEffect(() => {
-    const temp = data
+  async function getApi() {
     for (var i = lastFeed; i < nextFeed; ++i) {
-      ApiFetchOne({
+      await ApiFetchOne({
         method: 'GET',
         url: `http://localhost:1337/api/notices/${i}`,
         headers: { "Authorization": "token" },
@@ -21,9 +22,14 @@ export function AdminNotiListScreen({ navigation }) {
           temp.push(thing)
         }))
     }
-    setLastFeed(nextFeed)
-    setData(temp)
+  }
+  useEffect(() => {
+    getApi().then(() => {
+      setLastFeed(nextFeed)
+      setData(temp)
+    })
   }, [])
+
   if (!data) return (<SafeAreaView />)
   return (
     <SafeAreaView>

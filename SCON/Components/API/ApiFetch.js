@@ -34,7 +34,7 @@ async function ApiFetchOne({method, url, headers, body}) {
 			resChecked = res;
 			let data = await resChecked.json();
 			// console.log("APIONE", data)
-			console.log("success", url)
+			// console.log("success", url)
 			return (data.data.attributes.data)
 		}
 		else {

@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 
-
 import {colors} from '../../../Styles';
 
 const styles = StyleSheet.create({
@@ -17,7 +16,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.05,
     shadowRadius: 10,
-    marginHorizontal: 37.5 / 2
+    marginHorizontal: 37.5 / 2,
   },
 
   playerMyCardWrapper: {
@@ -50,20 +49,11 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 20,
     fontWeight: '700',
+    marginBottom: 5,
   },
 
-  dot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.GRAYC9,
-  },
-
-  activeDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.THEME_SKYBLUE,
+  subText: {
+    marginBottom: 3,
   },
 });
 

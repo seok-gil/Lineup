@@ -9,11 +9,11 @@ export function CommentList({ navigation }) {
 	const [data, setData] = useState([])
 	const [lastFeed, setLastFeed] = useState(1)
 	const [nextFeed, setNextFeed] = useState(2)
+	var temp = data;
 
-	useEffect(() => {
-		const temp = data
+	async function getApi() {
 		for (var i = lastFeed; i < nextFeed; ++i) {
-			ApiFetchOne({
+			await ApiFetchOne({
 				method: 'GET',
 				url: `http://localhost:1337/api/comments/${i}`,
 				headers: { "Authorization": "token" },
@@ -23,8 +23,12 @@ export function CommentList({ navigation }) {
 					temp.push(thing)
 				}))
 		}
-		setLastFeed(nextFeed)
-		setData(temp)
+	}
+	useEffect(() => {
+		getApi().then(() => {
+			setLastFeed(nextFeed)
+			setData(temp)
+		})
 	}, [nextFeed])
 
 	const view = [];

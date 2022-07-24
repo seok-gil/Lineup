@@ -8,10 +8,11 @@ export function Inquiry({ navigation }) {
   const [data, setData] = useState([]);
   const [lastFeed, setLastFeed] = useState(1)
   const [nextFeed, setNextFeed] = useState(10)
-  useEffect(() => {
-    const temp = data
+  var temp = data;
+
+  async function getApi() {
     for (var i = lastFeed; i < nextFeed; ++i) {
-      ApiFetchOne({
+      await ApiFetchOne({
         method: 'GET',
         url: `http://localhost:1337/api/inquiries/${i}`,
         headers: { "Authorization": "token" },
@@ -21,11 +22,15 @@ export function Inquiry({ navigation }) {
           temp.push(thing)
         }))
     }
-    setLastFeed(nextFeed)
-    setData(temp)
+  }
+  useEffect(() => {
+    getApi().then(() => {
+      setLastFeed(nextFeed)
+      setData(temp)
+    })
   }, [])
 
-  if (!data) return <SafeAreaView />
+
   return (
     <SafeAreaView style={{ flexDirection: 'column', }}>
       {

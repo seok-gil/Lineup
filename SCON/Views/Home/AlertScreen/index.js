@@ -13,23 +13,28 @@ export function AlertScreen({ navigation }) {
   const [data, setData] = useState([])
   const [nextFeed, setNextFeed] = useState(10)
   const [lastFeed, setLastFeed] = useState(1)
+	var temp = data;
 
-  useEffect(() => {
-    const temp = data
-    for (var i = lastFeed; i < nextFeed; ++i) {
-      ApiFetchOne({
-        method: 'GET',
+	async function getApi() {
+		for (var i = lastFeed; i < nextFeed; ++i) {
+			await ApiFetchOne({
+				method: 'GET',
         url: `http://localhost:1337/api/alerts/${i}`,
-        headers: { "Authorization": "token" },
-        body: null
-      })
-        .then((thing => {
-          temp.push(thing)
-        }))
-    }
-    setLastFeed(nextFeed)
-    setData(temp)
-  }, [nextFeed])
+				headers: { "Authorization": "token" },
+				body: null
+			})
+				.then((thing => {
+					temp.push(thing)
+				}))
+		}
+	}
+	useEffect(() => {
+		getApi().then(() => {
+			setLastFeed(nextFeed)
+			setData(temp)
+		})
+	}, [nextFeed])
+  
   const onClickAll = () => {
     console.log("aaaa", data, "aaa")
   };

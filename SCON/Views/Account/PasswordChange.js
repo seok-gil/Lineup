@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import validator from 'validator';
 
-import { ButtonBig } from "../../Components"
+import {ButtonBig} from '../../Components';
 import {SearchIcon} from '../../Assets/Icons';
 
 export function PasswordChange({navigation}) {
@@ -95,7 +95,7 @@ export function PasswordChange({navigation}) {
       <TextInput
         value={form.oldPassword}
         placeholder={'현재 비밀번호'}
-        placeholderTextColor="#C5C8CE"
+        placeholderTextColor="#0E0E0E66"
         onChange={e => onInput('oldPassword', e)}
       />
       {validate.oldPassword == false ? (
@@ -109,7 +109,7 @@ export function PasswordChange({navigation}) {
       <TextInput
         value={form.newPassword}
         placeholder={'신규 비밀번호'}
-        placeholderTextColor="#C5C8CE"
+        placeholderTextColor="#0E0E0E66"
         onChange={e => onInput('newPassword', e)}
       />
       {validate.newPassword == false ? (
@@ -123,7 +123,7 @@ export function PasswordChange({navigation}) {
       <TextInput
         value={form.confirmPassword}
         placeholder={'신규 비밀번호 확인'}
-        placeholderTextColor="#C5C8CE"
+        placeholderTextColor="#0E0E0E66"
         onChange={e => onInput('confirmPassword', e)}
       />
       {validate.confirmPassword == false ? (
@@ -134,7 +134,7 @@ export function PasswordChange({navigation}) {
       ) : (
         <Image source={SearchIcon} />
       )}
-			<ButtonBig component={'button'}/>
+      <ButtonBig component={'button'} />
     </View>
   );
 }
