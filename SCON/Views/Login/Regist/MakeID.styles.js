@@ -66,14 +66,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  loginButton: {
-    ...globalButtonStyle,
-    marginBottom: 30,
-  },
+  loginButton: globalButtonStyle,
 
   loginButtonNotAvailable: {
     ...globalButtonStyle,
-    marginBottom: 30,
     backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
   },
 

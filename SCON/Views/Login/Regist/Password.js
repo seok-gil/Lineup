@@ -8,7 +8,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {ButtonBig} from '../../../Components';
 import styles from './Password.styles';
 
 export function Password({navigation}) {

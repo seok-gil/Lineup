@@ -22,6 +22,14 @@ const styles = StyleSheet.create({
 
   passwordTop: {
     width: '100%',
+    flex: 1,
+  },
+
+  title: {
+    fontWeight: '700',
+    color: colors.TEXT_DARK,
+    fontSize: 23,
+    marginBottom: 30,
   },
 
   input: {
@@ -33,7 +41,6 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    fontWeight: '700',
     color: colors.TEXT_DARK,
     fontSize: 14,
   },

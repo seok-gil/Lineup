@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 // import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
-import {ButtonBig} from '../../../Components';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './MakeID.styles';
 

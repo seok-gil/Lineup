@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native';
 // import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
-import {ButtonBig} from '../../../Components';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './RegistAccept.styles';
 

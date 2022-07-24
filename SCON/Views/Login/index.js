@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import {LineupLogoImage} from '../../Assets/Images';
 import validator from 'validator';
-import {ButtonBig} from '../../Components';
 
 import styles from './Login.styles';
 
