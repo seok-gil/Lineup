@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   profileBottom: {
     zIndex: 3,
     position: 'absolute',
+    justifyContent: 'space-between',
     width: '100%',
     bottom: 0,
     height: '55%',
@@ -39,7 +40,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     backgroundColor: colors.WHITE,
-    padding: 30,
+    paddingTop: 30,
+    paddingHorizontal: 30,
+    paddingBottom: 15,
   },
 
   playerInfo: {

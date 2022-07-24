@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {CommentIcon, HeartEmptyIcon} from '../../../Assets/Icons';
+import {CommentIcon, HeartEmpty} from '../../../Assets/Icons';
 import {TimeRelative} from '../../../Components/Time';
 
 export function PlayerFeed({feed, navigation}) {
@@ -17,7 +17,7 @@ export function PlayerFeed({feed, navigation}) {
             navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
           }
           style={{flexDirection: 'row'}}>
-          <Image source={HeartEmptyIcon} />
+          <Image source={HeartEmpty} />
           <Text>{feed.likeCnt}</Text>
         </TouchableOpacity>
         <TouchableOpacity
