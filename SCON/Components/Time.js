@@ -3,11 +3,9 @@ import { Text, View } from 'react-native';
 import validator from 'validator';
 
 export function Time({time, separator}) {
-	console.log(time)
 	var year = time.slice(0, 4)
 	var month = time.slice(5, 7)
 	var day = time.slice(8, 10)
-	console.log(separator)
 	var relativeTime = year + separator + month + separator + day
 
 	return (relativeTime)

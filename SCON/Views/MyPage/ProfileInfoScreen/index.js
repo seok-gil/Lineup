@@ -1,21 +1,34 @@
-import React, {Component, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Image, Text} from 'react-native';
 
 import {PhotoPick} from '../../../Components/PhotoPick';
 import ProfileInfoScreenElement from './ProfileInfoScreenElement';
-import {profile as data} from '../../../Assets/Data/Profile.json';
-
 import {DefaultProfileImage, SwimmingBackground} from '../../../Assets/Images';
 import styles from './ProfileInfoScreen.styles';
-import {
-  backgroundPhotoPickStyles,
-  profilePhotoPickStyles,
-} from './MypagePhotoPick.styles';
+import { ApiFetchOne } from '../../../Components/API/ApiFetch';
+import { backgroundPhotoPickStyles, profilePhotoPickStyles} from './MypagePhotoPick.styles';
 
-export function ProfileInfoScreen({navigation}) {
+export function ProfileInfoScreen({ navigation }) {
+  
+  const [data, setData] = useState();
+  useEffect(() => {
+    ApiFetchOne({
+      method: 'GET',
+      url: 'http://localhost:1337/api/mypage-details/1',
+      headers: { Authorization: 'token' },
+      body: null,
+    }).then(thing => {
+      setData(thing);
+    });
+  }, []);
+
+  console.log(data)
+  
   const [userPhoto, setUserPhoto] = useState(DefaultProfileImage);
   const [backPhoto, setBackPhoto] = useState(SwimmingBackground);
 
+
+  //TODO Image change
   return (
     <View style={styles.profileScreenWrapper}>
       <View style={styles.profileImageWrapper}>
@@ -42,8 +55,8 @@ export function ProfileInfoScreen({navigation}) {
         <ProfileInfoScreenElement label="이름" text={data.name} />
         <ProfileInfoScreenElement label="이메일 계정" text={data.email} />
         <ProfileInfoScreenElement label="생년월일" text={data.birth} />
-        <ProfileInfoScreenElement label="성별" text={data.sex} />
-        <ProfileInfoScreenElement label="종목" text={data.major} />
+        <ProfileInfoScreenElement label="성별" text={data.gender == "MALE" ? "남자" : "여쟈"} />
+        <ProfileInfoScreenElement label="종목" text={data.sport} />
         <ProfileInfoScreenElement label="소속" text={data.belong} />
       </View>
     </View>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
-import { ApiFetch, ApiFetchOne } from '../../../Components/API/ApiFetch';
+import { ApiFetchOne } from '../../../Components/API/ApiFetch';
 import { InquiryOne } from './InquiryOne';
 
 
