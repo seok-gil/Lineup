@@ -12,7 +12,7 @@ export function Reply({ reply }) {
 				<Image source={ReplyIcon} />
 				<Image source={{ uri: reply.writer.profilePic }} style={styles.image} />
 				<Text>{reply.writer.닉네임}</Text>
-				<TimeRelative time={reply.commentDate} />
+				<Text> <TimeRelative time={reply.commentDate} /> </Text>
 				<Image source={ViewMore} />
 			</View>
 			<Text>{reply.commentContent}</Text>

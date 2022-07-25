@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {TouchableOpacity, View, Text, ScrollView} from 'react-native';
 
 import ViewPlayer from './ViewPlayer';
 

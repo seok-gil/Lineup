@@ -13,7 +13,7 @@ export function CommentOne({comment}) {
       <View style={{flexDirection: 'row'}}>
         <Image source={{uri: comment.writer.profilePic}} style={styles.image} />
         <Text>{comment.writer.닉네임} </Text>
-        <TimeRelative time={comment.commentDate} />
+        <Text> <TimeRelative time={comment.commentDate} /> </Text>
         <CommentModal />
       </View>
       <Text>{comment.commentContent}</Text>

@@ -8,7 +8,7 @@ import styles from './SearchScreen.styles';
 import {ViewPlayer} from "./SearchID/ViewPlayer"
 
 export function SearchScreen({navigation,data}) {
-  console.log(data)
+  
   const Data = require('../../Assets/Data/Search.json').player;
   const [inputs, setInputs] = useState({
     search: '',

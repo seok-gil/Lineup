@@ -30,7 +30,7 @@ export function PlayerFeed({feed, navigation}) {
           style={styles.feedLikedBox}>
           <Image source={CommentIcon} style={styles.likeIcon} />
           <Text style={styles.likeText}>{feed.commentCnt}</Text>
-          <TimeRelative time={feed.date} />
+          <Text style={styles.likeText}> <TimeRelative time={feed.date} /> </Text>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>

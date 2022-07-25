@@ -1,23 +1,29 @@
-import React from 'react';
-import {ApiFetchOne} from '../../Components/API/ApiFetch';
-import {SafeAreaView} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ApiFetchOne } from '../../Components/API/ApiFetch';
+import { SafeAreaView, ScrollView } from 'react-native';
 
 import PlayerProfile from './PlayerProfile';
 import PlayerFeeds from './PlayerFeeds';
 
-export function PlayerScreen({navigation, route}) {
-  const data = ApiFetchOne({
-    method: 'GET',
-    url: `http://localhost:1337/api/player-homes/${route.params.playerId}`,
-    headers: {Authorization: 'token'},
-    body: null,
-  });
+export function PlayerScreen({ navigation, route }) {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    ApiFetchOne({
+      method: 'GET',
+      url: `http://localhost:1337/api/player-homes/${route.params.playerId}`,
+      headers: { Authorization: 'token' },
+      body: null,
+    }).then(setData);
+  }, []);
 
   if (!data) return <SafeAreaView />;
   return (
     <SafeAreaView>
-      <PlayerProfile data={data} navigation={navigation} />
-      <PlayerFeeds playerId={route.params.playerId} navigation={navigation} />
+      <ScrollView>
+        <PlayerProfile data={data} navigation={navigation} />
+        <PlayerFeeds playerId={route.params.playerId} navigation={navigation} />
+      </ScrollView>
     </SafeAreaView>
   );
 }

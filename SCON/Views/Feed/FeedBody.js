@@ -8,7 +8,7 @@ export function FeedBody({data}) {
   return (
     <View>
       <Text>{data.content}</Text>
-      <TimeRelative time={data.date} />
+      <Text ><TimeRelative time={data.date} /></Text>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
           onPress={() =>

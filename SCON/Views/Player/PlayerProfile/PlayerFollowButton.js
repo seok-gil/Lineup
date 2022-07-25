@@ -6,8 +6,6 @@ import styles from './PlayerFollowButton.styles';
 
 function PlayerFollowButton({data, navigation}) {
   const [follow, setFollow] = useState(data.isFollow);
-  console.log(data.isMe);
-  console.log(data.isFollow);
   const buttonStyle =
     data.isMe & !data.isFollow ? styles.followedButton : styles.followButton;
 
