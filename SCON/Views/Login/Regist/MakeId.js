@@ -37,6 +37,9 @@ export function MakeId({ navigation }) {
   useEffect(() => {
     if (validator.isEmail(form.email))
       setPost(true)
+    else
+      setPost(false)
+
   }, [form.email])
 
   return (
@@ -70,12 +73,9 @@ export function MakeId({ navigation }) {
             <TouchableOpacity
               onPress={() => console.log('이메일전송')}
               disabled={!post}
-              style={
-                post ?
-                  styles.sendButton
-                  : styles.sendButton
+              style={styles.sendButton
               }>
-              <Text style={styles.sendButtonText}>전송</Text>
+              <Text style={ post ? styles.sendButtonText : styles.sendButtonOffText}>전송</Text>
             </TouchableOpacity>
           </View>
           {validate.email == false && (

@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
   },
 
   sendButtonText: {
+    color: colors.THEME_SKYBLUE,
+  },
+  sendButtonOffText: {
     color: colors.TEXT_LIGHT,
   },
 

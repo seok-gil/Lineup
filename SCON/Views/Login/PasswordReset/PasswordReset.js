@@ -82,7 +82,7 @@ export function PasswordReset({ navigation }) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('password', e)}
           />
-          <Image
+          <Image //TODO
             source={CheckSmallIcon}
             style={
               validate.password ?
@@ -102,7 +102,7 @@ export function PasswordReset({ navigation }) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('certification', e)}
           />
-          <Image
+          <Image //TODO
             source={CheckSmallIcon}
             style={
               validate.certification ?
