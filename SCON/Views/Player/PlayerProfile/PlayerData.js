@@ -36,7 +36,7 @@ function PlayerData({data, navigation}) {
       <TouchableOpacity
         style={styles.playerDataElement}
         onPress={() =>
-          navigation.navigate('Fan', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('Follow', {names: ['Brent', 'Satya', 'Michaś']})
         }>
         <Text style={styles.playerDataTitle}>팬</Text>
         <Text style={styles.playerDataText}>104{/*data.followCnt*/}</Text>

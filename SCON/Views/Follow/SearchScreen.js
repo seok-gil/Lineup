@@ -7,12 +7,10 @@ import {DefaultProfileImage} from '../../Assets/Images';
 
 export function SearchId({data, navigation}) {
   if (!data) return <View />
-
-  console.log(data)
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
+        navigation.navigate('FollowPage', {names: ['Brent', 'Satya', 'Michaś']})
       }>
       <View style={{flexDirection: 'row'}}>
         <Image source={{uri:data.profilePic}} style={styles.image} />

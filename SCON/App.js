@@ -14,7 +14,7 @@ import { InquiryTabScreen } from './Views/Inquiry';
 import { AlertScreen } from './Views/Home/AlertScreen';
 import { PlayerScreen } from './Views/Player';
 import { RecordScreen } from './Views/Record';
-import { FanScreen } from './Views/Fan';
+import { FollowScreen, FollowPage } from './Views/Follow';
 import { FeedScreen } from './Views/Feed';
 import {
   StoryScreen,
@@ -58,7 +58,8 @@ export default function App() {
         <AppStack.Screen name="AlertScreen" component={AlertScreen} />
         <AppStack.Screen name="Player" component={PlayerScreen} />
         <AppStack.Screen name="Record" component={RecordScreen} />
-        <AppStack.Screen name="Fan" component={FanScreen} />
+        <AppStack.Screen name="Follow" component={FollowScreen} />
+        <AppStack.Screen name="FollowPage" component={FollowPage} />
         <AppStack.Screen name="FeedScreen" component={FeedScreen} />
         <AppStack.Screen name="StoryScreen" component={StoryScreen} />
         <AppStack.Screen name="FeedRegist" component={FeedRegist} />

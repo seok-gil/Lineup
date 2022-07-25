@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ApiFetchOne } from '../../../Components/API/ApiFetch';
 import { ButtonBig } from '../../../Components';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { CommentOne } from "./CommentOne"
 
 export function CommentList({ navigation }) {
 	const [data, setData] = useState([])
 	const [lastFeed, setLastFeed] = useState(1)
-	const [nextFeed, setNextFeed] = useState(2)
+	const [nextFeed, setNextFeed] = useState(10)
 	var temp = data;
 
 	async function getApi() {
@@ -47,9 +47,9 @@ export function CommentList({ navigation }) {
 		};
 	}
 	return (
-		<View>
+		<ScrollView>
 			{commentlist()}
-			<ButtonBig onPress={() => setNextFeed(nextFeed + 2)} text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`} />
-		</View>
+			{/* <ButtonBig onPress={() => setNextFeed(nextFeed + 2)} text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`} /> */}
+		</ScrollView>
 	);
 }
