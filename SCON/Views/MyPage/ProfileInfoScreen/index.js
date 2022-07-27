@@ -29,6 +29,7 @@ export function ProfileInfoScreen({ navigation }) {
 
 
   //TODO Image change
+  if (!data) return <View/>
   return (
     <View style={styles.profileScreenWrapper}>
       <View style={styles.profileImageWrapper}>

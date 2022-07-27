@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
-import {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Image,
   Text,
-  StyleSheet,
+  Modal,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {BirthForm} from './BirthForm';
-import {GenderForm} from './GenderForm';
-import {ButtonBig} from '../../../Components';
-import {CaptureForm} from './CaptureForm';
-export function PlayerRegist({navigation}) {
+import { BirthForm } from './BirthForm';
+import { GenderForm } from './GenderForm';
+import { ButtonBig } from '../../../Components';
+import { CaptureForm } from './CaptureForm';
+import { PlayerRegistModal } from './PlayerRegistModal';
+
+export function PlayerRegist({ navigation }) {
+  const [modal, setModal] = useState(false)
   const [form, setForm] = useState({
     name: '',
     birth: '',
@@ -28,14 +30,17 @@ export function PlayerRegist({navigation}) {
     belong: '',
   });
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
+    const { text } = e.nativeEvent;
     setForm({
       ...form,
       [key]: text,
     });
   };
+  const onModal = () => {
+    setModal(true)
+  }
   return (
-    <View style={{flexDirection: 'column'}}>
+    <View style={{ flexDirection: 'column' }}>
       <Text>운동선수 확인을 시작합니다.</Text>
       <Text>확인된 내용이 실제와 다르면 이용이 제한됩니다.</Text>
       <CaptureForm />
@@ -62,7 +67,8 @@ export function PlayerRegist({navigation}) {
         placeholderTextColor="#0E0E0E66"
         onChange={e => onInput('belong', e)}
       />
-      <ButtonBig text={'버튼'} />
+      <ButtonBig text={'버튼'} onPress={() => onModal()}/>
+      <PlayerRegistModal modal={modal} setModal={setModal} navigation={navigation} />
     </View>
   );
 }

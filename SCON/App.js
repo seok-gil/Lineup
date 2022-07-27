@@ -29,6 +29,7 @@ import {
   PasswordChange,
   PlayerRegist,
   Withdrawal,
+  PlayerRegistResultPage,
 } from './Views/Account';
 import {
   AdminTabScreen,
@@ -73,6 +74,7 @@ export default function App() {
         <AppStack.Screen name="AccountScreen" component={AccountScreen} />
         <AppStack.Screen name="PasswordChange" component={PasswordChange} />
         <AppStack.Screen name="PlayerRegist" component={PlayerRegist} />
+        <AppStack.Screen name="PlayerRegistResultPage" component={PlayerRegistResultPage} />
         <AppStack.Screen name="Withdrawal" component={Withdrawal} />
         <AppStack.Screen name="AdminNotiTab" component={AdminNotiTabScreen} />
         <AppStack.Screen name="RegistMemberTab" component={RegistMemberTabScreen} />

@@ -39,6 +39,7 @@ export function BirthForm({form, setForm}) {
           value={form.birth}
           placeholder={'생년월일을 선택해주세요'}
           placeholderTextColor="#0E0E0E66"
+          editable={false}
         />
         <DateTimePickerModal
           isVisible={pickOn}

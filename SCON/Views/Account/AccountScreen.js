@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
 	Button,
 	View,
@@ -6,13 +6,20 @@ import {
 	Text,
 	StyleSheet,
 	TouchableOpacity,
+	Modal,
 } from 'react-native';
 
+import {LogoutModal}from './LogoutModal'
 
 export function AccountScreen({ navigation }) {
+	const [modal, setModal] = useState(false)
+
+	const onLogout = () => {
+		setModal(true)
+	}
 	return (
 		<View style={{ flexDirection: 'column', }}>
-			<TouchableOpacity>
+			<TouchableOpacity onPress={onLogout}>
 				<Text>로그아웃</Text>
 				<Text>aa@nave.com</Text>
 			</TouchableOpacity>
@@ -25,6 +32,7 @@ export function AccountScreen({ navigation }) {
 			<TouchableOpacity onPress={() => navigation.navigate('Withdrawal')}>
 				<Text>회원 탈퇴</Text>
 			</TouchableOpacity>
+			<LogoutModal modal={modal} setModal={setModal} navigation={navigation}/>
 		</View>
 	);
 }
