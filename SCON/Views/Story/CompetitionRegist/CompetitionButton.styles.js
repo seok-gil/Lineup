@@ -7,14 +7,25 @@ import {
 } from '../../../Styles';
 
 const styles = StyleSheet.create({
-  followButton: {
+  filledButton: {
     ...globalButtonStyle,
   },
 
-  followText: {
+  notfillButton: {
+    ...globalButtonStyle,
+    backgroundColor: colors.WHITE,
+    borderColor: colors.THEME_SKYBLUE,
+    borderWidth: 3,
+  },
+
+  filledText: {
     ...globalButtonTextStyle,
   },
 
+  notfillText: {
+    ...globalButtonTextStyle,
+    color: colors.THEME_SKYBLUE,
+  },
 });
 
 export default styles;

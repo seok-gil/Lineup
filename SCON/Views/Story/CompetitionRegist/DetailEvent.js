@@ -61,7 +61,6 @@ export function DetailEvent({ form, setForm }) {
     res.push('')
     setForm((form) => { return { ...form, ['detail'] : res } })
     makeView()
-    console.log(form)
   }
 
   const makeView = () => {

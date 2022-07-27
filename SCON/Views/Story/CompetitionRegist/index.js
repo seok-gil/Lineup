@@ -16,6 +16,7 @@ import { DetailEvent } from './DetailEvent';
 import CompetitionRegistLabel from './CompetitionRegistLabel';
 import CompetitionButton from "./CompetitionButton"
 export function CompetitionRegist({ navigation }) {
+  
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [form, setForm] = useState({
@@ -23,7 +24,7 @@ export function CompetitionRegist({ navigation }) {
     endDate: '',
     location: '',
     eventName: '',
-    detail: ['100m달리기'],
+    detail: [''],
   });
   const [calendar, setCalender] = useState(false);
 

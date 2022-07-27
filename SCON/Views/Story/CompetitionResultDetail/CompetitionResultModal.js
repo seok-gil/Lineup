@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {View, Text, Image, Modal, TouchableOpacity} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, Modal, TouchableOpacity } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
 import CheckBox from '@react-native-community/checkbox';
 
 import styles from './CompetitionResultModal.styles';
@@ -11,13 +11,13 @@ import {
   GrayMedalImage,
 } from '../../../Assets/Images';
 
-const ScoreMedal = ({rank, isMedalSelected}) => {
+const ScoreMedal = ({ rank, isMedalSelected }) => {
   const medalImage = isMedalSelected
     ? {
-        1: GoldMedalImage,
-        2: SilverMedalImage,
-        3: BronzeMedalImage,
-      }[rank]
+      1: GoldMedalImage,
+      2: SilverMedalImage,
+      3: BronzeMedalImage,
+    }[rank]
     : GrayMedalImage;
   return (
     <View style={styles.medalWrapper}>
@@ -27,10 +27,60 @@ const ScoreMedal = ({rank, isMedalSelected}) => {
   );
 };
 
-const CompetitionResultModal = ({modal, openModal, isSelected}) => {
+const CompetitionResultModal = ({ modal, openModal, data, setData }) => {
+  const [result, setResult] = useState(modal.modal_item)
+  const [isSelected, setSelection] = useState(false);
+  const [validate, setValidate] = useState(false)
+
+  const onInput = (key, e) => {
+    const { text } = e.nativeEvent;
+    setResult({
+      ...result,
+      [key]: text,
+    });
+  };
+
+  useEffect(() => {
+    setResult(modal.modal_item)
+    setValidate(modal.ranking != '' && modal.score != '')
+    setSelection(false)
+  }, [modal])
+
+  useEffect(() => {
+    console.log(validate)
+    if (!isSelected && (result.ranking == '' || result.score == ''))
+      setValidate(false)
+    else if (result.ranking != '' && result.score != '')
+      setValidate(true)
+  }, [result])
+
+  const onMedal = (rank) => {
+    setResult({
+      ...result,
+      ['ranking']: rank,
+    });
+  }
+
+  const onSummit = () => {
+    var temp = data
+    temp.forEach((element, index) => {
+      if (element && element.detailName == result.detailName) {
+        temp[index] = result;
+      }
+    });
+    setData(temp)
+    openModal()
+  }
+
+  const onAnswer = () => {
+    setSelection(!isSelected)
+    if (!isSelected)
+      setValidate(true)
+    else if (result.ranking == '' || result.score == '')
+      setValidate(false)
+  }
   return (
     <Modal
-      // animationType='slide'
       transparent={true}
       visible={modal.open}>
       <View style={styles.centeredView}>
@@ -42,41 +92,47 @@ const CompetitionResultModal = ({modal, openModal, isSelected}) => {
               <Text style={styles.asterisk}>*</Text>
             </View>
             <View style={styles.rankWrapper}>
-              <ScoreMedal rank={1} />
-              <ScoreMedal rank={2} />
-              <ScoreMedal rank={3} />
+              <TouchableOpacity onPress={() => onMedal("1")}>
+                <ScoreMedal rank={1} isMedalSelected={"1" == result.ranking} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => onMedal("2")}>
+
+                <ScoreMedal rank={2} isMedalSelected={"2" == result.ranking} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => onMedal("3")}>
+                <ScoreMedal rank={3} isMedalSelected={"3" == result.ranking} />
+              </TouchableOpacity>
+
               <View>
                 <Text style={styles.rankTitle}>직접입력</Text>
                 <TextInput
                   style={styles.rankInput}
-                  value={modal.open}
+                  value={result.ranking}
                   placeholder={'예) 4위-30위'}
                   placeholderTextColor="#0E0E0E66"
-                  openModal={() => openModal('search')}></TextInput>
+                  onChange={(e) => onInput('ranking', e)} />
               </View>
             </View>
             <View style={styles.scoreWrapper}>
               <Text style={styles.titleStrong}>기록, 스코어 등</Text>
               <TextInput
                 style={styles.scoreInput}
-                value={modal.open}
+                value={result.score}
                 placeholder={'예) 27초 11.7'}
                 placeholderTextColor="#0E0E0E66"
-                onChange={() => openModal('search')}></TextInput>
+                onChange={(e) => onInput('score', e)} />
             </View>
             <View style={styles.checkboxWrapper}>
               <View style={styles.checkbox}>
                 <CheckBox
                   value={isSelected}
                   boxType='square'
-                  onValueChange={() => openModal('search')}
+                  onValueChange={() => onAnswer()}
                 />
               </View>
-              <TouchableOpacity onPress={() => openModal()}>
-                <Text style={styles.checkboxLabel}>
-                  결과입력을 하지 않겠습니다.
-                </Text>
-              </TouchableOpacity>
+              <Text style={styles.checkboxLabel}>
+                결과입력을 하지 않겠습니다.
+              </Text>
             </View>
           </View>
           <View style={styles.modalBottom}>
@@ -86,9 +142,10 @@ const CompetitionResultModal = ({modal, openModal, isSelected}) => {
               <Text style={styles.buttonText}> 취소</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => openModal()}
+              onPress={() => onSummit()}
+              disabled={!validate}
               style={styles.submitButton}>
-              <Text style={styles.buttonText}> 확인 </Text>
+              <Text style={styles.buttonText}> {validate ? "확인" : "노확인"} </Text>
             </TouchableOpacity>
           </View>
         </View>
