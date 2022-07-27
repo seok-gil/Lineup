@@ -6,6 +6,7 @@ import {
 	Text,
 	TouchableOpacity,
 	StyleSheet,
+	Switch
 } from 'react-native';
 
 
@@ -14,8 +15,7 @@ export function SettingAlertScreen({ navigation }) {
 		"feed": true,
 		"comment": false
 	})
-
-	const onClick = (key, e) => {
+	const onClick = (key) => {
 		const set = !alert[key]
 		setAlert({
 			...alert,
@@ -24,17 +24,22 @@ export function SettingAlertScreen({ navigation }) {
 	}
 	return (
 		<View style={styles.container}>
-			<Text>알람설정</Text>
 			<Text>선수 피드 알림</Text>
-			<TouchableOpacity onPress={(e) => onClick("feed", e)}>
-				{alert.feed && <Text>true</Text>}
-				{!alert.feed && <Text>false</Text>}
-			</TouchableOpacity>
+			<Switch
+        trackColor={{false: '#767577', true: '#81b0ff'}}
+        thumbColor={alert.feed ? '#f5dd4b' : '#f4f3f4'}
+        ios_backgroundColor= '#3e3e3e'
+        onValueChange={() => onClick('feed')}
+        value={alert.feed}
+      />
 			<Text>댓글 알림</Text>
-			<TouchableOpacity onPress={(e) => onClick("comment", e)}>
-				{alert.comment && <Text>true</Text>}
-				{!alert.comment && <Text>false</Text>}
-			</TouchableOpacity>
+			<Switch
+        trackColor={{false: '#767577', true: '#81b0ff'}}
+        thumbColor={alert.comment ? '#f5dd4b' : '#f4f3f4'}
+        ios_backgroundColor= '#3e3e3e'
+        onValueChange={() => onClick('comment')}
+        value={alert.comment}
+      />
 		</View>
 	);
 }
