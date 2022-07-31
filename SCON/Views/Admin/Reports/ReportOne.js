@@ -1,22 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
-import { Time } from '../../../Components';
+import React from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {DefaultProfileImage} from '../../../Assets/Images';
 
-export function ReportOne({ data, navigation }) {
-  if (!data) return <View />
+import styles from './ReportOne.styles';
+
+export function ReportOne({data, navigation}) {
+  if (!data) return <View />;
   return (
-    <View>
-      <Text>{data.Nickname}</Text>
-      <Text>{data.Comment}</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Reporter', { reportId : data.ReportId})}>
-        <Text>신고자</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => console.log("신고허용")}>
-        <Text>허용</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => console.log("신고허용")}>
-        <Text>삭제</Text>
-      </TouchableOpacity>
+    <View style={styles.reportOneWrapper}>
+      <View style={styles.imageWrapper}>
+        <Image source={DefaultProfileImage} style={styles.profileImage} />
+      </View>
+      <View style={styles.elementLeft}>
+        <Text style={styles.title}>{data.Nickname} 3분전</Text>
+        <Text style={styles.comment}>{data.Comment}</Text>
+      </View>
+      <View style={styles.elementRight}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate('Reporter', {reportId: data.ReportId})
+          }>
+          <Text style={styles.buttonText}>신고자</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => console.log('신고허용')}>
+          <Text style={styles.buttonText}>허용</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => console.log('신고허용')}>
+          <Text style={styles.buttonText}>삭제</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
