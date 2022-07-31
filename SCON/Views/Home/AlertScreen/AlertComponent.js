@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './AlertComponent.styles';
 import {SmileIcon, ChatBubbleIcon, XIcon} from '../../../Assets/Icons';
 import { ApiFetch } from '../../../Components/API/ApiFetch';
-
+import { Time } from "../../../Components/Time"
 function AlertComponent({alert}) {
   if (!alert) return <View />;
 
@@ -35,7 +35,7 @@ function AlertComponent({alert}) {
       <View style={styles.alertComponentMiddle}>
         <Text style={styles.alertContent}>{alert.content}</Text>
         <View style={styles.alertComponentBottom}>
-          <Text style={styles.alertCreatedAt}>{`(`}{alert.date}{`)`}</Text>
+          <Text style={styles.alertCreatedAt}>(<Time  time={alert.date} separator="-"/>)</Text>
           <TouchableOpacity onPress={() => onClickX(alert.alarmId)}>
             <Image source={XIcon} style={styles.alertXIcon} />
           </TouchableOpacity>

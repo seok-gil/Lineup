@@ -36,7 +36,7 @@ function PlayerData({data, navigation}) {
       <TouchableOpacity
         style={styles.playerDataElement}
         onPress={() =>
-          navigation.navigate('Fan', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('Follow', {names: ['Brent', 'Satya', 'Michaś']})
         }>
         <Text style={styles.playerDataTitle}>팬</Text>
         <Text style={styles.playerDataText}>104{/*data.followCnt*/}</Text>
@@ -44,7 +44,7 @@ function PlayerData({data, navigation}) {
       <TouchableOpacity
         style={styles.playerDataElement}
         onPress={() =>
-          navigation.navigate('Rank', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('RankScreen', {names: ['Brent', 'Satya', 'Michaś']})
         }>
         <Text style={styles.playerDataTitle}>{rank.type.toUpperCase()}</Text>
         <Text style={styles.playerDataText}>7{/*rank.rank*/}위</Text>

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Calendar} from './Calender';
+import React, { useState } from 'react';
+import { Calendar } from './Calender';
 
 import {
   View,
@@ -11,26 +11,30 @@ import {
 } from 'react-native';
 
 import styles from './CompetitionRegist.styles';
-import {CalendarImage} from '../../../Assets/Images';
-import DetailEventElement from './DetailEventElement';
+import { CalendarImage } from '../../../Assets/Images';
+import { DetailEvent } from './DetailEvent';
 import CompetitionRegistLabel from './CompetitionRegistLabel';
-
-export function CompetitionRegist({navigation}) {
+import CompetitionButton from "./CompetitionButton"
+export function CompetitionRegist({ navigation }) {
+  
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [form, setForm] = useState({
-    place: '',
-    name: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+    eventName: '',
     detail: [''],
   });
   const [calendar, setCalender] = useState(false);
-  const onChange = (keyvalue, e) => {
+
+  const onChange = (key, e) => {
     const {text} = e.nativeEvent;
     setForm({
       ...form,
-      [keyvalue]: text,
+      [key]: text,
     });
-  };
+  }
 
   return (
     <SafeAreaView style={styles.competitionRegistWrapper}>
@@ -43,47 +47,47 @@ export function CompetitionRegist({navigation}) {
           }}>
           <TextInput
             style={styles.rangeInputStyle}
-            value={startDate}
+            value={form.startDate}
+            editable={false}
             placeholder={' YYYY / MM / DD'}
             placeholderTextColor="#0E0E0E66"
-            onChange={e => onChange('start', e)}
           />
           <Text style={styles.waveText}>~</Text>
           <TextInput
             style={styles.rangeInputStyle}
-            value={endDate}
+            value={form.endDate}
+            editable={false}
             placeholder={' YYYY / MM / DD'}
             placeholderTextColor="#0E0E0E66"
-            onChange={e => setCalender(false)}
           />
           <Image source={CalendarImage} style={styles.calendarImageStyle} />
         </TouchableOpacity>
         <CompetitionRegistLabel text="대회 장소" isAsterisk />
         <TextInput
           style={styles.inputStyle}
-          value={form.place}
+          value={form.location}
           placeholder={'예) 인천문학박태환수영장'}
           placeholderTextColor="#0E0E0E66"
-          onChange={e => onChange('place', e)}
+          onChange={e => onChange('location', e)}
         />
         <CompetitionRegistLabel text="대회명" isAsterisk />
         <TextInput
           style={styles.inputStyle}
-          value={form.name}
+          value={form.eventName}
           placeholder={'예) 제 22회 대통령배 종합수영경기'}
           placeholderTextColor="#0E0E0E66"
-          onChange={e => onChange('name', e)}
+          onChange={e => onChange('eventName', e)}
         />
         <View style={styles.borderLine} />
         <CompetitionRegistLabel text="세부 종목" isAsterisk />
-
-        <DetailEventElement form={form} />
-        <DetailEventElement form={form} />
-        <DetailEventElement form={form} isLastOne />
+        <DetailEvent form={form} setForm={setForm} />
       </View>
+      <CompetitionButton data={form} navigation={navigation}/>
       <Calendar
         calendar={calendar}
         setCalender={setCalender}
+        form={form}
+        setForm={setForm}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
       />

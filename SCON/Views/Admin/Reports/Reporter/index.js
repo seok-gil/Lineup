@@ -4,6 +4,7 @@ import { ApiFetchArr } from '../../../../Components/API/ApiFetch';
 import { ReporterOne } from './ReporterOne';
 export function Reporter({ navigation, route }) {
   const [data, setData] = useState([]);
+  
   useEffect(() => {
     ApiFetchArr({
       method: 'GET',
@@ -14,6 +15,8 @@ export function Reporter({ navigation, route }) {
       setData(thing);
     });
   }, []);
+
+
   if (!data) return <SafeAreaView />
   return (
     <SafeAreaView style={{ flexDirection: 'column', }}>

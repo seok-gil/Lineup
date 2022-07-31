@@ -18,12 +18,12 @@ function InquiryListElementQnA({data}) {
     <View style={styles.inquiryQnAWrapper}>
       <View style={styles.inquiryQuestion}>
         <Text style={styles.letter}>Q.</Text>
-        <Text style={styles.content}>{data.content}</Text>
+        <Text style={styles.content}>{data.InquiryContent}</Text>
       </View>
-      {data.answer && (
+      {data.AnswerState && (
         <View style={styles.inquiryQuestion}>
           <Text style={styles.letter}>A.</Text>
-          <Text style={styles.content}>{data.answer_content}</Text>
+          <Text style={styles.content}>{data.AnswerContent}</Text>
         </View>
       )}
     </View>

@@ -9,15 +9,15 @@ import styles from './AlertScreen.styles';
 
 
 
-export function AlertScreen({ navigation }) {
+export function AlertScreen( ) {
   const [data, setData] = useState([])
   const [nextFeed, setNextFeed] = useState(10)
   const [lastFeed, setLastFeed] = useState(1)
+  var temp = data;
 
-  useEffect(() => {
-    const temp = data
+  async function getApi() {
     for (var i = lastFeed; i < nextFeed; ++i) {
-      ApiFetchOne({
+      await ApiFetchOne({
         method: 'GET',
         url: `http://localhost:1337/api/alerts/${i}`,
         headers: { "Authorization": "token" },
@@ -27,9 +27,14 @@ export function AlertScreen({ navigation }) {
           temp.push(thing)
         }))
     }
-    setLastFeed(nextFeed)
-    setData(temp)
+  }
+  useEffect(() => {
+    getApi().then(() => {
+      setLastFeed(nextFeed)
+      setData(temp)
+    })
   }, [nextFeed])
+
   const onClickAll = () => {
     console.log("aaaa", data, "aaa")
   };
@@ -46,19 +51,17 @@ export function AlertScreen({ navigation }) {
     }
     return view
   }
-  if (data) {
-    return (
-      <SafeAreaView key={`Alert`} style={styles.alertWrapper}>
-        <View style={styles.alertTop}>
-          <Text style={styles.alertTitle}>쌓여있는 알림을 확인해보세요</Text>
-          <TouchableOpacity onPress={() => onClickAll(alert.alert_id)}>
-            <Text style={styles.alertDeleteAll}>모두 삭제</Text>
-          </TouchableOpacity>
-        </View>
-        {alertList()}
-      </SafeAreaView>
-    );
-  }
-  else
-    return (<SafeAreaView />)
+  if (!data) return (<SafeAreaView />)
+  return (
+    <SafeAreaView key={`Alert`} style={styles.alertWrapper}>
+      <View style={styles.alertTop}>
+        <Text style={styles.alertTitle}>쌓여있는 알림을 확인해보세요</Text>
+        <TouchableOpacity onPress={() => onClickAll(alert.alert_id)}>
+          <Text style={styles.alertDeleteAll}>모두 삭제</Text>
+        </TouchableOpacity>
+      </View>
+      {alertList()}
+    </SafeAreaView>
+  );
+
 }

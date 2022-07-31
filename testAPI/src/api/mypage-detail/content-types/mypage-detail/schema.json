@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mypage_details",
+  "info": {
+    "singularName": "mypage-detail",
+    "pluralName": "mypage-details",
+    "displayName": "mypageDetail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

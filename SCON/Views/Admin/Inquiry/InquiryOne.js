@@ -37,7 +37,7 @@ export function InquiryOne({ data }) {
           접수 {`>`} {data.InquiryTitle}{' '}
         </Text>
       }
-      <Time time={data.InquiryDateTime} />
+      <Text><Time time={data.InquiryDateTime} separator="-"/> </Text>
       <TouchableOpacity onPress={onExpand}>
         {expand ? <Image source={DownIcon} /> : <Image source={DownIcon} />}
       </TouchableOpacity>

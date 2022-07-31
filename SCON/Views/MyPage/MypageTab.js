@@ -11,7 +11,7 @@ import {
 
 import styles from './MypageTab.styles';
 
-function MypageTab({navigation}) {
+export function MypageTab({navigation}) {
   return (
     <View style={styles.mypageTabWrapper}>
       <TouchableOpacity
@@ -53,5 +53,3 @@ function MypageTab({navigation}) {
     </View>
   );
 }
-
-export default MypageTab;

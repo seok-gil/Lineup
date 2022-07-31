@@ -54,10 +54,15 @@ const styles = StyleSheet.create({
     top: 11,
     right: 5,
     height: 16,
+    color: colors.GRAYE6,
   },
 
   sendButtonText: {
     color: colors.THEME_SKYBLUE,
+  },
+
+  sendButtonOffText: {
+    color: colors.TEXT_LIGHT,
   },
 
   errorMessage: {

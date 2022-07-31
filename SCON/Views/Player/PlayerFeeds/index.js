@@ -10,31 +10,32 @@ import styles from './PlayerFeeds.styles';
 
 function PlayerFeeds({playerId, feed, navigation}) {
   const [data, setData] = useState([]);
-  const [nextFeed, setNextFeed] = useState(2);
+  const [nextFeed, setNextFeed] = useState(10);
   const [lastFeed, setLastFeed] = useState(1);
+  var temp = data;
 
-  useEffect(() => {
-    const temp = data;
+  async function getApi() {
     for (var i = lastFeed; i < nextFeed; ++i) {
-      ApiFetchOne({
+      await ApiFetchOne({
         method: 'GET',
         url: `http://localhost:1337/api/feeds/${i}`,
-        headers: {Authorization: 'token'},
-        body: null,
-      }).then(thing => {
-        temp.push(thing);
-      });
+        headers: { "Authorization": "token" },
+        body: null
+      })
+        .then((thing => {
+          temp.push(thing)
+        }))
     }
-    setLastFeed(nextFeed);
-    setData(temp);
-  }, [nextFeed]);
+  }
+  useEffect(() => {
+    getApi().then(() => {
+      setLastFeed(nextFeed)
+      setData(temp)
+    })
+  }, [])
 
   return (
     <View style={styles.playerFeedsWrapper}>
-      {/* <ButtonBig
-        onPress={() => setNextFeed(nextFeed + 2)}
-        text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`}
-      /> */}
       <PlayerFixedFeed navigation={navigation} />
       {data.map((v, i) => (
         <PlayerFeed key={`player-feed-${i}`} feed={v} navigation={navigation} />

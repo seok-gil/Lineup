@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
 
   bodyTextSmall: {
     fontSize: 12,
+    alignItems: 'center',
     color: colors.TEXT_LIGHT,
   },
 

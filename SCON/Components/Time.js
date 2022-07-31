@@ -2,14 +2,13 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import validator from 'validator';
 
-export function Time(time) {
+export function Time({time, separator}) {
+	var year = time.slice(0, 4)
+	var month = time.slice(5, 7)
+	var day = time.slice(8, 10)
+	var relativeTime = year + separator + month + separator + day
 
-	var year = time.time.slice(0, 4)
-	var month = time.time.slice(5, 7)
-	var day = time.time.slice(8, 10)
-	var relativeTime = year + '-' + month + '-' + day
-
-	return (<Text>{relativeTime}</Text>)
+	return (relativeTime)
 }
 
 
@@ -41,11 +40,7 @@ export function TimeRelative(time) {
 		return `${Math.floor(years)}년 전`
 	}
 	relativeTime = displayedAt(writtenTime)
-	return (
-		<Text>
-			{relativeTime}
-		</Text>
-	)
+	return ( relativeTime )
 }
 
 // (1~59초전/1분~59분전/1시간~23시간전/1일~6일전/1주전~3주전/1개월전)

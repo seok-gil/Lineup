@@ -34,6 +34,7 @@ async function ApiFetchOne({method, url, headers, body}) {
 			resChecked = res;
 			let data = await resChecked.json();
 			// console.log("APIONE", data)
+			// console.log("success", url)
 			return (data.data.attributes.data)
 		}
 		else {
@@ -110,3 +111,64 @@ fetch("https://jsonplaceholder.typicode.com/posts/1", {
 */
 
 export { ApiFetch, ApiFetchOne, ApiFetchArr }
+
+
+
+/*
+
+
+
+
+
+import { ApiFetch } from '../../Components/API/ApiFetch';
+
+export function HomeScreen({ navigation }) {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    ApiFetch({
+      method: 'GET',
+      url: 'http://localhost:1337/api/homes',
+      headers: { Authorization: 'token' },
+      body: null,
+    }).then(thing => {
+      setData(thing);
+    });
+  }, []);
+
+
+
+	-----------------------
+
+
+import { ApiFetchOne } from '../../../Components/API/ApiFetch';
+import { SafeAreaView, View, Text } from 'react-native';
+
+
+export function AdminNotiListScreen({ navigation }) {
+  const [data, setData] = useState([]);
+  const [lastFeed, setLastFeed] = useState(1)
+  const [nextFeed, setNextFeed] = useState(10)
+  var temp = data
+
+  async function getApi() {
+    for (var i = lastFeed; i < nextFeed; ++i) {
+      await ApiFetchOne({
+        method: 'GET',
+        url: `http://localhost:1337/api/notices/${i}`,
+        headers: { "Authorization": "token" },
+        body: null
+      })
+        .then((thing => {
+          temp.push(thing)
+        }))
+    }
+  }
+  useEffect(() => {
+    getApi().then(() => {
+      setLastFeed(nextFeed)
+      setData(temp)
+    })
+  }, [])
+
+	*/

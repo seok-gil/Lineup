@@ -8,10 +8,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {LineupLogoImage} from '../../Assets/Images';
-import validator from 'validator';
-
+import { LineupLogoImage } from '../../Assets/Images';
+import { ApiFetch } from '../../Components/API/ApiFetch';
 import styles from './Login.styles';
+
 
 export function LoginPage({navigation}) {
   const [form, setForm] = useState({
@@ -22,7 +22,7 @@ export function LoginPage({navigation}) {
     email: false,
     password: false,
   });
-
+  
   const onInput = (key, e) => {
     const {text} = e.nativeEvent;
     setForm({
@@ -30,13 +30,14 @@ export function LoginPage({navigation}) {
       [key]: text,
     });
   };
-
+  
   const onLogin = () => {
-    if (!validate.email && !validate.password) navigation.navigate('Tab');
-  };
-
-  return (
-    <SafeAreaView style={styles.loginWrapper}>
+    if (!validate.email && !validate.password) 
+      navigation.navigate('Tab');
+    };
+    
+    return (
+      <SafeAreaView style={styles.loginWrapper}>
       <View style={styles.logoArea}>
         <Image source={LineupLogoImage} style={styles.logoImage} />
       </View>

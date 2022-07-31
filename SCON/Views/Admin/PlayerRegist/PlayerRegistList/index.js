@@ -7,12 +7,13 @@ export function PlayerRegistList({ navigation, route }) {
   const [data, setData] = useState([]);
   const [lastFeed, setLastFeed] = useState(1)
   const [nextFeed, setNextFeed] = useState(10)
-  useEffect(() => {
-    const temp = data
+  var temp = data;
+  
+  async function getApi() {
     for (var i = lastFeed; i < nextFeed; ++i) {
-      ApiFetchOne({
+      await ApiFetchOne({
         method: 'GET',
-				url: `http://localhost:1337/api/player-regists/${i}`,
+        url: `http://localhost:1337/api/player-regists/${i}`,
         headers: { "Authorization": "token" },
         body: null
       })
@@ -20,9 +21,14 @@ export function PlayerRegistList({ navigation, route }) {
           temp.push(thing)
         }))
     }
-    setLastFeed(nextFeed)
-    setData(temp)
+  }
+  useEffect(() => {
+    getApi().then(() => {
+      setLastFeed(nextFeed)
+      setData(temp)
+    })
   }, [])
+
   if (!data) return (<SafeAreaView/>)
   var list = data.filter((item) => (item && item.state == route.params.state))
   return (

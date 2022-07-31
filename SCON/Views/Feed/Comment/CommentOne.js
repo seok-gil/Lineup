@@ -3,7 +3,7 @@ import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
 
 import {CommentModal, Reply} from './';
 import {HeartSEmptyIcon, HeartSFilledIcon} from '../../../Assets/Icons';
-import {Time} from '../../../Components/Time';
+import {TimeRelative} from '../../../Components/Time';
 
 //TODO heart EMPTY FILLED
 export function CommentOne({comment}) {
@@ -13,7 +13,7 @@ export function CommentOne({comment}) {
       <View style={{flexDirection: 'row'}}>
         <Image source={{uri: comment.writer.profilePic}} style={styles.image} />
         <Text>{comment.writer.닉네임} </Text>
-        <TimeRelative time={comment.commentDate} />
+        <Text> <TimeRelative time={comment.commentDate} /> </Text>
         <CommentModal />
       </View>
       <Text>{comment.commentContent}</Text>

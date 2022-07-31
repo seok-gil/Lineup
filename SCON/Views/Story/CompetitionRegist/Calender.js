@@ -3,17 +3,16 @@ import { StyleSheet, Text, View, Modal, TouchableOpacity, } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker'; //https://www.npmjs.com/package/react-native-calendar-picker
 
 
-//getFullYear()
-export function Calendar({ calendar, setCalender, setStartDate, setEndDate }) {
+export function Calendar({ calendar, setCalender, form, setForm }) {
 	const onDateChange = (date, type) => {
 		if (date) {
 			const selected = new Date(date);
 			if (type === 'END_DATE') {
-				setEndDate(selected.toISOString().slice(0, 10).replace(/-/gi, " / "))
+				setForm({ ...form , ['endDate'] : selected.toISOString().slice(0, 10).replace(/-/gi, " / ")})
 				setCalender(false)
 			}
 			else {
-				setStartDate(selected.toISOString().slice(0, 10).replace(/-/gi, " / "))
+				setForm({ ...form , ['startDate'] : selected.toISOString().slice(0, 10).replace(/-/gi, " / ")})
 			}
 		}
 	}

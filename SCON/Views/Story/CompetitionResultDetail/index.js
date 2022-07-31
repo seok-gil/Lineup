@@ -1,18 +1,43 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 
 import CompetitionResultModal from './CompetitionResultModal';
 import DetailInfo from './DetailInfo';
 import {competition} from '../../../Assets/Data/CompetitionResultDetail.json';
+import { ApiFetchOne } from '../../../Components/API/ApiFetch';
 
 import styles from './CompetitionResultDetail.styles';
 
-export function CompetitionResultDetail({navigation}) {
-  const [isSelected, setSelection] = useState(false);
+export function CompetitionResultDetail({navigation, route}) {
+  const [data, setData] = useState([]);
+  const [lastFeed, setLastFeed] = useState(1)
+  const [nextFeed, setNextFeed] = useState(10)
+  const [result, setResult] = useState([])
   const [modal, setModal] = useState({
     open: false,
     modal_item: '',
   });
+  var temp = data;
+  
+  async function getApi() {
+    for (var i = lastFeed; i < nextFeed; ++i) {
+      await ApiFetchOne({
+        method: 'GET',
+        url: `http://localhost:1337/api/event-details/${i}`,
+        headers: { "Authorization": "token" },
+        body: null
+      })
+        .then((thing => {
+          temp.push(thing)
+        }))
+    }
+  }
+  useEffect(() => {
+    getApi().then(() => {
+      setLastFeed(nextFeed)
+      setData(temp)
+    })
+  }, [])
 
   const openModal = item => {
     if (item)
@@ -26,21 +51,21 @@ export function CompetitionResultDetail({navigation}) {
         modal_item: '',
       });
   };
-
   return (
     <SafeAreaView style={styles.competitionResultWrapper}>
       <View style={styles.competitionResultInner}>
         <Text style={styles.competitionLabels}>대회</Text>
-        <Text style={styles.leagueTitle}>{competition.name}</Text>
+        <Text style={styles.leagueTitle}>{route.params.name}</Text>
         <Text style={styles.competitionLabels}>종목</Text>
-        {competition.detail.map((item, index) => {
-          return <DetailInfo item={item} key={index} openModal={openModal} />;
+        {data.map((item, index) => {
+          return <DetailInfo data={item} key={index} openModal={openModal} />;
         })}
       </View>
       <CompetitionResultModal
         modal={modal}
         openModal={openModal}
-        isSelected={isSelected}
+        data={data}
+        setData={setData}
       />
     </SafeAreaView>
   );

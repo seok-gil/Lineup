@@ -23,3 +23,7 @@ export {default as TagIcon} from './dDay.png';
 export {default as LogoutIcon} from './logoutIcon.png';
 export {default as MegaphoneIcon} from './megaphoneIcon.png';
 export {default as QnAIcon} from './qnaIcon.png';
+export {default as CheckBigIcon} from './checkBig.png'
+export {default as CheckSmallIcon} from './checkSmall.png'
+export {default as WelcomeIcon} from './welcome.png'
+export {default as MyBadgeIcon} from './myBadge.png'

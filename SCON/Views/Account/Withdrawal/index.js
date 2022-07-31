@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, { Component, useState } from 'react';
 import {
   View,
   Image,
@@ -8,18 +8,22 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {ButtonBig} from '../../Components';
-import {DefaultProfileImage} from '../../Assets/Images';
-
-export function Withdrawal() {
+import { DefaultProfileImage } from '../../../Assets/Images/index';
+import { WithdrawalModal } from "./WithdrawalModal"
+export function Withdrawal({navigation}) {
   const [password, setPassword] = useState('');
+  const [modal, setModal] = useState(false)
 
   const onInput = e => {
-    const {text} = e.nativeEvent;
+    const { text } = e.nativeEvent;
     setPassword(text);
   };
+
+  const onPress = () => {
+    setModal(true)
+  }
   return (
-    <View style={{flexDirection: 'column'}}>
+    <View style={{ flexDirection: 'column' }}>
       <Image source={DefaultProfileImage} />
       <Text>라인업 계정 ****을(를) 탈퇴하시겠습니까?</Text>
       <Text>계정 탈퇴 안내사항</Text>
@@ -35,7 +39,12 @@ export function Withdrawal() {
         onChange={e => onInput(e)}
       />
       <Text>현재 사용중인 비밀번호와 일치하지 않습니다.</Text>
-      <ButtonBig text={'버튼'} />
+      <TouchableOpacity onPress={onPress}>
+        <Text>
+          버튼
+        </Text>
+      </TouchableOpacity>
+      <WithdrawalModal modal={modal} setModal={setModal} navigation={navigation}/>
     </View>
   );
 }

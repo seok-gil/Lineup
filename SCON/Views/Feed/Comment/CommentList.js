@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { ApiFetchOne } from '../../../Components/API/ApiFetch';
 import { ButtonBig } from '../../../Components';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { CommentOne } from "./CommentOne"
 
 export function CommentList({ navigation }) {
 	const [data, setData] = useState([])
 	const [lastFeed, setLastFeed] = useState(1)
-	const [nextFeed, setNextFeed] = useState(2)
+	const [nextFeed, setNextFeed] = useState(10)
+	var temp = data;
 
-	useEffect(() => {
-		const temp = data
+	async function getApi() {
 		for (var i = lastFeed; i < nextFeed; ++i) {
-			ApiFetchOne({
+			await ApiFetchOne({
 				method: 'GET',
 				url: `http://localhost:1337/api/comments/${i}`,
 				headers: { "Authorization": "token" },
@@ -23,8 +23,12 @@ export function CommentList({ navigation }) {
 					temp.push(thing)
 				}))
 		}
-		setLastFeed(nextFeed)
-		setData(temp)
+	}
+	useEffect(() => {
+		getApi().then(() => {
+			setLastFeed(nextFeed)
+			setData(temp)
+		})
 	}, [nextFeed])
 
 	const view = [];
@@ -43,9 +47,9 @@ export function CommentList({ navigation }) {
 		};
 	}
 	return (
-		<View>
+		<ScrollView>
 			{commentlist()}
-			<ButtonBig onPress={() => setNextFeed(nextFeed + 2)} text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`} />
-		</View>
+			{/* <ButtonBig onPress={() => setNextFeed(nextFeed + 2)} text={`Feed 2보기${lastFeed} ~ ${nextFeed} @@@dummy`} /> */}
+		</ScrollView>
 	);
 }

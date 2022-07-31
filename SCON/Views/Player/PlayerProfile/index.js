@@ -8,16 +8,18 @@ import styles from './PlayerProfile.styles';
 import {DefaultProfileImage, SwimmingBackground} from '../../../Assets/Images';
 
 function PlayerProfile({data, navigation}) {
+  //TODO background
   return (
     <View style={styles.profileInnerWrapper}>
-      <Image source={SwimmingBackground} style={styles.backgroundImage} />
-      <Image source={DefaultProfileImage} style={styles.profileImage} />
+      <Image source={{uri:data.backPic}} style={styles.backgroundImage} /> 
+      {/* <Image source={SwimmingBackground} style={styles.backgroundImage} /> */}
+      <Image source={{uri:data.profilePic}} style={styles.profileImage} />
       <View style={styles.profileBottom}>
         <View style={styles.playerInfo}>
           <View style={styles.playerInfoLeft}>
-            <Text style={styles.playerMajor}>수영선수 {/* data.sport */}</Text>
+            <Text style={styles.playerMajor}>{data.sport}</Text>
             <Text style={styles.playerSchool}>
-              강원체육고등학교 {/* data.belong */}
+              {data.belong}
             </Text>
           </View>
           <PlayerData data={data} navigation={navigation} />

@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, { Component, useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from './Password.styles';
-
-export function Password({navigation}) {
+import { CheckSmallIcon } from "../../../Assets/Icons"
+import { RegistModal } from "./RegistModal"
+export function Password({ navigation }) {
   const [form, setForm] = useState({
     password: false,
     certification: false,
@@ -21,13 +22,27 @@ export function Password({navigation}) {
     certification: false,
   });
 
+  const [validateError, setValidateError] = useState({
+    password: false,
+    certification: false,
+  });
+
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
+    const { text } = e.nativeEvent;
     setForm({
       ...form,
       [key]: text,
     });
   };
+
+  const [modal, setModal] = useState(false)
+
+
+  const onPress = () => {
+    // navigation.navigate('LoginPage')
+    setModal(true)
+    console.log("regist API")
+  }
   return (
     <SafeAreaView style={styles.passwordWrapper}>
       <View style={styles.passwordInner}>
@@ -43,7 +58,15 @@ export function Password({navigation}) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('password', e)}
           />
-          {validate.password == false && (
+          <Image           /////// TODO
+            source={CheckSmallIcon}
+            style={
+              validate.password ?
+                styles.label
+                : styles.label
+            }
+          />
+          {validateError.password == false && (
             <Text style={styles.errorMessage}>올바른 비밀번호가 아닙니다.</Text>
           )}
           <TextInput
@@ -53,22 +76,32 @@ export function Password({navigation}) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('certification', e)}
           />
-          {validate.certification == false && (
+          <Image     /////// TODO
+            source={CheckSmallIcon}
+            style={
+              validate.certification ?
+                styles.label
+                : styles.label
+            }
+          />
+          {validateError.certification == false && (
             <Text style={styles.errorMessage}>
               상단 비밀번호와 일치하지 않습니다.
             </Text>
           )}
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Password')}
+          onPress={() => onPress()}
+          // disabled = {!validate.password && !validate.certification}
           style={
-            validate.password && validate.certification
+            validateError.password && validateError.certification
               ? styles.loginButton
               : styles.loginButtonNotAvailable
           }>
           <Text style={styles.loginButtonText}>확인</Text>
         </TouchableOpacity>
       </View>
+      <RegistModal modal={modal} setModal={setModal} navigation={navigation} />
     </SafeAreaView>
   );
 }

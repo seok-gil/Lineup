@@ -20,6 +20,10 @@ export function FeedRegist({navigation}) {
     setFeed(text);
   };
 
+  const onPress = () => {
+    navigation.navigate('CompetitionResult')
+    console.log("POST API")
+  }
   return (
     <SafeAreaView style={styles.feedRegistWrapper}>
       <View style={styles.feedInnerWrapper}>
@@ -37,7 +41,7 @@ export function FeedRegist({navigation}) {
         </View>
         <TouchableOpacity
           style={styles.feedRegistButton}
-          onPress={() => navigation.navigate('CompetitionResult')}>
+          onPress={() => onPress()}>
           <Text style={styles.feedRegistButtonText}> 확인 </Text>
         </TouchableOpacity>
       </View>

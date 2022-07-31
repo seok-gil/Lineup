@@ -30,7 +30,7 @@ export function Body({ data, navigation }) {
         <Text style={styles.bodyTextSmall}>
           {user_code === 1
             ? '최대 3명까지 추가할 수 있어요'
-            : '본인 계정관리는 물론 선수 3명을 팔로우 할 수 있습니다'}
+            : '본인 계정관리는 물론 선수 3명을 팔로우\n할 수 있습니다'}
         </Text>
       </View>
       <CardList data={data} navigation={navigation} />
