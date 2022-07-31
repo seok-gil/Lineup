@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 
-import { LineupLogoImage } from '../../../Assets/Images';
-import { DefaultProfileImage } from '../../../Assets/Images';
+import {LineupLogoImage} from '../../../Assets/Images';
+import {DefaultProfileImage} from '../../../Assets/Images';
 import styles from './Head.styles';
 
-
-export function Head({ data }) {
+export function Head({data}) {
   if (!data) return <View />;
   const email = data.AdminEmail;
   return (
     <View>
       <View style={styles.headerWrapper}>
-        <View style={styles.alignment} />
-        <View style={[styles.alignment, styles.imageWrapper]}>
+        <View style={styles.imageWrapper}>
           <Image source={LineupLogoImage} />
         </View>
       </View>
