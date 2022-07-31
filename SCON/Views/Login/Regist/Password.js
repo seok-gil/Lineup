@@ -60,7 +60,9 @@ export function Password({navigation}) {
             />
             <Image
               source={CheckSmallIcon}
-              style={validate.password ? styles.label : styles.label}
+              style={
+                validate.password ? styles.checkIcon : styles.checkIconNotShown
+              }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
@@ -80,7 +82,11 @@ export function Password({navigation}) {
             />
             <Image /////// TODO
               source={CheckSmallIcon}
-              style={validate.certification ? styles.label : styles.label}
+              style={
+                validate.certification
+                  ? styles.checkIcon
+                  : styles.checkIconNotShown
+              }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
