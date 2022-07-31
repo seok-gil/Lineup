@@ -1,16 +1,18 @@
-async function ApiFetch({method, url, headers, body}) {
+async function ApiFetch({ method, url, headers, body }) {
 	try {
-		let res = await fetch(url , {
+		let res = await fetch(url, {
 			method: method,
 			headers: headers,
-			body : body
+			body: body
 		})
-		let resChecked
+		let resChecked = res
+		console.log(res)
 		if (res.ok) {
 			// console.log("Request successful");
 			resChecked = res;
 			let data = await resChecked.json();
-			return (data.data[0].attributes.data)
+			console.log(data)
+			return (data)
 		}
 		else {
 			console.log("Request unsuccessful1");
@@ -21,12 +23,12 @@ async function ApiFetch({method, url, headers, body}) {
 	}
 }
 
-async function ApiFetchOne({method, url, headers, body}) {
+async function ApiFetchOne({ method, url, headers, body }) {
 	try {
-		let res = await fetch(url , {
+		let res = await fetch(url, {
 			method: method,
 			headers: headers,
-			body : body
+			body: body
 		})
 		let resChecked
 		if (res.ok) {
@@ -47,12 +49,12 @@ async function ApiFetchOne({method, url, headers, body}) {
 	}
 }
 
-async function ApiFetchArr({method, url, headers, body}) {
+async function ApiFetchArr({ method, url, headers, body }) {
 	try {
-		let res = await fetch(url , {
+		let res = await fetch(url, {
 			method: method,
 			headers: headers,
-			body : body
+			body: body
 		})
 		let resChecked
 		if (res.ok) {
@@ -123,18 +125,18 @@ export { ApiFetch, ApiFetchOne, ApiFetchArr }
 import { ApiFetch } from '../../Components/API/ApiFetch';
 
 export function HomeScreen({ navigation }) {
-  const [data, setData] = useState();
+	const [data, setData] = useState();
 
-  useEffect(() => {
-    ApiFetch({
-      method: 'GET',
-      url: 'http://localhost:1337/api/homes',
-      headers: { Authorization: 'token' },
-      body: null,
-    }).then(thing => {
-      setData(thing);
-    });
-  }, []);
+	useEffect(() => {
+		ApiFetch({
+			method: 'GET',
+			url: 'http://localhost:1337/api/homes',
+			headers: { Authorization: 'token' },
+			body: null,
+		}).then(thing => {
+			setData(thing);
+		});
+	}, []);
 
 
 
@@ -146,29 +148,31 @@ import { SafeAreaView, View, Text } from 'react-native';
 
 
 export function AdminNotiListScreen({ navigation }) {
-  const [data, setData] = useState([]);
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
-  var temp = data
+	const [data, setData] = useState([]);
+	const [lastFeed, setLastFeed] = useState(1)
+	const [nextFeed, setNextFeed] = useState(10)
+	var temp = data
 
-  async function getApi() {
-    for (var i = lastFeed; i < nextFeed; ++i) {
-      await ApiFetchOne({
-        method: 'GET',
-        url: `http://localhost:1337/api/notices/${i}`,
-        headers: { "Authorization": "token" },
-        body: null
-      })
-        .then((thing => {
-          temp.push(thing)
-        }))
-    }
-  }
-  useEffect(() => {
-    getApi().then(() => {
-      setLastFeed(nextFeed)
-      setData(temp)
-    })
-  }, [])
+	async function getApi() {
+		for (var i = lastFeed; i < nextFeed; ++i) {
+			await ApiFetchOne({
+				method: 'GET',
+				url: `http://localhost:1337/api/notices/${i}`,
+				headers: { "Authorization": "token" },
+				body: null
+			})
+				.then((thing => {
+					temp.push(thing)
+				}))
+		}
+	}
+	useEffect(() => {
+		getApi().then(() => {
+			setLastFeed(nextFeed)
+			setData(temp)
+		})
+	}, [])
 
 	*/
+
+

@@ -9,7 +9,7 @@ export function HomeScreen({ navigation }) {
   useEffect(() => {
     ApiFetch({
       method: 'GET',
-      url: 'http://localhost:1337/api/homes',
+      url: 'http://15.164.100.211:8080/home',
       headers: { Authorization: 'token' },
       body: null,
     }).then(thing => {
