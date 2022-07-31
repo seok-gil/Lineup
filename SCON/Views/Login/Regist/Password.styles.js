@@ -38,7 +38,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
+  errorMessageWrapper: {
+    height: 20,
+  },
+
   errorMessage: {
+    position: 'absolute',
     color: colors.RED,
     fontSize: 12,
     marginBottom: 10,

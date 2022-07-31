@@ -45,12 +45,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
-  errorMessage: {
-    color: colors.RED,
-    fontSize: 12,
-    marginBottom: 10,
+  errorMessageWrapper: {
+    height: 20,
   },
 
+  errorMessage: {
+    position: 'absolute',
+    top: 2,
+    color: colors.RED,
+    fontSize: 12,
+  },
   loginButton: globalButtonStyle,
 
   loginButtonNotAvailable: {
