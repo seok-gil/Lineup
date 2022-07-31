@@ -54,11 +54,13 @@ export function MakeId({ navigation }) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('nickname', e)}
           />
-          {validate.nickname == false && (
-            <Text style={styles.errorMessage}>
-              사용하실 수 있는 닉네임이 아닙니다.
-            </Text>
-          )}
+          <View style={styles.errorMessageWrapper}>
+            {validate.nickname == false && (
+              <Text style={styles.errorMessage}>
+                사용하실 수 있는 닉네임이 아닙니다.
+              </Text>
+            )}
+          </View>
           <Text style={styles.labelBottom}>
             계정으로 사용하실 이메일을 입력해 주세요.
           </Text>
@@ -78,11 +80,13 @@ export function MakeId({ navigation }) {
               <Text style={ post ? styles.sendButtonText : styles.sendButtonOffText}>전송</Text>
             </TouchableOpacity>
           </View>
-          {validate.email == false && (
-            <Text style={styles.errorMessage}>
-              유효하지 않은 이메일 형식입니다.
-            </Text>
-          )}
+          <View style={styles.errorMessageWrapper}>
+            {validate.email == false && (
+              <Text style={styles.errorMessage}>
+                유효하지 않은 이메일 형식입니다.
+              </Text>
+            )}
+          </View>
           <Text style={styles.labelBottom}>
             인증메일을 발송했습니다.{'\n'}메일 확인 후 인증번호를 입력해주세요.
           </Text>
@@ -93,11 +97,13 @@ export function MakeId({ navigation }) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('certification', e)}
           />
-          {validate.certification == false && (
-            <Text style={styles.errorMessage}>
-              인증번호가 일치하지 않습니다.
-            </Text>
-          )}
+          <View style={styles.errorMessageWrapper}>
+            {validate.certification == false && (
+              <Text style={styles.errorMessage}>
+                인증번호가 일치하지 않습니다.
+              </Text>
+            )}
+          </View>
         </View>
         <TouchableOpacity
           // disabled = {!validate.nickname && !validate.email && !validate.certification}
