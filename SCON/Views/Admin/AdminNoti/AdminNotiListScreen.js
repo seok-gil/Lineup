@@ -1,38 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { ApiFetchOne } from '../../../Components/API/ApiFetch';
-import { SafeAreaView, View, Text } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ApiFetchOne} from '../../../Components/API/ApiFetch';
+import {SafeAreaView, View, Text} from 'react-native';
 
-import { AdminOne } from "./AdminNotiOne"
+import {AdminOne} from './AdminNotiOne';
+import styles from './AdminNotiListScreen.styles';
 
-export function AdminNotiListScreen({ navigation }) {
+export function AdminNotiListScreen({navigation}) {
   const [data, setData] = useState([]);
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
-  var temp = data
+  const [lastFeed, setLastFeed] = useState(1);
+  const [nextFeed, setNextFeed] = useState(10);
+  var temp = data;
 
   async function getApi() {
     for (var i = lastFeed; i < nextFeed; ++i) {
       await ApiFetchOne({
         method: 'GET',
         url: `http://localhost:1337/api/notices/${i}`,
-        headers: { "Authorization": "token" },
-        body: null
-      })
-        .then((thing => {
-          temp.push(thing)
-        }))
+        headers: {Authorization: 'token'},
+        body: null,
+      }).then(thing => {
+        temp.push(thing);
+      });
     }
   }
   useEffect(() => {
     getApi().then(() => {
-      setLastFeed(nextFeed)
-      setData(temp)
-    })
-  }, [])
+      setLastFeed(nextFeed);
+      setData(temp);
+    });
+  }, []);
 
-  if (!data) return (<SafeAreaView />)
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.notiScreenWrapper}>
       {data.map((item, index) => {
         return <AdminOne key={index} data={item} navigation={navigation} />;
       })}
