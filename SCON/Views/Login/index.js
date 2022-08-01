@@ -8,28 +8,20 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import  AsyncStorage from "@react-native-community/async-storage"
+import AsyncStorage from "@react-native-community/async-storage"
 
 import { LineupLogoImage } from '../../Assets/Images';
 import { ApiFetch } from '../../Components/API/ApiFetch';
 import styles from './Login.styles';
 
 export function LoginPage({ navigation }) {
-  const [data, setData] = useState();
-
-  // useEffect(() => {
-  //   .then(thing => {
-  //     setData(thing);
-  //   });
-  // }, []);
-
   const [form, setForm] = useState({
-    email: '',
-    password: '',
+    email: 'player@gmail.com',
+    password: '1234',
   });
   const [validate, setValidate] = useState({
-    email: false,
-    password: false,
+    email: true,
+    password: true,
   });
 
   const onInput = (key, e) => {
@@ -48,10 +40,19 @@ export function LoginPage({ navigation }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(form)
-    }).then(AsyncStorage.setItem)
-    
-    // if (!validate.email && !validate.password) 
-    //   navigation.navigate('Tab');
+    })
+      .then((thing) => {
+        AsyncStorage.setItem("accessToken", thing.accessToken)
+        AsyncStorage.setItem("refreshToken", thing.refreshToken)
+        navigation.navigate('Tab')
+      })
+      .catch(error => {
+        var temp = validate
+        temp.email = false
+        temp.password = false
+        setValidate(temp)
+        console.log("Login ERROR", error)
+      })
   };
 
   return (
@@ -100,3 +101,4 @@ export function LoginPage({ navigation }) {
     </SafeAreaView>
   );
 }
+

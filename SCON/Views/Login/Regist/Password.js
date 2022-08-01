@@ -8,10 +8,19 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+
 import styles from './Password.styles';
 import { CheckSmallIcon } from "../../../Assets/Icons"
 import { RegistModal } from "./RegistModal"
-export function Password({ navigation }) {
+import { ApiFetch } from '../../../Components/API/ApiFetch';
+
+export function Password({ navigation, route }) {
+  const [postForm, setPostForm] = useState({
+    nickname: route.params.form.nickname,
+    email: route.params.form.email,
+    password: '',
+  });
+
   const [form, setForm] = useState({
     password: false,
     certification: false,
@@ -33,6 +42,11 @@ export function Password({ navigation }) {
       ...form,
       [key]: text,
     });
+    if (key == 'password')
+      setPostForm({
+        ...postForm,
+        [key]: text,
+      })
   };
 
   const [modal, setModal] = useState(false)
@@ -40,8 +54,23 @@ export function Password({ navigation }) {
 
   const onPress = () => {
     // navigation.navigate('LoginPage')
-    setModal(true)
-    console.log("regist API")
+    ApiFetch({
+      method: 'POST',
+      url: 'http://15.164.100.211:8080/auth/signup',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postForm)
+    })
+    .then(
+    console.log("post", postForm)
+    )
+    .then(
+      setModal(true)
+    )
+    .catch(
+      console.log(Error)
+    )
   }
   return (
     <SafeAreaView style={styles.passwordWrapper}>
@@ -92,7 +121,6 @@ export function Password({ navigation }) {
         </View>
         <TouchableOpacity
           onPress={() => onPress()}
-          // disabled = {!validate.password && !validate.certification}
           style={
             validateError.password && validateError.certification
               ? styles.loginButton

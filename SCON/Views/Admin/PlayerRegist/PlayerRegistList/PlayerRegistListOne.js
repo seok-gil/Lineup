@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ApiFetchOne } from '../../../../Components/API/ApiFetch';
-import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
-import { Time } from "../../../../Components"
+import { View, Text, TouchableOpacity } from 'react-native';
+import { Time } from "../../../../Components/Time"
 
 
 export function PlayerRegistListOne({ navigation, data }) {
-  if (!data) return (<SafeAreaView />)
+  if (!data) return (<View />)
   const Birth = data.Birth.slice(0, 4) + data.Birth.slice(5, 7) + data.Birth.slice(8, 10)
   return (
-    <SafeAreaView >
+    <View >
       <TouchableOpacity onPress={() =>
         navigation.navigate('PlayerReigstDetail', {
           PlayerRegistId: data.PlayerRegistId,
@@ -20,8 +20,8 @@ export function PlayerRegistListOne({ navigation, data }) {
           <Text> / {data.Sport}</Text>
           <Text> / {data.Belongs}</Text>
         </View>
-        < Time time={data.RegistDateTime} />
+        <Text><Time time={data.RegistDateTime} /></Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 }

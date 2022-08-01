@@ -13,6 +13,8 @@ export function Time({time, separator}) {
 
 
 export function TimeRelative(time) {
+	if (!time || !time.time)
+		return ('NULL')
 	var year = time.time.slice(0, 4)
 	var month = time.time.slice(5, 7)
 	var day = time.time.slice(8, 10)

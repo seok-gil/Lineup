@@ -3,41 +3,40 @@ import {View, Text, SafeAreaView} from 'react-native';
 
 import CompetitionResultModal from './CompetitionResultModal';
 import DetailInfo from './DetailInfo';
-import {competition} from '../../../Assets/Data/CompetitionResultDetail.json';
-import { ApiFetchOne } from '../../../Components/API/ApiFetch';
-
+import { ApiFetch } from '../../../Components/API/ApiFetch';
 import styles from './CompetitionResultDetail.styles';
+import AsyncStorage from "@react-native-community/async-storage"
+import { CompetitionResultButton } from "./CompetitionResultButton"
 
 export function CompetitionResultDetail({navigation, route}) {
-  const [data, setData] = useState([]);
+  console.log(route.params.existResult)
+  const [data, setData] = useState();
   const [lastFeed, setLastFeed] = useState(1)
   const [nextFeed, setNextFeed] = useState(10)
   const [result, setResult] = useState([])
+  
   const [modal, setModal] = useState({
     open: false,
     modal_item: '',
   });
-  var temp = data;
-  
-  async function getApi() {
-    for (var i = lastFeed; i < nextFeed; ++i) {
-      await ApiFetchOne({
-        method: 'GET',
-        url: `http://localhost:1337/api/event-details/${i}`,
-        headers: { "Authorization": "token" },
-        body: null
-      })
-        .then((thing => {
-          temp.push(thing)
-        }))
-    }
-  }
+
   useEffect(() => {
-    getApi().then(() => {
-      setLastFeed(nextFeed)
-      setData(temp)
-    })
-  }, [])
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'GET',
+          url: `http://15.164.100.211:8080/player/event/record/${route.params.data.eventId}`,
+          headers: { 
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: null,
+        }).then(thing => {
+          console.log("event result", thing)
+          setData(thing);
+        })
+  })
+  }, []);
 
   const openModal = item => {
     if (item)
@@ -51,14 +50,16 @@ export function CompetitionResultDetail({navigation, route}) {
         modal_item: '',
       });
   };
+  console.log(data)
+  if (!data) return <SafeAreaView/>
   return (
     <SafeAreaView style={styles.competitionResultWrapper}>
       <View style={styles.competitionResultInner}>
         <Text style={styles.competitionLabels}>대회</Text>
-        <Text style={styles.leagueTitle}>{route.params.name}</Text>
+        <Text style={styles.leagueTitle}>{route.params.data.name}</Text>
         <Text style={styles.competitionLabels}>종목</Text>
         {data.map((item, index) => {
-          return <DetailInfo data={item} key={index} openModal={openModal} />;
+          return <DetailInfo data={item} result={route.params.existResult} key={index} openModal={openModal} />;
         })}
       </View>
       <CompetitionResultModal
@@ -67,6 +68,7 @@ export function CompetitionResultDetail({navigation, route}) {
         data={data}
         setData={setData}
       />
+      {/* <CompetitionResultButton data={data} navigation={navigation}/> */}
     </SafeAreaView>
   );
 }

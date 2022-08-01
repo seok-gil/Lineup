@@ -6,16 +6,19 @@ async function ApiFetch({ method, url, headers, body }) {
 			body: body
 		})
 		let resChecked = res
-		console.log(res)
 		if (res.ok) {
-			// console.log("Request successful");
+			console.log("[",url, "] Request successful");
 			resChecked = res;
 			let data = await resChecked.json();
-			console.log(data)
+			// console.log(res)
+			// console.log(data)
 			return (data)
 		}
 		else {
-			console.log("Request unsuccessful1");
+			console.log(url, "Request unsuccessful1");
+			resChecked = res;
+			let data = await resChecked.json().then(console.log);
+			throw new Error(res.status);
 		}
 	}
 	catch (err) {

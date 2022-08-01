@@ -12,6 +12,8 @@ import styles from './MakeID.styles';
 import validator from 'validator';
 
 export function MakeId({ navigation }) {
+
+
   const [form, setForm] = useState({
     nickname: '',
     email: '',
@@ -24,8 +26,6 @@ export function MakeId({ navigation }) {
     certification: false,
   });
 
-  const [post, setPost] = useState(false)
-
   const onInput = (key, e) => {
     const { text } = e.nativeEvent;
     setForm({
@@ -33,6 +33,7 @@ export function MakeId({ navigation }) {
       [key]: text,
     });
   };
+  const [post, setPost] = useState(false)
 
   useEffect(() => {
     if (validator.isEmail(form.email))
@@ -101,7 +102,7 @@ export function MakeId({ navigation }) {
         </View>
         <TouchableOpacity
           // disabled = {!validate.nickname && !validate.email && !validate.certification}
-          onPress={() => navigation.navigate('Password')}
+          onPress={() => navigation.navigate('Password',{ form : form })}
           style={
             validate.nickname && validate.email && validate.certification
               ? styles.loginButton

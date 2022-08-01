@@ -24,7 +24,7 @@ export function CompetitionRegist({ navigation }) {
     endDate: '',
     location: '',
     eventName: '',
-    detail: [''],
+    detailNames: [''],
   });
   const [calendar, setCalender] = useState(false);
 
@@ -35,7 +35,6 @@ export function CompetitionRegist({ navigation }) {
       [key]: text,
     });
   }
-
   return (
     <SafeAreaView style={styles.competitionRegistWrapper}>
       <View style={styles.competitionRegistInner}>
@@ -47,7 +46,7 @@ export function CompetitionRegist({ navigation }) {
           }}>
           <TextInput
             style={styles.rangeInputStyle}
-            value={form.startDate}
+            value={startDate}
             editable={false}
             placeholder={' YYYY / MM / DD'}
             placeholderTextColor="#0E0E0E66"
@@ -55,7 +54,7 @@ export function CompetitionRegist({ navigation }) {
           <Text style={styles.waveText}>~</Text>
           <TextInput
             style={styles.rangeInputStyle}
-            value={form.endDate}
+            value={endDate}
             editable={false}
             placeholder={' YYYY / MM / DD'}
             placeholderTextColor="#0E0E0E66"

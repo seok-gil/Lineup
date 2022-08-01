@@ -3,9 +3,9 @@ import { ApiFetch } from '../../../Components/API/ApiFetch';
 import { TouchableOpacity, Text, View } from 'react-native';
 import AsyncStorage from "@react-native-community/async-storage"
 
-import styles from './CompetitionButton.styles';
+import styles from './CompetitionResultButton.styles';
 
-function CompetitionButton({ data, navigation }) {
+function CompetitionResultButton({ data, navigation }) {
   console.log(data)
   const onPress = () => {
     AsyncStorage.getItem("accessToken")
@@ -42,4 +42,4 @@ function CompetitionButton({ data, navigation }) {
     </TouchableOpacity>
   );
 }
-export default CompetitionButton;
+export default CompetitionResultButton;
