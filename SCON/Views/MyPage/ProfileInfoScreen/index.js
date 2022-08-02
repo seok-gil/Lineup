@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {View, Image, Text} from 'react-native';
 
-import {PhotoPick} from '../../../Components/PhotoPick';
+import { PhotoPick } from '../../../Components/PhotoPick';
+import S3StorageUpload from '../../../Components/PhotoPick';
+
 import ProfileInfoScreenElement from './ProfileInfoScreenElement';
 import {DefaultProfileImage, SwimmingBackground} from '../../../Assets/Images';
 import styles from './ProfileInfoScreen.styles';
 import { ApiFetchOne } from '../../../Components/API/ApiFetch';
 import { backgroundPhotoPickStyles, profilePhotoPickStyles} from './MypagePhotoPick.styles';
-
 export function ProfileInfoScreen({ navigation }) {
   
   const [data, setData] = useState();
@@ -35,20 +36,23 @@ export function ProfileInfoScreen({ navigation }) {
       <View style={styles.profileImageWrapper}>
         <View style={styles.profileBackground}>
           <Image source={backPhoto} style={styles.backgroundPhoto} />
-          <PhotoPick
+          {/* <PhotoPick
             styles={backgroundPhotoPickStyles}
             text="배경 이미지 설정"
+            photo={userPhoto}
             setPhoto={setBackPhoto}
-          />
+          /> */}
         </View>
         <View style={styles.profileImage}>
           <View style={styles.profileImageRelative}>
             <Image source={userPhoto} style={styles.profilePhoto} />
-            <PhotoPick
+            {/* <PhotoPick
               styles={profilePhotoPickStyles}
               text="프로필 이미지 설정"
+              photo={backPhoto}
               setPhoto={setUserPhoto}
-            />
+            /> */}
+            <View><S3StorageUpload/></View>
           </View>
         </View>
       </View>
