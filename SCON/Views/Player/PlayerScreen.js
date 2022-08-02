@@ -24,6 +24,7 @@ export function PlayerScreen({ navigation, route }) {
         })
   })
   }, []);
+  
   if (!data) return <SafeAreaView />;
   return (
     <SafeAreaView>

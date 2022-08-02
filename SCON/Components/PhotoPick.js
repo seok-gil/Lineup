@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {View, Text, Alert, TouchableOpacity, Image} from 'react-native';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {PhotoIcon} from '../Assets/Icons';
+import React, { useState } from 'react';
+import { View, Text, Alert, TouchableOpacity, Image } from 'react-native';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { PhotoIcon } from '../Assets/Icons';
 
 const DEFAULT_STYLE = {
   photoPickWrapper: {},
@@ -9,7 +9,7 @@ const DEFAULT_STYLE = {
   photoPickTouchable: {},
 };
 
-export function PhotoPick({text, setPhoto, styles = DEFAULT_STYLE}) {
+export function PhotoPick({ text, setPhoto, styles = DEFAULT_STYLE }) {
   const onClick = () => {
     Alert.alert(
       text,
@@ -45,7 +45,7 @@ export function PhotoPick({text, setPhoto, styles = DEFAULT_STYLE}) {
           },
         },
       ],
-      {cancelable: false},
+      { cancelable: false },
     );
   };
   return (

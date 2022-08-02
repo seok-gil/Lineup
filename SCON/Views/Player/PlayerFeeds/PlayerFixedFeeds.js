@@ -26,8 +26,7 @@ export function PlayerFixedFeed({ navigation, playerId }) {
           },
           body: null,
         }).then(thing => {
-          console.log("fixed feed thing", thing)
-          setData(thing);
+          setData(thing[0]);
         })
   })
   }, []);
@@ -35,7 +34,6 @@ export function PlayerFixedFeed({ navigation, playerId }) {
   if (!data) return <View />;
   const today = new Date().getDate();
   var dDay = (data.data ? data.date.slice(8, 10) - today : 0)
-
   return (
     <TouchableOpacity
       onPress={() =>
@@ -71,7 +69,7 @@ export function PlayerFixedFeed({ navigation, playerId }) {
           style={styles.feedLikedBox}>
           <Image source={CommentIcon} style={styles.likeIcon} />
           <Text style={styles.likeText}>{data.commentCnt} </Text>
-          <Text style={styles.likeText}> <TimeRelative time={data.date} /> </Text>
+          <Text style={styles.likeText}> <TimeRelative time={data.createDate} /> </Text>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>

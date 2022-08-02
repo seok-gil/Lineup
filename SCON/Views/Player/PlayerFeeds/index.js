@@ -10,23 +10,19 @@ import AsyncStorage from "@react-native-community/async-storage"
 
 function PlayerFeeds({ playerId, feed, navigation }) {
   const [data, setData] = useState();
-  const [nextFeed, setNextFeed] = useState(10);
-  const [lastFeed, setLastFeed] = useState(1);
-  var temp = data;
 
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/player-home/${playerId}/feeds?size=${0}&lastFeedId=${0}`,
+          url: `http://15.164.100.211:8080/player-home/${playerId}/feeds?size=${3}&lastFeedId=${100}`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
           body: null,
         }).then(thing => {
-          console.log("thing", thing)
           setData(thing);
         })
       })

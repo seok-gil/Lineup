@@ -1,34 +1,40 @@
-import React from 'react';
-import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 
-import {CommentModal, Reply} from './';
-import {HeartSEmptyIcon, HeartSFilledIcon} from '../../../Assets/Icons';
-import {TimeRelative} from '../../../Components/Time';
+import { CommentModal, Reply } from './';
+import { HeartSEmptyIcon, HeartSFilledIcon } from '../../../Assets/Icons';
+import { TimeRelative } from '../../../Components/Time';
 
-//TODO heart EMPTY FILLED
-export function CommentOne({comment}) {
+export function CommentOne({ feedId, comment, setReplyFocus }) {
   if (!comment) return <View />;
+  const [viewReply, setViewReply] = useState(false)
+
+  
+  const onReply= () => {
+    setReplyInput(false)
+    
+  }
   return (
     <View>
-      <View style={{flexDirection: 'row'}}>
-        <Image source={{uri: comment.writer.profilePic}} style={styles.image} />
-        <Text>{comment.writer.닉네임} </Text>
-        <Text> <TimeRelative time={comment.commentDate} /> </Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Image source={{ uri: comment.profilePic }} style={styles.image} />
+        <Text>{comment.writer.nick} </Text>
+        <Text> <TimeRelative time={comment.createDate} /> </Text>
         <CommentModal />
       </View>
-      <Text>{comment.commentContent}</Text>
-      <View style={{flexDirection: 'row'}}>
-        <Image source={HeartSEmptyIcon} />
+      <Text>{comment.content}</Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Image source={comment.ilike ? HeartSFilledIcon : HeartSEmptyIcon} />
         <Text>좋아요{comment.commentLikeCnt}개 </Text>
-        <TouchableOpacity onPress={() => onclick}>
-          <Text>답글 숨기기 </Text>
+        <TouchableOpacity onPress={() => setViewReply(!viewReply)}>
+          <Text>{viewReply ? "답글 숨기기" : `답글 ${comment.reply.length}개`}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => onclick}>
+        <TouchableOpacity onPress={() => setReplyFocus(comment.commentId)}>
           <Text>답글 달기 </Text>
         </TouchableOpacity>
       </View>
-      {comment.replys.map(item => {
-        return <Reply reply={item} />;
+      {comment.reply.map(item => {
+        return <Reply reply={item} feedId={feedId} />
       })}
     </View>
   );
