@@ -7,13 +7,8 @@ import { TimeRelative } from '../../../Components/Time';
 
 export function CommentOne({ feedId, comment, setReplyFocus }) {
   if (!comment) return <View />;
-  const [viewReply, setViewReply] = useState(false)
-
   
-  const onReply= () => {
-    setReplyInput(false)
-    
-  }
+  const [viewReply, setViewReply] = useState(false)
   return (
     <View>
       <View style={{ flexDirection: 'row' }}>
@@ -33,7 +28,7 @@ export function CommentOne({ feedId, comment, setReplyFocus }) {
           <Text>답글 달기 </Text>
         </TouchableOpacity>
       </View>
-      {comment.reply.map(item => {
+      {viewReply == true &&  comment.reply.map(item => {
         return <Reply reply={item} feedId={feedId} />
       })}
     </View>

@@ -7,7 +7,6 @@ import { TimeRelative } from '../../../Components/Time';
 
 
 export function Reply({ reply }) {
-	console.log(reply)
 	return (
 		<View style={{ flexDirection: 'column' }}>
 			<View style={{ flexDirection: 'row' }}>

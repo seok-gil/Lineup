@@ -49,8 +49,8 @@ export default function App() {
     <NavigationContainer>
       <AppStack.Navigator >
         {/* <AppStack.Screen name="AdminTab" component={AdminTabScreen} options={{ headerShown: false }} /> */}
-        <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
         <AppStack.Screen name="LoginPage" component={LoginPage} />
+        <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
         <AppStack.Screen name="RegistAccpet" component={RegistAccept} />
         <AppStack.Screen name="MakeId" component={MakeId} />
         <AppStack.Screen name="Password" component={Password} />

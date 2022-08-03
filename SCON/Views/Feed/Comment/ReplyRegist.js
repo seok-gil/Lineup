@@ -9,9 +9,7 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId}) {
     console.log("null",replyFocus)
     return <View/>
   }
-  console.log(replyFocus)
   const [comment, setComment] = useState('');
-  
   const onInput = e => {
     const { text } = e.nativeEvent;
     setComment(text);

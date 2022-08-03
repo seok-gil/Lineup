@@ -26,8 +26,8 @@ export function FeedScreen({ route, navigation }) {
 				})
 			})
 	}, []);
+	
 	if (!data) return (<SafeAreaView />)
-
 	return (
 		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
 			<FeedBody data={data} />
