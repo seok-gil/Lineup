@@ -1,18 +1,22 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, Modal, TouchableOpacity, } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker'; //https://www.npmjs.com/package/react-native-calendar-picker
+import { Time } from "../../../Components/Time"
 
 
-export function Calendar({ calendar, setCalender, form, setForm }) {
+export function Calendar({ calendar, setCalender, form, setForm, setStartDate, setEndDate }) {
 	const onDateChange = (date, type) => {
 		if (date) {
 			const selected = new Date(date);
 			if (type === 'END_DATE') {
-				setForm({ ...form , ['endDate'] : selected.toISOString().slice(0, 10).replace(/-/gi, " / ")})
+				setForm({ ...form , ['endDate'] : selected.toISOString()})
+				setEndDate(selected.toISOString().slice(0, 10).replace(/-/gi, " / "))
 				setCalender(false)
 			}
 			else {
-				setForm({ ...form , ['startDate'] : selected.toISOString().slice(0, 10).replace(/-/gi, " / ")})
+				setForm({ ...form , ['startDate'] : selected.toISOString()})
+				setStartDate(selected.toISOString().slice(0, 10).replace(/-/gi, " / "))
+
 			}
 		}
 	}

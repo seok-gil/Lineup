@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,22 +8,24 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {LineupLogoImage} from '../../Assets/Images';
-import {ApiFetch} from '../../Components/API/ApiFetch';
+import AsyncStorage from "@react-native-community/async-storage"
+
+import { LineupLogoImage } from '../../Assets/Images';
+import { ApiFetch } from '../../Components/API/ApiFetch';
 import styles from './Login.styles';
 
-export function LoginPage({navigation}) {
+export function LoginPage({ navigation }) {
   const [form, setForm] = useState({
-    email: '',
-    password: '',
+    email: 'player@gmail.com',
+    password: '1234',
   });
   const [validate, setValidate] = useState({
-    email: false,
-    password: false,
+    email: true,
+    password: true,
   });
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
+    const { text } = e.nativeEvent;
     setForm({
       ...form,
       [key]: text,
@@ -32,6 +34,26 @@ export function LoginPage({navigation}) {
 
   const onLogin = () => {
     if (!validate.email && !validate.password) navigation.navigate('Tab');
+    ApiFetch({
+      method: 'POST',
+      url: 'http://15.164.100.211:8080/auth/login',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form)
+    })
+      .then((thing) => {
+        AsyncStorage.setItem("accessToken", thing.accessToken)
+        AsyncStorage.setItem("refreshToken", thing.refreshToken)
+        navigation.navigate('Tab')
+      })
+      .catch(error => {
+        var temp = validate
+        temp.email = false
+        temp.password = false
+        setValidate(temp)
+        console.log("Login ERROR", error)
+      })
   };
 
   return (
@@ -84,3 +106,4 @@ export function LoginPage({navigation}) {
     </SafeAreaView>
   );
 }
+

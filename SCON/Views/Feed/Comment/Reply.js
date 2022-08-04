@@ -5,17 +5,18 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import { ViewMore, ReplyIcon } from "../../../Assets/Icons/"
 import { TimeRelative } from '../../../Components/Time';
 
+
 export function Reply({ reply }) {
 	return (
 		<View style={{ flexDirection: 'column' }}>
 			<View style={{ flexDirection: 'row' }}>
 				<Image source={ReplyIcon} />
 				<Image source={{ uri: reply.writer.profilePic }} style={styles.image} />
-				<Text>{reply.writer.닉네임}</Text>
-				<Text> <TimeRelative time={reply.commentDate} /> </Text>
+				<Text>{reply.writer.nick}</Text>
+				<Text> <TimeRelative time={reply.createDate} /> </Text>
 				<Image source={ViewMore} />
 			</View>
-			<Text>{reply.commentContent}</Text>
+			<Text>{reply.content}</Text>
 		</View>
 	);
 }

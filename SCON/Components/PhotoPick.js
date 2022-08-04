@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
-import {View, Text, Alert, TouchableOpacity, Image} from 'react-native';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {PhotoIcon} from '../Assets/Icons';
+import React, { useState } from 'react';
+import { View, Text, Alert, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { PhotoIcon } from '../Assets/Icons';
+
 
 const DEFAULT_STYLE = {
   photoPickWrapper: {},
@@ -9,7 +10,9 @@ const DEFAULT_STYLE = {
   photoPickTouchable: {},
 };
 
-export function PhotoPick({text, setPhoto, styles = DEFAULT_STYLE}) {
+
+
+export function PhotoPick({ text, photo, setPhoto, styles = DEFAULT_STYLE }) {
   const onClick = () => {
     Alert.alert(
       text,
@@ -22,10 +25,12 @@ export function PhotoPick({text, setPhoto, styles = DEFAULT_STYLE}) {
             if (result.didCancel) {
               return null;
             }
-            const localUri = result.assets[0].uri;
-            const uriPath = localUri.split('//').pop();
-            const imageName = localUri.split('/').pop();
-            setPhoto('file://' + uriPath);
+            setPhoto({
+              ...photo,
+              asset : result.assets[0],
+              set : true,
+              uri : result.assets[0].uri
+            })
           },
         },
         {
@@ -38,14 +43,15 @@ export function PhotoPick({text, setPhoto, styles = DEFAULT_STYLE}) {
             if (result.didCancel) {
               return null;
             }
-            const localUri = result.assets[0].uri;
-            const uriPath = localUri.split('//').pop();
-            const imageName = localUri.split('/').pop();
-            setPhoto('file://' + uriPath);
+            setPhoto({
+              asset : result.assets[0],
+              set : true,
+              uri : result.assets[0].uri
+            })
           },
         },
       ],
-      {cancelable: false},
+      { cancelable: false },
     );
   };
   return (

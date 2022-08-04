@@ -1,45 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, View, Text } from 'react-native';
-import { ApiFetchOne } from '../../Components/API/ApiFetch';
+import { ApiFetch } from '../../Components/API/ApiFetch';
 
 import RecordHead from './RecordHead';
 import PlayerCard from './PlayerCard';
 
-import Data from '../../Assets/Data/Record.json';
 import styles from './RecordScreen.styles';
-import { CommentOne } from "./CommentOne"
+import AsyncStorage from "@react-native-community/async-storage"
 
-export function RecordScreen() {
+export function RecordScreen({ route }) {
   const [data, setData] = useState([])
   const [lastFeed, setLastFeed] = useState(1)
   const [nextFeed, setNextFeed] = useState(10)
   var temp = data;
-
-  async function getApi() {
-    for (var i = lastFeed; i < nextFeed; ++i) {
-      await ApiFetchOne({
-        method: 'GET',
-        url: `http://localhost:1337/api/records/${i}`,
-        headers: { "Authorization": "token" },
-        body: null
-      })
-        .then((thing => {
-          temp.push(thing)
-        }))
-    }
-  }
   useEffect(() => {
-    getApi().then(() => {
-      setLastFeed(nextFeed)
-      setData(temp)
-    })
-  }, [nextFeed])
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'GET',
+          url: `http://15.164.100.211:8080/player-home/${route.params.playerId}/records`,
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: null,
+        }).then(thing => {
+          console.log("thing", thing)
+          setData(thing);
+        })
+      })
+  }, []);
+
+  if (!data) return (<SafeAreaView/>)
   return (
     <SafeAreaView style={styles.recordScreenWrapper}>
       <ScrollView>
-        <RecordHead medal={Data.Medal} />
-
-                <View>
+        {/* <RecordHead medal={data.Medal} /> */}
+        <View>
           {data.map(record => (
             <PlayerCard key={`player-card-${record.recordId}`} record={record} />
           ))}

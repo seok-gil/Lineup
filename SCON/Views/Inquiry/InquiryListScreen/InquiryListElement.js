@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import {View, Text, TouchableOpacity, Image } from 'react-native';
 
-import {DownIcon} from '../../../Assets/Icons';
+import { DownIcon } from "../../../Assets/Icons"
 import { Time } from "../../../Components/Time"
 import InquiryListElementQnA from './InquiryListElementQnA';
 import styles from './InquiryListElement.styles';

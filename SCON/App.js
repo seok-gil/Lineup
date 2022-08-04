@@ -48,22 +48,18 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator>
-        <AppStack.Screen
+        {/* <AppStack.Screen
           name="AdminTab"
           component={AdminTabScreen}
           options={{headerShown: false}}
-        />
+        /> */}
         <AppStack.Screen name="LoginPage" component={LoginPage} />
+        <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
         <AppStack.Screen name="RegistAccpet" component={RegistAccept} />
         <AppStack.Screen name="MakeId" component={MakeId} />
         <AppStack.Screen name="Password" component={Password} />
         <AppStack.Screen name="ForgetPassword" component={ForgetPassword} />
         <AppStack.Screen name="PasswordReset" component={PasswordReset} />
-        <AppStack.Screen
-          name="Tab"
-          component={TabScreen}
-          options={{headerShown: false}}
-        />
         <AppStack.Screen name="AlertScreen" component={AlertScreen} />
         <AppStack.Screen name="Player" component={PlayerScreen} />
         <AppStack.Screen name="Record" component={RecordScreen} />

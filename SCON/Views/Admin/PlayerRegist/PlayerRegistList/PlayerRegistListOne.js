@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ApiFetchOne} from '../../../../Components/API/ApiFetch';
 import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
-import {Time} from '../../../../Components';
+import {Time} from '../../../../Components/Time';
 
 export function PlayerRegistListOne({navigation, data}) {
   if (!data) return <SafeAreaView />;
@@ -22,7 +22,7 @@ export function PlayerRegistListOne({navigation, data}) {
           <Text> / {data.Sport}</Text>
           <Text> / {data.Belongs}</Text>
         </View>
-        <Time time={data.RegistDateTime} />
+        <Text><Time time={data.RegistDateTime} separator='.'/></Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

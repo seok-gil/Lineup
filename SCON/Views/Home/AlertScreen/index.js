@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
-import { ApiFetchOne } from '../../../Components/API/ApiFetch';
+import { ApiFetchOne, ApiFetch } from '../../../Components/API/ApiFetch';
 
 import AlertComponent from './AlertComponent';
 import styles from './AlertScreen.styles';
 
+import AsyncStorage from "@react-native-community/async-storage"
 
 
 
@@ -14,6 +15,24 @@ export function AlertScreen( ) {
   const [nextFeed, setNextFeed] = useState(10)
   const [lastFeed, setLastFeed] = useState(1)
   var temp = data;
+
+  useEffect(() => {
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'GET',
+          url: 'http://15.164.100.211:8080/alarm',
+          headers: { 
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: null,
+        }).then(thing => {
+          console.log("@@@@@@@@@@@",thing)
+          // setData(thing);
+        })
+  })
+  }, []);
 
   async function getApi() {
     for (var i = lastFeed; i < nextFeed; ++i) {
@@ -44,7 +63,7 @@ export function AlertScreen( ) {
     for (let i = 0; i < data.length; ++i) {
       view.push(
         <AlertComponent
-          key={`alert-${alert.alarmId}`}
+          key={`alert-${i}`}
           alert={data[i]}
         />
       );
