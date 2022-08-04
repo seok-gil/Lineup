@@ -9,7 +9,7 @@ import AsyncStorage from "@react-native-community/async-storage"
 import { CompetitionResultButton } from "./CompetitionResultButton"
 
 export function CompetitionResultDetail({navigation, route}) {
-  console.log(route.params.existResult)
+  console.log(route.params)
   const [data, setData] = useState();
   const [lastFeed, setLastFeed] = useState(1)
   const [nextFeed, setNextFeed] = useState(10)
@@ -19,7 +19,7 @@ export function CompetitionResultDetail({navigation, route}) {
     open: false,
     modal_item: '',
   });
-
+  console.log(guid())
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
@@ -56,7 +56,7 @@ export function CompetitionResultDetail({navigation, route}) {
     <SafeAreaView style={styles.competitionResultWrapper}>
       <View style={styles.competitionResultInner}>
         <Text style={styles.competitionLabels}>대회</Text>
-        <Text style={styles.leagueTitle}>{route.params.data.name}</Text>
+        <Text style={styles.leagueTitle}>{route.params.data.eventName}</Text>
         <Text style={styles.competitionLabels}>종목</Text>
         {data.map((item, index) => {
           return <DetailInfo data={item} result={route.params.existResult} key={index} openModal={openModal} />;
@@ -68,7 +68,7 @@ export function CompetitionResultDetail({navigation, route}) {
         data={data}
         setData={setData}
       />
-      {/* <CompetitionResultButton data={data} navigation={navigation}/> */}
+      <CompetitionResultButton data={data} navigation={navigation}/>
     </SafeAreaView>
   );
 }

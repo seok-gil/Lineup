@@ -28,7 +28,7 @@ function PlayerData({data, navigation}) {
       <TouchableOpacity
         style={styles.playerDataElement}
         onPress={() =>
-          navigation.navigate('Record', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('Record', {playerId: data.playerId})
         }>
         <Text style={styles.playerDataTitle}>전적</Text>
         <Text style={styles.playerDataText}>{data.recordCnt}</Text>

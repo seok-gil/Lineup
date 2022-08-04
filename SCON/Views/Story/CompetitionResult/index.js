@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 
 import CompetitionElement from './CompetitionElement';
-import { ApiFetchOne, ApiFetch } from '../../../Components/API/ApiFetch';
+import { ApiFetch } from '../../../Components/API/ApiFetch';
 import styles from './CompetitionResult.styles';
 import AsyncStorage from "@react-native-community/async-storage"
 
@@ -29,10 +29,9 @@ export function CompetitionResult({navigation}) {
   })
   }, []);
 
-  if (!data) return <SafeAreaView/>
   return (
     <SafeAreaView style={styles.competitionResultWrapper}>
-      {data.map((item, index) => {
+      {data && data.map((item, index) => {
         return (
           <CompetitionElement data={item} key={index} navigation={navigation} />
         );

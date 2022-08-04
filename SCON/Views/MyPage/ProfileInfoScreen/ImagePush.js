@@ -1,12 +1,12 @@
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-
+import { ImagePushAPI } from "./ImagePushAPI"
 
 import Amplify, { Storage } from 'aws-amplify';
 import awsconfig from '../../../src/aws-exports';
+import { GetUuid } from "../../../Components/GetUuid"
 
 Amplify.configure(awsconfig);
-
 Storage.configure({
   customPrefix: {
     public: '',
@@ -36,7 +36,7 @@ export function ImagePush({ playerId, userPhoto, setUserPhoto, backPhoto, setBac
     });
     const img = await fetchResourceFromURI(asset.uri);
     var path = type + '/'
-    return Storage.put(path + type + "_" + playerId + "_" + Math.floor(Math.random() * 1000000) + ".jpg", img, {
+    return Storage.put(path + GetUuid() + ".jpg", img, {
       level: 'public',
       contentType: 'photo',
     })
@@ -48,16 +48,20 @@ export function ImagePush({ playerId, userPhoto, setUserPhoto, backPhoto, setBac
         });
         Storage.get(res.key)
           .then(result => {
-            if (type == 'profile')
+            if (type == 'profile') {
               setUserPhoto({
                 ...userPhoto,
-                ['uri'] : result
+                ['uri']: result
               })
-            else
+            }
+            else {
               setBackPhoto({
                 ...backPhoto,
-                ['uri'] : result
+                ['uri']: result
               })
+            }
+            const url = result.split('?')
+            ImagePushAPI(url[0], type)
           })
           .catch(err => {
             setProgressText('Upload Error');
@@ -78,9 +82,11 @@ export function ImagePush({ playerId, userPhoto, setUserPhoto, backPhoto, setBac
     //TODO API
     if (userPhoto.set == true) {
       onPushImage(userPhoto.asset, "profile")
+        .then()
     }
     if (backPhoto.set == true) {
       onPushImage(backPhoto.asset, "back")
+        .then(ImagePushAPI(backPhoto.uri, 'back'))
     }
     navigation.navigate('MyPageScreen')
   }
