@@ -70,6 +70,7 @@ const CompetitionResultModal = ({ modal, openModal, data, setData }) => {
     });
     setData(temp)
     openModal()
+    console.log("aa")
   }
 
   const onAnswer = () => {
@@ -79,6 +80,7 @@ const CompetitionResultModal = ({ modal, openModal, data, setData }) => {
     else if (result.ranking == '' || result.score == '')
       setValidate(false)
   }
+
   return (
     <Modal
       transparent={true}

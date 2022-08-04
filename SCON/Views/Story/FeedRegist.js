@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-
+import React, { useState, useEffect } from 'react';
 import {
   TextInput,
   View,
@@ -7,23 +6,44 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import {ButtonBig} from '../../Components';
 
+import { ApiFetch } from "../../Components/API/ApiFetch"
 import styles from './FeedRegist.styles';
-import {globalButtonStyle, globalButtonTextStyle} from '../../Styles';
+import { globalButtonStyle, globalButtonTextStyle } from '../../Styles';
+import AsyncStorage from "@react-native-community/async-storage"
 
-export function FeedRegist({navigation}) {
+export function FeedRegist({ navigation }) {
   const [feed, setFeed] = useState('');
 
-  const onChange = e => {
-    const {text} = e.nativeEvent;
+  const onChange = (e) => {
+    const { text } = e.nativeEvent;
     setFeed(text);
   };
 
   const onPress = () => {
-    navigation.navigate('CompetitionResult')
-    console.log("POST API")
-  }
+    console.log(feed)
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'POST',
+          url: `http://15.164.100.211:8080/player/feed`,
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: JSON.stringify({
+            "content" : feed
+        })
+        }).then(thing => {
+          console.log("Feed", thing)
+          navigation.navigate('StoryScreen')
+        }).catch(error => {
+          console.log("Login ERROR", error)
+
+
+        })
+    })
+}
   return (
     <SafeAreaView style={styles.feedRegistWrapper}>
       <View style={styles.feedInnerWrapper}>
@@ -35,7 +55,7 @@ export function FeedRegist({navigation}) {
             value={feed}
             placeholder={'어떤 말을 남기고 싶으신가요?'}
             placeholderTextColor="#C9C9C9"
-            onChange={e => onChange('search', e)}
+            onChange={(e) => onChange(e)}
             onSubmitEditing={() => searchRef.current.focus()}
           />
         </View>

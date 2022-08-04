@@ -13,7 +13,7 @@ function PlayerFollowButton({ data, navigation }) {
   const buttonTextStyle =
     data.isMe & !data.isFollow ? styles.followedText : styles.followText;
   const buttonText = () => {
-    if (!data.isMe) return '스토리 추가하기';
+    if (data.isMe) return '스토리 추가하기';
     else if (data.isFollow) return '나의 라인업 추가됨';
     else return '나의 라인업 추가하기';
   };
