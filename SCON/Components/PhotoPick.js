@@ -9,10 +9,8 @@ const DEFAULT_STYLE = {
   photoPickImage: {},
   photoPickTouchable: {},
 };
-import Amplify, { Storage } from 'aws-amplify';
-import awsconfig from '../src/aws-exports';
 
-Amplify.configure(awsconfig);
+
 
 export function PhotoPick({ text, photo, setPhoto, styles = DEFAULT_STYLE }) {
   const onClick = () => {

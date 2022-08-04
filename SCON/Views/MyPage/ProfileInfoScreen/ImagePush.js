@@ -2,9 +2,10 @@ import { View, Image, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { ImagePushAPI } from "./ImagePushAPI"
 
+
 import Amplify, { Storage } from 'aws-amplify';
-import awsconfig from '../../../src/aws-exports';
 import { GetUuid } from "../../../Components/GetUuid"
+import awsconfig from '../../../src/aws-exports'
 
 Amplify.configure(awsconfig);
 Storage.configure({
