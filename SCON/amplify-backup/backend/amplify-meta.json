@@ -1,0 +1,39 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-lineup-dev-164634-authRole",
+      "UnauthRoleArn": "arn:aws:iam::775652409395:role/amplify-lineup-dev-164634-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::775652409395:role/amplify-lineup-dev-164634-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-lineup-dev-164634-deployment",
+      "UnauthRoleName": "amplify-lineup-dev-164634-unauthRole",
+      "StackName": "amplify-lineup-dev-164634",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:775652409395:stack/amplify-lineup-dev-164634/663a06c0-1300-11ed-9012-02da414b7114",
+      "AmplifyAppId": "d31f2k0qy1bj32"
+    }
+  },
+  "auth": {
+    "lineup": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "function": {
+    "S3Triggereba8a160": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true
+    }
+  },
+  "storage": {
+    "lineupf46b8672": {
+      "service": "S3",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  }
+}

@@ -22,8 +22,8 @@ export function PlayerRegistListOne({navigation, data}) {
           <Text> / {data.Sport}</Text>
           <Text> / {data.Belongs}</Text>
         </View>
-        <Text><Time time={data.RegistDateTime} /></Text>
+        <Text><Time time={data.RegistDateTime} separator='.'/></Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }

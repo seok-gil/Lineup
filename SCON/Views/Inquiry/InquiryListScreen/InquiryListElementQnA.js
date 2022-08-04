@@ -9,7 +9,6 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import {DownIcon} from '../../Assets/Icons';
 
 import styles from './InquiryListElementQnA.styles';
 
