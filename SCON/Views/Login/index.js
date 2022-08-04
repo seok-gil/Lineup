@@ -8,10 +8,9 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import { LineupLogoImage } from '../../Assets/Images';
-import { ApiFetch } from '../../Components/API/ApiFetch';
+import {LineupLogoImage} from '../../Assets/Images';
+import {ApiFetch} from '../../Components/API/ApiFetch';
 import styles from './Login.styles';
-
 
 export function LoginPage({navigation}) {
   const [form, setForm] = useState({
@@ -22,7 +21,7 @@ export function LoginPage({navigation}) {
     email: false,
     password: false,
   });
-  
+
   const onInput = (key, e) => {
     const {text} = e.nativeEvent;
     setForm({
@@ -30,14 +29,13 @@ export function LoginPage({navigation}) {
       [key]: text,
     });
   };
-  
+
   const onLogin = () => {
-    if (!validate.email && !validate.password) 
-      navigation.navigate('Tab');
-    };
-    
-    return (
-      <SafeAreaView style={styles.loginWrapper}>
+    if (!validate.email && !validate.password) navigation.navigate('Tab');
+  };
+
+  return (
+    <SafeAreaView style={styles.loginWrapper}>
       <View style={styles.logoArea}>
         <Image source={LineupLogoImage} style={styles.logoImage} />
       </View>
@@ -50,11 +48,13 @@ export function LoginPage({navigation}) {
             style={styles.loginInput}
             onChange={e => onInput('email', e)}
           />
-          {validate.email == false && (
-            <Text style={styles.errorMessage}>
-              가입 된 정보가 없습니다. 다시 입력해주세요.
-            </Text>
-          )}
+          <View style={styles.errorMessageWrapper}>
+            {validate.email == false && (
+              <Text style={styles.errorMessage}>
+                가입 된 정보가 없습니다. 다시 입력해주세요.
+              </Text>
+            )}
+          </View>
           <TextInput
             value={form.password}
             placeholder={'비밀번호 입력'}
@@ -62,9 +62,11 @@ export function LoginPage({navigation}) {
             style={styles.loginInput}
             onChange={e => onInput('password', e)}
           />
-          {validate.email == false && (
-            <Text style={styles.errorMessage}>비밀번호가 틀렸습니다.</Text>
-          )}
+          <View style={styles.errorMessageWrapper}>
+            {validate.email == false && (
+              <Text style={styles.errorMessage}>비밀번호가 틀렸습니다.</Text>
+            )}
+          </View>
           <TouchableOpacity onPress={onLogin} style={styles.loginButton}>
             <Text style={styles.loginButtonText}>로그인</Text>
           </TouchableOpacity>

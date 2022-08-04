@@ -65,10 +65,15 @@ const styles = StyleSheet.create({
     color: colors.TEXT_LIGHT,
   },
 
+  errorMessageWrapper: {
+    height: 20,
+  },
+
   errorMessage: {
+    position: 'absolute',
+    top: 2,
     color: colors.RED,
     fontSize: 12,
-    marginBottom: 10,
   },
 
   loginButton: globalButtonStyle,

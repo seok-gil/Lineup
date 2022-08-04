@@ -59,11 +59,13 @@ export function ForgetPassword({navigation}) {
               <Text style={ post ? styles.sendButtonText : styles.sendButtonOffText}>전송</Text>
             </TouchableOpacity>
           </View>
-          {validate.email == false && (
-            <Text style={styles.errorMessage}>
-              가입 된 정보가 없습니다. 다시 입력해주세요.
-            </Text>
-          )}
+          <View style={styles.errorMessageWrapper}>
+            {validate.email == false && (
+              <Text style={styles.errorMessage}>
+                가입 된 정보가 없습니다. 다시 입력해주세요.
+              </Text>
+            )}
+          </View>
           <Text style={styles.label}>
             메일 확인 후 인증번호를 입력해주세요.
           </Text>
@@ -74,11 +76,13 @@ export function ForgetPassword({navigation}) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('certification', e)}
           />
-          {validate.certification == false && (
-            <Text style={styles.errorMessage}>
-              인증번호가 일치하지 않습니다.
-            </Text>
-          )}
+          <View style={styles.errorMessageWrapper}>
+            {validate.certification == false && (
+              <Text style={styles.errorMessage}>
+                인증번호가 일치하지 않습니다.
+              </Text>
+            )}
+          </View>
         </View>
         <TouchableOpacity
           onPress={() => navigation.navigate('PasswordReset')}

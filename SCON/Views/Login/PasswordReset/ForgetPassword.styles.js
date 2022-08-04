@@ -45,10 +45,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
+  errorMessageWrapper: {
+    height: 30,
+  },
+
   errorMessage: {
+    position: 'absolute',
+    top: 2,
     color: colors.RED,
     fontSize: 12,
-    marginBottom: 10,
   },
 
   email: {

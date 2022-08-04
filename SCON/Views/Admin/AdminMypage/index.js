@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, Image, Text, Alert, TextInput, TouchableOpacity } from 'react-native';
-import { ApiFetch } from '../../../Components/API/ApiFetch';
+import React, {useEffect, useState} from 'react';
+import {SafeAreaView} from 'react-native';
+import {ApiFetch} from '../../../Components/API/ApiFetch';
 
-import { AdminMypageTab } from './AdminMypageTab';
-import { AdminProfile } from "./AdminProfile"
+import {AdminMypageTab} from './AdminMypageTab';
+import {AdminProfile} from './AdminProfile';
 
-export function AdminMypage({ navigation }) {
+import styles from './AdminMypage.styles';
+
+export function AdminMypage({navigation}) {
   const [data, setData] = useState([]);
   useEffect(() => {
     ApiFetch({
       method: 'GET',
       url: 'http://localhost:1337/api/admins',
-      headers: { Authorization: 'token' },
+      headers: {Authorization: 'token'},
       body: null,
     }).then(thing => {
       setData(thing);
     });
   }, []);
-  
-  if (!data) return <SafeAreaView/>
+
+  if (!data) return <SafeAreaView />;
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.adminMypageWrapper}>
       <AdminProfile data={data} navigation={navigation} />
       <AdminMypageTab navigation={navigation} />
     </SafeAreaView>
   );
-  
 }

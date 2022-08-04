@@ -12,14 +12,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  alignment: {
+  imageWrapper: {
     paddingHorizontal: 20,
     flexGrow: 1,
     flexBasis: 1,
     justifyContent: 'center',
-  },
-
-  imageWrapper: {
     alignItems: 'center',
   },
 
@@ -42,7 +39,6 @@ const styles = StyleSheet.create({
     borderColor: colors.WHITE,
     borderWidth: 1,
   },
-
 
   viewWrapper: {
     paddingHorizontal: 30,

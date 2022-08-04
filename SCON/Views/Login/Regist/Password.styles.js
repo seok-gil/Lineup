@@ -24,6 +24,26 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
+  inputWrapper: {
+    position: 'relative',
+  },
+
+  checkIcon: {
+    position: 'absolute',
+    top: 8,
+    right: 10,
+    resizeMode: 'contain',
+    width: 15,
+  },
+
+  checkIconNotShown: {
+    display: 'none',
+    position: 'absolute',
+    resizeMode: 'contain',
+    width: 5,
+    right: 10,
+  },
+
   input: {
     width: '100%',
     paddingVertical: 10,
@@ -38,7 +58,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
+  errorMessageWrapper: {
+    height: 20,
+  },
+
   errorMessage: {
+    position: 'absolute',
     color: colors.RED,
     fontSize: 12,
     marginBottom: 10,

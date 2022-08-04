@@ -1,24 +1,16 @@
-import React, { Component } from 'react';
-import { Button, View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import {View, Image, Text} from 'react-native';
 
-import { DefaultProfileImage } from '../../../Assets/Images';
+import {DefaultProfileImage} from '../../../Assets/Images';
 
-export function AdminProfile({ data, navigation }) {
-  if (!data) return <View />
+import styles from './AdminProfile.styles';
+export function AdminProfile({data, navigation}) {
+  if (!data) return <View />;
   return (
-    <View style={{ flexDirection: 'column' }}>
-      <Image source={DefaultProfileImage} style={styles.image} />
-      <Text> 관리자</Text>
-      <Text> {data.Email} </Text>
+    <View style={styles.profileWrapper}>
+      <Image source={DefaultProfileImage} style={styles.profileImage} />
+      <Text style={styles.nickname}>관리자</Text>
+      <Text style={styles.email}>{data.Email} </Text>
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  image: {
-    width: '100%',
-    height: '30%',
-    resizeMode: 'contain',
-  },
-});
