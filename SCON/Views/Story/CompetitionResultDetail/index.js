@@ -25,7 +25,7 @@ export function CompetitionResultDetail({navigation, route}) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/player/event/record/${route.params.data.eventId}`,
+          url: `/player/event/record/${route.params.data.eventId}`,
           headers: { 
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

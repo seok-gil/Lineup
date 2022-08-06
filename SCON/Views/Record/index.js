@@ -18,7 +18,7 @@ export function RecordScreen({ route }) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/player-home/${route.params.playerId}/records`,
+          url: `/player-home/${route.params.playerId}/records`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

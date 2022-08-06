@@ -17,7 +17,7 @@ export function CommentRegist({feedId}) {
       .then((thing) => {
         ApiFetch({
           method: 'POST',
-          url: `http://15.164.100.211:8080/comment/${feedId}`,
+          url: `comment/${feedId}`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

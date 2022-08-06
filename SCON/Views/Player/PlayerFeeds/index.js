@@ -16,7 +16,7 @@ function PlayerFeeds({ playerId, feed, navigation }) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/player-home/${playerId}/feeds?size=${3}&lastFeedId=${100}`,
+          url: `player-home/${playerId}/feeds?size=${3}&lastFeedId=${100}`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

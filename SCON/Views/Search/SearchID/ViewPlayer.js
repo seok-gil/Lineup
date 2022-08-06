@@ -5,7 +5,7 @@ import styles from './ViewPlayer.styles';
 import {DefaultProfileImage} from '../../../Assets/Images';
 
 function ViewPlayer({player, navigation}) {
-  const {player_name, player_major, player_belong} = player;
+  const {name, sport, belong} = player;
   return (
     <TouchableOpacity
       onPress={() =>
@@ -18,13 +18,13 @@ function ViewPlayer({player, navigation}) {
             style={styles.playerName}
             numberOfLines={1}
             ellipsizeMode="tail">
-            {player_name}
+            {name}
           </Text>
           <Text
             style={styles.playerDescription}
             numberOfLines={1}
             ellipsizeMode="tail">
-            {player_major} / {player_belong}
+            {sport} / {belong}
           </Text>
         </View>
       </View>

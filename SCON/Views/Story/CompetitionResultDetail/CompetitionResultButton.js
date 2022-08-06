@@ -12,7 +12,7 @@ function CompetitionResultButton({ data, navigation }) {
     .then((thing) => {
       ApiFetch({
         method: 'POST',
-        url: `http://15.164.100.211:8080/player/event`,
+        url: `player/event`,
         headers: {
           'content-type': 'application/json',
           'Authorization': 'Bearer ' + thing,

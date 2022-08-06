@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-community/async-storage"
 import { ApiFetch } from '../../../Components/API/ApiFetch';
 
 export function ImagePushAPI(body, type) {
-  var url = `http://15.164.100.211:8080/my-page/`
+  var url = `my-page/`
   if (type == 'profile')
     url += `user-profile-pic`
   else if (type == 'back')

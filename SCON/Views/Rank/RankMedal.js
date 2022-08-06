@@ -8,7 +8,6 @@ import styles from './RankMedal.styles';
 
 function RankMedal({player, rank, navigation}) {
   const isFirst = rank === 1 ? true : false;
-  console.log(globalTextStyle);
   return (
     <TouchableOpacity
       onPress={() =>

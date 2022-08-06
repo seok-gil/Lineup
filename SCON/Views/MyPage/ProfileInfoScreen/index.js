@@ -32,7 +32,7 @@ export function ProfileInfoScreen({ navigation }) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/my-page/user-profile`,
+          url: `my-page/user-profile`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

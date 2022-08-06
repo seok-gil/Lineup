@@ -54,7 +54,7 @@ export function Password({ navigation, route }) {
     setModal(true);
     ApiFetch({
       method: 'POST',
-      url: 'http://15.164.100.211:8080/auth/signup',
+      url: 'auth/signup',
       headers: {
         "Content-Type": "application/json",
       },

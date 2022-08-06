@@ -20,7 +20,7 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId}) {
       .then((thing) => {
         ApiFetch({
           method: 'POST',
-          url: `http://15.164.100.211:8080/comment/${feedId}/${replyFocus}`,
+          url: `comment/${feedId}/${replyFocus}`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

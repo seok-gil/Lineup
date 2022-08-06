@@ -15,7 +15,7 @@ export function FeedScreen({ route, navigation }) {
 			.then((thing) => {
 				ApiFetch({
 					method: 'GET',
-					url: `http://15.164.100.211:8080/feed/${route.params.feedId}`,
+					url: `feed/${route.params.feedId}`,
 					headers: {
 						'content-type': 'application/json',
 						'Authorization': 'Bearer ' + thing,
