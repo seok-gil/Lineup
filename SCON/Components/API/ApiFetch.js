@@ -23,6 +23,6 @@ export async function ApiFetch({ method, url, headers, body }) {
 		}
 	}
 	catch (err) {
-		console.log(LineUpUrl, err);
+		console.log("catch", LineUpUrl, err);
 	}
 }

@@ -6,34 +6,32 @@ import AsyncStorage from "@react-native-community/async-storage"
 import styles from './CompetitionButton.styles';
 
 function CompetitionButton({ data, navigation }) {
-  console.log(data)
+
   const onPress = () => {
+    console.log(data)
     AsyncStorage.getItem("accessToken")
-    .then((thing) => {
-      ApiFetch({
-        method: 'POST',
-        url: `player/event`,
-        headers: {
-          'content-type': 'application/json',
-          'Authorization': 'Bearer ' + thing,
-        },
-        body : JSON.stringify(data)
-      }).then(thing => {
-        console.log("Feed", thing)
-        navigation.navigate('StoryScreen')
-      }).catch(error => {
-        console.log("Login ERROR", error)
+      .then((thing) => {
+        ApiFetch({
+          method: 'POST',
+          url: `/player/event`,
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: JSON.stringify(data)
+        }).then(thing => {
+          navigation.navigate('StoryScreen')
+        }).catch(error => {
+          console.log("Login ERROR", error)
+        })
       })
-  })
     navigation.navigate('StoryScreen')
   }
-
-
   const buttonStyle =
     data.endDate && data.location && data.eventName ? styles.filledButton : styles.notfillButton;
 
   const buttonTextStyle =
-  data.endDate && data.location && data.eventName ? styles.filledText : styles.notfillText;
+    data.endDate && data.location && data.eventName ? styles.filledText : styles.notfillText;
   return (
     <TouchableOpacity
       onPress={() => onPress()}

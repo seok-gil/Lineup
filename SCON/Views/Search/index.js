@@ -9,7 +9,6 @@ import {ViewPlayer} from "./SearchID/ViewPlayer"
 import AsyncStorage from "@react-native-community/async-storage"
 import { ApiFetch } from '../../Components/API/ApiFetch';
 export function SearchScreen({navigation}) {
-  
   const [data, setData] = useState()
   const [inputs, setInputs] = useState({
     search: '',
@@ -29,7 +28,6 @@ export function SearchScreen({navigation}) {
           },
           body: null,
         }).then(thing => {
-          console.log("search", thing.content)
           setData(thing.content);
         })
   })

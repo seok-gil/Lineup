@@ -16,7 +16,7 @@ export function CommentList({ setReplyFocus, feedId, navigation }) {
 			.then((thing) => {
 				ApiFetch({
 					method: 'GET',
-					url: `feed/${feedId}/comments?page=${0}&size=${nextFeed}`,
+					url: `/feed/${feedId}/comments?page=${0}&size=${nextFeed}`,
 
 					headers: {
 						'content-type': 'application/json',

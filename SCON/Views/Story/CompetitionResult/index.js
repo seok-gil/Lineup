@@ -8,9 +8,6 @@ import AsyncStorage from "@react-native-community/async-storage"
 
 export function CompetitionResult({navigation}) {
   const [data, setData] = useState([]);
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
-  var temp = data;
   
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
@@ -24,6 +21,7 @@ export function CompetitionResult({navigation}) {
           },
           body: null,
         }).then(thing => {
+          // console.log("evnet/record/", thing)
           setData(thing);
         })
   })

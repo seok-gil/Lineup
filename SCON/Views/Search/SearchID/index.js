@@ -8,7 +8,7 @@ import styles from './SearchID.styles';
 function SearchID({ inputs, data, navigation }) {
   const { search } = inputs;
   const [more, setMore] = useState(false);
-  const [nextFeed, setNextFeed] = useState(0)
+  const [nextFeed, setNextFeed] = useState(10)
   const onClickMore = () => {
     if (!more) setMore(true);
     else setMore(false);
@@ -50,31 +50,4 @@ const onEndReached = () => {
   );
 }
 
-// {data
-//   .map((player, index) => {
-//     if (index >= 4 && !more) return false;
-//     return <ViewPlayer key={`view${index}`} player={player} navigation={navigation} />;
-//   })}
-
-// const onEndReached = () => {
-//   setNextFeed(nextFeed + 5)
-// }
-// return (
-//   <FlatList
-//     data={data}
-//     snapToAlignment="start"
-//     decelerationRate="fast"
-//     renderItem={({ item, index }) => (
-//       <ViewPlayer
-//         key={`view${index}`}
-//         player={player}
-//         navigation={navigation}
-//       />
-//     )}
-//     // onScroll={onScroll}
-//     onEndReached={onEndReached}
-//     onEndReachedThreshold={0.1}
-//     pagingEnabled
-//     showsHorizontalScrollIndicator={false}
-//   />
 export default SearchID;

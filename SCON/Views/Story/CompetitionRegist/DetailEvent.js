@@ -59,7 +59,7 @@ export function DetailEvent({ form, setForm }) {
   const onPluss = () => {
     var res = form.detailNames
     res.push('')
-    setForm((form) => { return { ...form, ['detail'] : res } })
+    setForm((form) => { return { ...form, ['detailNames'] : res } })
     makeView()
   }
 

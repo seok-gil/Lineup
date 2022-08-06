@@ -45,13 +45,13 @@ export function MakeId({ navigation }) {
 
   const pushEmail = () => {
     ApiFetch({
-      method: 'GET',
+      method: 'POST',
       url: `/email-auth`,
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        email : form.email,
+        email : form.email
       })
     })
   }

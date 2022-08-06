@@ -13,7 +13,7 @@ export function PlayerScreen({ navigation, route }) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `player-home/${route.params.playerId}`,
+          url: `/player-home/${route.params.playerId}`,
           headers: { 
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

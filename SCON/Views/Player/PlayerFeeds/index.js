@@ -8,7 +8,7 @@ import { PlayerFixedFeed } from './PlayerFixedFeeds';
 import styles from './PlayerFeeds.styles';
 import AsyncStorage from "@react-native-community/async-storage"
 
-function PlayerFeeds({ playerId, feed, navigation }) {
+function PlayerFeeds({ playerId, navigation }) {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function PlayerFeeds({ playerId, feed, navigation }) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `player-home/${playerId}/feeds?size=${3}&lastFeedId=${100}`,
+          url: `/player-home/${playerId}/feeds?size=${3}&lastFeedId=${100}`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

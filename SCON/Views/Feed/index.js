@@ -15,7 +15,7 @@ export function FeedScreen({ route, navigation }) {
 			.then((thing) => {
 				ApiFetch({
 					method: 'GET',
-					url: `feed/${route.params.feedId}`,
+					url: `/feed/${route.params.feedId}`,
 					headers: {
 						'content-type': 'application/json',
 						'Authorization': 'Bearer ' + thing,
@@ -26,11 +26,10 @@ export function FeedScreen({ route, navigation }) {
 				})
 			})
 	}, []);
-	
 	if (!data) return (<SafeAreaView />)
 	return (
 		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
-			<FeedBody data={data} />
+			<FeedBody data={data}feedId={route.params.feedId}navigation={navigation}/>
 			<CommentRegist feedId={route.params.feedId} />
 			<CommentList feedId={route.params.feedId} setReplyFocus={setReplyFocus} navigation={navigation} />
 			<ReplyRegist feedId={route.params.feedId} replyFocus={replyFocus} setReplyFocus={setReplyFocus} />

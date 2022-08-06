@@ -9,22 +9,22 @@ function ETC({player, index, navigation}) {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('Player', {names: ['Brent', 'Satya', 'Michaś']})
+        navigation.navigate('Player', {playerId: [player.playerId]})
       }
       style={styles.etcWrapper}>
-      <Text style={styles.index}>{index}</Text>
-      <Image source={DefaultProfileImage} style={styles.profileImage} />
+      <Text style={styles.index}>{index + 4}</Text>
+      <Image source={{uri:player.profilePic}} style={styles.profileImage} />
       <View style={styles.profileWrapper}>
         <View>
           <View style={styles.profileInnerWrapper}>
-            <Text style={styles.name}>{player.player_name}</Text>
-            <Text>({player.player_major})</Text>
+            <Text style={styles.name}>{player.name}</Text>
+            <Text>({player.sport})</Text>
           </View>
-          <Text style={styles.from}>소속</Text>
+          <Text style={styles.from}>{player.belong}</Text>
         </View>
         <View style={styles.likeCount}>
           <Image source={HeartSFilledIcon} style={styles.heart} />
-          <Text style={styles.likes}>{player.player_like} </Text>
+          <Text style={styles.likes}>{player.followerCnt} </Text>
         </View>
       </View>
     </TouchableOpacity>
