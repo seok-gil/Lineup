@@ -32,7 +32,7 @@ function PlayerFeeds({ playerId, navigation }) {
 
   const onEndReached = () => {
     setSize(size + 3)
-    console.log("size!!!!!!!!!!", size)
+    // console.log("size!!!!!!!!!!", size)
   }
 
   if (!data) return <View />;

@@ -8,6 +8,9 @@ export function Head({ data }) {
     <View style={{ flex: 100 }}>
       <Image source={{ uri: data.backPic }} style={{ flex: 1, width: '20%', height: '10%' }} />
       <Image source={{ uri: data.profilePic }} style={{ flex: 1, width: '20%', height: '10%' }} />
+      <Text>
+        {data.nickname}
+      </Text>
     </View>
   );
 }
