@@ -3,7 +3,7 @@ import { ApiFetch } from "../../../Components"
 import AsyncStorage from "@react-native-community/async-storage"
 
 export function PlayerRegistApi(body) {
-  console.log(body)
+  // console.log(body)
   AsyncStorage.getItem("accessToken")
     .then((thing) => {
       ApiFetch({

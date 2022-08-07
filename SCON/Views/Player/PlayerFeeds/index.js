@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { ApiFetch } from '../../../Components/API/ApiFetch';
 
 import { PlayerFeed } from './PlayerFeed';
@@ -29,13 +29,11 @@ function PlayerFeeds({ playerId, navigation }) {
         })
       })
   }, [size]);
-
   const onEndReached = () => {
     setSize(size + 3)
     // console.log("size!!!!!!!!!!", size)
   }
-
-  if (!data) return <View />;
+  if (!data || (data && data.length == 0)) return <PlayerProfile navigation={navigation} playerId={playerId} />
   return (
     <View style={styles.playerFeedsWrapper}>
       <PlayerFixedFeed playerId={playerId} navigation={navigation} />
@@ -45,23 +43,23 @@ function PlayerFeeds({ playerId, navigation }) {
         decelerationRate="fast"
         renderItem={({ item, index }) => {
           if (index == 0)
-          return (
-            <View>
-              <PlayerProfile navigation={navigation} playerId={playerId}/>
-              <PlayerFeed
-            key={`player-feed-${index}`}
-            feed={item}
-            navigation={navigation}
-          />
-            </View>
-          )
+            return (
+              <View>
+                <PlayerProfile navigation={navigation} playerId={playerId} />
+                <PlayerFeed
+                  key={`player-feed-${index}`}
+                  feed={item}
+                  navigation={navigation}
+                />
+              </View>
+            )
           else
-          return (
-          <PlayerFeed
-            key={`player-feed-${index}`}
-            feed={item}
-            navigation={navigation}
-          />)
+            return (
+              <PlayerFeed
+                key={`player-feed-${index}`}
+                feed={item}
+                navigation={navigation}
+              />)
         }}
         // onScroll={onScroll}
         onEndReached={onEndReached}

@@ -9,7 +9,7 @@ function ViewPlayer({player, navigation}) {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('Player', {names: ['Brent', 'Satya', 'Michaś']})
+        navigation.navigate('Player', {playerId: player.playerId})
       }>
       <View style={styles.viewPlayerWrapper}>
         <Image source={DefaultProfileImage} style={styles.viewPlayerImage} />

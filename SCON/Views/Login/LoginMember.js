@@ -43,7 +43,6 @@ export function LoginMember({ navigation }) {
       body: JSON.stringify(form)
     })
       .then((thing) => {
-        console.log("login", thing)
         AsyncStorage.setItem("accessToken", thing.accessToken)
         AsyncStorage.setItem("refreshToken", thing.refreshToken)
         navigation.navigate('Tab')

@@ -11,25 +11,24 @@ function PlayerProfile({navigation, playerId}) {
   const [data, setData] = useState();
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'GET',
-          url: `/player-home/${playerId}`,
-          headers: { 
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: null,
-        }).then(thing => {
-          setData(thing);
-        })
-  })
+    .then((thing) => {
+      ApiFetch({
+        method: 'GET',
+        url: `/player-home/${playerId}`,
+        headers: { 
+          'content-type': 'application/json',
+          'Authorization': 'Bearer ' + thing,
+        },
+        body: null,
+      }).then(thing => {
+        setData(thing);
+      })
+    })
   }, []);
   if (!data) return <View/>
   return (
     <View style={styles.profileInnerWrapper}>
-      {/* <Image source={{uri:data.backPic}} style={styles.backgroundImage} />  */}
-      {/* <Image source={SwimmingBackground} style={styles.backgroundImage} /> */}
+      <Image source={{uri:data.backPic}} style={styles.backgroundImage} /> 
       <Image source={{uri:data.profilePic}} style={styles.profileImage} />
       <View style={styles.profileBottom}>
         <View style={styles.playerInfo}>

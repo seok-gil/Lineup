@@ -28,12 +28,12 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
   try {
     const img = await fetchResourceFromURI(photo.asset.uri);
     var path = type + '/'
-    console.log("@@@@@@@",img, path)
     Storage.put(path + GetUuid() + ".jpg", img, {
       level: 'public',
       contentType: 'photo',
     })
       .then(res => {
+        console.log("end", res)
         Storage.get(res.key)
           .then(result => {
             setPhoto({

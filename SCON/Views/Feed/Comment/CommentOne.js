@@ -9,7 +9,6 @@ export function CommentOne({ data, feedId, setReplyFocus }) {
   if (!data) return <View />;
   const [viewReply, setViewReply] = useState(false)
   var likeUrl = !data.ilike ? `comment/${data.commentId}` : `comment/${data.ilike}`
-  console.log(data)
   return (
     <View>
       <View style={{ flexDirection: 'row' }}>

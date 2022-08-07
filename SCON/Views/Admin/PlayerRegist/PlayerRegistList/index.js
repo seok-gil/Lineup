@@ -19,7 +19,6 @@ export function PlayerRegistList({navigation, route}) {
           },
           body: null,
         }).then(thing => {
-          console.log("thing", thing)
           setData(thing);
         })
   })

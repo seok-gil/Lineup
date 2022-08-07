@@ -55,7 +55,6 @@ export function PasswordChange({ navigation }) {
     if (tempVal.oldPassword && tempVal.confirmPassword && tempVal.newPassword) {
       tempVal.button = true
     }
-    console.log(validate)
   };
 
   const onSummit = () => {

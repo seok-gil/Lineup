@@ -25,7 +25,7 @@ export function LikeComponent(ilike, url) {
         },
         body: null,
       }).then(thing => {
-        console.log("Like", thing)
+        // console.log("Like", thing)
       })
     })
 }

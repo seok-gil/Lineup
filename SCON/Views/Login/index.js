@@ -9,16 +9,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AsyncStorage from "@react-native-community/async-storage"
-
-import { LineupLogoImage } from '../../Assets/Images';
-import { ApiFetch } from '../../Components/API/ApiFetch';
-import styles from './Login.styles';
-
+import { LineupLogoImage } from '../../Assets/Images'
+import { ApiFetch } from '../../Components/API/ApiFetch'
+import styles from './Login.styles'
 
 export function LoginPage({ navigation }) {
   const [form, setForm] = useState({
-    email: 'player0@gmail.com',
-    password: '12345678',
+    // email: 'player0@gmail.com',
+    // password: '12345678',
+    email: 'member1@gmail.com',
+    password: '1234',
   });
   const [validate, setValidate] = useState({
     email: true,
@@ -33,7 +33,6 @@ export function LoginPage({ navigation }) {
   };
 
   const onLogin = () => {
-    if (!validate.email && !validate.password) navigation.navigate('Tab');
     ApiFetch({
       method: 'POST',
       url: '/auth/login',
@@ -43,21 +42,25 @@ export function LoginPage({ navigation }) {
       body: JSON.stringify(form)
     })
       .then((thing) => {
-        AsyncStorage.setItem("accessToken", thing.accessToken)
-        AsyncStorage.setItem("refreshToken", thing.refreshToken)
-        AsyncStorage.setItem("role", thing.role)
-        // ROLE_MEMBER // ROLE_PLAYER //ROLE_ADMIN
-        if (thing.role == "ROLE_ADMIN")
-          navigation.navigate('AdminTab')
-        else
-          navigation.navigate('Tab')
+        if (thing == 401) {
+          var temp = validate
+          temp.email = false
+          temp.password = false
+          setValidate(temp)
+          console.log("Login ERROR")
+        }
+        else {
+          AsyncStorage.setItem("accessToken", thing.accessToken)
+          AsyncStorage.setItem("refreshToken", thing.refreshToken)
+          AsyncStorage.setItem("role", thing.role)
+          if (thing.role == "ROLE_ADMIN")
+            navigation.navigate('AdminTab')
+          else
+            navigation.navigate('Tab')
+        }
       })
       .catch(error => {
-        var temp = validate
-        temp.email = false
-        temp.password = false
-        setValidate(temp)
-        console.log("Login ERROR", error)
+        console.log("catch error", error)
       })
   };
 
@@ -94,7 +97,7 @@ export function LoginPage({ navigation }) {
               <Text style={styles.errorMessage}>비밀번호가 틀렸습니다.</Text>
             )}
           </View>
-          <TouchableOpacity onPress={onLogin} style={styles.loginButton}>
+          <TouchableOpacity onPress={() => onLogin()} style={styles.loginButton}>
             <Text style={styles.loginButtonText}>로그인</Text>
           </TouchableOpacity>
         </View>

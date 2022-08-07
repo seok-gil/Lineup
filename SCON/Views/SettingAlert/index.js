@@ -46,7 +46,6 @@ export function SettingAlertScreen({ navigation }) {
 					},
 					body: null,
 				}).then(thing => {
-					console.log("GETAlert", thing)
 					setAlert(thing)
 				})
 			})

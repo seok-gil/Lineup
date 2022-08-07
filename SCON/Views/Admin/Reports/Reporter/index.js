@@ -28,7 +28,6 @@ export function Reporter({navigation, route}) {
           },
           body: null,
         }).then(thing => {
-          console.log("report", thing)
           setData(thing);
         })
   })

@@ -54,7 +54,6 @@ export function PlayerRegistForm({ navigation }) {
   };
   const onSummit = () => {
     var imageurl = ImagePush(playerPhoto, setPlayerPhoto, 'player-certificate')
-    console.log(imageurl)
     setForm({
       ...form,
       ['certificate'] : imageurl

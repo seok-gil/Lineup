@@ -5,14 +5,12 @@ import PlayerCard from './PlayerCard';
 
 import styles from './CardList.styles';
 
-export function CardList({ data, navigation }) {
-  if (!data) return <View />;
-  const follow = data.follow;
+export function CardList({ data, role, navigation }) {
+  const follow = data.follows;
   const card = [];
-  const user_code = data.player ? 1 : 1;
   const emptyData = { playerId: null };
   const [page, setPage] = useState(0);
-  if (user_code == 1) card.push(data.player);
+  if (role == 'ROLE_PLAYER') card.push(data.player);
 
   for (let i = 0; i < 3; i++) {
     if (follow && follow[i]) card.push(follow[i]);
@@ -35,7 +33,6 @@ export function CardList({ data, navigation }) {
     if (focused === page) return <View style={styles.activeDot} />;
     else return <View style={styles.dot} />;
   }
-
   return (
     <View>
       <FlatList
@@ -43,8 +40,8 @@ export function CardList({ data, navigation }) {
         horizontal
         snapToAlignment="start"
         decelerationRate="fast"
-        renderItem={({ item }) => (
-          <PlayerCard data={data} item={item} navigation={navigation} />
+        renderItem={({ item, index }) => (
+          <PlayerCard data={data} item={item} navigation={navigation} index={index} role={role} />
         )}
         onScroll={onScroll}
         pagingEnabled

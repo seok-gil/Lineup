@@ -10,13 +10,13 @@ export async function ApiFetch({ method, url, headers, body }) {
 		let resChecked = res
 		if (res.ok) {
 			console.log("[",LineUpUrl, "] Request successful");
-			resChecked = res;
 			let data = await resChecked.json();
 			return (data)
 		}
 		else {
-			console.log(LineUpUrl, "Request unsuccessful1", resChecked);
-			resChecked = res;
+			console.log(LineUpUrl, "Request unsuccessful1");
+			let data = await resChecked.json()
+			console.log("error", data)
 			return (res.status)
 		}
 	}

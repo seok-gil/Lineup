@@ -21,7 +21,6 @@ export function Reports({ navigation }) {
           },
           body: null,
         }).then(thing => {
-          console.log("thing", thing.content)
           setData(thing);
         })
       })

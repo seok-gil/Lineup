@@ -24,7 +24,6 @@ export function PlayerRegistRefuse({ params }) {
             },
             body: null,
           }).then(thing => {
-            console.log("thing", thing)
             setData(thing);
           })
     })

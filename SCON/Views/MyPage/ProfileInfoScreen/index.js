@@ -47,13 +47,14 @@ export function ProfileInfoScreen({ navigation }) {
 
   const onImagePush = () => {
     if (userPhoto.set) {
-      console.log("kk",userPhoto)
+      console.log("user", userPhoto)
       ImagePush(userPhoto, setUserPhoto, 'profile', `/my-page/user-profile-pic`)
+      console.log("k")
     }
     if (backPhoto.set) {
       ImagePush(backPhoto, setBackPhoto, 'back', `/my-page/user-back-pic`)
     }
-    navigation.goBack()
+    // navigation.goBack()
   }
 
   if (!data) return <View />

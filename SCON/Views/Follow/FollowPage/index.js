@@ -25,7 +25,6 @@ export function FollowPage({ navigation, route }) {
   }, []);
 
   if (!data) return <SafeAreaView />
-  // console.log(data)
   return (
     <SafeAreaView style={{ flex: 100 }}>
       <Head data={data} />

@@ -45,7 +45,6 @@ export function PasswordReset({navigation}) {
       temp.password = true;
     } else temp.password = false;
 
-    console.log(form.certification.length);
     if (form.certification.length == form.password.length) {
       temp.certification = true;
     } else temp.certification = false;
