@@ -23,7 +23,6 @@ export function RecordScreen({ route }) {
           },
           body: null,
         }).then(thing => {
-          console.log("record", thing)
           setData(thing);
         })
       })
@@ -33,7 +32,7 @@ export function RecordScreen({ route }) {
   return (
     <SafeAreaView style={styles.recordScreenWrapper}>
       <ScrollView>
-        {/* <RecordHead medal={data.Medal} /> */}
+        <RecordHead data={data} />
         <View>
           {data.map(record => (
             <PlayerCard key={`player-card-${record.recordId}`} record={record} />

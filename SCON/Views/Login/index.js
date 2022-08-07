@@ -17,7 +17,7 @@ import styles from './Login.styles';
 export function LoginPage({ navigation }) {
   const [form, setForm] = useState({
     email: 'player0@gmail.com',
-    password: '1234',
+    password: '12345678',
   });
   const [validate, setValidate] = useState({
     email: true,
