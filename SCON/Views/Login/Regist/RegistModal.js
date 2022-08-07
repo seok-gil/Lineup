@@ -25,9 +25,7 @@ export function RegistModal({modal, setModal, navigation}) {
             <Text style={styles.modalText}>라인업에 오신 것을 환영해요!</Text>
           </View>
           <View>
-            <TouchableOpacity
-              style={styles.modalBottom}
-              onPress={() => onPress()}>
+            <TouchableOpacity style={styles.modalBottom} onPress={onPress}>
               <Text style={styles.modalText}>확인</Text>
             </TouchableOpacity>
           </View>
