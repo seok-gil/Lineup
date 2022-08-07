@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, globalInputStyle} from '../../../Styles';
+import {colors, globalInputStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   detailEventWrapper: {
@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     width: 20,
     resizeMode: 'contain',
   },
-});
+})
 
-export default styles;
+export default styles

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors, listElementStyle} from '../../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors, listElementStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   inquiryListElementWrapper: {
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
     height: 6,
     transform: [{rotateZ: '180deg'}],
   },
-});
+})
 
-export default styles;
+export default styles

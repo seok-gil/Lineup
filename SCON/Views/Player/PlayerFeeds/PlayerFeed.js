@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {CommentIcon, HeartEmptyIcon} from '../../../Assets/Icons';
-import {TimeRelative} from '../../../Components/Time';
+import React, {useState, useEffect} from 'react'
+import {View, Text, TouchableOpacity, Image} from 'react-native'
+import {CommentIcon, HeartEmptyIcon} from '../../../Assets/Icons'
+import {TimeRelative} from '../../../Components/Time'
 
-import styles from './PlayerFeed.styles';
+import styles from './PlayerFeed.styles'
 
 export function PlayerFeed({feed, navigation}) {
-  if (!feed) return <View />;
+  if (!feed) return <View />
   return (
     <TouchableOpacity
       onPress={() =>
@@ -30,9 +30,12 @@ export function PlayerFeed({feed, navigation}) {
           style={styles.feedLikedBox}>
           <Image source={CommentIcon} style={styles.likeIcon} />
           <Text style={styles.likeText}>{feed.commentCnt}</Text>
-          <Text style={styles.likeText}> <TimeRelative time={feed.createDate} /> </Text>
+          <Text style={styles.likeText}>
+            {' '}
+            <TimeRelative time={feed.createDate} />{' '}
+          </Text>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
-  );
+  )
 }

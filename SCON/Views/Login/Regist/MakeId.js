@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, {Component, useEffect, useState} from 'react'
 import {
   SafeAreaView,
   View,
@@ -7,40 +7,36 @@ import {
   Alert,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
-import styles from './MakeID.styles';
-import validator from 'validator';
-import AsyncStorage from "@react-native-community/async-storage"
-import {ApiFetch} from "../../../Components/API/ApiFetch"
-export function MakeId({ navigation }) {
-
-
+} from 'react-native'
+import styles from './MakeID.styles'
+import validator from 'validator'
+import AsyncStorage from '@react-native-community/async-storage'
+import {ApiFetch} from '../../../Components/API/ApiFetch'
+export function MakeId({navigation}) {
   const [form, setForm] = useState({
     nickname: '',
     email: '',
     certification: '',
-  });
+  })
 
   const [validate, setValidate] = useState({
     nickname: false,
     email: false,
     certification: false,
-  });
+  })
 
   const onInput = (key, e) => {
-    const { text } = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
-  };
+    })
+  }
   const [post, setPost] = useState(false)
 
   useEffect(() => {
-    if (validator.isEmail(form.email))
-      setPost(true)
-    else
-      setPost(false)
+    if (validator.isEmail(form.email)) setPost(true)
+    else setPost(false)
   }, [form.email])
 
   const pushEmail = () => {
@@ -51,8 +47,8 @@ export function MakeId({ navigation }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        email : form.email
-      })
+        email: form.email,
+      }),
     })
   }
 
@@ -89,9 +85,11 @@ export function MakeId({ navigation }) {
             <TouchableOpacity
               onPress={() => pushEmail()}
               disabled={!post}
-              style={styles.sendButton
-              }>
-              <Text style={post ? styles.sendButtonText : styles.sendButtonOffText}>전송</Text>
+              style={styles.sendButton}>
+              <Text
+                style={post ? styles.sendButtonText : styles.sendButtonOffText}>
+                전송
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.errorMessageWrapper}>
@@ -121,7 +119,7 @@ export function MakeId({ navigation }) {
         </View>
         <TouchableOpacity
           // disabled = {!validate.nickname && !validate.email && !validate.certification}
-          onPress={() => navigation.navigate('Password', { form: form })}
+          onPress={() => navigation.navigate('Password', {form: form})}
           style={
             validate.nickname && validate.email && validate.certification
               ? styles.loginButton
@@ -131,5 +129,5 @@ export function MakeId({ navigation }) {
         </TouchableOpacity>
       </View>
     </SafeAreaView>
-  );
+  )
 }

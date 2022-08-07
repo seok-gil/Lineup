@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../Styles';
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   searchScreenWrapper: {
@@ -12,6 +12,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 20,
   },
-});
+})
 
-export default styles;
+export default styles

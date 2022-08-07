@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
 import {
   colors,
@@ -6,7 +6,7 @@ import {
   globalButtonTextStyle,
   globalInputStyle,
   globalLargeInputStyle,
-} from '../../Styles';
+} from '../../Styles'
 
 const styles = StyleSheet.create({
   inquiryScreenWrapper: {
@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
   inquiryButton: globalButtonStyle,
 
   inquiryButtonText: globalButtonTextStyle,
-});
+})
 
-export default styles;
+export default styles

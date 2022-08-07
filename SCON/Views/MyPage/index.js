@@ -1,4 +1,4 @@
-import {MyPageScreen} from './MyPageScreen';
-import {ProfileInfoScreen} from './ProfileInfoScreen';
+import {MyPageScreen} from './MyPageScreen'
+import {ProfileInfoScreen} from './ProfileInfoScreen'
 
-export {MyPageScreen, ProfileInfoScreen};
+export {MyPageScreen, ProfileInfoScreen}

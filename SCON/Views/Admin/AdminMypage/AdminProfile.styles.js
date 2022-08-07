@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   profileWrapper: {
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: colors.TEXT_LIGHT,
   },
-});
+})
 
-export default styles;
+export default styles

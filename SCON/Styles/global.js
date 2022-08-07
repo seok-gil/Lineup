@@ -1,4 +1,4 @@
-import {colors} from './constants';
+import {colors} from './constants'
 
 export const listElementStyle = {
   flexDirection: 'row',
@@ -7,7 +7,7 @@ export const listElementStyle = {
   paddingVertical: 18,
   borderBottomColor: colors.GRAYE6,
   borderBottomWidth: 1,
-};
+}
 
 export const globalButtonStyle = {
   width: 300,
@@ -16,12 +16,12 @@ export const globalButtonStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: colors.THEME_SKYBLUE,
-};
+}
 
 export const globalButtonTextStyle = {
   fontWeight: '700',
   color: colors.WHITE,
-};
+}
 
 export const globalInputStyle = {
   borderWidth: 1,
@@ -29,7 +29,7 @@ export const globalInputStyle = {
   padding: 8,
   fontSize: 13,
   borderRadius: 3,
-};
+}
 
 export const globalLargeInputStyle = {
   ...globalInputStyle,
@@ -38,13 +38,13 @@ export const globalLargeInputStyle = {
   fontSize: 14,
   textAlignVertical: 'top',
   borderRadius: 5,
-};
+}
 
 export const globalTextStyle = {
   color: colors.TEXT_DARK,
   fontSize: 13,
-};
+}
 
 export const globalAsteriskStyle = {
   color: colors.THEME_SKYBLUE,
-};
+}

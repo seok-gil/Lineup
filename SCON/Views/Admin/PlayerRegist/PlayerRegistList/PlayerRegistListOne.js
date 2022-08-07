@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {ApiFetchOne} from '../../../../Components/API/ApiFetch';
-import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
-import {Time} from '../../../../Components/Time';
+import React, {useEffect, useState} from 'react'
+import {ApiFetchOne} from '../../../../Components/API/ApiFetch'
+import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native'
+import {Time} from '../../../../Components/Time'
 
 export function PlayerRegistListOne({navigation, data}) {
-  if (!data) return <SafeAreaView />;
+  if (!data) return <SafeAreaView />
   const Birth =
-    data.Birth.slice(0, 4) + data.Birth.slice(5, 7) + data.Birth.slice(8, 10);
+    data.Birth.slice(0, 4) + data.Birth.slice(5, 7) + data.Birth.slice(8, 10)
   return (
     <SafeAreaView>
       <TouchableOpacity
@@ -23,8 +23,10 @@ export function PlayerRegistListOne({navigation, data}) {
           <Text> / {data.sport}</Text>
           <Text> / {data.belong}</Text>
         </View>
-        <Text><Time time={data.RegistDateTime} separator='.'/></Text>
+        <Text>
+          <Time time={data.RegistDateTime} separator="." />
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
-  );
+  )
 }

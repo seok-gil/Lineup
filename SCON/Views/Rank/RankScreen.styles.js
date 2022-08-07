@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   image: {
@@ -12,6 +12,6 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'contain',
   },
-});
+})
 
-export default styles;
+export default styles

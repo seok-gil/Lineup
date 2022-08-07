@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   inquiryWrapper: {
@@ -8,6 +8,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-});
+})
 
-export default styles;
+export default styles

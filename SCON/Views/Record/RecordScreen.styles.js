@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   recordScreenWrapper: {
@@ -7,6 +7,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
     height: '100%',
   },
-});
+})
 
-export default styles;
+export default styles

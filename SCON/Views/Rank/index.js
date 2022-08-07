@@ -1,3 +1,3 @@
-import { RankScreen } from "./RankScreen"
+import {RankScreen} from './RankScreen'
 
-export { RankScreen }
+export {RankScreen}

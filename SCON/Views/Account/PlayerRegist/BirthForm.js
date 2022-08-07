@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState} from 'react'
 import {
   View,
   Image,
@@ -6,16 +6,16 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { CheckSmallIcon } from '../../../Assets/Icons';
+} from 'react-native'
+import DateTimePickerModal from 'react-native-modal-datetime-picker'
+import {CheckSmallIcon} from '../../../Assets/Icons'
 
 export function BirthForm({form, setForm}) {
-  const [pickOn, setPickOn] = useState(false);
+  const [pickOn, setPickOn] = useState(false)
 
   const showDatePicker = () => {
-    setPickOn(true);
-  };
+    setPickOn(true)
+  }
   const handleConfirm = date => {
     let dateString =
       date.getFullYear() +
@@ -23,14 +23,14 @@ export function BirthForm({form, setForm}) {
       (date.getMonth() + 1) +
       '월' +
       date.getDate() +
-      '일';
-    setForm({...form, ['birth']: dateString});
-    hideDatePicker();
-  };
+      '일'
+    setForm({...form, ['birth']: dateString})
+    hideDatePicker()
+  }
 
   const hideDatePicker = () => {
-    setPickOn(false);
-  };
+    setPickOn(false)
+  }
   return (
     <View style={{flexDirection: 'column'}}>
       <TouchableOpacity onPress={showDatePicker}>
@@ -51,5 +51,5 @@ export function BirthForm({form, setForm}) {
         />
       </TouchableOpacity>
     </View>
-  );
+  )
 }

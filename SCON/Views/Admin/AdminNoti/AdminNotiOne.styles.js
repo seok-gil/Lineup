@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors, listElementStyle} from '../../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors, listElementStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   notiElementWrapper: {
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
   notiButtonText: {
     color: colors.THEME_SKYBLUE,
   },
-});
+})
 
-export default styles;
+export default styles

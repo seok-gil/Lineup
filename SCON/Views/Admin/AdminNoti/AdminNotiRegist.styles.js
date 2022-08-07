@@ -1,11 +1,11 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 import {
   colors,
   globalButtonTextStyle,
   globalInputStyle,
   globalButtonStyle,
   globalLargeInputStyle,
-} from '../../../Styles';
+} from '../../../Styles'
 
 const styles = StyleSheet.create({
   notiRegistWrapper: {
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
   registButton: globalButtonStyle,
 
   registButtonText: globalButtonTextStyle,
-});
+})
 
-export default styles;
+export default styles

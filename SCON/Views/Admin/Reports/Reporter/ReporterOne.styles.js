@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors, listElementStyle} from '../../../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors, listElementStyle} from '../../../../Styles'
 
 const styles = StyleSheet.create({
   reporterOneWrapper: {...listElementStyle},
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     color: colors.TEXT_DARK,
     fontSize: 12,
   },
-});
+})
 
-export default styles;
+export default styles

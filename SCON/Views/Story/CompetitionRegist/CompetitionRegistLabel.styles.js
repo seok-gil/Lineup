@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, globalAsteriskStyle, globalTextStyle} from '../../../Styles';
+import {colors, globalAsteriskStyle, globalTextStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   labelWrapper: {
@@ -13,6 +13,6 @@ const styles = StyleSheet.create({
     marginRight: 3,
   },
   asterisk: globalAsteriskStyle,
-});
+})
 
-export default styles;
+export default styles

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Calendar} from './Calender';
+import React, {useState} from 'react'
+import {Calendar} from './Calender'
 
 import {
   View,
@@ -8,9 +8,9 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
-} from 'react-native';
+} from 'react-native'
 
-import styles from './CompetitionRegistLabel.styles';
+import styles from './CompetitionRegistLabel.styles'
 
 const CompetitionRegistLabel = ({text, isAsterisk}) => {
   return (
@@ -18,7 +18,7 @@ const CompetitionRegistLabel = ({text, isAsterisk}) => {
       <Text style={styles.inputLabelStyle}>{text}</Text>
       {isAsterisk && <Text style={styles.asterisk}>*</Text>}
     </View>
-  );
-};
+  )
+}
 
-export default CompetitionRegistLabel;
+export default CompetitionRegistLabel

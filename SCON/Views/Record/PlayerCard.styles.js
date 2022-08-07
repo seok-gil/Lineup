@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors, listElementStyle} from '../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors, listElementStyle} from '../../Styles'
 
 const styles = StyleSheet.create({
   playerCardWrapper: {
@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: colors.TEXT_LIGHT,
   },
-});
+})
 
-export default styles;
+export default styles

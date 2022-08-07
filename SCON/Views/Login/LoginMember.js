@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react'
 import {
   SafeAreaView,
   View,
@@ -7,45 +7,45 @@ import {
   Alert,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
-import AsyncStorage from "@react-native-community/async-storage"
+} from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 
-import { LineupLogoImage } from '../../Assets/Images';
-import { ApiFetch } from '../../Components/API/ApiFetch';
-import styles from './Login.styles';
+import {LineupLogoImage} from '../../Assets/Images'
+import {ApiFetch} from '../../Components/API/ApiFetch'
+import styles from './Login.styles'
 
 // ROLE_MEMBER //ROLE_PLAYER //ROLE_ADMIN
-export function LoginMember({ navigation }) {
+export function LoginMember({navigation}) {
   const [form, setForm] = useState({
     email: 'admin@gmail.com',
     password: '1234',
-  });
+  })
   const [validate, setValidate] = useState({
     email: true,
     password: true,
-  });
+  })
   const onInput = (key, e) => {
-    const { text } = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
-  };
+    })
+  }
 
   const onLogin = () => {
-    if (!validate.email && !validate.password) navigation.navigate('Tab');
+    if (!validate.email && !validate.password) navigation.navigate('Tab')
     ApiFetch({
       method: 'POST',
       url: '/auth/login',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(form)
+      body: JSON.stringify(form),
     })
-      .then((thing) => {
-        console.log("login", thing)
-        AsyncStorage.setItem("accessToken", thing.accessToken)
-        AsyncStorage.setItem("refreshToken", thing.refreshToken)
+      .then(thing => {
+        console.log('login', thing)
+        AsyncStorage.setItem('accessToken', thing.accessToken)
+        AsyncStorage.setItem('refreshToken', thing.refreshToken)
         navigation.navigate('Tab')
       })
       .catch(error => {
@@ -53,9 +53,9 @@ export function LoginMember({ navigation }) {
         temp.email = false
         temp.password = false
         setValidate(temp)
-        console.log("Login ERROR", error)
+        console.log('Login ERROR', error)
       })
-  };
+  }
 
   return (
     <SafeAreaView style={styles.loginWrapper}>
@@ -105,6 +105,5 @@ export function LoginMember({ navigation }) {
         </View>
       </View>
     </SafeAreaView>
-  );
+  )
 }
-

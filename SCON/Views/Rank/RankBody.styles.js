@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   rankBodyWrapper: {
@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.GRAYE6,
     borderBottomWidth: 1,
   },
-});
+})
 
-export default styles;
+export default styles
