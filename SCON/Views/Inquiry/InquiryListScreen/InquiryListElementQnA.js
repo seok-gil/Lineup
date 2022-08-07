@@ -1,12 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 
-import {
-  View,
-  Text,
-} from 'react-native';
+import {View, Text} from 'react-native'
 
-
-import styles from './InquiryListElementQnA.styles';
+import styles from './InquiryListElementQnA.styles'
 
 function InquiryListElementQnA({data}) {
   return (
@@ -22,7 +18,7 @@ function InquiryListElementQnA({data}) {
         </View>
       )}
     </View>
-  );
+  )
 }
 
-export default InquiryListElementQnA;
+export default InquiryListElementQnA

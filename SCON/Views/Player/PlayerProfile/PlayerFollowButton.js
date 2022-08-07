@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import { ApiFetch } from "../../../Components"
 import styles from './PlayerFollowButton.styles';
 import AsyncStorage from "@react-native-community/async-storage"
 
-function PlayerFollowButton({ data, navigation }) {
-  const [follow, setFollow] = useState(data.isFollow);
+function PlayerFollowButton({data, navigation}) {
+  const [follow, setFollow] = useState(data.isFollow)
 
   const buttonStyle =
     data.isMe & !data.isFollow ? styles.followedButton : styles.followButton
@@ -17,6 +17,7 @@ function PlayerFollowButton({ data, navigation }) {
       .then((res) => {
       })
   }, [])
+
   const buttonText = () => {
     if (data.isMe) return '스토리 추가하기'
     else if (data.isFollow) return '나의 라인업 추가됨'
@@ -56,7 +57,7 @@ function PlayerFollowButton({ data, navigation }) {
       style={buttonStyle}>
       <Text style={buttonTextStyle}>{buttonText()}</Text>
     </TouchableOpacity>
-  );
+  )
 }
 
-export default PlayerFollowButton;
+export default PlayerFollowButton

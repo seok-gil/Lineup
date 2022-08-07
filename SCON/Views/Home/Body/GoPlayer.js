@@ -1,13 +1,13 @@
-import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import React from 'react'
+import {View, Text, TouchableOpacity, Image} from 'react-native'
 
-import styles from './GoPlayer.styles';
-import {AlertIcon, XIcon} from '../../../Assets/Icons';
+import styles from './GoPlayer.styles'
+import {AlertIcon, XIcon} from '../../../Assets/Icons'
 
 export function GoPlayer({setgoPlayer, navigation}) {
   const onClick = () => {
-    setgoPlayer(false);
-  };
+    setgoPlayer(false)
+  }
 
   return (
     <View style={styles.goPlayerWrapper}>
@@ -23,5 +23,5 @@ export function GoPlayer({setgoPlayer, navigation}) {
         <Image source={XIcon} />
       </TouchableOpacity>
     </View>
-  );
+  )
 }

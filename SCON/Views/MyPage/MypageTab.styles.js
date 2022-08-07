@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors, listElementStyle} from '../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors, listElementStyle} from '../../Styles'
 
 const styles = StyleSheet.create({
   mypageTabWrapper: {
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     transform: [{rotateZ: '270deg'}],
   },
-});
+})
 
-export default styles;
+export default styles

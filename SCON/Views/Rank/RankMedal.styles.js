@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   rankMedalWrapper: {
@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
     color: colors.TEXT_DARK,
     fontWeight: '700',
   },
-});
+})
 
-export default styles;
+export default styles

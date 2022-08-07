@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../../Styles';
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   indicatorWrapper: {
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: colors.THEME_SKYBLUE,
   },
-});
+})
 
-export default styles;
+export default styles

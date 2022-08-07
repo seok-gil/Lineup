@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { ApiFetch } from '../../../Components/API/ApiFetch';
 
-import { PlayerFeed } from './PlayerFeed';
-import { PlayerFixedFeed } from './PlayerFixedFeeds';
+import {PlayerFeed} from './PlayerFeed'
+import {PlayerFixedFeed} from './PlayerFixedFeeds'
 
-import styles from './PlayerFeeds.styles';
-import PlayerProfile from '../PlayerProfile';
-import AsyncStorage from "@react-native-community/async-storage"
+import styles from './PlayerFeeds.styles'
+import PlayerProfile from '../PlayerProfile'
+import AsyncStorage from '@react-native-community/async-storage'
 
-function PlayerFeeds({ playerId, navigation }) {
-  const [data, setData] = useState();
+function PlayerFeeds({playerId, navigation}) {
+  const [data, setData] = useState()
   const [size, setSize] = useState(1)
 
   useEffect(() => {
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'GET',
-          url: `/player-home/${playerId}/feeds?size=${size}&lastFeedId=${100}`,
-          headers: {
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: null,
-        }).then(thing => {
-          setData(thing.content);
-        })
+    AsyncStorage.getItem('accessToken').then(thing => {
+      ApiFetch({
+        method: 'GET',
+        url: `/player-home/${playerId}/feeds?size=${size}&lastFeedId=${100}`,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: 'Bearer ' + thing,
+        },
+        body: null,
+      }).then(thing => {
+        setData(thing.content)
       })
-  }, [size]);
+  }, [size])
+
   const onEndReached = () => {
     setSize(size + 3)
     // console.log("size!!!!!!!!!!", size)
@@ -41,7 +40,7 @@ function PlayerFeeds({ playerId, navigation }) {
         data={data}
         snapToAlignment="start"
         decelerationRate="fast"
-        renderItem={({ item, index }) => {
+        renderItem={({item, index}) => {
           if (index == 0)
             return (
               <View>
@@ -68,7 +67,7 @@ function PlayerFeeds({ playerId, navigation }) {
         showsHorizontalScrollIndicator={false}
       />
     </View>
-  );
+  )
 }
 
-export default PlayerFeeds;
+export default PlayerFeeds

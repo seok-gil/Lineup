@@ -1,11 +1,11 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 import {
   colors,
   globalButtonStyle,
   globalButtonTextStyle,
   globalLargeInputStyle,
   listElementStyle,
-} from '../../../Styles';
+} from '../../../Styles'
 
 const styles = StyleSheet.create({
   inquiryListElementWrapper: {
@@ -77,6 +77,6 @@ const styles = StyleSheet.create({
   },
 
   buttonText: globalButtonTextStyle,
-});
+})
 
-export default styles;
+export default styles

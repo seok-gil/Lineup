@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react'
 
-import AsyncStorage from "@react-native-community/async-storage"
-import { ApiFetch } from './'
+import AsyncStorage from '@react-native-community/async-storage'
+import {ApiFetch} from './'
 
 export function ImagePushAPI(body, apiUrl) {
-  AsyncStorage.getItem("accessToken")
-    .then((thing) => {
+  AsyncStorage.getItem('accessToken')
+    .then(thing => {
       ApiFetch({
         method: 'PUT',
         url: apiUrl,
         headers: {
           'content-type': 'application/json',
-          'Authorization': 'Bearer ' + thing,
+          Authorization: 'Bearer ' + thing,
         },
         body: JSON.stringify({
-          'imageUuid': body
-        })
+          imageUuid: body,
+        }),
       })
     })
     .then(() => {
-        console.log("sucees")
+      console.log('sucees')
     })
-
 }

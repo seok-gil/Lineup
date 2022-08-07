@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../../Styles';
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   cardWrapper: {
@@ -21,18 +21,29 @@ const styles = StyleSheet.create({
 
   playerMyCardWrapper: {
     backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
+    position: 'relative',
   },
 
   playerCardWrapper: {
     backgroundColor: colors.WHITE,
   },
 
+  myBadgeIcon: {
+    width: 40,
+    resizeMode: 'contain',
+    position: 'absolute',
+    top: -20,
+    left: 30,
+    zIndex: 30,
+  },
+
   playerCardImage: {
-    width: 157,
-    height: 157,
+    width: 150,
+    height: 150,
     justifyContent: 'center',
     resizeMode: 'contain',
     marginBottom: 20,
+    borderRadius: 75,
   },
 
   emptyCardWrapper: {
@@ -55,6 +66,6 @@ const styles = StyleSheet.create({
   subText: {
     marginBottom: 3,
   },
-});
+})
 
-export default styles;
+export default styles

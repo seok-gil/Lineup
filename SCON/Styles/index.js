@@ -1,4 +1,4 @@
-export {colors} from './constants';
+export {colors} from './constants'
 export {
   listElementStyle,
   globalButtonStyle,
@@ -7,4 +7,4 @@ export {
   globalLargeInputStyle,
   globalTextStyle,
   globalAsteriskStyle,
-} from './global';
+} from './global'

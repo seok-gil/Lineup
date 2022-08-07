@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   detailWrapper: {
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
   buttonInnerText: {
     fontWeight: '700',
   },
-});
+})
 
-export default styles;
+export default styles

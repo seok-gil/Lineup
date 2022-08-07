@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { ApiFetch } from '../../../Components/API/ApiFetch';
-import { View, Text, TouchableOpacity } from 'react-native';
-import styles from './AdminNotiOne.styles';
-import { Time } from '../../../Components';
-import AsyncStorage from "@react-native-community/async-storage"
+import React, {useEffect, useState} from 'react'
+import {ApiFetch} from '../../../Components/API/ApiFetch'
+import {View, Text, TouchableOpacity} from 'react-native'
+import styles from './AdminNotiOne.styles'
+import {Time} from '../../../Components'
+import AsyncStorage from '@react-native-community/async-storage'
 
-export function AdminOne({ data, navigation }) {
-  if (!data) return <View />;
+export function AdminOne({data, navigation}) {
+  if (!data) return <View />
   const onEdit = () => {
-    navigation.navigate('공지사항 등록', { data: data })
+    navigation.navigate('공지사항 등록', {data: data})
   }
   const onDel = () => {
+<<<<<<< HEAD
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
@@ -23,27 +24,39 @@ export function AdminOne({ data, navigation }) {
           body: null,
         }).then(thing => {
         })
+=======
+    AsyncStorage.getItem('accessToken').then(thing => {
+      ApiFetch({
+        method: 'DELETE',
+        url: `/admin/notice`,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: 'Bearer ' + thing,
+        },
+        body: null,
+      }).then(thing => {
+        console.log('thing', thing)
+>>>>>>> origin
       })
+    })
   }
 
   return (
     <View style={styles.notiElementWrapper}>
       <View style={styles.notiElementLeft}>
         <Text style={styles.notiTitle}>{data.title}</Text>
-        <Text style={styles.notiCreated}><Time time={data.dateTime} separator='-' /></Text>
+        <Text style={styles.notiCreated}>
+          <Time time={data.dateTime} separator="-" />
+        </Text>
       </View>
       <View style={styles.notiElementRight}>
-        <TouchableOpacity
-          onPress={() => onEdit()}
-          style={styles.notiButton}>
+        <TouchableOpacity onPress={() => onEdit()} style={styles.notiButton}>
           <Text style={styles.notiButtonText}>수정</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => onDel()}
-          style={styles.notiButton}>
+        <TouchableOpacity onPress={() => onDel()} style={styles.notiButton}>
           <Text style={styles.notiButtonText}>삭제</Text>
         </TouchableOpacity>
       </View>
     </View>
-  );
+  )
 }

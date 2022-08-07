@@ -1,4 +1,4 @@
-import { ForgetPassword } from "./ForgetPassword"
-import { PasswordReset } from "./PasswordReset"
+import {ForgetPassword} from './ForgetPassword'
+import {PasswordReset} from './PasswordReset'
 
-export { ForgetPassword, PasswordReset }
+export {ForgetPassword, PasswordReset}

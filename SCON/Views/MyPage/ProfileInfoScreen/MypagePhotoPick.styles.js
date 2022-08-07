@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../../Styles/constants';
+import {colors} from '../../../Styles/constants'
 
 export const backgroundPhotoPickStyles = StyleSheet.create({
   photoPickWrapper: {
@@ -16,7 +16,7 @@ export const backgroundPhotoPickStyles = StyleSheet.create({
     resizeMode: 'contain',
   },
   photoPickTouchable: {},
-});
+})
 
 export const profilePhotoPickStyles = StyleSheet.create({
   photoPickWrapper: {
@@ -32,4 +32,4 @@ export const profilePhotoPickStyles = StyleSheet.create({
     resizeMode: 'contain',
   },
   photoPickTouchable: {},
-});
+})

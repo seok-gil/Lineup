@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, listElementStyle} from '../../../Styles';
+import {colors, listElementStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   competitionElementWrapper: {
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: colors.THEME_SKYBLUE,
   },
-});
+})
 
-export default styles;
+export default styles

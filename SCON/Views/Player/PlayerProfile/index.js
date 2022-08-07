@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {Image, View, Text} from 'react-native';
-import { ApiFetchOne, ApiFetch } from '../../../Components/API/ApiFetch';
+import React, {useEffect, useState} from 'react'
+import {Image, View, Text} from 'react-native'
+import {ApiFetchOne, ApiFetch} from '../../../Components/API/ApiFetch'
 
-import PlayerData from './PlayerData';
-import PlayerFollowButton from './PlayerFollowButton';
-import styles from './PlayerProfile.styles';
-import AsyncStorage from "@react-native-community/async-storage"
+import PlayerData from './PlayerData'
+import PlayerFollowButton from './PlayerFollowButton'
+import styles from './PlayerProfile.styles'
+import AsyncStorage from '@react-native-community/async-storage'
 
 function PlayerProfile({navigation, playerId}) {
-  const [data, setData] = useState();
+  const [data, setData] = useState()
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
     .then((thing) => {
@@ -34,16 +34,14 @@ function PlayerProfile({navigation, playerId}) {
         <View style={styles.playerInfo}>
           <View style={styles.playerInfoLeft}>
             <Text style={styles.playerMajor}>{data.sport}</Text>
-            <Text style={styles.playerSchool}>
-              {data.belong}
-            </Text>
+            <Text style={styles.playerSchool}>{data.belong}</Text>
           </View>
           <PlayerData data={data} navigation={navigation} />
         </View>
         <PlayerFollowButton data={data} navigation={navigation} />
       </View>
     </View>
-  );
+  )
 }
 
-export default PlayerProfile;
+export default PlayerProfile

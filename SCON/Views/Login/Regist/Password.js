@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState} from 'react'
 import {
   SafeAreaView,
   View,
@@ -7,68 +7,62 @@ import {
   Alert,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
+} from 'react-native'
 
-import styles from './Password.styles';
-import { CheckSmallIcon } from "../../../Assets/Icons"
-import { RegistModal } from "./RegistModal"
-import { ApiFetch } from '../../../Components/API/ApiFetch';
+import styles from './Password.styles'
+import {CheckSmallIcon} from '../../../Assets/Icons'
+import {RegistModal} from './RegistModal'
+import {ApiFetch} from '../../../Components/API/ApiFetch'
 
-export function Password({ navigation, route }) {
+export function Password({navigation, route}) {
   const [postForm, setPostForm] = useState({
     nickname: route.params.form.nickname,
     email: route.params.form.email,
     password: '',
-  });
+  })
   const [form, setForm] = useState({
     password: false,
     certification: false,
-  });
+  })
 
   const [validate, setValidate] = useState({
     password: false,
     certification: false,
-  });
+  })
 
   const [validateError, setValidateError] = useState({
     password: false,
     certification: false,
-  });
+  })
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
+    })
     if (key == 'password')
       setPostForm({
         ...postForm,
         [key]: text,
       })
-  };
+  }
 
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false)
   const onPress = () => {
     // navigation.navigate('LoginPage')
-    setModal(true);
+    setModal(true)
     ApiFetch({
       method: 'POST',
       url: 'auth/signup',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(postForm)
+      body: JSON.stringify(postForm),
     })
-    .then(
-    console.log("post", postForm)
-    )
-    .then(
-      setModal(true)
-    )
-    .catch(
-      console.log(Error)
-    )
+      .then(console.log('post', postForm))
+      .then(setModal(true))
+      .catch(console.log(Error))
   }
   return (
     <SafeAreaView style={styles.passwordWrapper}>
@@ -137,5 +131,5 @@ export function Password({ navigation, route }) {
       </View>
       <RegistModal modal={modal} setModal={setModal} navigation={navigation} />
     </SafeAreaView>
-  );
+  )
 }

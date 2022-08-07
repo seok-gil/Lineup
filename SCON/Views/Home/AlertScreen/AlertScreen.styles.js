@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../../Styles';
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   alertWrapper: {
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: colors.THEME_SKYBLUE,
   },
-});
+})
 
-export default styles;
+export default styles

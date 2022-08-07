@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react'
 import {
   SafeAreaView,
   View,
@@ -7,6 +7,7 @@ import {
   Alert,
   TextInput,
   TouchableOpacity,
+<<<<<<< HEAD
 } from 'react-native';
 import AsyncStorage from "@react-native-community/async-storage"
 import { LineupLogoImage } from '../../Assets/Images'
@@ -20,27 +21,46 @@ export function LoginPage({ navigation }) {
     email: 'member1@gmail.com',
     password: '1234',
   });
+=======
+} from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+
+import {LineupLogoImage} from '../../Assets/Images'
+import {ApiFetch} from '../../Components/API/ApiFetch'
+import styles from './Login.styles'
+
+export function LoginPage({navigation}) {
+  const [form, setForm] = useState({
+    email: 'player0@gmail.com',
+    password: '12345678',
+  })
+>>>>>>> origin
   const [validate, setValidate] = useState({
     email: true,
     password: true,
-  });
+  })
   const onInput = (key, e) => {
-    const { text } = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
-  };
+    })
+  }
 
   const onLogin = () => {
+<<<<<<< HEAD
+=======
+    if (!validate.email && !validate.password) navigation.navigate('Tab')
+>>>>>>> origin
     ApiFetch({
       method: 'POST',
       url: '/auth/login',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(form)
+      body: JSON.stringify(form),
     })
+<<<<<<< HEAD
       .then((thing) => {
         if (thing == 401) {
           var temp = validate
@@ -61,8 +81,24 @@ export function LoginPage({ navigation }) {
       })
       .catch(error => {
         console.log("catch error", error)
+=======
+      .then(thing => {
+        AsyncStorage.setItem('accessToken', thing.accessToken)
+        AsyncStorage.setItem('refreshToken', thing.refreshToken)
+        AsyncStorage.setItem('role', thing.role)
+        // ROLE_MEMBER // ROLE_PLAYER //ROLE_ADMIN
+        if (thing.role == 'ROLE_ADMIN') navigation.navigate('AdminTab')
+        else navigation.navigate('Tab')
       })
-  };
+      .catch(error => {
+        var temp = validate
+        temp.email = false
+        temp.password = false
+        setValidate(temp)
+        console.log('Login ERROR', error)
+>>>>>>> origin
+      })
+  }
 
   return (
     <SafeAreaView style={styles.loginWrapper}>
@@ -112,6 +148,5 @@ export function LoginPage({ navigation }) {
         </View>
       </View>
     </SafeAreaView>
-  );
+  )
 }
-

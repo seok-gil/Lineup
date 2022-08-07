@@ -1,19 +1,19 @@
-import React, {useRef} from 'react';
-import {Button, View, TextInput, Image} from 'react-native';
+import React, {useRef} from 'react'
+import {Button, View, TextInput, Image} from 'react-native'
 
-import styles from './SearchInput.styles';
-import {SearchIcon} from '../../Assets/Icons';
+import styles from './SearchInput.styles'
+import {SearchIcon} from '../../Assets/Icons'
 
 function SearchInput({inputs, setInputs}) {
-  const searchRef = useRef();
+  const searchRef = useRef()
 
   const onChange = (keyvalue, e) => {
-    const {text} = e.nativeEvent;
+    const {text} = e.nativeEvent
     setInputs({
       ...inputs,
       [keyvalue]: text,
-    });
-  };
+    })
+  }
   return (
     <View style={styles.searchInputWrapper}>
       <Image source={SearchIcon} style={styles.searchInputIcon} />
@@ -25,7 +25,7 @@ function SearchInput({inputs, setInputs}) {
         onSubmitEditing={() => searchRef.current.focus()}
       />
     </View>
-  );
+  )
 }
 
-export default SearchInput;
+export default SearchInput

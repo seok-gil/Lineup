@@ -1,9 +1,9 @@
-import React from 'react';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
+import React from 'react'
+import {View, Image, Text, TouchableOpacity} from 'react-native'
 
-import styles from './ETC.styles';
-import {HeartSFilledIcon} from '../../Assets/Icons';
-import {DefaultProfileImage} from '../../Assets/Images';
+import styles from './ETC.styles'
+import {HeartSFilledIcon} from '../../Assets/Icons'
+import {DefaultProfileImage} from '../../Assets/Images'
 
 function ETC({player, index, navigation}) {
   return (
@@ -13,7 +13,7 @@ function ETC({player, index, navigation}) {
       }
       style={styles.etcWrapper}>
       <Text style={styles.index}>{index + 4}</Text>
-      <Image source={{uri:player.profilePic}} style={styles.profileImage} />
+      <Image source={{uri: player.profilePic}} style={styles.profileImage} />
       <View style={styles.profileWrapper}>
         <View>
           <View style={styles.profileInnerWrapper}>
@@ -28,7 +28,7 @@ function ETC({player, index, navigation}) {
         </View>
       </View>
     </TouchableOpacity>
-  );
+  )
 }
 
-export default ETC;
+export default ETC

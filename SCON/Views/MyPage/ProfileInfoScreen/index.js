@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import ProfileInfoScreenElement from './ProfileInfoScreenElement';
-import styles from './ProfileInfoScreen.styles';
-import { ApiFetch, PhotoPick } from '../../../Components';
-import { backgroundPhotoPickStyles, profilePhotoPickStyles } from './MypagePhotoPick.styles';
-import AsyncStorage from "@react-native-community/async-storage"
-import {ImagePush } from './ImagePush'
+import React, {useEffect, useState} from 'react'
+import {View, Image, Text, TouchableOpacity} from 'react-native'
+import ProfileInfoScreenElement from './ProfileInfoScreenElement'
+import styles from './ProfileInfoScreen.styles'
+import {ApiFetch, PhotoPick} from '../../../Components'
+import {
+  backgroundPhotoPickStyles,
+  profilePhotoPickStyles,
+} from './MypagePhotoPick.styles'
+import AsyncStorage from '@react-native-community/async-storage'
+import {ImagePush} from './ImagePush'
 
-export function ProfileInfoScreen({ navigation }) {
-  const [data, setData] = useState();
+export function ProfileInfoScreen({navigation}) {
+  const [data, setData] = useState()
   const [userPhoto, setUserPhoto] = useState({
     asset: '',
     set: false,
@@ -21,33 +24,31 @@ export function ProfileInfoScreen({ navigation }) {
   })
 
   useEffect(() => {
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'GET',
-          url: `/my-page/user-profile`,
-          headers: {
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: null,
-        }).then(thing => {
-          setData(thing);
-          setUserPhoto({
-            ...userPhoto,
-            ['uri']: thing.profilePic
-          })
-          setBackPhoto({
-            ...backPhoto,
-            ['uri']: thing.profileBack
-          })
+    AsyncStorage.getItem('accessToken').then(thing => {
+      ApiFetch({
+        method: 'GET',
+        url: `/my-page/user-profile`,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: 'Bearer ' + thing,
+        },
+        body: null,
+      }).then(thing => {
+        setData(thing)
+        setUserPhoto({
+          ...userPhoto,
+          ['uri']: thing.profilePic,
+        })
+        setBackPhoto({
+          ...backPhoto,
+          ['uri']: thing.profileBack,
         })
       })
-  }, []);
+    })
+  }, [])
 
   const onImagePush = () => {
     if (userPhoto.set) {
-      console.log("user", userPhoto)
       ImagePush(userPhoto, setUserPhoto, 'profile', `/my-page/user-profile-pic`)
       console.log("k")
     }
@@ -63,7 +64,7 @@ export function ProfileInfoScreen({ navigation }) {
       <View style={styles.profileImageWrapper}>
         <View style={styles.profileBackground}>
           <Image source={backPhoto} style={styles.backgroundPhoto} />
-          <Image source={{ uri: userPhoto.uri }} style={styles.backgroundPhoto} />
+          <Image source={{uri: userPhoto.uri}} style={styles.backgroundPhoto} />
           <PhotoPick
             styles={backgroundPhotoPickStyles}
             text="배경 이미지 설정"
@@ -73,7 +74,7 @@ export function ProfileInfoScreen({ navigation }) {
         </View>
         <View style={styles.profileImage}>
           <View style={styles.profileImageRelative}>
-            <Image source={{ uri: backPhoto.uri }} style={styles.profilePhoto} />
+            <Image source={{uri: backPhoto.uri}} style={styles.profilePhoto} />
             <PhotoPick
               styles={profilePhotoPickStyles}
               text="프로필 이미지 설정"
@@ -87,7 +88,10 @@ export function ProfileInfoScreen({ navigation }) {
         <ProfileInfoScreenElement label="이름" text={data.name} />
         <ProfileInfoScreenElement label="이메일 계정" text={data.email} />
         <ProfileInfoScreenElement label="생년월일" text={data.birth} />
-        <ProfileInfoScreenElement label="성별" text={data.gender == "MALE" ? "남자" : "여쟈"} />
+        <ProfileInfoScreenElement
+          label="성별"
+          text={data.gender == 'MALE' ? '남자' : '여쟈'}
+        />
         <ProfileInfoScreenElement label="종목" text={data.sport} />
         <TouchableOpacity onPress={() => onImagePush()}>
           <Text>@@@@@@@@@@저장@@@@@@@</Text>
@@ -96,5 +100,5 @@ export function ProfileInfoScreen({ navigation }) {
         <ProfileInfoScreenElement label="소속" text={data.belong} />
       </View>
     </View>
-  );
+  )
 }

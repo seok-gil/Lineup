@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
-import {Button, Text, View, Image} from 'react-native';
+import {Button, Text, View, Image} from 'react-native'
 
-import styles from './NickName.styles';
+import styles from './NickName.styles'
 
 export function NickName({user}) {
-  const name = user.nickname;
-  const email = user.email;
+  const name = user.nickname
+  const email = user.email
   return (
     <View style={styles.viewWrapper}>
-      <Image source={{uri : user.profilePic}} style={styles.image} />
+      <Image source={{uri: user.profilePic}} style={styles.image} />
       <View style={styles.viewProfileInfo}>
         <Text style={styles.nameText} numberOfLines={1} ellipsizeMode="tail">
           {name}
@@ -19,5 +19,5 @@ export function NickName({user}) {
         </Text>
       </View>
     </View>
-  );
+  )
 }

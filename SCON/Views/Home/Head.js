@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React, {Component} from 'react'
+import {View, Text, Image, TouchableOpacity} from 'react-native'
 
-import {NickName} from './index';
-import {LineupLogoImage} from '../../Assets/Images';
-import {NotiIcon} from '../../Assets/Icons';
+import {NickName} from './index'
+import {LineupLogoImage} from '../../Assets/Images'
+import {NotiIcon} from '../../Assets/Icons'
 
-import styles from './Head.styles';
+import styles from './Head.styles'
 
 function AlertIcon({alert, navigation}) {
   return (
@@ -17,11 +17,11 @@ function AlertIcon({alert, navigation}) {
         </View>
       </TouchableOpacity>
     </View>
-  );
+  )
 }
 
 export function Head({data, navigation}) {
-  if (!data) return <View />;
+  if (!data) return <View />
   return (
     <View>
       <View style={styles.headerWrapper}>
@@ -29,9 +29,13 @@ export function Head({data, navigation}) {
         <View style={[styles.alignment, styles.imageWrapper]}>
           <Image source={LineupLogoImage} />
         </View>
-        <AlertIcon key={`Alert`} alert={data.existAlarm} navigation={navigation} />
+        <AlertIcon
+          key={`Alert`}
+          alert={data.existAlarm}
+          navigation={navigation}
+        />
       </View>
       <NickName user={data} />
     </View>
-  );
+  )
 }

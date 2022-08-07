@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
-import styles from './AdminNotiRegist.styles';
-import AsyncStorage from "@react-native-community/async-storage"
-import { ApiFetch } from '../../../Components';
+import styles from './AdminNotiRegist.styles'
+import AsyncStorage from '@react-native-community/async-storage'
+import {ApiFetch} from '../../../Components'
 
 export function AdminNotiRegist({navigation, route}) {
   var method = route ? 'PUT' : 'POST'
@@ -12,48 +12,47 @@ export function AdminNotiRegist({navigation, route}) {
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
-  });
+  })
 
   useEffect(() => {
     if (route && route.params && route.params.data) {
-    setInputs({
-      title : route.params.data.title,
-      content : route.params.data.content
-    })
-    method = 'PUT'
-    apiUrl += `/${route.params.noticeId}`
-  }
+      setInputs({
+        title: route.params.data.title,
+        content: route.params.data.content,
+      })
+      method = 'PUT'
+      apiUrl += `/${route.params.noticeId}`
+    }
   }, [])
 
   const onChange = (keyvalue, e) => {
-    const {text} = e.nativeEvent;
+    const {text} = e.nativeEvent
     setInputs({
       ...inputs,
       [keyvalue]: text,
-    });
-  };
+    })
+  }
 
   const onSumit = () => {
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: method,
-          url: apiUrl,
-          headers: { 
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: JSON.stringify(inputs),
-        }).then(thing => {
-          setInputs({
-            title:'',
-            content:''
+    AsyncStorage.getItem('accessToken').then(thing => {
+      ApiFetch({
+        method: method,
+        url: apiUrl,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: 'Bearer ' + thing,
+        },
+        body: JSON.stringify(inputs),
+      }).then(thing => {
+        setInputs({
+          title: '',
+          content: '',
         })
-          // route.params.onSelect({ selected: true });
-          navigation.goBack()
-        })
+        // route.params.onSelect({ selected: true });
+        navigation.goBack()
       })
-  };
+    })
+  }
 
   return (
     <View style={styles.notiRegistWrapper}>
@@ -79,5 +78,5 @@ export function AdminNotiRegist({navigation, route}) {
         <Text style={styles.registButtonText}>공지사항 등록</Text>
       </TouchableOpacity>
     </View>
-  );
+  )
 }

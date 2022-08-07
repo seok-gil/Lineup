@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { ApiFetch } from '../../../Components/API/ApiFetch';
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
-import { DefaultProfileImage } from '../../../Assets/Images';
-import AsyncStorage from "@react-native-community/async-storage"
+import React, {useEffect, useState} from 'react'
+import {ApiFetch} from '../../../Components/API/ApiFetch'
+import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
+import {DefaultProfileImage} from '../../../Assets/Images'
+import AsyncStorage from '@react-native-community/async-storage'
 
 export function CommentRegist({feedId}) {
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState('')
 
   const onInput = e => {
-    const { text } = e.nativeEvent;
-    setComment(text);
-  };
+    const {text} = e.nativeEvent
+    setComment(text)
+  }
 
   const onPress = () => {
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
+    AsyncStorage.getItem('accessToken')
+      .then(thing => {
         ApiFetch({
           method: 'POST',
           url: `/comment/${feedId}`,
           headers: {
             'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
+            Authorization: 'Bearer ' + thing,
           },
           body: JSON.stringify({
-            content : comment
-          })
+            content: comment,
+          }),
         })
       })
       .then(setComment(''))
   }
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{flexDirection: 'row'}}>
       <Image source={DefaultProfileImage} />
       <TextInput
         value={comment}
@@ -43,5 +43,5 @@ export function CommentRegist({feedId}) {
         <Text>게시</Text>
       </TouchableOpacity>
     </View>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react'
 import {
   View,
   Image,
@@ -6,16 +6,16 @@ import {
   Modal,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
-import { BirthForm } from './BirthForm';
-import { GenderForm } from './GenderForm';
-import { CaptureForm } from './CaptureForm';
-import { PlayerRegistModal } from './PlayerRegistModal';
-import { CheckSmallIcon } from '../../../Assets/Icons';
-import { ImagePush } from "../../../Components"
-import {PlayerRegistApi } from "./PlayerRegistApi"
+} from 'react-native'
+import {BirthForm} from './BirthForm'
+import {GenderForm} from './GenderForm'
+import {CaptureForm} from './CaptureForm'
+import {PlayerRegistModal} from './PlayerRegistModal'
+import {CheckSmallIcon} from '../../../Assets/Icons'
+import {ImagePush} from '../../../Components'
+import {PlayerRegistApi} from './PlayerRegistApi'
 
-export function PlayerRegistForm({ navigation }) {
+export function PlayerRegistForm({navigation}) {
   const [modal, setModal] = useState(false)
   const [form, setForm] = useState({
     certificate: '',
@@ -24,14 +24,14 @@ export function PlayerRegistForm({ navigation }) {
     gender: '',
     sport: '',
     belong: '',
-  });
+  })
   const [validate, setValidate] = useState({
     name: false,
     birth: false,
     gender: false,
     sport: false,
     belong: false,
-  });
+  })
   const [playerPhoto, setPlayerPhoto] = useState({
     asset: '',
     set: false,
@@ -40,32 +40,39 @@ export function PlayerRegistForm({ navigation }) {
 
   const [button, setButton] = useState(false)
   const onInput = (key, e) => {
-    const { text } = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
+    })
     setValidate({
       ...validate,
       [key]: true,
-    });
-    if (validate.certificate && validate.name && validate.birth && validate.gender && validate.sport && validate.belong)
+    })
+    if (
+      validate.certificate &&
+      validate.name &&
+      validate.birth &&
+      validate.gender &&
+      validate.sport &&
+      validate.belong
+    )
       setButton(true)
-  };
+  }
   const onSummit = () => {
     var imageurl = ImagePush(playerPhoto, setPlayerPhoto, 'player-certificate')
     setForm({
       ...form,
-      ['certificate'] : imageurl
+      ['certificate']: imageurl,
     })
     PlayerRegistApi(form)
     // setModal(true)
   }
   return (
-    <View style={{ flexDirection: 'column' }}>
+    <View style={{flexDirection: 'column'}}>
       <Text>운동선수 확인을 시작합니다.</Text>
       <Text>확인된 내용이 실제와 다르면 이용이 제한됩니다.</Text>
-      <CaptureForm playerPhoto={playerPhoto} setPlayerPhoto={setPlayerPhoto}/>
+      <CaptureForm playerPhoto={playerPhoto} setPlayerPhoto={setPlayerPhoto} />
       <Text>이름</Text>
       <TextInput
         value={form.name}
@@ -82,7 +89,7 @@ export function PlayerRegistForm({ navigation }) {
         placeholderTextColor="#0E0E0E66"
         onChange={e => onInput('sport', e)}
       />
-        <Image source={CheckSmallIcon} />
+      <Image source={CheckSmallIcon} />
       <Text>소속</Text>
       <TextInput
         value={form.belong}
@@ -90,13 +97,17 @@ export function PlayerRegistForm({ navigation }) {
         placeholderTextColor="#0E0E0E66"
         onChange={e => onInput('belong', e)}
       />
-        <Image source={CheckSmallIcon} />
-      <TouchableOpacity 
-      // disabled={!button}
-      onPress={() => onSummit()}>
-        <Text>{button ? "버튼" : "NO"}</Text>
+      <Image source={CheckSmallIcon} />
+      <TouchableOpacity
+        // disabled={!button}
+        onPress={() => onSummit()}>
+        <Text>{button ? '버튼' : 'NO'}</Text>
       </TouchableOpacity>
-      <PlayerRegistModal modal={modal} setModal={setModal} navigation={navigation} />
+      <PlayerRegistModal
+        modal={modal}
+        setModal={setModal}
+        navigation={navigation}
+      />
     </View>
-  );
+  )
 }

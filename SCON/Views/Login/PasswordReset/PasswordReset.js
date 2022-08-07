@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -6,59 +6,62 @@ import {
   Text,
   TextInput,
   Image,
-} from 'react-native';
+} from 'react-native'
 
-import styles from './PasswordReset.styles';
-import {PasswordChangeModal} from './PasswordChangeModal';
-import {CheckSmallIcon} from '../../../Assets/Icons';
+import styles from './PasswordReset.styles'
+import {PasswordChangeModal} from './PasswordChangeModal'
+import {CheckSmallIcon} from '../../../Assets/Icons'
 
 export function PasswordReset({navigation}) {
   const [form, setForm] = useState({
     password: '',
     certification: '',
-  });
+  })
 
   const [validate, setValidate] = useState({
     password: false,
     certification: false,
-  });
+  })
 
   const [validateError, setValidateError] = useState({
     password: true,
     certification: true,
-  });
+  })
 
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false)
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
-  };
+    })
+  }
 
   async function checkValidate(temp) {
-    var reg =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
+    var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
     if (form.password.match(reg)) {
-      temp.password = true;
-    } else temp.password = false;
+      temp.password = true
+    } else temp.password = false
 
+<<<<<<< HEAD
+=======
+    console.log(form.certification.length)
+>>>>>>> origin
     if (form.certification.length == form.password.length) {
-      temp.certification = true;
-    } else temp.certification = false;
+      temp.certification = true
+    } else temp.certification = false
   }
 
   useEffect(() => {
-    let temp = validate;
-    checkValidate(temp).then(setValidate(temp));
-  }, [form]);
+    let temp = validate
+    checkValidate(temp).then(setValidate(temp))
+  }, [form])
 
   const onPress = () => {
-    console.log('API POST');
-    setModal(true);
-  };
+    console.log('API POST')
+    setModal(true)
+  }
 
   return (
     <SafeAreaView style={styles.passwordWrapper}>
@@ -131,5 +134,5 @@ export function PasswordReset({navigation}) {
         navigation={navigation}
       />
     </SafeAreaView>
-  );
+  )
 }

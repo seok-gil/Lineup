@@ -1,10 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {
-  colors,
-  globalButtonStyle,
-  globalButtonTextStyle,
-} from '../../../Styles';
+import {colors, globalButtonStyle, globalButtonTextStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   filledButton: {
@@ -26,6 +22,6 @@ const styles = StyleSheet.create({
     ...globalButtonTextStyle,
     color: colors.THEME_SKYBLUE,
   },
-});
+})
 
-export default styles;
+export default styles

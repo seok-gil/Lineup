@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../../Styles/constants';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../../Styles/constants'
 
 const styles = StyleSheet.create({
   inquiryQnAWrapper: {
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     color: colors.TEXT_DARK,
     fontWeight: '500',
   },
-});
+})
 
-export default styles;
+export default styles

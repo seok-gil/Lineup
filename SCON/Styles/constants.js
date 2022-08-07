@@ -12,4 +12,4 @@ export const colors = {
   THEME_ORANGE: '#FF6F00',
   TEXT_DARK: '#0E0E0E',
   TEXT_LIGHT: '#0E0E0E66',
-};
+}

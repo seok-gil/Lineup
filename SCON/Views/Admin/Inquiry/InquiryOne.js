@@ -1,30 +1,30 @@
-import React, {useEffect, useState} from 'react';
-import {View, Image, Text, TextInput, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react'
+import {View, Image, Text, TextInput, TouchableOpacity} from 'react-native'
 
-import {DownIcon} from '../../../Assets/Icons';
-import {Time} from '../../../Components/Time';
+import {DownIcon} from '../../../Assets/Icons'
+import {Time} from '../../../Components/Time'
 
-import styles from './InquiryOne.styles';
+import styles from './InquiryOne.styles'
 
 export function InquiryOne({data}) {
-  if (!data) return <View />;
+  if (!data) return <View />
 
-  const [expand, setExpand] = useState(false);
-  const [answer, setAnswer] = useState(data.AnswerContent);
-  const [state, setState] = useState(false);
+  const [expand, setExpand] = useState(false)
+  const [answer, setAnswer] = useState(data.AnswerContent)
+  const [state, setState] = useState(false)
 
   const onExpand = () => {
-    setExpand(!expand);
-  };
+    setExpand(!expand)
+  }
 
   const onInput = e => {
-    const {text} = e.nativeEvent;
-    setAnswer(text);
-  };
+    const {text} = e.nativeEvent
+    setAnswer(text)
+  }
 
   const onRegist = () => {
-    setState(!state);
-  };
+    setState(!state)
+  }
 
   return (
     <View>
@@ -72,5 +72,5 @@ export function InquiryOne({data}) {
         </View>
       )}
     </View>
-  );
+  )
 }

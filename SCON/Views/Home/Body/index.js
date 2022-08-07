@@ -1,9 +1,22 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, Dimensions } from 'react-native';
+=======
+import React, {useState} from 'react'
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from 'react-native'
+>>>>>>> origin
 
-import { GoPlayer } from './GoPlayer';
-import { CardList } from "./CardList"
+import {GoPlayer} from './GoPlayer'
+import {CardList} from './CardList'
 
+<<<<<<< HEAD
 import styles from './Body.styles';
 import AsyncStorage from "@react-native-community/async-storage"
 
@@ -20,6 +33,15 @@ export function Body({ data, navigation }) {
       })
   }, [])
   
+=======
+import styles from './Body.styles'
+
+export function Body({data, navigation}) {
+  if (!data) return <View />
+  const user_code = data.player ? 1 : 1
+  //TODO goPlayer
+  const [goPlayer, setgoPlayer] = useState(true)
+>>>>>>> origin
   return (
     <View style={styles.bodyWrapper}>
       {role === "ROLE_MEMBER" && goPlayer === true && (
@@ -44,5 +66,5 @@ export function Body({ data, navigation }) {
       </View>
       <CardList data={data} navigation={navigation} role={role}/>
     </View>
-  );
+  )
 }

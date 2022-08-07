@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React from 'react'
+import {View, Text, Image, TouchableOpacity} from 'react-native'
 
 import {
   QnAIcon,
@@ -7,9 +7,9 @@ import {
   MegaphoneIcon,
   LogoutIcon,
   DownIcon,
-} from '../../Assets/Icons';
+} from '../../Assets/Icons'
 
-import styles from './MypageTab.styles';
+import styles from './MypageTab.styles'
 
 export function MypageTab({navigation}) {
   return (
@@ -51,5 +51,5 @@ export function MypageTab({navigation}) {
         <Image source={DownIcon} style={styles.arrowIcon} />
       </TouchableOpacity>
     </View>
-  );
+  )
 }

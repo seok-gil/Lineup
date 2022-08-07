@@ -1,10 +1,10 @@
-import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import React from 'react'
+import {SafeAreaView, StyleSheet} from 'react-native'
 
-import {MypageProfile} from './MypageProfile';
-import {MypageTab} from './MypageTab';
+import {MypageProfile} from './MypageProfile'
+import {MypageTab} from './MypageTab'
 
-import styles from './MypageScreen.styles';
+import styles from './MypageScreen.styles'
 
 export function MyPageScreen({navigation}) {
   return (
@@ -12,5 +12,5 @@ export function MyPageScreen({navigation}) {
       <MypageProfile navigation={navigation} />
       <MypageTab navigation={navigation} />
     </SafeAreaView>
-  );
+  )
 }
