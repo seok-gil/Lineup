@@ -1,21 +1,36 @@
 import React, {Component, useState, useRef} from 'react';
 
-import { View, TouchableOpacity, StyleSheet, Text, Image, TextInput, SafeAreaView} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Image,
+  TextInput,
+  SafeAreaView,
+} from 'react-native';
 
 import {SearchIcon} from '../../Assets/Icons';
-import {DefaultProfileImage} from '../../Assets/Images';
+import styles from './SearchScreen.styles';
 
 export function SearchId({data, navigation}) {
-  if (!data) return <View />
+  if (!data) {
+    return <View />;
+  }
   return (
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('FollowPage', {userId: data.memberId})
       }>
-      <View style={{flexDirection: 'row'}}>
-        <Image source={{uri:data.profilePic}} style={styles.image} />
-        <View style={{flexDirection: 'column'}}>
-          <Text> {data.nickname}</Text>
+      <View style={styles.viewPlayerWrapper}>
+        <Image source={{uri: data.profilePic}} style={styles.viewPlayerImage} />
+        <View style={styles.viewPlayerInfo}>
+          <Text
+            style={styles.playerName}
+            numberOfLines={1}
+            ellipsizeMode="tail">
+            {data.nickname}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -36,8 +51,8 @@ export function SearchInput() {
   };
 
   return (
-    <View style={{flexDirection: 'row'}}>
-      <Image source={SearchIcon} />
+    <View style={styles.searchInputWrapper}>
+      <Image source={SearchIcon} style={styles.searchInputIcon} />
       <TextInput
         value={inputs.search}
         placeholder={'검색'}
@@ -48,12 +63,3 @@ export function SearchInput() {
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  image: {
-    width: '10%',
-    height: '100%',
-    resizeMode: 'contain',
-  },
-});
