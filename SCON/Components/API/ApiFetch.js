@@ -1,5 +1,6 @@
 export async function ApiFetch({ method, url, headers, body }) {
-	var LineUpUrl = `http://api.sportist.co.kr` + url
+	const LineUpUrl = `http://api.sportist.co.kr` + url
+	console.log(method, url, body)
 	try {
 		let res = await fetch(LineUpUrl, {
 			method: method,
@@ -16,9 +17,9 @@ export async function ApiFetch({ method, url, headers, body }) {
 			return (data)
 		}
 		else {
-			console.log(LineUpUrl, "Request unsuccessful1");
+			console.log(LineUpUrl, "Request unsuccessful1", resChecked);
 			resChecked = res;
-			let data = await resChecked.json().then(console.log);
+			// let data = await resChecked.json().then(console.log);
 			return (res.status)
 		}
 	}

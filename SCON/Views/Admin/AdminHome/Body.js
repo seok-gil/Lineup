@@ -8,6 +8,7 @@ export function Body({data}) {
   var year = today.getFullYear();
   var month = today.getMonth() + 1;
   var day = today.getDate();
+  console.log(data)
   return (
     <View style={styles.bodyWrapper}>
       <Text style={styles.insightText}>인사이트</Text>
@@ -19,34 +20,34 @@ export function Body({data}) {
           <Text style={styles.cardTitle}>분석(어제)</Text>
           <View style={styles.textBox}>
             <Text style={styles.textLeft}>가입자</Text>
-            <Text style={styles.textRight}>{data.YdayRegistMember}</Text>
+            <Text style={styles.textRight}>{data.ydMemberCnt}</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.textLeft}>선수 등록</Text>
-            <Text style={styles.textRight}>{data.YdayRegistPlayer}</Text>
+            <Text style={styles.textRight}>{data.ydPlayerRegistCnt}</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.textLeft}>팔로잉</Text>
-            <Text style={styles.textRight}>{data.YdayFollow}</Text>
+            <Text style={styles.textRight}>{data.ydFollowCnt}</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.textLeft}>신규댓글</Text>
-            <Text style={styles.textRight}>{data.YdayComment}</Text>
+            <Text style={styles.textRight}>{data.ydCommentCnt}</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.textLeft}>탈퇴</Text>
-            <Text style={styles.textRight}>{data.YdayComment}</Text>
+            <Text style={styles.textRight}>{data.ydUnjoinCnt}</Text>
           </View>
         </View>
         <View style={styles.bodyCardBottom}>
           <Text style={styles.cardTitle}>분석(전체)</Text>
           <View style={styles.textBox}>
             <Text style={styles.textLeft}>가입자</Text>
-            <Text style={styles.textRight}>{data.TotalMember}</Text>
+            <Text style={styles.textRight}>{data.allMemberCnt}</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.textLeft}>선수 등록</Text>
-            <Text style={styles.textRight}>{data.TotalPlayer}</Text>
+            <Text style={styles.textRight}>{data.allPlayerRegistCnt}</Text>
           </View>
         </View>
       </View>

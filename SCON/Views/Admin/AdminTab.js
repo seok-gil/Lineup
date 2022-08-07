@@ -24,8 +24,6 @@ export function AdminTabScreen({navigation}) {
           // headerShown: false,
         }}>
       <AdminTab.Screen name="AdminHomeScreen" component={AdminHome} />
-      {/* <AdminTab.Screen name="AdminSearchScreen" component={SearchScreen} /> */}
-      {/* <AdminTab.Screen name="RankScreen" component={RankScreen} /> */}
       <AdminTab.Screen name="AdminMyPageScreen" component={AdminMypage} />
     </AdminTab.Navigator>
   );

@@ -14,8 +14,8 @@ import { LineupLogoImage } from '../../Assets/Images';
 import { ApiFetch } from '../../Components/API/ApiFetch';
 import styles from './Login.styles';
 
-
-export function LoginPage({ navigation }) {
+// ROLE_MEMBER //ROLE_PLAYER //ROLE_ADMIN
+export function LoginMember({ navigation }) {
   const [form, setForm] = useState({
     email: 'admin@gmail.com',
     password: '1234',
@@ -43,13 +43,10 @@ export function LoginPage({ navigation }) {
       body: JSON.stringify(form)
     })
       .then((thing) => {
+        console.log("login", thing)
         AsyncStorage.setItem("accessToken", thing.accessToken)
         AsyncStorage.setItem("refreshToken", thing.refreshToken)
-        // ROLE_MEMBER // ROLE_PLAYER //ROLE_ADMIN
-        if (thing.role == "ROLE_ADMIN")
-          navigation.navigate('AdminTab')
-        else
-          navigation.navigate('Tab')
+        navigation.navigate('Tab')
       })
       .catch(error => {
         var temp = validate

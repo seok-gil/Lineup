@@ -8,7 +8,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 const AdminNotiStack = createMaterialTopTabNavigator();
 
-export function AdminNotiTabScreen({ navigation }) {
+export function AdminNotiTabScreen() {
 	return (
 		<AdminNotiStack.Navigator>
 			<AdminNotiStack.Screen name="공지사항 목록" component={AdminNotiListScreen} />
