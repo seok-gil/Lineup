@@ -1,11 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {
-  colors,
-  globalButtonStyle,
-  globalTextStyle,
-  listElementStyle,
-} from '../../Styles';
+import {colors, globalTextStyle, listElementStyle} from '../../Styles';
 
 const styles = StyleSheet.create({
   container: {
