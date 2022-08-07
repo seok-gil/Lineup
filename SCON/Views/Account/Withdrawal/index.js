@@ -10,6 +10,9 @@ import {
 
 import { DefaultProfileImage } from '../../../Assets/Images/index';
 import { WithdrawalModal } from "./WithdrawalModal"
+import AsyncStorage from "@react-native-community/async-storage"
+import { ApiFetch } from '../../../Components';
+
 export function Withdrawal({navigation}) {
   const [password, setPassword] = useState('');
   const [modal, setModal] = useState(false)
@@ -18,8 +21,20 @@ export function Withdrawal({navigation}) {
     const { text } = e.nativeEvent;
     setPassword(text);
   };
-
   const onPress = () => {
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'POST',
+          url: `/unjoin`,
+          headers: { 
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: JSON.stringify(password),
+        }).then(thing => {
+        })
+  })
     setModal(true)
   }
   return (

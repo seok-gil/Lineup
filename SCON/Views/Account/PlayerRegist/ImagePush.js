@@ -4,8 +4,8 @@ import { ImagePushAPI } from "./ImagePushAPI"
 
 
 import Amplify, { Storage } from 'aws-amplify';
-import { GetUuid } from "../../../Components"
-import awsconfig from '../../../src/aws-exports'
+import { GetUuid } from "./GetUuid"
+import awsconfig from '../src/aws-exports'
 
 Amplify.configure(awsconfig);
 
@@ -28,8 +28,7 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
   try {
     const img = await fetchResourceFromURI(photo.asset.uri);
     var path = type + '/'
-    console.log("@@@@@@@",img, path)
-    Storage.put(path + GetUuid() + ".jpg", img, {
+    return Storage.put(path + GetUuid() + ".jpg", img, {
       level: 'public',
       contentType: 'photo',
     })
@@ -48,10 +47,6 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
             console.log("err0", err);
           });
       })
-      .catch((err) => {
-        console.log("err0", err)
-      })
-
   }
   catch {
     (err) => {

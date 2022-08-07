@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-
-import { PhotoPick } from '../../../Components/PhotoPick';
-import S3StorageUpload from '../../../Components/PhotoPick';
-import { ImagePush } from './ImagePush'
-
 import ProfileInfoScreenElement from './ProfileInfoScreenElement';
-import { DefaultProfileImage, SwimmingBackground } from '../../../Assets/Images';
 import styles from './ProfileInfoScreen.styles';
-import { ApiFetch } from '../../../Components/API/ApiFetch';
+import { ApiFetch, PhotoPick } from '../../../Components';
 import { backgroundPhotoPickStyles, profilePhotoPickStyles } from './MypagePhotoPick.styles';
 import AsyncStorage from "@react-native-community/async-storage"
-
-
+import {ImagePush } from './ImagePush'
 
 export function ProfileInfoScreen({ navigation }) {
   const [data, setData] = useState();
@@ -39,7 +32,6 @@ export function ProfileInfoScreen({ navigation }) {
           },
           body: null,
         }).then(thing => {
-          console.log("profile",thing)
           setData(thing);
           setUserPhoto({
             ...userPhoto,
@@ -52,6 +44,17 @@ export function ProfileInfoScreen({ navigation }) {
         })
       })
   }, []);
+
+  const onImagePush = () => {
+    if (userPhoto.set) {
+      console.log("kk",userPhoto)
+      ImagePush(userPhoto, setUserPhoto, 'profile', `/my-page/user-profile-pic`)
+    }
+    if (backPhoto.set) {
+      ImagePush(backPhoto, setBackPhoto, 'back', `/my-page/user-back-pic`)
+    }
+    navigation.goBack()
+  }
 
   if (!data) return <View />
   return (
@@ -85,7 +88,10 @@ export function ProfileInfoScreen({ navigation }) {
         <ProfileInfoScreenElement label="생년월일" text={data.birth} />
         <ProfileInfoScreenElement label="성별" text={data.gender == "MALE" ? "남자" : "여쟈"} />
         <ProfileInfoScreenElement label="종목" text={data.sport} />
-        <ImagePush playerId={data.playerId} userPhoto={userPhoto} setUserPhoto={setUserPhoto} backPhoto={backPhoto} setBackPhoto={setBackPhoto} navigation={navigation} />
+        <TouchableOpacity onPress={() => onImagePush()}>
+          <Text>@@@@@@@@@@저장@@@@@@@</Text>
+        </TouchableOpacity>
+        {/* <ImagePush playerId={data.playerId} userPhoto={userPhoto} setUserPhoto={setUserPhoto} backPhoto={backPhoto} setBackPhoto={setBackPhoto} navigation={navigation} /> */}
         <ProfileInfoScreenElement label="소속" text={data.belong} />
       </View>
     </View>

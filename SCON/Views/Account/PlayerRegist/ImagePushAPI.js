@@ -4,7 +4,6 @@ import AsyncStorage from "@react-native-community/async-storage"
 import { ApiFetch } from './'
 
 export function ImagePushAPI(body, apiUrl) {
-  console.log(body, apiUrl)
   AsyncStorage.getItem("accessToken")
     .then((thing) => {
       ApiFetch({
@@ -19,8 +18,4 @@ export function ImagePushAPI(body, apiUrl) {
         })
       })
     })
-    .then(() => {
-        console.log("sucees")
-    })
-
 }

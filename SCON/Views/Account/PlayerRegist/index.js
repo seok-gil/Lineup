@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Image,
@@ -6,69 +6,37 @@ import {
   Modal,
   TextInput,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
-import { BirthForm } from './BirthForm';
-import { GenderForm } from './GenderForm';
-import { ButtonBig } from '../../../Components';
-import { CaptureForm } from './CaptureForm';
-import { PlayerRegistModal } from './PlayerRegistModal';
+
+import AsyncStorage from "@react-native-community/async-storage"
+import { ApiFetch } from "./../../../Components"
+import { PlayerRegistForm } from './PlayerRegistForm';
+import { PlayerRegistResultPage } from './PlayerRegistReusltPage';
 
 export function PlayerRegist({ navigation }) {
-  const [modal, setModal] = useState(false)
-  const [form, setForm] = useState({
-    name: '',
-    birth: '',
-    gender: '',
-    major: '',
-    belong: '',
-  });
-  const [validate, setValidate] = useState({
-    name: '',
-    birth: '',
-    gender: '',
-    major: '',
-    belong: '',
-  });
-  const onInput = (key, e) => {
-    const { text } = e.nativeEvent;
-    setForm({
-      ...form,
-      [key]: text,
-    });
-  };
-  const onModal = () => {
-    setModal(true)
-  }
-  return (
-    <View style={{ flexDirection: 'column' }}>
-      <Text>운동선수 확인을 시작합니다.</Text>
-      <Text>확인된 내용이 실제와 다르면 이용이 제한됩니다.</Text>
-      <CaptureForm />
-      <Text>이름</Text>
-      <TextInput
-        value={form.name}
-        placeholder={'이름을 입력해주세요'}
-        placeholderTextColor="#0E0E0E66"
-        onChange={e => onInput('name', e)}
-      />
-      <BirthForm form={form} setForm={setForm} />
-      <GenderForm form={form} setForm={setForm} />
-      <Text>종목</Text>
-      <TextInput
-        value={form.major}
-        placeholder={'종목을 선택해주세요'}
-        placeholderTextColor="#0E0E0E66"
-        onChange={e => onInput('major', e)}
-      />
-      <Text>소속</Text>
-      <TextInput
-        value={form.belong}
-        placeholder={'소속명을 입력해주세요'}
-        placeholderTextColor="#0E0E0E66"
-        onChange={e => onInput('belong', e)}
-      />
-      <ButtonBig text={'버튼'} onPress={() => onModal()}/>
-      <PlayerRegistModal modal={modal} setModal={setModal} navigation={navigation} />
-    </View>
-  );
+  const [code, setCode] = useState()
+  useEffect(() => {
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'GET',
+          url: `/player-regist/`,
+          headers: { 
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: null,
+        }).then(thing => {
+          console.log("thing", thing)
+          setCode(thing);
+        })
+  })
+  }, []);
+  if (code == 404)
+    return (<PlayerRegistForm/>)
+  else if (code == 200)
+    return (<PlayerRegistResultPage/>)
+  else
+    return <SafeAreaView/>
 }

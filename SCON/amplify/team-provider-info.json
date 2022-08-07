@@ -26,6 +26,12 @@
           "unauthRoleArn": "arn:aws:iam::775652409395:role/amplify-lineup-staging-62912-unauthRole",
           "unauthRoleName": "amplify-lineup-staging-62912-unauthRole"
         }
+      },
+      "storage": {
+        "lineupc19d1627": {
+          "bucketName": "profile-scon",
+          "region": "ap-northeast-2"
+        }
       }
     }
   }
