@@ -5,35 +5,36 @@ import AsyncStorage from "@react-native-community/async-storage"
 
 import styles from './CompetitionResultButton.styles';
 
-function CompetitionResultButton({ data, navigation }) {
-  console.log(data)
+export function CompetitionResultButton({ eventId, data, type, navigation }) {
   const onPress = () => {
+    if (!type) {
+    var result = data
+    delete result['detailName']
     AsyncStorage.getItem("accessToken")
-    .then((thing) => {
-      ApiFetch({
-        method: 'POST',
-        url: `http://15.164.100.211:8080/player/event`,
-        headers: {
-          'content-type': 'application/json',
-          'Authorization': 'Bearer ' + thing,
-        },
-        body : JSON.stringify(data)
-      }).then(thing => {
-        console.log("Feed", thing)
-        navigation.navigate('StoryScreen')
-      }).catch(error => {
-        console.log("Login ERROR", error)
+      .then((thing) => {
+        ApiFetch({
+          method: 'POST',
+          url: `/player/event/record/${eventId}`,
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: JSON.stringify(result)
+        }).then(thing => {
+          navigation.navigate('StoryScreen')
+        }).catch(error => {
+          console.log("Login ERROR", error)
+        })
       })
-  })
+    }
     navigation.navigate('StoryScreen')
   }
-
 
   const buttonStyle =
     data.endDate && data.location && data.eventName ? styles.filledButton : styles.notfillButton;
 
   const buttonTextStyle =
-  data.endDate && data.location && data.eventName ? styles.filledText : styles.notfillText;
+    data.endDate && data.location && data.eventName ? styles.filledText : styles.notfillText;
   return (
     <TouchableOpacity
       onPress={() => onPress()}
@@ -42,4 +43,3 @@ function CompetitionResultButton({ data, navigation }) {
     </TouchableOpacity>
   );
 }
-export default CompetitionResultButton;

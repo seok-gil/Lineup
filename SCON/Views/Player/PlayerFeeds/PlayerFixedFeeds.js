@@ -19,7 +19,7 @@ export function PlayerFixedFeed({ navigation, playerId }) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/player-home/${playerId}/fixed-events`,
+          url: `/player-home/${playerId}/fixed-events`,
           headers: { 
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

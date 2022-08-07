@@ -9,14 +9,13 @@ export function Calendar({ calendar, setCalender, form, setForm, setStartDate, s
 		if (date) {
 			const selected = new Date(date);
 			if (type === 'END_DATE') {
-				setForm({ ...form , ['endDate'] : selected.toISOString()})
+				setForm({ ...form , ['endDate'] : selected.toISOString().slice(0, -2)})
 				setEndDate(selected.toISOString().slice(0, 10).replace(/-/gi, " / "))
 				setCalender(false)
 			}
 			else {
-				setForm({ ...form , ['startDate'] : selected.toISOString()})
+				setForm({ ...form , ['startDate'] : selected.toISOString().slice(0, -2)})
 				setStartDate(selected.toISOString().slice(0, 10).replace(/-/gi, " / "))
-
 			}
 		}
 	}

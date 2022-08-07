@@ -10,22 +10,19 @@ import AsyncStorage from "@react-native-community/async-storage"
 
 export function RecordScreen({ route }) {
   const [data, setData] = useState([])
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
-  var temp = data;
+
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/player-home/${route.params.playerId}/records`,
+          url: `/player-home/${route.params.playerId}/records`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
           body: null,
         }).then(thing => {
-          console.log("thing", thing)
           setData(thing);
         })
       })
@@ -35,7 +32,7 @@ export function RecordScreen({ route }) {
   return (
     <SafeAreaView style={styles.recordScreenWrapper}>
       <ScrollView>
-        {/* <RecordHead medal={data.Medal} /> */}
+        <RecordHead data={data} />
         <View>
           {data.map(record => (
             <PlayerCard key={`player-card-${record.recordId}`} record={record} />

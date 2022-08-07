@@ -1,24 +1,25 @@
-import React, {Component, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
-  Button,
   View,
   Text,
-  StyleSheet,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
 
 import styles from './InquiryScreen.styles';
+import AsyncStorage from "@react-native-community/async-storage"
+import { ApiFetch } from "../../Components"
+import { InquiryModal } from "./InquiryModal"
 
-export function InquiryScreen({navigation}) {
+export function InquiryScreen({ navigation }) {
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
   });
-
+  const [modal, setModal] = useState(false)
   const onChange = (keyvalue, e) => {
-    const {text} = e.nativeEvent;
+    const { text } = e.nativeEvent;
     setInputs({
       ...inputs,
       [keyvalue]: text,
@@ -26,7 +27,20 @@ export function InquiryScreen({navigation}) {
   };
 
   const onSubmit = () => {
-    console.log('submit');
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'POST',
+          url: `/inquiry`,
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: JSON.stringify(inputs),
+        }).then(thing => {
+          setModal(true)
+        })
+      })
   };
 
   return (
@@ -52,9 +66,10 @@ export function InquiryScreen({navigation}) {
           onChange={e => onChange('content', e)}
         />
       </View>
-      <TouchableOpacity onPress={() => onSubmit} style={styles.inquiryButton}>
+      <TouchableOpacity onPress={() => onSubmit()} style={styles.inquiryButton}>
         <Text style={styles.inquiryButtonText}> 제출하기 </Text>
       </TouchableOpacity>
+      <InquiryModal modal={modal} setModal={setModal} navigation={navigation} />
     </View>
   );
 }

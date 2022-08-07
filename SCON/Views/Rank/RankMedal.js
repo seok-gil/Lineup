@@ -8,7 +8,6 @@ import styles from './RankMedal.styles';
 
 function RankMedal({player, rank, navigation}) {
   const isFirst = rank === 1 ? true : false;
-  console.log(globalTextStyle);
   return (
     <TouchableOpacity
       onPress={() =>
@@ -22,18 +21,18 @@ function RankMedal({player, rank, navigation}) {
           <Text style={styles.rank}>{rank}</Text>
         )}
         <Image
-          source={DefaultProfileImage}
+          source={{uri:player.profilePic}}
           style={isFirst ? styles.rankFirstImage : styles.rankImage}
         />
       </View>
       <View style={styles.playerNameWrapper}>
-        <Text style={styles.boldText}>{player.player_name}</Text>
-        <Text style={styles.playerMajor}>({player.player_major})</Text>
+        <Text style={styles.boldText}>{player.name}</Text>
+        <Text style={styles.playerMajor}>({player.sport})</Text>
       </View>
       <Text style={styles.playerFrom}>소속</Text>
       <View style={styles.likes}>
         <Image source={HeartSFilledIcon} style={styles.heart} />
-        <Text style={styles.boldText}>{player.player_like}</Text>
+        <Text style={styles.boldText}>{player.followerCnt}</Text>
       </View>
     </TouchableOpacity>
   );

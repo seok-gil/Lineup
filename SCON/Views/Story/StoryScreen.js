@@ -17,21 +17,21 @@ export function StoryScreen({navigation}) {
         text="피드"
         imageSrc={FeedIcon}
         navlink={'FeedRegist'}
-        names={['Brent', 'Satya', 'Michaś']}
+        props={{type: "POST"}}
       />
       <StoryElement
         navigation={navigation}
         text="대회 일정"
         imageSrc={ScheduleIcon}
         navlink={'CompetitionRegist'}
-        names={['Brent', 'Satya', 'Michaś']}
+        props={{type: "POST"}}
       />
       <StoryElement
         navigation={navigation}
         text="대회 결과"
         imageSrc={ResultIcon}
         navlink={'CompetitionResult'}
-        names={['Brent', 'Satya', 'Michaś']}
+        props={{type: "POST"}}
       />
     </SafeAreaView>
   );

@@ -15,7 +15,8 @@ const CompetitionElement = ({data, navigation}) => {
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('CompetitionResultDetail', {
-            data : data
+            data : data,
+            type : data.existResult
           })
         }>
         {!data.existResult ? (

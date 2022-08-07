@@ -1,12 +1,8 @@
 import React, {useState} from 'react';
 
 import {
-  Button,
   View,
   Text,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
 } from 'react-native';
 
 
@@ -17,12 +13,12 @@ function InquiryListElementQnA({data}) {
     <View style={styles.inquiryQnAWrapper}>
       <View style={styles.inquiryQuestion}>
         <Text style={styles.letter}>Q.</Text>
-        <Text style={styles.content}>{data.InquiryContent}</Text>
+        <Text style={styles.content}>{data.inquiryContent}</Text>
       </View>
-      {data.AnswerState && (
+      {data.state && (
         <View style={styles.inquiryQuestion}>
           <Text style={styles.letter}>A.</Text>
-          <Text style={styles.content}>{data.AnswerContent}</Text>
+          <Text style={styles.content}>{data.answerContent}</Text>
         </View>
       )}
     </View>

@@ -7,11 +7,11 @@ import {
   Image,
   Modal
 } from 'react-native';
-import styles from './PasswordChangeModal.styles';
+import styles from './InquiryModal.styles';
 
-export function PasswordChangeModal({ modal, setModal, navigation }) {
+export function InquiryModal({ modal, setModal, navigation }) {
   const onPress = () => {
-    // navigation.navigate('LoginPage')
+    navigation.goBack()
     setModal(false)
   }
   return (
@@ -23,7 +23,7 @@ export function PasswordChangeModal({ modal, setModal, navigation }) {
           <View style={styles.modalTop}>
               <View>
                 <Text>
-                  비밀번호가 변경되었어요.
+                  문의 내용이 전달됐어요!
                 </Text>
               </View>
               <View>

@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
 import {
-	Button,
-	View,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
 } from 'react-native';
 
 import { InquiryScreen, InquiryListScreen } from '.';
@@ -21,10 +16,3 @@ export function InquiryTabScreen({ navigation }) {
 		</InquiryStack.Navigator>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-	},
-})

@@ -10,8 +10,6 @@ const DEFAULT_STYLE = {
   photoPickTouchable: {},
 };
 
-
-
 export function PhotoPick({ text, photo, setPhoto, styles = DEFAULT_STYLE }) {
   const onClick = () => {
     Alert.alert(

@@ -15,6 +15,7 @@ import { CalendarImage } from '../../../Assets/Images';
 import { DetailEvent } from './DetailEvent';
 import CompetitionRegistLabel from './CompetitionRegistLabel';
 import CompetitionButton from "./CompetitionButton"
+
 export function CompetitionRegist({ navigation }) {
   
   const [startDate, setStartDate] = useState('');

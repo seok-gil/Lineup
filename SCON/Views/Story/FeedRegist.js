@@ -12,38 +12,42 @@ import styles from './FeedRegist.styles';
 import { globalButtonStyle, globalButtonTextStyle } from '../../Styles';
 import AsyncStorage from "@react-native-community/async-storage"
 
-export function FeedRegist({ navigation }) {
+export function FeedRegist({ navigation, route }) {
+  const type = route.params.type
+  const [url, setUrl] = useState(`/player/feed`)
   const [feed, setFeed] = useState('');
-
   const onChange = (e) => {
     const { text } = e.nativeEvent;
     setFeed(text);
   };
+  useEffect(() => {
+    if (type == 'PUT') {
+      setFeed(route.params.content)
+      setUrl(`/player/feed/${route.params.feedId}`)
+      console.log("url", url)
+    }
+  }, [])
 
   const onPress = () => {
-    console.log(feed)
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
-          method: 'POST',
-          url: `http://15.164.100.211:8080/player/feed`,
+          method: type,
+          url: url,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
           body: JSON.stringify({
-            "content" : feed
+            "content": feed
+          })
+        }).then(
+          navigation.goBack()
+        ).catch(error => {
+          console.log("Feed Regist ERROR", error)
         })
-        }).then(thing => {
-          console.log("Feed", thing)
-          navigation.navigate('StoryScreen')
-        }).catch(error => {
-          console.log("Login ERROR", error)
-
-
-        })
-    })
-}
+      })
+  }
   return (
     <SafeAreaView style={styles.feedRegistWrapper}>
       <View style={styles.feedInnerWrapper}>
@@ -56,7 +60,6 @@ export function FeedRegist({ navigation }) {
             placeholder={'어떤 말을 남기고 싶으신가요?'}
             placeholderTextColor="#C9C9C9"
             onChange={(e) => onChange(e)}
-            onSubmitEditing={() => searchRef.current.focus()}
           />
         </View>
         <TouchableOpacity

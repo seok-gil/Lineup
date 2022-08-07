@@ -60,5 +60,22 @@
 	<string>$(PRODUCT_NAME) would like to save photos to your photo gallery</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your microphone (for videos)</string>
+
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<!-- 전체 url에 대해 http 허용할 때 -->
+		<key>NSAllowsArbitraryLoads</key> 
+		<true/> 
+
+		<!-- 특정 url에 대해 http 허용할 때 -->
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

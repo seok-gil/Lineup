@@ -16,8 +16,8 @@ import styles from './Login.styles';
 
 export function LoginPage({ navigation }) {
   const [form, setForm] = useState({
-    email: 'player@gmail.com',
-    password: '1234',
+    email: 'player0@gmail.com',
+    password: '12345678',
   });
   const [validate, setValidate] = useState({
     email: true,
@@ -36,7 +36,7 @@ export function LoginPage({ navigation }) {
     if (!validate.email && !validate.password) navigation.navigate('Tab');
     ApiFetch({
       method: 'POST',
-      url: 'http://15.164.100.211:8080/auth/login',
+      url: '/auth/login',
       headers: {
         "Content-Type": "application/json",
       },

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Modal, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import CheckBox from '@react-native-community/checkbox';
-
+import AsyncStorage from "@react-native-community/async-storage"
+import { ApiFetch } from "./../../../Components/API/ApiFetch"
 import styles from './CompetitionResultModal.styles';
 import {
   BronzeMedalImage,
@@ -27,7 +28,7 @@ const ScoreMedal = ({ rank, isMedalSelected }) => {
   );
 };
 
-const CompetitionResultModal = ({ modal, openModal, data, setData }) => {
+const CompetitionResultModal = ({ modal, openModal, data, setData, type }) => {
   const [result, setResult] = useState(modal.modal_item)
   const [isSelected, setSelection] = useState(false);
   const [validate, setValidate] = useState(false)
@@ -36,18 +37,20 @@ const CompetitionResultModal = ({ modal, openModal, data, setData }) => {
     const { text } = e.nativeEvent;
     setResult({
       ...result,
+      ['noAnswer']: true,
       [key]: text,
     });
   };
 
   useEffect(() => {
-    setResult(modal.modal_item)
+    var temp = modal.modal_item
+    temp = { ...temp, ['noAnswer']: false }
+    setResult(temp)
     setValidate(modal.ranking != '' && modal.score != '')
     setSelection(false)
   }, [modal])
 
   useEffect(() => {
-    console.log(validate)
     if (!isSelected && (result.ranking == '' || result.score == ''))
       setValidate(false)
     else if (result.ranking != '' && result.score != '')
@@ -69,8 +72,26 @@ const CompetitionResultModal = ({ modal, openModal, data, setData }) => {
       }
     });
     setData(temp)
+    var api = {
+      'ranking' : result.ranking,
+      'score' : result.score,
+      'noAnswer' : result.noAnswer,
+    }
+    if (type) {
+      AsyncStorage.getItem("accessToken")
+        .then((thing) => {
+          ApiFetch({
+            method: 'PUT',
+            url: `/player/event/record/detail/${result.recordId}`,
+            headers: {
+              'content-type': 'application/json',
+              'Authorization': 'Bearer ' + thing,
+            },
+            body: JSON.stringify(api),
+          })
+        })
+    }
     openModal()
-    console.log("aa")
   }
 
   const onAnswer = () => {

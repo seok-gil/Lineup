@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 
 import CompetitionResultModal from './CompetitionResultModal';
 import DetailInfo from './DetailInfo';
@@ -8,34 +8,47 @@ import styles from './CompetitionResultDetail.styles';
 import AsyncStorage from "@react-native-community/async-storage"
 import { CompetitionResultButton } from "./CompetitionResultButton"
 
-export function CompetitionResultDetail({navigation, route}) {
-  console.log(route.params)
+export function CompetitionResultDetail({ navigation, route }) {
   const [data, setData] = useState();
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
-  const [result, setResult] = useState([])
-  
   const [modal, setModal] = useState({
     open: false,
     modal_item: '',
   });
-  console.log(guid())
+  const type = route.params.type
+  const eventId = route.params.data.eventId
+  // const [url, setUrl] = useState(`/player/event/record/`)
   useEffect(() => {
+    var url = `/player/event/record`
+    if (!type)
+      url += `/${eventId}`
+    else {
+      // setUrl(() => url + `/detail/${eventId}`)
+      url += `/detail/${eventId}`
+    }
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `http://15.164.100.211:8080/player/event/record/${route.params.data.eventId}`,
-          headers: { 
+          url: url,
+          headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
           body: null,
         }).then(thing => {
-          console.log("event result", thing)
-          setData(thing);
+          var result = [];
+          thing.map((item) => {
+            var temp = {
+              ...item,
+              'ranking' : item.ranking ?  item.ranking : '',
+              'score': item.score ? item.score : '',
+              'noAnswer': item.noAnswer ? item.noAnswer : 'true'
+            }
+            result = [...result, temp]
+          })
+          setData(result);
         })
-  })
+      })
   }, []);
 
   const openModal = item => {
@@ -50,8 +63,7 @@ export function CompetitionResultDetail({navigation, route}) {
         modal_item: '',
       });
   };
-  console.log(data)
-  if (!data) return <SafeAreaView/>
+  if (!data) return <SafeAreaView />
   return (
     <SafeAreaView style={styles.competitionResultWrapper}>
       <View style={styles.competitionResultInner}>
@@ -59,7 +71,7 @@ export function CompetitionResultDetail({navigation, route}) {
         <Text style={styles.leagueTitle}>{route.params.data.eventName}</Text>
         <Text style={styles.competitionLabels}>종목</Text>
         {data.map((item, index) => {
-          return <DetailInfo data={item} result={route.params.existResult} key={index} openModal={openModal} />;
+          return <DetailInfo data={item} result={route.params.existResult} key={index} openModal={openModal} type={type} />;
         })}
       </View>
       <CompetitionResultModal
@@ -67,8 +79,9 @@ export function CompetitionResultDetail({navigation, route}) {
         openModal={openModal}
         data={data}
         setData={setData}
+        type={type}
       />
-      <CompetitionResultButton data={data} navigation={navigation}/>
+      <CompetitionResultButton eventId={eventId} data={data} type={type} navigation={navigation} />
     </SafeAreaView>
   );
 }

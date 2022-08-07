@@ -5,14 +5,13 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './StoryElement.styles';
 import {DownIcon} from '../../Assets/Icons';
 
-const StoryElement = ({navigation, navlink, names, text, imageSrc}) => {
+const StoryElement = ({navigation, navlink, props, text, imageSrc}) => {
+  // console.log(props.type)
   return (
     <TouchableOpacity
       style={styles.storyElementWrapper}
       onPress={() =>
-        navigation.navigate(navlink, {
-          names,
-        })
+        navigation.navigate(navlink, props)
       }>
       <Image source={imageSrc} style={styles.storyIcon} />
       <View style={styles.storyTextWrapper}>

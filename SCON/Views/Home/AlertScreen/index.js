@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { ApiFetchOne, ApiFetch } from '../../../Components/API/ApiFetch';
 
 import AlertComponent from './AlertComponent';
 import styles from './AlertScreen.styles';
 
 import AsyncStorage from "@react-native-community/async-storage"
-
-
-
 
 export function AlertScreen( ) {
   const [data, setData] = useState([])
@@ -21,50 +18,44 @@ export function AlertScreen( ) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: 'http://15.164.100.211:8080/alarm',
+          url: '/alarm',
           headers: { 
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
           body: null,
         }).then(thing => {
-          console.log("@@@@@@@@@@@",thing)
-          // setData(thing);
+          setData(thing)
         })
   })
   }, []);
 
-  async function getApi() {
-    for (var i = lastFeed; i < nextFeed; ++i) {
-      await ApiFetchOne({
-        method: 'GET',
-        url: `http://localhost:1337/api/alerts/${i}`,
-        headers: { "Authorization": "token" },
-        body: null
-      })
-        .then((thing => {
-          temp.push(thing)
-        }))
-    }
-  }
-  useEffect(() => {
-    getApi().then(() => {
-      setLastFeed(nextFeed)
-      setData(temp)
-    })
-  }, [nextFeed])
-
   const onClickAll = () => {
-    console.log("aaaa", data, "aaa")
+    AsyncStorage.getItem("accessToken")
+    .then((thing) => {
+      ApiFetch({
+        method: 'DELETE',
+        url: '/alarm',
+        headers: { 
+          'content-type': 'application/json',
+          'Authorization': 'Bearer ' + thing,
+        },
+        body: null,
+      }).then(thing => {
+        setData(thing)
+      })
+})
   };
 
   const view = []
   const alertList = () => {
     for (let i = 0; i < data.length; ++i) {
+      console.log(data[i])
       view.push(
         <AlertComponent
           key={`alert-${i}`}
           alert={data[i]}
+          id={`id`}
         />
       );
     }
@@ -79,7 +70,9 @@ export function AlertScreen( ) {
           <Text style={styles.alertDeleteAll}>모두 삭제</Text>
         </TouchableOpacity>
       </View>
+      <ScrollView>
       {alertList()}
+      </ScrollView>
     </SafeAreaView>
   );
 
