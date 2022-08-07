@@ -6,17 +6,13 @@ import { CommentOne } from "./CommentOne"
 
 export function CommentList({ setReplyFocus, feedId, navigation }) {
 	const [data, setData] = useState([])
-
-
-	const [lastFeed, setLastFeed] = useState(1)
-	const [nextFeed, setNextFeed] = useState(5)
-
+	const [size, setSize] = useState(5)
 	useEffect(() => {
 		AsyncStorage.getItem("accessToken")
 			.then((thing) => {
 				ApiFetch({
 					method: 'GET',
-					url: `/feed/${feedId}/comments?page=${0}&size=${nextFeed}`,
+					url: `/feed/${feedId}/comments?page=${0}&size=${size}`,
 
 					headers: {
 						'content-type': 'application/json',
@@ -24,13 +20,12 @@ export function CommentList({ setReplyFocus, feedId, navigation }) {
 					},
 					body: null,
 				}).then(thing => {
-					// console.log("comment List", thing)
 					setData(thing.content);
 				})
 			})
-	}, [nextFeed]);
+	}, [size]);
 	const onEndReached = () => {
-		setNextFeed(nextFeed + 5)
+		setSize(size + 5)
 	}
 	return (
 		<View>

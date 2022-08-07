@@ -10,9 +10,7 @@ import AsyncStorage from "@react-native-community/async-storage"
 
 export function RecordScreen({ route }) {
   const [data, setData] = useState([])
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
-  var temp = data;
+
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
@@ -25,7 +23,7 @@ export function RecordScreen({ route }) {
           },
           body: null,
         }).then(thing => {
-          console.log("thing", thing)
+          console.log("record", thing)
           setData(thing);
         })
       })

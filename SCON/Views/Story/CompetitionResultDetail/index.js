@@ -20,7 +20,7 @@ export function CompetitionResultDetail({ navigation, route }) {
   useEffect(() => {
     var url = `/player/event/record`
     if (!type)
-      url += `${eventId}`
+      url += `/${eventId}`
     else {
       // setUrl(() => url + `/detail/${eventId}`)
       url += `/detail/${eventId}`

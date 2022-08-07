@@ -13,7 +13,7 @@ export function SearchScreen({navigation}) {
   const [inputs, setInputs] = useState({
     search: '',
     page:0,
-    size:10,
+    size:3,
   });
 
   useEffect(() => {
@@ -31,14 +31,15 @@ export function SearchScreen({navigation}) {
           setData(thing.content);
         })
   })
-  }, [inputs.search]);
+  }, [inputs]);
+  
   if (!data) return (<SafeAreaView/>)
   return (
     <SafeAreaView style={styles.searchScreenWrapper}>
       <View style={styles.searchScreenTop}>
         <SearchInput inputs={inputs} setInputs={setInputs} />
       </View>
-      <SearchID data={data} key={`searchID`} inputs={inputs} navigation={navigation} />
+      <SearchID data={data} key={`searchID`} inputs={inputs} setInputs={setInputs} navigation={navigation} />
     </SafeAreaView>
   );
 }
