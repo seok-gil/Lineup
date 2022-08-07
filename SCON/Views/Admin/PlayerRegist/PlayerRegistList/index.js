@@ -8,23 +8,6 @@ export function PlayerRegistList({navigation, route}) {
   const [data, setData] = useState([])
 
   useEffect(() => {
-<<<<<<< HEAD
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'GET',
-          url: `/admin/player-regist/${route.params.state}`,
-          headers: { 
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: null,
-        }).then(thing => {
-          setData(thing);
-        })
-  })
-  }, []);
-=======
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'GET',
@@ -40,7 +23,6 @@ export function PlayerRegistList({navigation, route}) {
       })
     })
   }, [])
->>>>>>> origin
 
   if (!data) return <SafeAreaView />
   return (

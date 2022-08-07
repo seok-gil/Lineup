@@ -3,25 +3,25 @@ import {StyleSheet} from 'react-native'
 import {colors, globalButtonStyle, globalButtonTextStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
-  filledButton: {
-    ...globalButtonStyle,
-  },
+    filledButton: {
+        ...globalButtonStyle,
+    },
 
-  notfillButton: {
-    ...globalButtonStyle,
-    backgroundColor: colors.WHITE,
-    borderColor: colors.THEME_SKYBLUE,
-    borderWidth: 3,
-  },
+    notfillButton: {
+        ...globalButtonStyle,
+        backgroundColor: colors.WHITE,
+        borderColor: colors.THEME_SKYBLUE,
+        borderWidth: 3,
+    },
 
-  filledText: {
-    ...globalButtonTextStyle,
-  },
+    filledText: {
+        ...globalButtonTextStyle,
+    },
 
-  notfillText: {
-    ...globalButtonTextStyle,
-    color: colors.THEME_SKYBLUE,
-  },
+    notfillText: {
+        ...globalButtonTextStyle,
+        color: colors.THEME_SKYBLUE,
+    },
 })
 
 export default styles

@@ -18,7 +18,6 @@ export function PlayerReigstDetail({route, navigation}) {
   const gender = ['남자', '여자']
 
   useEffect(() => {
-<<<<<<< HEAD
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
@@ -35,24 +34,6 @@ export function PlayerReigstDetail({route, navigation}) {
   })
   }, []);
   if (!data) return (<SafeAreaView />)
-=======
-    AsyncStorage.getItem('accessToken').then(thing => {
-      ApiFetch({
-        method: 'GET',
-        url: `/admin/player-regist/${route.params.playerRegistId}`,
-        headers: {
-          'content-type': 'application/json',
-          Authorization: 'Bearer ' + thing,
-        },
-        body: null,
-      }).then(thing => {
-        console.log('thing', thing)
-        setData(thing)
-      })
-    })
-  }, [])
-  if (!data) return <SafeAreaView />
->>>>>>> origin
   return (
     <SafeAreaView>
       <Text>신청 계정</Text>

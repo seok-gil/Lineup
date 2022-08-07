@@ -10,23 +10,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 export function AdminMypage({navigation}) {
   const [data, setData] = useState([])
   useEffect(() => {
-<<<<<<< HEAD
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'GET',
-          url: `/admin`,
-          headers: { 
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: null,
-        }).then(thing => {
-          setData(thing);
-        })
-  })
-  }, []);
-=======
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'GET',
@@ -42,7 +25,6 @@ export function AdminMypage({navigation}) {
       })
     })
   }, [])
->>>>>>> origin
 
   if (!data) return <SafeAreaView />
   return (

@@ -10,7 +10,6 @@ export function Reports({navigation}) {
   const [page, setPage] = useState(0)
   const [size, setSize] = useState(3)
   useEffect(() => {
-<<<<<<< HEAD
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
@@ -24,23 +23,9 @@ export function Reports({navigation}) {
         }).then(thing => {
           setData(thing);
         })
-=======
-    AsyncStorage.getItem('accessToken').then(thing => {
-      ApiFetch({
-        method: 'GET',
-        url: `/admin/reports?page=${page}&size=${size}`,
-        headers: {
-          'content-type': 'application/json',
-          Authorization: 'Bearer ' + thing,
-        },
-        body: null,
-      }).then(thing => {
-        console.log('thing', thing.content)
-        setData(thing)
->>>>>>> origin
       })
-    })
   }, [size])
+
 
   const onEndReached = () => {
     setSize(size + 5)

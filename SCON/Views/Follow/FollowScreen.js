@@ -12,23 +12,6 @@ export function FollowScreen({navigation, route}) {
   const [size, setSize] = useState(5)
 
   useEffect(() => {
-<<<<<<< HEAD
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'GET',
-          url: `/player-home/${route.params.playerId}/followers?page=${page}&size=${size}`,
-          headers: { 
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: null,
-        }).then(thing => {
-          setData(thing.content);
-        })
-  })
-  }, []);
-=======
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'GET',
@@ -44,7 +27,6 @@ export function FollowScreen({navigation, route}) {
       })
     })
   }, [])
->>>>>>> origin
   const onEndReached = () => {
     setSize(size + 5)
   }

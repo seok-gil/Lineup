@@ -43,11 +43,6 @@ export function PasswordReset({navigation}) {
     if (form.password.match(reg)) {
       temp.password = true
     } else temp.password = false
-
-<<<<<<< HEAD
-=======
-    console.log(form.certification.length)
->>>>>>> origin
     if (form.certification.length == form.password.length) {
       temp.certification = true
     } else temp.certification = false

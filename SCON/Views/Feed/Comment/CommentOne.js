@@ -15,14 +15,7 @@ import {TimeRelative, LikeComponent} from '../../../Components'
 export function CommentOne({data, feedId, setReplyFocus}) {
   if (!data) return <View />
   const [viewReply, setViewReply] = useState(false)
-<<<<<<< HEAD
   var likeUrl = !data.ilike ? `comment/${data.commentId}` : `comment/${data.ilike}`
-=======
-  var likeUrl = !data.ilike
-    ? `comment/${data.commentId}`
-    : `comment/${data.ilike}`
-  console.log(data)
->>>>>>> origin
   return (
     <View>
       <View style={{flexDirection: 'row'}}>

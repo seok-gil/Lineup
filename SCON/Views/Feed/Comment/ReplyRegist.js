@@ -6,12 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 export function ReplyRegist({replyFocus, setReplyFocus, feedId}) {
   if (replyFocus == null) {
-<<<<<<< HEAD
     return <View/>
-=======
-    console.log('null', replyFocus)
-    return <View />
->>>>>>> origin
   }
   const [comment, setComment] = useState('')
   const onInput = e => {

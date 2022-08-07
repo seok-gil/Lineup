@@ -1,17 +1,16 @@
-import React, {useEffect, useState} from 'react'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, Text, TouchableOpacity} from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ApiFetch } from '../../../Components/API/ApiFetch'
+import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './AdminNotiOne.styles'
-import {Time} from '../../../Components'
+import { Time } from '../../../Components'
 import AsyncStorage from '@react-native-community/async-storage'
 
-export function AdminOne({data, navigation}) {
+export function AdminOne({ data, navigation }) {
   if (!data) return <View />
   const onEdit = () => {
-    navigation.navigate('공지사항 등록', {data: data})
+    navigation.navigate('공지사항 등록', { data: data })
   }
   const onDel = () => {
-<<<<<<< HEAD
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
@@ -24,21 +23,7 @@ export function AdminOne({data, navigation}) {
           body: null,
         }).then(thing => {
         })
-=======
-    AsyncStorage.getItem('accessToken').then(thing => {
-      ApiFetch({
-        method: 'DELETE',
-        url: `/admin/notice`,
-        headers: {
-          'content-type': 'application/json',
-          Authorization: 'Bearer ' + thing,
-        },
-        body: null,
-      }).then(thing => {
-        console.log('thing', thing)
->>>>>>> origin
       })
-    })
   }
 
   return (

@@ -5,9 +5,9 @@ import {CompetitionResult} from './CompetitionResult'
 import {CompetitionResultDetail} from './CompetitionResultDetail'
 
 export {
-  StoryScreen,
-  FeedRegist,
-  CompetitionRegist,
-  CompetitionResult,
-  CompetitionResultDetail,
+    StoryScreen,
+    FeedRegist,
+    CompetitionRegist,
+    CompetitionResult,
+    CompetitionResultDetail,
 }

@@ -4,21 +4,21 @@ import AsyncStorage from '@react-native-community/async-storage'
 import {ApiFetch} from './'
 
 export function ImagePushAPI(body, apiUrl) {
-  AsyncStorage.getItem('accessToken')
-    .then(thing => {
-      ApiFetch({
-        method: 'PUT',
-        url: apiUrl,
-        headers: {
-          'content-type': 'application/json',
-          Authorization: 'Bearer ' + thing,
-        },
-        body: JSON.stringify({
-          imageUuid: body,
-        }),
-      })
-    })
-    .then(() => {
-      console.log('sucees')
-    })
+    AsyncStorage.getItem('accessToken')
+        .then(thing => {
+            ApiFetch({
+                method: 'PUT',
+                url: apiUrl,
+                headers: {
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer ' + thing,
+                },
+                body: JSON.stringify({
+                    imageUuid: body,
+                }),
+            })
+        })
+        .then(() => {
+            console.log('sucees')
+        })
 }
