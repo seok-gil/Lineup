@@ -30,3 +30,4 @@ export {default as MyBadgeIcon} from './myBadge.png';
 export {default as ListIcon} from './listIcon.png';
 export {default as AcceptIcon} from './acceptIcon.png';
 export {default as ReportIcon} from './reportIcon.png';
+export {default as AlertBlueIcon} from './alertBlue.png';
