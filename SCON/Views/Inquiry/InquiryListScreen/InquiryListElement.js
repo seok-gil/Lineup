@@ -21,9 +21,9 @@ function InquiryListElement({data}) {
         onPress={onClick}>
         <View style={styles.inquiryLeft}>
           <Text style={styles.qnaInfo}>
-            {data.AnswerState ? '답변완료' : '접수'} {`>`} {data.InquiryTitle}
+            {data.state ? '답변완료' : '접수'} {`>`} {data.title}
           </Text>
-          <Text style={styles.qnaCreated}><Time time={data.InquiryDateTime} separator='-'/></Text>
+          <Text style={styles.qnaCreated}><Time time={data.date} separator='-'/></Text>
         </View>
         <Image
           source={DownIcon}
