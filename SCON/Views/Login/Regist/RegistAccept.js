@@ -1,27 +1,26 @@
-import React, {useState} from 'react';
-import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native';
+import React, {useState} from 'react'
+import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native'
 // import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
-import CheckBox from '@react-native-community/checkbox';
-import styles from './RegistAccept.styles';
+import CheckBox from '@react-native-community/checkbox'
+import styles from './RegistAccept.styles'
 
 export function RegistAccept({navigation}) {
   const [accept, setAccept] = useState({
     all: false,
     service: false,
     privacy: false,
-  });
+  })
 
   const onClick = key => {
     var temp = accept
     if (key != 'all') {
       temp[key] = !accept[key]
-      console.log(key,temp)
+      console.log(key, temp)
       if (temp.service && temp.privacy) {
         temp['all'] = true
         console.log(temp)
       }
-    }
-    else if (key == 'all') {
+    } else if (key == 'all') {
       temp = {
         all: !accept['all'],
         service: !accept['all'],
@@ -29,7 +28,7 @@ export function RegistAccept({navigation}) {
       }
     }
     setAccept(temp)
-  };
+  }
 
   return (
     <SafeAreaView style={styles.registWrapper}>
@@ -82,5 +81,5 @@ export function RegistAccept({navigation}) {
         </TouchableOpacity>
       </View>
     </SafeAreaView>
-  );
+  )
 }

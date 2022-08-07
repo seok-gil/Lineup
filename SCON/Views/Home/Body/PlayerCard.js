@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import {Text, TouchableOpacity, Image} from 'react-native';
+import React, {useState} from 'react'
+import {Text, TouchableOpacity, Image} from 'react-native'
 
-import styles from './PlayerCard.styles';
-import {AddIcon, MyBadgeIcon} from '../../../Assets/Icons';
+import styles from './PlayerCard.styles'
+import {AddIcon, MyBadgeIcon} from '../../../Assets/Icons'
 
 function PlayerCard({data, navigation, item}) {
   if (!item) {
-    return null;
+    return null
   }
   if (item.playerId && !item.profilePic) {
     // Myplayer
@@ -20,7 +20,7 @@ function PlayerCard({data, navigation, item}) {
         <Text style={styles.subText}>{item.sport}</Text>
         <Text style={styles.subText}>{item.belong}</Text>
       </TouchableOpacity>
-    );
+    )
   } else if (item.playerId != null) {
     // Follow Player
     return (
@@ -35,7 +35,7 @@ function PlayerCard({data, navigation, item}) {
         <Text style={styles.subText}>{item.sport}</Text>
         <Text style={styles.subText}>{item.belong}</Text>
       </TouchableOpacity>
-    );
+    )
   } else if (item.playerId == null) {
     // None Player
     return (
@@ -44,8 +44,8 @@ function PlayerCard({data, navigation, item}) {
         style={[styles.cardWrapper, styles.emptyCardWrapper]}>
         <Image source={AddIcon} style={styles.emptyCardImage} />
       </TouchableOpacity>
-    );
+    )
   }
 }
 
-export default PlayerCard;
+export default PlayerCard

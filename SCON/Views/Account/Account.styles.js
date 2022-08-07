@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, globalTextStyle, listElementStyle} from '../../Styles';
+import {colors, globalTextStyle, listElementStyle} from '../../Styles'
 
 const styles = StyleSheet.create({
   accountScreenWrapper: {
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     color: colors.TEXT_LIGHT,
     marginTop: 5,
   },
-});
+})
 
-export default styles;
+export default styles

@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../Styles';
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   headerWrapper: {
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
     borderColor: colors.WHITE,
     borderWidth: 1,
   },
-});
+})
 
-export default styles;
+export default styles

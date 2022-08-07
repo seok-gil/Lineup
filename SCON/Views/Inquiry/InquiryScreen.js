@@ -1,47 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react'
 
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
-import styles from './InquiryScreen.styles';
-import AsyncStorage from "@react-native-community/async-storage"
-import { ApiFetch } from "../../Components"
-import { InquiryModal } from "./InquiryModal"
+import styles from './InquiryScreen.styles'
+import AsyncStorage from '@react-native-community/async-storage'
+import {ApiFetch} from '../../Components'
+import {InquiryModal} from './InquiryModal'
 
-export function InquiryScreen({ navigation }) {
+export function InquiryScreen({navigation}) {
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
-  });
+  })
   const [modal, setModal] = useState(false)
   const onChange = (keyvalue, e) => {
-    const { text } = e.nativeEvent;
+    const {text} = e.nativeEvent
     setInputs({
       ...inputs,
       [keyvalue]: text,
-    });
-  };
+    })
+  }
 
   const onSubmit = () => {
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'POST',
-          url: `/inquiry`,
-          headers: {
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: JSON.stringify(inputs),
-        }).then(thing => {
-          setModal(true)
-        })
+    AsyncStorage.getItem('accessToken').then(thing => {
+      ApiFetch({
+        method: 'POST',
+        url: `/inquiry`,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: 'Bearer ' + thing,
+        },
+        body: JSON.stringify(inputs),
+      }).then(thing => {
+        setModal(true)
       })
-  };
+    })
+  }
 
   return (
     <View style={styles.inquiryScreenWrapper}>
@@ -71,5 +65,5 @@ export function InquiryScreen({ navigation }) {
       </TouchableOpacity>
       <InquiryModal modal={modal} setModal={setModal} navigation={navigation} />
     </View>
-  );
+  )
 }

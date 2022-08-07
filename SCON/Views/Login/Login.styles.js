@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, globalButtonStyle, globalButtonTextStyle} from '../../Styles';
+import {colors, globalButtonStyle, globalButtonTextStyle} from '../../Styles'
 
 const styles = StyleSheet.create({
   loginWrapper: {
@@ -72,6 +72,6 @@ const styles = StyleSheet.create({
   password: {
     color: colors.TEXT_DARK,
   },
-});
+})
 
-export default styles;
+export default styles

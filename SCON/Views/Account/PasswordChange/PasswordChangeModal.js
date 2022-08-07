@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import {Image, TouchableOpacity, View, Text, Modal} from 'react-native';
-import styles from './PasswordChangeModal.styles';
+import React, {useState} from 'react'
+import {Image, TouchableOpacity, View, Text, Modal} from 'react-native'
+import styles from './PasswordChangeModal.styles'
 
-import {CheckBigIcon} from '../../../Assets/Icons';
+import {CheckBigIcon} from '../../../Assets/Icons'
 
 export function PasswordChangeModal({modal, setModal, navigation}) {
   const onPress = () => {
     // navigation.navigate('LoginPage')
-    setModal(false);
-  };
+    setModal(false)
+  }
   return (
     <Modal visible={modal}>
       <View style={styles.centeredView}>
@@ -23,5 +23,5 @@ export function PasswordChangeModal({modal, setModal, navigation}) {
         </View>
       </View>
     </Modal>
-  );
+  )
 }

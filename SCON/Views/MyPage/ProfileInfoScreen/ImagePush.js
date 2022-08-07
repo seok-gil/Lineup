@@ -1,35 +1,33 @@
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { ImagePushAPI } from "./ImagePushAPI"
+import {View, Image, Text, TouchableOpacity} from 'react-native'
+import React, {useEffect, useState} from 'react'
+import {ImagePushAPI} from './ImagePushAPI'
 
-
-import Amplify, { Storage } from 'aws-amplify';
-import { GetUuid } from "../../../Components"
+import Amplify, {Storage} from 'aws-amplify'
+import {GetUuid} from '../../../Components'
 import awsconfig from '../../../src/aws-exports'
 
-Amplify.configure(awsconfig);
+Amplify.configure(awsconfig)
 
 Storage.configure({
   customPrefix: {
     public: '',
     protected: '',
-    private: ''
-  }
+    private: '',
+  },
 })
 
-
 const fetchResourceFromURI = async uri => {
-  const response = await fetch(uri);
-  const blob = await response.blob();
-  return blob;
-};
+  const response = await fetch(uri)
+  const blob = await response.blob()
+  return blob
+}
 
 export async function ImagePush(photo, setPhoto, type, apiUrl) {
   try {
-    const img = await fetchResourceFromURI(photo.asset.uri);
+    const img = await fetchResourceFromURI(photo.asset.uri)
     var path = type + '/'
-    console.log("@@@@@@@",img, path)
-    Storage.put(path + GetUuid() + ".jpg", img, {
+    console.log('@@@@@@@', img, path)
+    Storage.put(path + GetUuid() + '.jpg', img, {
       level: 'public',
       contentType: 'photo',
     })
@@ -38,24 +36,22 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
           .then(result => {
             setPhoto({
               ...photo,
-              ['uri']: result
+              ['uri']: result,
             })
             const url = result.split('?')[0]
             ImagePushAPI(url, apiUrl)
-            return (url)
+            return url
           })
           .catch(err => {
-            console.log("err0", err);
-          });
+            console.log('err0', err)
+          })
       })
-      .catch((err) => {
-        console.log("err0", err)
+      .catch(err => {
+        console.log('err0', err)
       })
-
-  }
-  catch {
-    (err) => {
-      console.log("eer1", err);
+  } catch {
+    err => {
+      console.log('eer1', err)
     }
-  };
-};
+  }
+}

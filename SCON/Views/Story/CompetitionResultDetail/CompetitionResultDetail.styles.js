@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../../Styles';
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   competitionResultWrapper: {
@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 20,
   },
-});
+})
 
-export default styles;
+export default styles

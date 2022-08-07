@@ -1,41 +1,38 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   SafeAreaView,
   View,
   Text,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
+} from 'react-native'
 
-import styles from './ForgetPassword.styles';
-import validator from 'validator';
+import styles from './ForgetPassword.styles'
+import validator from 'validator'
 
 export function ForgetPassword({navigation}) {
   const [form, setForm] = useState({
     email: '',
     certification: '',
-  });
+  })
 
   const [validate, setValidate] = useState({
     email: false,
     certification: false,
-  });
+  })
   const [post, setPost] = useState(false)
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
-  };
+    })
+  }
 
   useEffect(() => {
-    if (validator.isEmail(form.email))
-      setPost(true)
-    else
-      setPost(false)
-
+    if (validator.isEmail(form.email)) setPost(true)
+    else setPost(false)
   }, [form.email])
 
   return (
@@ -56,7 +53,10 @@ export function ForgetPassword({navigation}) {
             <TouchableOpacity
               style={styles.sendButton}
               onPress={() => console.log('이메일전송')}>
-              <Text style={ post ? styles.sendButtonText : styles.sendButtonOffText}>전송</Text>
+              <Text
+                style={post ? styles.sendButtonText : styles.sendButtonOffText}>
+                전송
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.errorMessageWrapper}>
@@ -95,5 +95,5 @@ export function ForgetPassword({navigation}) {
         </TouchableOpacity>
       </View>
     </SafeAreaView>
-  );
+  )
 }

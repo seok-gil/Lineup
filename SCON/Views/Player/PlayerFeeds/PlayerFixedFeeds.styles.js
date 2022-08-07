@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, globalButtonTextStyle, listElementStyle} from '../../../Styles';
+import {colors, globalButtonTextStyle, listElementStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   fixedFeedWrapper: {
@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     color: colors.TEXT_LIGHT,
   },
-});
+})
 
-export default styles;
+export default styles

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -6,20 +6,20 @@ import {
   Text,
   Image,
   Modal,
-} from 'react-native';
-import styles from './WithdrawalModal.styles';
-import {WithdrawalSuccessModal} from './WithdrawalSuccessModal';
+} from 'react-native'
+import styles from './WithdrawalModal.styles'
+import {WithdrawalSuccessModal} from './WithdrawalSuccessModal'
 export function WithdrawalModal({modal, setModal, navigation}) {
-  const [success, setSccess] = useState(false);
+  const [success, setSccess] = useState(false)
 
   const onPressOn = () => {
-    setModal(false);
-    setSccess(true);
-  };
+    setModal(false)
+    setSccess(true)
+  }
   const onPressOff = () => {
-    navigation.navigate('LoginPage');
-    setModal(false);
-  };
+    navigation.navigate('LoginPage')
+    setModal(false)
+  }
   return (
     <View>
       <Modal visible={modal}>
@@ -47,5 +47,5 @@ export function WithdrawalModal({modal, setModal, navigation}) {
         navigation={navigation}
       />
     </View>
-  );
+  )
 }

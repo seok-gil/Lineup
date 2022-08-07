@@ -1,11 +1,11 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
 import {
   colors,
   globalButtonStyle,
   globalButtonTextStyle,
   globalLargeInputStyle,
-} from '../../Styles';
+} from '../../Styles'
 
 const styles = StyleSheet.create({
   feedRegistWrapper: {
@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
   feedRegistButton: globalButtonStyle,
 
   feedRegistButtonText: globalButtonTextStyle,
-});
+})
 
-export default styles;
+export default styles

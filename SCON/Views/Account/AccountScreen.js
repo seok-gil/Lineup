@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   View,
   Image,
@@ -6,20 +6,20 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
-} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import {LogoutModal} from './LogoutModal';
-import {ApiFetch} from '../../Components';
-import {DownIcon} from '../../Assets/Icons';
+} from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+import {LogoutModal} from './LogoutModal'
+import {ApiFetch} from '../../Components'
+import {DownIcon} from '../../Assets/Icons'
 
-import styles from './Account.styles';
+import styles from './Account.styles'
 
 export function AccountScreen({navigation}) {
-  const [modal, setModal] = useState(false);
-  const [data, setData] = useState();
+  const [modal, setModal] = useState(false)
+  const [data, setData] = useState()
   const onLogout = () => {
-    setModal(true);
-  };
+    setModal(true)
+  }
 
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
@@ -32,12 +32,12 @@ export function AccountScreen({navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing);
-      });
-    });
-  }, []);
+        setData(thing)
+      })
+    })
+  }, [])
   if (!data) {
-    return <View />;
+    return <View />
   }
   return (
     <SafeAreaView style={styles.accountScreenWrapper}>
@@ -68,5 +68,5 @@ export function AccountScreen({navigation}) {
       </TouchableOpacity>
       <LogoutModal modal={modal} setModal={setModal} navigation={navigation} />
     </SafeAreaView>
-  );
+  )
 }

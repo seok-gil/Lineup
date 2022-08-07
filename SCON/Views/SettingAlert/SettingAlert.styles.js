@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, globalTextStyle, listElementStyle} from '../../Styles';
+import {colors, globalTextStyle, listElementStyle} from '../../Styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
   },
-});
+})
 
-export default styles;
+export default styles

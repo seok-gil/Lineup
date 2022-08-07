@@ -1,22 +1,25 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react'
+import {View, Text, TouchableOpacity} from 'react-native'
 
-import styles from './CompetitionElement.styles';
-import { Time } from '../../../Components/Time';
+import styles from './CompetitionElement.styles'
+import {Time} from '../../../Components/Time'
 
 const CompetitionElement = ({data, navigation}) => {
-  if (!data) return <View/>
+  if (!data) return <View />
   return (
     <View style={styles.competitionElementWrapper}>
       <View style={styles.competitionElementTexts}>
         <Text style={styles.dataName}> {data.eventName}</Text>
-        <Text style={styles.dataDate}> <Time time = {data.startDate} separator='-'/> </Text>
+        <Text style={styles.dataDate}>
+          {' '}
+          <Time time={data.startDate} separator="-" />{' '}
+        </Text>
       </View>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('CompetitionResultDetail', {
-            data : data,
-            type : data.existResult
+            data: data,
+            type: data.existResult,
           })
         }>
         {!data.existResult ? (
@@ -26,7 +29,7 @@ const CompetitionElement = ({data, navigation}) => {
         )}
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
-export default CompetitionElement;
+export default CompetitionElement

@@ -1,22 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, Switch} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import {ApiFetch} from '../../Components/';
+import React, {useEffect, useState} from 'react'
+import {View, Text, StyleSheet, Switch} from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+import {ApiFetch} from '../../Components/'
 
-import styles from './SettingAlert.styles';
+import styles from './SettingAlert.styles'
 
 export function SettingAlertScreen({navigation}) {
   const [alert, setAlert] = useState({
     feedAlarm: true,
     commentAlarm: false,
-  });
+  })
 
   const onClick = key => {
-    const set = !alert[key];
+    const set = !alert[key]
     setAlert({
       ...alert,
       [key]: set,
-    });
+    })
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'PUT',
@@ -26,9 +26,9 @@ export function SettingAlertScreen({navigation}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      });
-    });
-  };
+      })
+    })
+  }
 
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
@@ -41,11 +41,11 @@ export function SettingAlertScreen({navigation}) {
         },
         body: null,
       }).then(thing => {
-        console.log('GETAlert', thing);
-        setAlert(thing);
-      });
-    });
-  }, []);
+        console.log('GETAlert', thing)
+        setAlert(thing)
+      })
+    })
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -70,5 +70,5 @@ export function SettingAlertScreen({navigation}) {
         />
       </View>
     </View>
-  );
+  )
 }

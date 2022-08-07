@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, listElementStyle} from '../../../Styles';
+import {colors, listElementStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   viewPlayerWrapper: {...listElementStyle},
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     maxWidth: 200,
     color: colors.TEXT_LIGHT,
   },
-});
+})
 
-export default styles;
+export default styles

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 import {
   colors,
   globalButtonTextStyle,
@@ -6,7 +6,7 @@ import {
   globalButtonStyle,
   globalLargeInputStyle,
   listElementStyle,
-} from '../../../Styles';
+} from '../../../Styles'
 
 const styles = StyleSheet.create({
   reportOneWrapper: {
@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.THEME_SKYBLUE,
   },
-});
+})
 
-export default styles;
+export default styles

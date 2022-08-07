@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -6,23 +6,23 @@ import {
   Text,
   Image,
   Modal,
-} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import {ApiFetch} from '../../Components';
-import styles from './Logout.styles';
+} from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+import {ApiFetch} from '../../Components'
+import styles from './Logout.styles'
 
 export function LogoutModal({modal, setModal, navigation}) {
   const onPressOn = () => {
     AsyncStorage.getItem('accessToken').then(key => {
-      AsyncStorage.removeItem(key);
-      navigation.navigate('LoginPage');
-      setModal(false);
-    });
-  };
+      AsyncStorage.removeItem(key)
+      navigation.navigate('LoginPage')
+      setModal(false)
+    })
+  }
 
   const onPressOff = () => {
-    setModal(false);
-  };
+    setModal(false)
+  }
 
   return (
     <Modal visible={modal}>
@@ -46,5 +46,5 @@ export function LogoutModal({modal, setModal, navigation}) {
         </View>
       </View>
     </Modal>
-  );
+  )
 }

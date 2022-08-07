@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors, globalTextStyle} from '../../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors, globalTextStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   modalImage: {
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-});
+})
 
-export default styles;
+export default styles

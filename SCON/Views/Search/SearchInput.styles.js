@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../Styles';
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   searchInputWrapper: {
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-});
+})
 
-export default styles;
+export default styles

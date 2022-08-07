@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -6,14 +6,14 @@ import {
   Text,
   Image,
   Modal,
-} from 'react-native';
-import styles from './PlayerRegistModal.styles';
+} from 'react-native'
+import styles from './PlayerRegistModal.styles'
 
 export function PlayerRegistModal({modal, setModal, navigation}) {
   const onPress = () => {
-    navigation.goBack();
-    setModal(false);
-  };
+    navigation.goBack()
+    setModal(false)
+  }
   return (
     <Modal visible={modal}>
       <View style={styles.centeredView}>
@@ -31,5 +31,5 @@ export function PlayerRegistModal({modal, setModal, navigation}) {
         </View>
       </View>
     </Modal>
-  );
+  )
 }

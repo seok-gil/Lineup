@@ -1,50 +1,50 @@
-import React, {useState} from 'react';
-import {View, FlatList, Dimensions} from 'react-native';
+import React, {useState} from 'react'
+import {View, FlatList, Dimensions} from 'react-native'
 
-import PlayerCard from './PlayerCard';
+import PlayerCard from './PlayerCard'
 
-import styles from './CardList.styles';
+import styles from './CardList.styles'
 
 export function CardList({data, navigation}) {
-  const follow = data.follow;
-  const card = [];
-  const user_code = data.player ? 1 : 1;
-  const emptyData = {playerId: null};
-  const [page, setPage] = useState(0);
+  const follow = data.follow
+  const card = []
+  const user_code = data.player ? 1 : 1
+  const emptyData = {playerId: null}
+  const [page, setPage] = useState(0)
   if (user_code == 1) {
-    card.push(data.player);
+    card.push(data.player)
   }
 
   for (let i = 0; i < 3; i++) {
     if (follow && follow[i]) {
-      card.push(follow[i]);
+      card.push(follow[i])
     } else {
-      card.push(emptyData);
+      card.push(emptyData)
     }
   }
 
   const onScroll = e => {
     const newPage = Math.round(
       e.nativeEvent.contentOffset.x / (pageWidth + gap),
-    );
-    setPage(newPage);
-  };
+    )
+    setPage(newPage)
+  }
 
-  const screenWidth = Math.round(Dimensions.get('window').width);
-  const pageWidth = 223;
-  const offset = 46;
-  const gap = (screenWidth - 223 - 46 * 2) / 2;
+  const screenWidth = Math.round(Dimensions.get('window').width)
+  const pageWidth = 223
+  const offset = 46
+  const gap = (screenWidth - 223 - 46 * 2) / 2
 
   function Indicator({focused}) {
     if (focused === page) {
-      return <View style={styles.activeDot} />;
+      return <View style={styles.activeDot} />
     } else {
-      return <View style={styles.dot} />;
+      return <View style={styles.dot} />
     }
   }
 
   if (!data) {
-    return <View />;
+    return <View />
   }
   return (
     <View>
@@ -70,5 +70,5 @@ export function CardList({data, navigation}) {
         ))}
       </View>
     </View>
-  );
+  )
 }

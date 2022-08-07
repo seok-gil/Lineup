@@ -1,13 +1,13 @@
-import React from 'react';
-import {Image, View, Text, TouchableOpacity} from 'react-native';
-import {CrownIcon, HeartSFilledIcon} from '../../Assets/Icons';
+import React from 'react'
+import {Image, View, Text, TouchableOpacity} from 'react-native'
+import {CrownIcon, HeartSFilledIcon} from '../../Assets/Icons'
 
-import {DefaultProfileImage} from '../../Assets/Images';
-import {globalTextStyle} from '../../Styles';
-import styles from './RankMedal.styles';
+import {DefaultProfileImage} from '../../Assets/Images'
+import {globalTextStyle} from '../../Styles'
+import styles from './RankMedal.styles'
 
 function RankMedal({player, rank, navigation}) {
-  const isFirst = rank === 1 ? true : false;
+  const isFirst = rank === 1 ? true : false
   return (
     <TouchableOpacity
       onPress={() =>
@@ -21,7 +21,7 @@ function RankMedal({player, rank, navigation}) {
           <Text style={styles.rank}>{rank}</Text>
         )}
         <Image
-          source={{uri:player.profilePic}}
+          source={{uri: player.profilePic}}
           style={isFirst ? styles.rankFirstImage : styles.rankImage}
         />
       </View>
@@ -35,7 +35,7 @@ function RankMedal({player, rank, navigation}) {
         <Text style={styles.boldText}>{player.followerCnt}</Text>
       </View>
     </TouchableOpacity>
-  );
+  )
 }
 
-export default RankMedal;
+export default RankMedal

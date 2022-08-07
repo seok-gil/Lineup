@@ -1,11 +1,11 @@
-import React from 'react';
-import {TouchableOpacity, View, Image, Text} from 'react-native';
+import React from 'react'
+import {TouchableOpacity, View, Image, Text} from 'react-native'
 
-import styles from './ViewPlayer.styles';
-import {DefaultProfileImage} from '../../../Assets/Images';
+import styles from './ViewPlayer.styles'
+import {DefaultProfileImage} from '../../../Assets/Images'
 
 function ViewPlayer({player, navigation}) {
-  const {name, sport, belong} = player;
+  const {name, sport, belong} = player
   return (
     <TouchableOpacity
       onPress={() =>
@@ -29,7 +29,7 @@ function ViewPlayer({player, navigation}) {
         </View>
       </View>
     </TouchableOpacity>
-  );
+  )
 }
 
-export default ViewPlayer;
+export default ViewPlayer

@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../../Styles';
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   bodyWrapper: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     color: colors.THEME_SKYBLUE,
   },
 
-  swiperWrapper: { },
+  swiperWrapper: {},
 
   swiperCardWrapper: {
     justifyContent: 'center',
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+})
 
-});
-
-export default styles;
+export default styles

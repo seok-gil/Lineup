@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Calendar } from './Calender';
+import React, {useState} from 'react'
+import {Calendar} from './Calender'
 
 import {
   View,
@@ -8,33 +8,32 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
-} from 'react-native';
+} from 'react-native'
 
-import styles from './CompetitionRegist.styles';
-import { CalendarImage } from '../../../Assets/Images';
-import { DetailEvent } from './DetailEvent';
-import CompetitionRegistLabel from './CompetitionRegistLabel';
-import CompetitionButton from "./CompetitionButton"
+import styles from './CompetitionRegist.styles'
+import {CalendarImage} from '../../../Assets/Images'
+import {DetailEvent} from './DetailEvent'
+import CompetitionRegistLabel from './CompetitionRegistLabel'
+import CompetitionButton from './CompetitionButton'
 
-export function CompetitionRegist({ navigation }) {
-  
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+export function CompetitionRegist({navigation}) {
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
   const [form, setForm] = useState({
     startDate: '',
     endDate: '',
     location: '',
     eventName: '',
     detailNames: [''],
-  });
-  const [calendar, setCalender] = useState(false);
+  })
+  const [calendar, setCalender] = useState(false)
 
   const onChange = (key, e) => {
-    const {text} = e.nativeEvent;
+    const {text} = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
-    });
+    })
   }
   return (
     <SafeAreaView style={styles.competitionRegistWrapper}>
@@ -43,7 +42,7 @@ export function CompetitionRegist({ navigation }) {
         <TouchableOpacity
           style={styles.dateRangeWrapper}
           onPress={() => {
-            setCalender(true);
+            setCalender(true)
           }}>
           <TextInput
             style={styles.rangeInputStyle}
@@ -82,7 +81,7 @@ export function CompetitionRegist({ navigation }) {
         <CompetitionRegistLabel text="세부 종목" isAsterisk />
         <DetailEvent form={form} setForm={setForm} />
       </View>
-      <CompetitionButton data={form} navigation={navigation}/>
+      <CompetitionButton data={form} navigation={navigation} />
       <Calendar
         calendar={calendar}
         setCalender={setCalender}
@@ -92,5 +91,5 @@ export function CompetitionRegist({ navigation }) {
         setEndDate={setEndDate}
       />
     </SafeAreaView>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   alertComponentWrapper: {
@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
   },
-});
+})
 
-export default styles;
+export default styles

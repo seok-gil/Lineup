@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors} from '../../../Styles';
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   searchExpand: {
@@ -13,6 +13,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: colors.TEXT_DARK,
   },
-});
+})
 
-export default styles;
+export default styles

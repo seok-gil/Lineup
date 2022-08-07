@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 import {
   colors,
   globalAsteriskStyle,
   globalInputStyle,
   globalTextStyle,
-} from '../../../Styles';
+} from '../../../Styles'
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
     color: colors.TEXT_DARK,
     fontWeight: '700',
   },
-});
+})
 
-export default styles;
+export default styles

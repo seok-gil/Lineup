@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState} from 'react'
 import {
   View,
   Text,
@@ -6,59 +6,59 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-} from 'react-native';
-import validator from 'validator';
+} from 'react-native'
+import validator from 'validator'
 
-import {CheckSmallIcon} from '../../../Assets/Icons';
-import {PasswordChangeModal} from './PasswordChangeModal';
-import {PasswordApi} from './PasswordApi';
+import {CheckSmallIcon} from '../../../Assets/Icons'
+import {PasswordChangeModal} from './PasswordChangeModal'
+import {PasswordApi} from './PasswordApi'
 
-import styles from './PasswordChange.styles';
+import styles from './PasswordChange.styles'
 
 export function PasswordChange({navigation}) {
   const [form, setForm] = useState({
     oldPassword: '',
     newPassword: '',
     confirmPassword: '',
-  });
+  })
   const [validate, setValidate] = useState({
     oldPassword: true,
     newPassword: true,
     confirmPassword: true,
     button: false,
-  });
+  })
 
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false)
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent;
-    const tempForm = form;
+    const {text} = e.nativeEvent
+    const tempForm = form
 
-    tempForm[key] = text;
+    tempForm[key] = text
     setForm({
       ...form,
       [key]: text,
-    });
-    var tempVal = validate;
+    })
+    var tempVal = validate
     if (key == 'oldPassword') {
-      tempVal.oldPassword = true;
+      tempVal.oldPassword = true
     }
     if (key == 'newPassword') {
       if (validator.isLength(text, 8, 12)) {
-        tempVal.newPassword = true;
+        tempVal.newPassword = true
       } else {
-        tempVal.newPassword = false;
+        tempVal.newPassword = false
       }
     }
     if (tempForm.newPassword.length == tempForm.confirmPassword.length) {
-      tempVal.confirmPassword = true;
+      tempVal.confirmPassword = true
     } else {
-      tempVal.confirmPassword = false;
+      tempVal.confirmPassword = false
     }
     if (tempVal.oldPassword && tempVal.confirmPassword && tempVal.newPassword) {
-      tempVal.button = true;
+      tempVal.button = true
     }
-    console.log(validate);
-  };
+    console.log(validate)
+  }
 
   const onSummit = () => {
     if (
@@ -67,15 +67,15 @@ export function PasswordChange({navigation}) {
         newPassword: form.newPassword,
       })
     ) {
-      setModal(true);
+      setModal(true)
     } else {
       setValidate({
         ...validate,
         ['oldPassword']: false,
         ['buttonn']: false,
-      });
+      })
     }
-  };
+  }
   return (
     <View style={styles.passwordWrapper}>
       <View style={styles.passwordInner}>
@@ -176,5 +176,5 @@ export function PasswordChange({navigation}) {
         navigation={navigation}
       />
     </View>
-  );
+  )
 }

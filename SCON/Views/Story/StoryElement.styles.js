@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, listElementStyle} from '../../Styles';
+import {colors, listElementStyle} from '../../Styles'
 
 const styles = StyleSheet.create({
   storyElementWrapper: {
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     height: 6,
     transform: [{rotateZ: '270deg'}],
   },
-});
+})
 
-export default styles;
+export default styles

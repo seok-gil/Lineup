@@ -1,4 +1,4 @@
-import React, {Component, useState, useRef} from 'react';
+import React, {Component, useState, useRef} from 'react'
 
 import {
   View,
@@ -8,14 +8,14 @@ import {
   Image,
   TextInput,
   SafeAreaView,
-} from 'react-native';
+} from 'react-native'
 
-import {SearchIcon} from '../../Assets/Icons';
-import styles from './SearchScreen.styles';
+import {SearchIcon} from '../../Assets/Icons'
+import styles from './SearchScreen.styles'
 
 export function SearchId({data, navigation}) {
   if (!data) {
-    return <View />;
+    return <View />
   }
   return (
     <TouchableOpacity
@@ -34,21 +34,21 @@ export function SearchId({data, navigation}) {
         </View>
       </View>
     </TouchableOpacity>
-  );
+  )
 }
 
 export function SearchInput() {
-  const searchRef = useRef();
+  const searchRef = useRef()
   const [inputs, setInputs] = useState({
     search: '',
-  });
+  })
   const onChange = (keyvalue, e) => {
-    const {text} = e.nativeEvent;
+    const {text} = e.nativeEvent
     setInputs({
       ...inputs,
       [keyvalue]: text,
-    });
-  };
+    })
+  }
 
   return (
     <View style={styles.searchInputWrapper}>
@@ -61,5 +61,5 @@ export function SearchInput() {
         onSubmitEditing={() => searchRef.current.focus()}
       />
     </View>
-  );
+  )
 }

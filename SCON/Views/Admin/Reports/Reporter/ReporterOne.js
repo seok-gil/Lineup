@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import React, {useEffect, useState} from 'react'
+import {StyleSheet, View, Image, Text} from 'react-native'
 
-import styles from './ReporterOne.styles';
+import styles from './ReporterOne.styles'
 
 export function ReporterOne({data}) {
   return (
@@ -10,5 +10,5 @@ export function ReporterOne({data}) {
       <Text style={styles.name}>{data.memberId}</Text>
       <Text style={styles.email}>{data.email}</Text>
     </View>
-  );
+  )
 }

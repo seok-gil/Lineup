@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -6,16 +6,16 @@ import {
   Text,
   Image,
   Modal,
-} from 'react-native';
-import styles from './RegistModal.styles';
+} from 'react-native'
+import styles from './RegistModal.styles'
 
-import {WelcomeIcon} from '../../../Assets/Icons';
+import {WelcomeIcon} from '../../../Assets/Icons'
 
 export function RegistModal({modal, setModal, navigation}) {
   const onPress = () => {
-    navigation.navigate('LoginPage');
-    setModal(false);
-  };
+    navigation.navigate('LoginPage')
+    setModal(false)
+  }
   return (
     <Modal visible={modal}>
       <View style={styles.centeredView}>
@@ -32,5 +32,5 @@ export function RegistModal({modal, setModal, navigation}) {
         </View>
       </View>
     </Modal>
-  );
+  )
 }

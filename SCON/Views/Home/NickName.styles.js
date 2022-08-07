@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../Styles';
+import {StyleSheet} from 'react-native'
+import {colors} from '../../Styles'
 
 const styles = StyleSheet.create({
   viewWrapper: {
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     width: 150,
     color: colors.TEXT_LIGHT,
   },
-});
+})
 
-export default styles;
+export default styles

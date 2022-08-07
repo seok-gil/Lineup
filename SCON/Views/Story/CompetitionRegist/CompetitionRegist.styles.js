@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, globalInputStyle} from '../../../Styles';
+import {colors, globalInputStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
   competitionRegistWrapper: {
@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     borderColor: colors.GRAYE6,
     marginBottom: 15,
   },
-});
+})
 
-export default styles;
+export default styles

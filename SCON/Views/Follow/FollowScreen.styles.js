@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import {colors, listElementStyle} from '../../Styles';
+import {colors, listElementStyle} from '../../Styles'
 
 const styles = StyleSheet.create({
   followScreenWrapper: {
@@ -13,6 +13,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 20,
   },
-});
+})
 
-export default styles;
+export default styles
