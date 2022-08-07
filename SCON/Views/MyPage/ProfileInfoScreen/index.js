@@ -32,13 +32,14 @@ export function ProfileInfoScreen({ navigation }) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `my-page/user-profile`,
+          url: `/my-page/user-profile`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
           body: null,
         }).then(thing => {
+          console.log("profile",thing)
           setData(thing);
           setUserPhoto({
             ...userPhoto,

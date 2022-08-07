@@ -63,6 +63,7 @@ export function ImagePush({ playerId, userPhoto, setUserPhoto, backPhoto, setBac
             }
             const url = result.split('?')
             ImagePushAPI(url[0], type)
+            console.log("success")
           })
           .catch(err => {
             setProgressText('Upload Error');
@@ -83,7 +84,7 @@ export function ImagePush({ playerId, userPhoto, setUserPhoto, backPhoto, setBac
     //TODO API
     if (userPhoto.set == true) {
       onPushImage(userPhoto.asset, "profile")
-        .then()
+      .then(ImagePushAPI(userPhoto.uri, 'profile'))
     }
     if (backPhoto.set == true) {
       onPushImage(backPhoto.asset, "back")
