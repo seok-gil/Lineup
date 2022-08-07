@@ -14,7 +14,6 @@ const DEFAULT_STYLE = {
 export function LikeComponent(ilike, url) {
   const type = ilike ? 'DELETE' : 'POST'
   var apiUrl = `/like/` + url
-  
   AsyncStorage.getItem("accessToken")
     .then((thing) => {
       ApiFetch({

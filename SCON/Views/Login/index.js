@@ -17,8 +17,8 @@ import styles from './Login.styles';
 
 export function LoginPage({ navigation }) {
   const [form, setForm] = useState({
-    email: 'admin@gmail.com',
-    password: '1234',
+    email: 'player0@gmail.com',
+    password: '12345678',
   });
   const [validate, setValidate] = useState({
     email: true,
@@ -45,6 +45,7 @@ export function LoginPage({ navigation }) {
       .then((thing) => {
         AsyncStorage.setItem("accessToken", thing.accessToken)
         AsyncStorage.setItem("refreshToken", thing.refreshToken)
+        AsyncStorage.setItem("role", thing.role)
         // ROLE_MEMBER // ROLE_PLAYER //ROLE_ADMIN
         if (thing.role == "ROLE_ADMIN")
           navigation.navigate('AdminTab')

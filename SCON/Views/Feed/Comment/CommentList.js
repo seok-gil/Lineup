@@ -36,7 +36,7 @@ export function CommentList({ setReplyFocus, feedId, navigation }) {
 				renderItem={({ item, index }) => (
 					<CommentOne
 						key={`player-comment-${index}`}
-						comment={item}
+						data={item}
 						navigation={navigation}
 						feedId={feedId}
 						setReplyFocus={setReplyFocus}

@@ -29,7 +29,7 @@ export function FeedScreen({ route, navigation }) {
 	if (!data) return (<SafeAreaView />)
 	return (
 		<SafeAreaView style={{ flex: 3, flexDirection: 'column' }}>
-			<FeedBody data={data}feedId={route.params.feedId}navigation={navigation}/>
+			<FeedBody data={data} feedId={route.params.feedId} navigation={navigation}/>
 			<CommentRegist feedId={route.params.feedId} />
 			<CommentList feedId={route.params.feedId} setReplyFocus={setReplyFocus} navigation={navigation} />
 			<ReplyRegist feedId={route.params.feedId} replyFocus={replyFocus} setReplyFocus={setReplyFocus} />
