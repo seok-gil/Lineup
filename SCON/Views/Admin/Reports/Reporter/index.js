@@ -8,23 +8,30 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {ApiFetchArr} from '../../../../Components/API/ApiFetch';
+import {ApiFetch} from '../../../../Components/API/ApiFetch';
 import {ReporterOne} from './ReporterOne';
 
 import styles from './Reporter.styles';
+import AsyncStorage from "@react-native-community/async-storage"
 
 export function Reporter({navigation, route}) {
   const [data, setData] = useState([]);
-
   useEffect(() => {
-    ApiFetchArr({
-      method: 'GET',
-      url: `http://localhost:1337/api/reporters/${route.params.reportId}`,
-      headers: {Authorization: 'token'},
-      body: null,
-    }).then(thing => {
-      setData(thing);
-    });
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'GET',
+          url: `/admin/reports/{commentId}/reporters`,
+          headers: { 
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: null,
+        }).then(thing => {
+          console.log("report", thing)
+          setData(thing);
+        })
+  })
   }, []);
 
   if (!data) return <SafeAreaView />;

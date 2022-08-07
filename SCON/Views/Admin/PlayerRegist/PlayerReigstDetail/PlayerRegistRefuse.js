@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, Image, StyleSheet } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import AsyncStorage from "@react-native-community/async-storage"
 
 export function PlayerRegistRefuse({ params }) {
-  console.log(params)
-
   const [isSelected, setSelection] = useState(false);
   const [refuseComment, setRefuseComment] = useState()
   const state = params.state
@@ -13,7 +12,23 @@ export function PlayerRegistRefuse({ params }) {
     const { text } = e.nativeEvent;
     setRefuseComment(text)
   }
-
+  const onRefuse = () => {
+      AsyncStorage.getItem("accessToken")
+        .then((thing) => {
+          ApiFetch({
+            method: 'GET',
+            url: `/admin/player-regist/{playerRegistId}`,
+            headers: { 
+              'content-type': 'application/json',
+              'Authorization': 'Bearer ' + thing,
+            },
+            body: null,
+          }).then(thing => {
+            console.log("thing", thing)
+            setData(thing);
+          })
+    })
+  }
   return (
     <View>
       {state != 1 ?

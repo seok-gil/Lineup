@@ -11,7 +11,7 @@ import styles from './PlayerRegistModal.styles';
 
 export function PlayerRegistModal({ modal, setModal, navigation }) {
   const onPress = () => {
-    navigation.navigate('PlayerRegistResultPage')
+    navigation.goBack()
     setModal(false)
   }
   return (

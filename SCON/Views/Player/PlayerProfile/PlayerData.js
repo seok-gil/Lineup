@@ -36,7 +36,7 @@ function PlayerData({data, navigation}) {
       <TouchableOpacity
         style={styles.playerDataElement}
         onPress={() =>
-          navigation.navigate('Follow', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('Follow', {playerId : data.playerId})
         }>
         <Text style={styles.playerDataTitle}>팬</Text>
         <Text style={styles.playerDataText}>{data.followerCnt}</Text>
@@ -44,7 +44,7 @@ function PlayerData({data, navigation}) {
       <TouchableOpacity
         style={styles.playerDataElement}
         onPress={() =>
-          navigation.navigate('RankScreen', {names: ['Brent', 'Satya', 'Michaś']})
+          navigation.navigate('RankScreen', {playerId : data.playerId})
         }>
         <Text style={styles.playerDataTitle}>{rank.type.toUpperCase()}</Text>
         <Text style={styles.playerDataText}>{rank.rank}위</Text>

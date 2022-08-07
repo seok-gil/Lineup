@@ -7,22 +7,21 @@ import styles from './Head.styles';
 
 export function Head({data}) {
   if (!data) return <View />;
-  const email = data.AdminEmail;
   return (
     <View>
       <View style={styles.headerWrapper}>
         <View style={styles.imageWrapper}>
-          <Image source={LineupLogoImage} />
+          <Image source={{LineupLogoImage}} />
         </View>
       </View>
       <View style={styles.viewWrapper}>
-        <Image source={DefaultProfileImage} style={styles.image} />
+        <Image source={{uri:data.profileBack}} style={styles.image} />
         <View style={styles.viewProfileInfo}>
           <Text style={styles.nameText} numberOfLines={1} ellipsizeMode="tail">
             관리자
           </Text>
           <Text style={styles.emailText} numberOfLines={1} ellipsizeMode="tail">
-            {email}
+            {data.email}
           </Text>
         </View>
       </View>

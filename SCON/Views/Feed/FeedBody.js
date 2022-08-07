@@ -6,7 +6,8 @@ import AsyncStorage from "@react-native-community/async-storage"
 import { ApiFetch, LikeComponent } from "../../Components/"
 export function FeedBody({ data, feedId, navigation }) {
   // if (!data) return <View />;
-  var likeUrl = !data.ilike ? `feed/${data.feedId}` : `feed/${feedLikeId}`
+  var likeUrl = !data.ilike ? `feed/${data.feedId}` : `feed/${data.ilike}`
+  
   const delFeed = () => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
@@ -29,7 +30,6 @@ export function FeedBody({ data, feedId, navigation }) {
       { content: data.content, feedId: data.feedId, type: "PUT" }
     )
   }
-  
   return (
     <View>
       <Text>{data.content}</Text>
@@ -38,7 +38,7 @@ export function FeedBody({ data, feedId, navigation }) {
         <TouchableOpacity
           onPress={() => LikeComponent(data.ilike, likeUrl)}
           style={{ flexDirection: 'row' }}>
-          <Image source={HeartEmptyIcon} />
+          <Image source={data.ilike ? CommentIcon : HeartEmptyIcon} />
           <Text>{data.likeCnt}</Text>
         </TouchableOpacity>
         <View

@@ -10,7 +10,7 @@ export function SearchId({data, navigation}) {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('FollowPage', {names: ['Brent', 'Satya', 'Michaś']})
+        navigation.navigate('FollowPage', {userId: data.memberId})
       }>
       <View style={{flexDirection: 'row'}}>
         <Image source={{uri:data.profilePic}} style={styles.image} />

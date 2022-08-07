@@ -23,7 +23,6 @@ export function InquiryOne({data}) {
   };
 
   const onRegist = () => {
-    console.log('a'.state);
     setState(!state);
   };
 

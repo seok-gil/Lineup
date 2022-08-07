@@ -12,15 +12,16 @@ export function PlayerRegistListOne({navigation, data}) {
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('PlayerReigstDetail', {
-            PlayerRegistId: data.PlayerRegistId,
+            PlayerRegistId: data.playerRegistId,
             state: data.state,
           })
         }>
         <View style={{flexDirection: 'row'}}>
-          <Text>{data.Name}</Text>
+          <Text>{data.name}</Text>
           <Text> / {Birth}</Text>
-          <Text> / {data.Sport}</Text>
-          <Text> / {data.Belongs}</Text>
+          <Text> / {data.gender}</Text>
+          <Text> / {data.sport}</Text>
+          <Text> / {data.belong}</Text>
         </View>
         <Text><Time time={data.RegistDateTime} separator='.'/></Text>
       </TouchableOpacity>

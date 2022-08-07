@@ -10,7 +10,7 @@ export function AdminProfile({data, navigation}) {
     <View style={styles.profileWrapper}>
       <Image source={DefaultProfileImage} style={styles.profileImage} />
       <Text style={styles.nickname}>관리자</Text>
-      <Text style={styles.email}>{data.Email} </Text>
+      <Text style={styles.email}>{data.email} </Text>
     </View>
   );
 }
