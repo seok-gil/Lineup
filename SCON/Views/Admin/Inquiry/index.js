@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {
     SafeAreaView,
-    View,
+    ScrollView,
     Image,
     Text,
     Alert,
@@ -30,7 +30,7 @@ export function Inquiry({navigation}) {
                     },
                     body: null,
                 }).then(thing => {
-                    console.log('thing', thing)
+                    console.log('inquiry', thing)
                     setData(thing)
                 })
             })
@@ -38,9 +38,11 @@ export function Inquiry({navigation}) {
 
     return (
         <SafeAreaView style={styles.inquiryWrapper}>
+            <ScrollView>
             {data.map((item, index) => {
                 return <InquiryOne data={item} key={`inquiry-${index}`} />
             })}
+            </ScrollView>
         </SafeAreaView>
     )
 }
