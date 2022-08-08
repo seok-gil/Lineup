@@ -30,7 +30,7 @@ export function CommentOne({ data, feedId, setReplyFocus }) {
       <TouchableOpacity onPress={() => setModal(true)}>
         <Image source={ViewMore} />
       </TouchableOpacity>
-      <CommentModal modal={modal} setModal={setModal} nick={data.writer.nick} commentId={data.commentId} />
+      <CommentModal modal={modal} setModal={setModal} nick={data.writer.nick} writerId={data.writer.writerId} commentId={data.commentId} />
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity onPress={() => LikeComponent(data.ilike, likeUrl)}>
           <Image source={data.ilike ? HeartSFilledIcon : HeartSEmptyIcon} />

@@ -10,6 +10,7 @@ export function AdminOne({ data, navigation }) {
   const onEdit = () => {
     navigation.navigate('공지사항 등록', { data: data })
   }
+  console.log(data)
   const onDel = () => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
@@ -20,7 +21,9 @@ export function AdminOne({ data, navigation }) {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
-          body: null,
+          body: JSON.stringify({
+              
+          }),
         }).then(thing => {
         })
       })

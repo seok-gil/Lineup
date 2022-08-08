@@ -10,32 +10,54 @@ import {
 import styles from './CommentModal.styles'
 import AsyncStorage from "@react-native-community/async-storage"
 import { ApiFetch } from '../../../Components'
-export function CommentModal({ modal, setModal, nick, commentId }) {
-    const [text, setText] = useState('댓글 신고')
-    useEffect(() => {
-        AsyncStorage.getItem("role")
-        .then((role) => {
-            if (role == 'ROLE_PLAYER')
-                setText('댓글 삭제')
-        })
+export function CommentModal({ modal, setModal, nick, writerId, commentId }) {
+    const [report, setReport] = useState({
+        text: '댓글 신고',
+        method: `POST`,
+        url: `/comment/${commentId}/report`
 
+    })
+    var temp = report
+    useEffect(() => {
+        AsyncStorage.getItem("memberId")
+        .then((memberId) => {
+                console.log(memberId, writerId)
+                console.log(memberId == writerId)
+
+                if (memberId == writerId) {
+                        temp.text= '댓글 삭제'
+                        temp.method= `DELETE`
+                        temp.url= `/comment/${commentId}`
+                    }
+                    setReport(temp)
+                })
+        AsyncStorage.getItem("role")
+            .then((role) => {
+                if (role == 'ROLE_PLAYER') {
+                    temp.text= '댓글 삭제'
+                    temp.method= `DELETE`
+                    temp.url= `/comment/${commentId}`
+                }
+                setReport(temp)
+            })
     }, []);
+
     const onReport = () => {
+        console.log(report)
         AsyncStorage.getItem("accessToken")
             .then((thing) => {
                 ApiFetch({
-                    method: 'POST',
-                    url: `/comment/${commentId}/report`,
+                    method: report.method,
+                    url: report.url,
                     headers: {
                         'content-type': 'application/json',
                         'Authorization': 'Bearer ' + thing,
                     },
                     body: null,
                 }).then(thing => {
-                    console.log("thing", thing)
+                    setModal(false)
                 })
             })
-        setModal(false)
     }
     const onCancel = () => {
         setModal(false)
@@ -45,13 +67,13 @@ export function CommentModal({ modal, setModal, nick, commentId }) {
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                     <View style={styles.modalTop}>
-                        <Text style={styles.modalText}>닉네임</Text>
+                        <Text style={styles.modalText}>{nick}</Text>
                     </View>
                     <View>
-                    <TouchableOpacity style={styles.modalBottom} onPress={()=> onReport()}>
-                        <Text style={styles.modalText}>댓글 신고</Text>
+                        <TouchableOpacity style={styles.modalBottom} onPress={() => onReport()}>
+                            <Text style={styles.modalText}>{report.text}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.modalBottom} onPress={()=> onCancel()}>
+                        <TouchableOpacity style={styles.modalBottom} onPress={() => onCancel()}>
                             <Text style={styles.modalText}>취소</Text>
                         </TouchableOpacity>
                     </View>

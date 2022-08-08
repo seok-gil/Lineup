@@ -7,7 +7,6 @@ import { TimeRelative } from '../../../Components'
 import { CommentModal } from './CommentModal'
 export function Reply({ reply }) {
     const [modal, setModal] = useState(false)
-    console.log("reply", reply)
     return (
         <View style={{ flexDirection: 'column' }}>
             <View style={{ flexDirection: 'row' }}>

@@ -18,6 +18,7 @@ export function HomeScreen({navigation}) {
                 body: null,
             }).then(thing => {
                 setData(thing)
+                AsyncStorage.setItem('memberId',thing.memberId.toString())
             })
         })
     }, [])
