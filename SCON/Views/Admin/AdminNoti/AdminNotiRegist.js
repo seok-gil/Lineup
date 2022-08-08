@@ -23,7 +23,7 @@ export function AdminNotiRegist({navigation, route}) {
             method = 'PUT'
             apiUrl += `/${route.params.noticeId}`
         }
-    }, [])
+    }, [route])
 
     const onChange = (keyvalue, e) => {
         const {text} = e.nativeEvent

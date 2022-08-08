@@ -21,7 +21,7 @@ export function Reporter({navigation, route}) {
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `/admin/reports/{commentId}/reporters`,
+          url: `/admin/reports/${route.params.commentId}/reporters`,
           headers: { 
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
