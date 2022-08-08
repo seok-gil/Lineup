@@ -11,8 +11,9 @@ import {
 import styles from './PasswordReset.styles'
 import {PasswordChangeModal} from './PasswordChangeModal'
 import {CheckSmallIcon} from '../../../Assets/Icons'
-
-export function PasswordReset({navigation}) {
+import AsyncStorage from "@react-native-community/async-storage"
+import { ApiFetch } from '../../../Components'
+export function PasswordReset({navigation, route}) {
   const [form, setForm] = useState({
     password: '',
     certification: '',
@@ -40,7 +41,7 @@ export function PasswordReset({navigation}) {
 
   async function checkValidate(temp) {
     var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
-    if (form.password.match(reg)) {
+    if (form.password && form.password.match(reg)) {
       temp.password = true
     } else temp.password = false
     if (form.certification.length == form.password.length) {
@@ -52,10 +53,21 @@ export function PasswordReset({navigation}) {
     let temp = validate
     checkValidate(temp).then(setValidate(temp))
   }, [form])
-
+  
   const onPress = () => {
-    console.log('API POST')
-    setModal(true)
+        ApiFetch({
+          method: 'POST',
+          url: `/auth/pw-reset`,
+          headers: { 
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            email : route.params.email,
+            newPw : form.password
+          }),
+        }).then(() => {
+          setModal(true)
+        })
   }
 
   return (

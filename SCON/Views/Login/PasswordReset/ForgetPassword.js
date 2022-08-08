@@ -6,7 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native'
-
+import { ApiFetch } from '../../../Components'
 import styles from './ForgetPassword.styles'
 import validator from 'validator'
 
@@ -17,11 +17,12 @@ export function ForgetPassword({ navigation }) {
     })
 
     const [validate, setValidate] = useState({
+        nickname: true,
         email: true,
         certification: true,
     })
     const [post, setPost] = useState(false)
-    const [button, setbutton] = useState(false)
+    const [button, setButton] = useState(false)
 
     const onInput = (key, e) => {
         const { text } = e.nativeEvent
@@ -29,23 +30,40 @@ export function ForgetPassword({ navigation }) {
             ...form,
             [key]: text,
         })
-        if (validate.email && validate.certification)
-            setbutton(true)
-    }
-    async function checkValidate(temp) {
-        var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
-        if (form.password.match(reg)) {
-            temp.password = true
-        } else temp.password = false
-        if (form.certification.length == form.password.length) {
-            temp.certification = true
-        } else temp.certification = false
+        var tempVal = validate
+        if (key == 'email') {
+            if (validator.isEmail(form.email)) {
+                tempVal['eamil'] = true
+                setPost(true)
+            }
+            else {
+                tempVal['eamil'] = false
+                setPost(false)
+            }
+        }
+        if (key == 'certification') {
+            tempVal['certification'] = true
+        }
+        setValidate(tempVal)
+        if (validate.nickname && validate.email && validate.certification)
+            setButton(true)
+        else
+            setButton(false)
     }
 
-    useEffect(() => {
-        let temp = validate
-        checkValidate(temp).then(setValidate(temp))
-    }, [form])
+    const pushEmail = () => {
+        ApiFetch({
+            method: 'POST',
+            url: '/email-auth/pw-reset',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: form.email,
+            }),
+        })
+        setPost(false)
+    }
 
 
     return (
@@ -65,7 +83,7 @@ export function ForgetPassword({ navigation }) {
                         />
                         <TouchableOpacity
                             style={styles.sendButton}
-                            onPress={() => console.log('이메일전송')}>
+                            onPress={() => pushEmail()}>
                             <Text
                                 style={post ? styles.sendButtonText : styles.sendButtonOffText}>
                                 전송
@@ -98,7 +116,7 @@ export function ForgetPassword({ navigation }) {
                     </View>
                 </View>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('PasswordReset')}
+                    onPress={() => navigation.navigate('PasswordReset', {email : form.email})}
                     disabled={!button}
                     style={
                         button

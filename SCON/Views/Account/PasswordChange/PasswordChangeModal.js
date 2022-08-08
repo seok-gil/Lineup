@@ -6,7 +6,7 @@ import {CheckBigIcon} from '../../../Assets/Icons'
 
 export function PasswordChangeModal({modal, setModal, navigation}) {
     const onPress = () => {
-    // navigation.navigate('LoginPage')
+    navigation.navigate('LoginPage')
         setModal(false)
     }
     return (

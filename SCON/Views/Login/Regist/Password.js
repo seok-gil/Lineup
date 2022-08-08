@@ -41,7 +41,7 @@ export function Password({ navigation, route }) {
 
     async function checkValidate(temp) {
         var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
-        if (form.password.match(reg)) {
+        if (form.password && form.password.match(reg)) {
             temp.password = true
         } else temp.password = false
         if (form.certification.length == form.password.length) {

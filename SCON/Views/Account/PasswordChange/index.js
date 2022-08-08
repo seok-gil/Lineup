@@ -171,7 +171,7 @@ export function PasswordChange({navigation}) {
             </View>
             <PasswordChangeModal
                 modal={modal}
-                setModal={setModal}
+                setModal={() => setModal()}
                 navigation={navigation}
             />
         </View>
