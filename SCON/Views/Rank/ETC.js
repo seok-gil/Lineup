@@ -9,7 +9,7 @@ function ETC({player, index, navigation}) {
     return (
         <TouchableOpacity
             onPress={() =>
-                navigation.navigate('Player', {playerId: [player.playerId]})
+                navigation.navigate('Player', {playerId: player.playerId})
             }
             style={styles.etcWrapper}>
             <Text style={styles.index}>{index + 4}</Text>

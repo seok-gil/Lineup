@@ -26,7 +26,7 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
     try {
         const img = await fetchResourceFromURI(photo.asset.uri)
         var path = type + '/'
-        Storage.put(path + GetUuid() + '.jpg', img, {
+        return await Storage.put(path + GetUuid() + '.jpg', img, {
             level: 'public',
             contentType: 'photo',
         })
@@ -40,7 +40,7 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
                         })
                         const url = result.split('?')[0]
                         ImagePushAPI(url, apiUrl)
-                        return url
+                        return url[0]
                     })
                     .catch(err => {
                         console.log('err0', err)

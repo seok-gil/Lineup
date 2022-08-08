@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 import AsyncStorage from '@react-native-community/async-storage'
-import {ApiFetch} from './'
+import {ApiFetch} from '../../..Components'
 
 export function ImagePushAPI(body, apiUrl) {
     AsyncStorage.getItem('accessToken').then(thing => {

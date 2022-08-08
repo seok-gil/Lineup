@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import {ImagePushAPI} from './ImagePushAPI'
 
 import Amplify, {Storage} from 'aws-amplify'
-import {GetUuid} from './GetUuid'
+import {GetUuid} from '../../..Components'
 import awsconfig from '../src/aws-exports'
 
 Amplify.configure(awsconfig)

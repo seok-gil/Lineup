@@ -4,13 +4,13 @@ import { ApiFetch } from '../../../Components'
 import styles from './PlayerFollowButton.styles'
 import AsyncStorage from '@react-native-community/async-storage'
 
-function PlayerFollowButton({data, navigation}) {
+function PlayerFollowButton({ data, navigation, setMount={setMount}}) {
     const [follow, setFollow] = useState(data.isFollow)
 
     const buttonStyle =
-    data.isMe & !data.isFollow ? styles.followedButton : styles.followButton
+        data.isMe & !data.isFollow ? styles.followedButton : styles.followButton
     const buttonTextStyle =
-    data.isMe & !data.isFollow ? styles.followedText : styles.followText
+        data.isMe & !data.isFollow ? styles.followedText : styles.followText
 
     useEffect(() => {
         AsyncStorage.getItem('role')
@@ -36,6 +36,8 @@ function PlayerFollowButton({data, navigation}) {
                     },
                     body: null,
                 }).then(thing => {
+                    console.log(thing)
+                    setMount(true)
                 })
             })
     }
@@ -44,7 +46,7 @@ function PlayerFollowButton({data, navigation}) {
             navigation.navigate('StoryScreen')
         }
         else if (data.isFollow) {
-            followApi('DELETE', `/follow/${data.playerId}/${data.isFollow})`)
+            followApi('DELETE', `/follow/${data.playerId}/${data.isFollow}`)
         }
         else {
             followApi('POST', `/follow/${data.playerId}`)

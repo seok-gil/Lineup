@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     SafeAreaView,
     View,
@@ -8,35 +8,62 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native'
-
+// Warning: Failed prop type: Invalid props.style key `globalTextStyle` supplied to `Text`.
+//86E5W3X
 import styles from './Password.styles'
-import {CheckSmallIcon} from '../../../Assets/Icons'
-import {RegistModal} from './RegistModal'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
+import { CheckSmallIcon } from '../../../Assets/Icons'
+import { RegistModal } from './RegistModal'
+import { ApiFetch } from '../../../Components'
 
-export function Password({navigation, route}) {
+export function Password({ navigation, route }) {
+    if (!route)
+        navigation.navigate('LoginPage')
     const [postForm, setPostForm] = useState({
         nickname: route.params.form.nickname,
         email: route.params.form.email,
         password: '',
     })
     const [form, setForm] = useState({
-        password: false,
-        certification: false,
+        password: '',
+        certification: '',
     })
 
     const [validate, setValidate] = useState({
+        password: true,
+        certification: true,
+    })
+
+    const [button, setButton] = useState(false)
+    const [checkIcon, setCheckIcon] = useState({
         password: false,
         certification: false,
     })
 
-    const [validateError, setValidateError] = useState({
-        password: false,
-        certification: false,
-    })
+    async function checkValidate(temp) {
+        var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
+        if (form.password.match(reg)) {
+            temp.password = true
+        } else temp.password = false
+        if (form.certification.length == form.password.length) {
+            temp.certification = true
+        } else temp.certification = false
+        return (temp)
+    }
+    useEffect(() => {
+        let temp = validate
+        if (form.password.length != 0)
+            checkValidate(temp).then((temp) => {
+                setValidate(temp)
+                setCheckIcon(temp)
+            })
+        if (validate.password && validate.certification)
+            setButton(true)
+        else
+            setButton(false)
+    }, [form])
 
     const onInput = (key, e) => {
-        const {text} = e.nativeEvent
+        const { text } = e.nativeEvent
         setForm({
             ...form,
             [key]: text,
@@ -47,14 +74,12 @@ export function Password({navigation, route}) {
                 [key]: text,
             })
     }
-
     const [modal, setModal] = useState(false)
     const onPress = () => {
-    // navigation.navigate('LoginPage')
         setModal(true)
         ApiFetch({
             method: 'POST',
-            url: 'auth/signup',
+            url: '/auth/signup',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -69,8 +94,8 @@ export function Password({navigation, route}) {
             <View style={styles.passwordInner}>
                 <View style={styles.passwordTop}>
                     <Text style={styles.label}>
-            비밀번호를 설정 해주세요.{'\n'}8~16자의 영문, 숫자, 특수기호를
-            조합하여 사용.
+                        비밀번호를 설정 해주세요.{'\n'}8~16자의 영문, 숫자, 특수기호를
+                        조합하여 사용.
                     </Text>
                     <View style={styles.inputWrapper}>
                         <TextInput
@@ -83,14 +108,14 @@ export function Password({navigation, route}) {
                         <Image
                             source={CheckSmallIcon}
                             style={
-                                validate.password ? styles.checkIcon : styles.checkIconNotShown
+                                checkIcon.password ? styles.checkIcon : styles.checkIconNotShown
                             }
                         />
                     </View>
                     <View style={styles.errorMessageWrapper}>
                         {validate.password == false && (
                             <Text style={styles.errorMessage}>
-                올바른 비밀번호가 아닙니다.
+                                올바른 비밀번호가 아닙니다.
                             </Text>
                         )}
                     </View>
@@ -102,10 +127,10 @@ export function Password({navigation, route}) {
                             placeholderTextColor="#0E0E0E66"
                             onChange={e => onInput('certification', e)}
                         />
-                        <Image /////// TODO
+                        <Image
                             source={CheckSmallIcon}
                             style={
-                                validate.certification
+                                checkIcon.certification
                                     ? styles.checkIcon
                                     : styles.checkIconNotShown
                             }
@@ -114,15 +139,16 @@ export function Password({navigation, route}) {
                     <View style={styles.errorMessageWrapper}>
                         {validate.certification == false && (
                             <Text style={styles.errorMessage}>
-                상단 비밀번호와 일치하지 않습니다.
+                                상단 비밀번호와 일치하지 않습니다.
                             </Text>
                         )}
                     </View>
                 </View>
                 <TouchableOpacity
                     onPress={() => onPress()}
+                    disabled={!button}
                     style={
-                        validateError.password && validateError.certification
+                        button
                             ? styles.loginButton
                             : styles.loginButtonNotAvailable
                     }>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, useWindowDimensions } from 'react-native'
 import { ApiFetch } from '../../../Components/API/ApiFetch'
 
 import { PlayerFeed } from './PlayerFeed'
@@ -11,9 +11,11 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 function PlayerFeeds({ playerId, navigation }) {
     const [data, setData] = useState()
-    const [size, setSize] = useState(1)
-
+    const [size, setSize] = useState(3)
+    const [mount, setMount] = useState(true)
+    const [lastFeedId, setLastFeedId] = useState(0)
     useEffect(() => {
+        let abortController = new AbortController()
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
                 method: 'GET',
@@ -25,15 +27,21 @@ function PlayerFeeds({ playerId, navigation }) {
                 body: null,
             }).then(thing => {
                 setData(thing.content)
+                console.log("playerFeed", thing)
             })
-        }, [size])
-    })
-
+        }, [])
+        return () => abortController.abort();
+    },[])
+    
+    console.log("data", data)
     const onEndReached = () => {
         setSize(size + 3)
     // console.log("size!!!!!!!!!!", size)
     }
-    if (!data || (data && data.length == 0)) return <PlayerProfile navigation={navigation} playerId={playerId} />
+
+    if (!data || data.length == 0) {
+        return <PlayerProfile navigation={navigation} playerId={playerId} />
+    }
     return (
         <View style={styles.playerFeedsWrapper}>
             <PlayerFixedFeed playerId={playerId} navigation={navigation} />

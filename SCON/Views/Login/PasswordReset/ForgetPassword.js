@@ -17,17 +17,20 @@ export function ForgetPassword({navigation}) {
     })
 
     const [validate, setValidate] = useState({
-        email: false,
-        certification: false,
+        email: true,
+        certification: true,
     })
     const [post, setPost] = useState(false)
-
+    const [button, setbutton] = useState(false)
+    console.log(button)
     const onInput = (key, e) => {
         const {text} = e.nativeEvent
         setForm({
             ...form,
             [key]: text,
         })
+        if (validate.email && validate.certification)
+            setbutton(true)
     }
 
     useEffect(() => {
@@ -86,8 +89,9 @@ export function ForgetPassword({navigation}) {
                 </View>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('PasswordReset')}
+                    disabled={!button}
                     style={
-                        validate.email && validate.certification
+                        button
                             ? styles.loginButton
                             : styles.loginButtonNotAvailable
                     }>

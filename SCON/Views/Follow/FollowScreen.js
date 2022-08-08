@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {SafeAreaView, FlatList} from 'react-native'
+import {SafeAreaView, View, FlatList} from 'react-native'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import {SearchId, SearchInput} from './SearchScreen'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -22,11 +22,12 @@ export function FollowScreen({navigation, route}) {
         },
         body: null,
       }).then(thing => {
-        console.log('thing', thing.content)
+        console.log('follow', thing.content)
         setData(thing.content)
       })
     })
   }, [])
+
   const onEndReached = () => {
     setSize(size + 5)
   }
@@ -36,7 +37,6 @@ export function FollowScreen({navigation, route}) {
       <View style={styles.followScreenInner}>
         <SearchInput />
       </View>
-      <SearchInput />
       <FlatList
         data={data}
         snapToAlignment="start"

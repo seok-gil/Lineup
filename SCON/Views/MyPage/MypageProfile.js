@@ -20,7 +20,6 @@ export function MypageProfile({navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                console.log(thing)
                 setData(thing)
             })
         })

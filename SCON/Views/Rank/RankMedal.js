@@ -11,7 +11,7 @@ function RankMedal({player, rank, navigation}) {
     return (
         <TouchableOpacity
             onPress={() =>
-                navigation.navigate('Player', {names: ['Brent', 'Satya', 'Michaś']})
+                navigation.navigate('Player', {playerId: player.playerId})
             }
             style={styles.rankMedalWrapper}>
             <View style={styles.profileWrapper}>
