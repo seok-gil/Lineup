@@ -9,7 +9,6 @@ import {FeedBody} from './FeedBody'
 export function FeedScreen({route, navigation}) {
     const [data, setData] = useState()
     const [replyFocus, setReplyFocus] = useState(null)
-
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({

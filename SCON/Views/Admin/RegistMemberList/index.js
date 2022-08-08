@@ -4,7 +4,6 @@ import {PlayerList} from './PlayerList'
 import {UserList} from './UserList'
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
-import {SearchScreen} from '../../Search'
 
 const RegistMemberStack = createMaterialTopTabNavigator()
 

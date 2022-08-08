@@ -8,7 +8,7 @@ import styles from './SearchScreen.styles'
 import AsyncStorage from '@react-native-community/async-storage'
 import {ApiFetch} from '../../../Components'
 
-export function PlayerList({navigation, }) {
+export function SearchScreen({navigation, }) {
     const [data, setData] = useState()
     const [inputs, setInputs] = useState({
         search: '',
@@ -20,7 +20,7 @@ export function PlayerList({navigation, }) {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
                 method: 'GET',
-                url: `/admin/users?kw=${inputs.search}&page=${inputs.page}&size=${inputs.size}`,
+                url: `/search-player?kw=${inputs.search}&page=${inputs.page}&size=${inputs.size}`,
                 headers: {
                     'content-type': 'application/json',
                     Authorization: 'Bearer ' + thing,

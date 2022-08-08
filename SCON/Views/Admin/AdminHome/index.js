@@ -8,7 +8,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
+import {ApiFetch} from '../../../Components'
 import {Head} from './Head'
 import {Body} from './Body'
 import AsyncStorage from '@react-native-community/async-storage'

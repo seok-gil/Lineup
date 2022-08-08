@@ -12,7 +12,6 @@ export function CommentList({setReplyFocus, feedId, navigation}) {
             ApiFetch({
                 method: 'GET',
                 url: `/feed/${feedId}/comments?page=${0}&size=${size}`,
-
                 headers: {
                     'content-type': 'application/json',
                     Authorization: 'Bearer ' + thing,

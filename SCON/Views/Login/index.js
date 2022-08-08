@@ -19,6 +19,9 @@ export function LoginPage({ navigation }) {
     password: '1234',
         // email: 'member1@gmail.com',
         // password: '1234',
+        // email: 'admin@gmail.com',
+        // password: '1234',
+
     })
     const [validate, setValidate] = useState({
         email: true,
@@ -50,6 +53,7 @@ export function LoginPage({ navigation }) {
                     console.log('Login ERROR')
                 }
                 else {
+                    console.log(thing)
                     AsyncStorage.setItem('accessToken', thing.accessToken)
                     AsyncStorage.setItem('refreshToken', thing.refreshToken)
                     AsyncStorage.setItem('role', thing.role)
