@@ -22,9 +22,9 @@ function NotiElement({data}) {
             <TouchableOpacity onPress={onClick}>
                 <View style={styles.notiElementWrapper}>
                     <View style={styles.notiElementLeft}>
-                        <Text style={styles.notiTitle}>{data.NoticeTitle}</Text>
+                        <Text style={styles.notiTitle}>{data.title}</Text>
                         <Text style={styles.notiCreated}>
-                            <Time time={data.NoticeDateTime} separator="-" />
+                            <Time time={data.dateTime} separator="-" />
                         </Text>
                     </View>
                     <Image
@@ -35,7 +35,7 @@ function NotiElement({data}) {
             </TouchableOpacity>
             {expand && (
                 <View style={styles.expanded}>
-                    <Text style={styles.expandedContent}>{data.NoticeContent}</Text>
+                    <Text style={styles.expandedContent}>{data.content}</Text>
                 </View>
             )}
         </View>

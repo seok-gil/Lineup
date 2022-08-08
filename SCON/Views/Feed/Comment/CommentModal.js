@@ -15,15 +15,11 @@ export function CommentModal({ modal, setModal, nick, writerId, commentId }) {
         text: '댓글 신고',
         method: `POST`,
         url: `/comment/${commentId}/report`
-
     })
     var temp = report
     useEffect(() => {
         AsyncStorage.getItem("memberId")
         .then((memberId) => {
-                console.log(memberId, writerId)
-                console.log(memberId == writerId)
-
                 if (memberId == writerId) {
                         temp.text= '댓글 삭제'
                         temp.method= `DELETE`
@@ -43,7 +39,6 @@ export function CommentModal({ modal, setModal, nick, writerId, commentId }) {
     }, []);
 
     const onReport = () => {
-        console.log(report)
         AsyncStorage.getItem("accessToken")
             .then((thing) => {
                 ApiFetch({

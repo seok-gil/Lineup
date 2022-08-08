@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
     modalBottom: {
         backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
         height: 50,

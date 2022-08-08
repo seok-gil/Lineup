@@ -41,6 +41,8 @@ export async function ImagePush(photo, setPhoto, type, form, setForm) {
                             ['uri']: result,
                         })
                         setForm({...form, [`certificate`] : url})
+                        console.log("kk")
+                        console.log(typeof(temp.name))
                         PlayerRegistApi(temp)
                         return url[0]
                     })

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     SafeAreaView,
     View,
@@ -10,7 +10,7 @@ import {
 import styles from './ForgetPassword.styles'
 import validator from 'validator'
 
-export function ForgetPassword({navigation}) {
+export function ForgetPassword({ navigation }) {
     const [form, setForm] = useState({
         email: '',
         certification: '',
@@ -22,9 +22,9 @@ export function ForgetPassword({navigation}) {
     })
     const [post, setPost] = useState(false)
     const [button, setbutton] = useState(false)
-    console.log(button)
+
     const onInput = (key, e) => {
-        const {text} = e.nativeEvent
+        const { text } = e.nativeEvent
         setForm({
             ...form,
             [key]: text,
@@ -32,11 +32,21 @@ export function ForgetPassword({navigation}) {
         if (validate.email && validate.certification)
             setbutton(true)
     }
+    async function checkValidate(temp) {
+        var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
+        if (form.password.match(reg)) {
+            temp.password = true
+        } else temp.password = false
+        if (form.certification.length == form.password.length) {
+            temp.certification = true
+        } else temp.certification = false
+    }
 
     useEffect(() => {
-        if (validator.isEmail(form.email)) setPost(true)
-        else setPost(false)
-    }, [form.email])
+        let temp = validate
+        checkValidate(temp).then(setValidate(temp))
+    }, [form])
+
 
     return (
         <SafeAreaView style={styles.forgetWrapper}>
@@ -58,19 +68,19 @@ export function ForgetPassword({navigation}) {
                             onPress={() => console.log('이메일전송')}>
                             <Text
                                 style={post ? styles.sendButtonText : styles.sendButtonOffText}>
-                전송
+                                전송
                             </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.errorMessageWrapper}>
                         {validate.email == false && (
                             <Text style={styles.errorMessage}>
-                가입 된 정보가 없습니다. 다시 입력해주세요.
+                                가입 된 정보가 없습니다. 다시 입력해주세요.
                             </Text>
                         )}
                     </View>
                     <Text style={styles.label}>
-            메일 확인 후 인증번호를 입력해주세요.
+                        메일 확인 후 인증번호를 입력해주세요.
                     </Text>
                     <TextInput
                         value={form.certification}
@@ -82,7 +92,7 @@ export function ForgetPassword({navigation}) {
                     <View style={styles.errorMessageWrapper}>
                         {validate.certification == false && (
                             <Text style={styles.errorMessage}>
-                인증번호가 일치하지 않습니다.
+                                인증번호가 일치하지 않습니다.
                             </Text>
                         )}
                     </View>

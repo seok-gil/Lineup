@@ -11,9 +11,14 @@ import RNPickerSelect from 'react-native-picker-select'
 import {CheckSmallIcon} from '../../../Assets/Icons'
 export function GenderForm({form, setForm}) {
     const onChange = value => {
+        var code = 0
+        if (value == 'male')
+            code = 0
+        else
+            code = 1
         setForm({
             ...form,
-            ['gender']: value,
+            ['gender']: code,
         })
     }
     return (

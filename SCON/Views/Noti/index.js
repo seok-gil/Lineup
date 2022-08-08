@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {View} from 'react-native'
+import {View, ScrollView} from 'react-native'
 
 import NotiElement from './NotiElement'
 import {ApiFetch} from '../../Components/API/ApiFetch'
@@ -9,9 +9,6 @@ import styles from './Noti.styles'
 
 export function NotiScreen({navigation}) {
     const [data, setData] = useState([])
-    const [lastFeed, setLastFeed] = useState(1)
-    const [nextFeed, setNextFeed] = useState(10)
-    var temp = data
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -23,7 +20,6 @@ export function NotiScreen({navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                console.log('thing', thing)
                 setData(thing)
             })
         })
@@ -31,9 +27,11 @@ export function NotiScreen({navigation}) {
 
     return (
         <View style={styles.notiWrapper}>
+            <ScrollView>
             {data.map((item, index) => {
                 return <NotiElement key={index} data={item} />
             })}
+            </ScrollView>
         </View>
     )
 }

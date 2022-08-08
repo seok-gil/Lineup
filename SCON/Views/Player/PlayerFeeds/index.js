@@ -27,13 +27,11 @@ function PlayerFeeds({ playerId, navigation }) {
                 body: null,
             }).then(thing => {
                 setData(thing.content)
-                console.log("playerFeed", thing)
             })
         }, [])
         return () => abortController.abort();
     },[])
     
-    console.log("data", data)
     const onEndReached = () => {
         setSize(size + 3)
     // console.log("size!!!!!!!!!!", size)

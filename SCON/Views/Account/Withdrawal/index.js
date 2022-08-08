@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, { Component, useState } from 'react'
 import {
     View,
     Image,
@@ -8,33 +8,57 @@ import {
     TouchableOpacity,
 } from 'react-native'
 
-import {WithdrawalModal} from './WithdrawalModal'
+import { WithdrawalModal } from './WithdrawalModal'
 import AsyncStorage from '@react-native-community/async-storage'
-import {ApiFetch} from '../../../Components'
-import {AlertBlueIcon, CheckSmallIcon} from '../../../Assets/Icons'
+import { ApiFetch } from '../../../Components'
+import { AlertBlueIcon, CheckSmallIcon } from '../../../Assets/Icons'
 import styles from './Withdrawal.styles'
 
-export function Withdrawal({navigation}) {
+export function Withdrawal({ navigation }) {
     const [password, setPassword] = useState('')
     const [modal, setModal] = useState(false)
+    const [validate, setValidate] = useState(true)
+    const [checkIcon, setCheckIcon] = useState(false)
 
     const onInput = e => {
-        const {text} = e.nativeEvent
+        const { text } = e.nativeEvent
         setPassword(text)
+        setValidate(true)
     }
     const onPress = () => {
+        var accessToken
         AsyncStorage.getItem('accessToken').then(thing => {
+            accessToken = thing
             ApiFetch({
                 method: 'POST',
-                url: '/unjoin',
+                url: '/unjoin/pw-check',
                 headers: {
                     'content-type': 'application/json',
-                    Authorization: 'Bearer ' + thing,
+                    Authorization: 'Bearer ' + accessToken,
                 },
-                body: JSON.stringify(password),
-            }).then(thing => {})
+                body: JSON.stringify({
+                    password: password
+                }),
+            }).then(res => {
+                if (res = 404) // password 불일치
+                    setValidate(false)
+                else { //password 일치
+                    ApiFetch({
+                        method: 'POST',
+                        url: `/unjoin`,
+                        headers: {
+                            'content-type': 'application/json',
+                            Authorization: 'Bearer ' + accessToken,
+                        },
+                        body: null
+                    }).then(() => {
+                        setModal(true)
+                        setValidate(true)
+                    })
+                }
+            })
+
         })
-        setModal(true)
     }
     return (
         <View style={styles.withdrawWrapper}>
@@ -46,8 +70,8 @@ export function Withdrawal({navigation}) {
                 <View style={styles.info}>
                     <Text style={styles.infoBold}>계정 탈퇴 안내사항</Text>
                     <Text style={styles.infoDim}>
-            계정을 삭제하면 회원님의 모든 콘텐츠와 활동 기록 내역이 삭제됩니다.
-            삭제된 정보는 복구할 수 없으니 신중하게 결정해주세요.
+                        계정을 삭제하면 회원님의 모든 콘텐츠와 활동 기록 내역이 삭제됩니다.
+                        삭제된 정보는 복구할 수 없으니 신중하게 결정해주세요.
                     </Text>
                 </View>
                 <Text style={styles.label}>사용 중인 비밀번호</Text>
@@ -62,33 +86,21 @@ export function Withdrawal({navigation}) {
                     />
                     <Image
                         source={CheckSmallIcon}
-                        style={
-                            styles.checkIcon
-                            //validate.oldPassword ? styles.checkIcon : styles.checkIconNotShown
-                        }
+                        style={checkIcon ? styles.checkIcon : styles.checkIconNotShown}
                     />
                 </View>
                 <View style={styles.errorMessageWrapper}>
                     {
-                        /* {!validate.oldPassword && (
-              <Text style={styles.errorMessage}>
-                현재 비밀번호와 일치하지 않습니다.
-              </Text> // 인증 넣고나서 주석해제
-            )} */
-                        <Text style={styles.errorMessage}>
-              현재 비밀번호와 일치하지 않습니다.
-                        </Text>
-                    }
+                        !validate && (
+                            <Text style={styles.errorMessage}>
+                                현재 비밀번호와 일치하지 않습니다.
+                            </Text>
+                        )}
                 </View>
             </View>
             <TouchableOpacity
                 onPress={onPress}
-                disabled={
-                    false
-                    //!validate.button
-                }
                 style={
-                    //validate.button ? styles.loginButton : styles.loginButtonNotAvailable
                     styles.loginButton
                 }>
                 <Text style={styles.loginButtonText}>버튼</Text>
