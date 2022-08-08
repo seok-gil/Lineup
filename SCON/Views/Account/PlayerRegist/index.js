@@ -27,7 +27,6 @@ export function PlayerRegist({navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                console.log('thing', thing)
                 setCode(thing)
             })
         })

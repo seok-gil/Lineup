@@ -40,7 +40,7 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
                         })
                         const url = result.split('?')[0]
                         ImagePushAPI(url, apiUrl)
-                        return url[0]
+                        return url
                     })
                     .catch(err => {
                         console.log('err0', err)

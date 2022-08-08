@@ -30,7 +30,6 @@ export function Inquiry({navigation}) {
                     },
                     body: null,
                 }).then(thing => {
-                    console.log('inquiry', thing)
                     setData(thing)
                 })
             })

@@ -12,8 +12,7 @@ import {GenderForm} from './GenderForm'
 import {CaptureForm} from './CaptureForm'
 import {PlayerRegistModal} from './PlayerRegistModal'
 import {CheckSmallIcon} from '../../../Assets/Icons'
-import {ImagePush} from '../../../Components'
-import {PlayerRegistApi} from './PlayerRegistApi'
+import {ImagePush} from './ImagePush'
 
 export function PlayerRegistForm({navigation}) {
     const [modal, setModal] = useState(false)
@@ -59,14 +58,8 @@ export function PlayerRegistForm({navigation}) {
         )
             setButton(true)
     }
-    const onSummit = () => {
-        var imageurl = ImagePush(playerPhoto, setPlayerPhoto, 'player-certificate')
-        setForm({
-            ...form,
-            ['certificate']: imageurl,
-        })
-        PlayerRegistApi(form)
-    // setModal(true)
+    const onSummit = async() => {
+        ImagePush(playerPhoto, setPlayerPhoto, 'player-certificate',form, setForm)
     }
     return (
         <View style={{flexDirection: 'column'}}>

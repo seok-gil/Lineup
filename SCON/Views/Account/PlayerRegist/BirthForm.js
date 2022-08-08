@@ -12,7 +12,7 @@ import {CheckSmallIcon} from '../../../Assets/Icons'
 
 export function BirthForm({form, setForm}) {
     const [pickOn, setPickOn] = useState(false)
-
+    const [text, setText] = useState()
     const showDatePicker = () => {
         setPickOn(true)
     }
@@ -24,7 +24,9 @@ export function BirthForm({form, setForm}) {
       '월' +
       date.getDate() +
       '일'
-        setForm({...form, ['birth']: dateString})
+      console.log(date)
+        setText(dateString)
+        setForm({...form, ['birth']: date})
         hideDatePicker()
     }
 
@@ -36,7 +38,7 @@ export function BirthForm({form, setForm}) {
             <TouchableOpacity onPress={showDatePicker}>
                 <Text>생년월일</Text>
                 <TextInput
-                    value={form.birth}
+                    value={text}
                     placeholder={'생년월일을 선택해주세요'}
                     placeholderTextColor="#0E0E0E66"
                     editable={false}
