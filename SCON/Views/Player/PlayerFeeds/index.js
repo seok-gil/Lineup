@@ -44,7 +44,6 @@ function PlayerFeeds({ playerId, navigation }) {
     }
     return (
         <View style={styles.playerFeedsWrapper}>
-            <PlayerFixedFeed playerId={playerId} navigation={navigation} />
             <FlatList
                 data={data}
                 snapToAlignment="start"
@@ -54,6 +53,7 @@ function PlayerFeeds({ playerId, navigation }) {
                         return (
                             <View>
                                 <PlayerProfile navigation={navigation} playerId={playerId} />
+                                <PlayerFixedFeed playerId={playerId} navigation={navigation} />
                                 <PlayerFeed
                                     key={`player-feed-${index}`}
                                     feed={item}

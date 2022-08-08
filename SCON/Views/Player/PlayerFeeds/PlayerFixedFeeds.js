@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Image, Text, TouchableOpacity } from 'react-native'
-import { ApiFetch } from '../../../Components/API/ApiFetch'
+import { ApiFetch, LikeComponent } from '../../../Components'
 import {
     CommentIcon,
     HeartEmptyIcon,
@@ -13,7 +13,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 export function PlayerFixedFeed({ navigation, playerId }) {
     const [data, setData] = useState()
-  
     useEffect(() => {
         AsyncStorage.getItem('accessToken')
             .then((thing) => {
@@ -30,7 +29,6 @@ export function PlayerFixedFeed({ navigation, playerId }) {
                 })
             })
     }, [])
-    //TODO comment 보이기
     if (!data) return <View />
     const today = new Date().getDate()
     var dDay = (data.data ? data.date.slice(8, 10) - today : 0)
@@ -55,22 +53,17 @@ export function PlayerFixedFeed({ navigation, playerId }) {
             <Text style={styles.fixedFeedContent}>{data.content}</Text>
             <View style={styles.feedLikedBox}>
                 <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })
-                    }
+                onPress={() => LikeComponent(data.ilike, `feed/${data.feedId}`)}
                     style={styles.feedLikedBox}>
                     <Image source={HeartEmptyIcon} style={styles.likeIcon} />
                     <Text style={styles.likeText}>{data.likeCnt}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate('/', { names: ['Brent', 'Satya', 'Michaś'] })
-                    }
+                <View
                     style={styles.feedLikedBox}>
                     <Image source={CommentIcon} style={styles.likeIcon} />
                     <Text style={styles.likeText}>{data.commentCnt} </Text>
                     <Text style={styles.likeText}> <TimeRelative time={data.createDate} /> </Text>
-                </TouchableOpacity>
+                </View>
             </View>
         </TouchableOpacity>
     )

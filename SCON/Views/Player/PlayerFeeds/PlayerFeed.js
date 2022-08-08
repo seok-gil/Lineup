@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {View, Text, TouchableOpacity, Image} from 'react-native'
 import {CommentIcon, HeartEmptyIcon} from '../../../Assets/Icons'
-import {TimeRelative} from '../../../Components/Time'
+import {TimeRelative, LikeComponent} from '../../../Components'
 
 import styles from './PlayerFeed.styles'
 
@@ -16,17 +16,12 @@ export function PlayerFeed({feed, navigation}) {
             <Text style={styles.feedContent}>{feed.content}</Text>
             <View style={styles.feedLikedBox}>
                 <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
-                    }
+                    onPress={() => LikeComponent(feed.ilike, `feed/${feed.feedId}`)}
                     style={styles.feedLikedBox}>
                     <Image source={HeartEmptyIcon} style={styles.likeIcon} />
                     <Text style={styles.likeText}>{feed.likeCnt}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate('/', {names: ['Brent', 'Satya', 'Michaś']})
-                    }
+                <View
                     style={styles.feedLikedBox}>
                     <Image source={CommentIcon} style={styles.likeIcon} />
                     <Text style={styles.likeText}>{feed.commentCnt}</Text>
@@ -34,7 +29,7 @@ export function PlayerFeed({feed, navigation}) {
                         {' '}
                         <TimeRelative time={feed.createDate} />{' '}
                     </Text>
-                </TouchableOpacity>
+                </View>
             </View>
         </TouchableOpacity>
     )
