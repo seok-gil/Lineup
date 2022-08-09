@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {
     View,
     Text,
@@ -29,40 +29,34 @@ export function PasswordChange({navigation}) {
     })
 
     const [modal, setModal] = useState(false)
+
+  async function checkValidate(temp) {
+    var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
+    if (form.newPassword && form.newPassword.match(reg)) {
+      temp.newPassword = true
+    } else temp.newPassword = false
+    if (form.confirmPassword.length == form.newPassword.length) {
+      temp.confirmPassword = true
+    } else temp.confirmPassword = false
+  }
+
+  useEffect(() => {
+    let temp = validate
+    checkValidate(temp).then(setValidate(temp))
+  }, [form])
+  
     const onInput = (key, e) => {
         const {text} = e.nativeEvent
-        const tempForm = form
-
-        tempForm[key] = text
         setForm({
             ...form,
             [key]: text,
         })
-        var tempVal = validate
-        if (key == 'oldPassword') {
-            tempVal.oldPassword = true
-        }
-        if (key == 'newPassword') {
-            if (validator.isLength(text, 8, 12)) {
-                tempVal.newPassword = true
-            } else {
-                tempVal.newPassword = false
-            }
-        }
-        if (tempForm.newPassword.length == tempForm.confirmPassword.length) {
-            tempVal.confirmPassword = true
-        } else {
-            tempVal.confirmPassword = false
-        }
-        if (tempVal.oldPassword && tempVal.confirmPassword && tempVal.newPassword) {
-            tempVal.button = true
-        }
     }
 
     const onSummit = () => {
         if (
             PasswordApi({
-                password: form.oldPassword,
+                newPassword: form.oldPassword,
                 newPassword: form.newPassword,
             })
         ) {

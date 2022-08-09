@@ -15,7 +15,7 @@ import styles from './Login.styles'
 
 export function LoginPage({ navigation }) {
     const [form, setForm] = useState({
-    email: 'player4@gmail.com',
+    email: 'player6@gmail.com',
     password: '1234',
         // email: 'member1@gmail.com',
         // password: '1234',
