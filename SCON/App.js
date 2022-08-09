@@ -2,19 +2,19 @@ import React from 'react'
 import {
     NavigationContainer,
 } from '@react-navigation/native'
-import {createStackNavigator} from '@react-navigation/stack'
-import {LoginPage} from './Views/Login'
-import {RegistAccept, MakeId, Password} from './Views/Login/Regist'
-import {ForgetPassword, PasswordReset} from './Views/Login/PasswordReset'
-import {TabScreen} from './Components'
-import {NotiScreen} from './Views/Noti'
-import {SettingAlertScreen} from './Views/SettingAlert'
-import {InquiryTabScreen} from './Views/Inquiry'
-import {AlertScreen} from './Views/Home/AlertScreen'
-import {PlayerScreen} from './Views/Player'
-import {RecordScreen} from './Views/Record'
-import {FollowScreen, FollowPage} from './Views/Follow'
-import {FeedScreen} from './Views/Feed'
+import { createStackNavigator } from '@react-navigation/stack'
+import { LoginPage } from './Views/Login'
+import { RegistAccept, MakeId, Password } from './Views/Login/Regist'
+import { ForgetPassword, PasswordReset } from './Views/Login/PasswordReset'
+import { TabScreen } from './Components'
+import { NotiScreen } from './Views/Noti'
+import { SettingAlertScreen } from './Views/SettingAlert'
+import { InquiryTabScreen } from './Views/Inquiry'
+import { AlertScreen } from './Views/Home/AlertScreen'
+import { PlayerScreen } from './Views/Player'
+import { RecordScreen } from './Views/Record'
+import { FollowScreen, FollowPage } from './Views/Follow'
+import { FeedScreen } from './Views/Feed'
 import {
     StoryScreen,
     FeedRegist,
@@ -22,7 +22,7 @@ import {
     CompetitionResult,
     CompetitionResultDetail,
 } from './Views/Story'
-import {ProfileInfoScreen} from './Views/MyPage'
+import { ProfileInfoScreen } from './Views/MyPage'
 import {
     AccountScreen,
     PasswordChange,
@@ -43,6 +43,45 @@ import {
 
 const AppStack = createStackNavigator()
 
+import messaging from '@react-native-firebase/messaging';
+
+componentDidMount() {
+    // FCM 권한 요청 
+    this.requestUserPermissionForFCM()
+}
+/**
+* fcm 푸시 처리
+*/
+requestUserPermissionForFCM = async () => {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+    if (enabled) {
+        const token = await messaging().getToken();
+        //푸시 토큰 표시 
+        console.log('fcm token:', token);
+        console.log('Authorization status:', authStatus);
+        this.handleFcmMessage();
+    } else {
+        console.log('fcm auth fail');
+    }
+}
+handleFcmMessage = () => {
+    //푸시를 받으면 호출됨 
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+        Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+    //알림창을 클릭한 경우 호출됨 
+    messaging().onNotificationOpenedApp(remoteMessage => {
+        console.log(
+            'Notification caused app to open from background state:',
+            remoteMessage.notification,
+        );
+    });
+}
+
+
 export default function App() {
     return (
         <NavigationContainer>
@@ -51,7 +90,7 @@ export default function App() {
                 <AppStack.Screen
                     name="AdminTab"
                     component={AdminTabScreen}
-                    options={{headerShown: false}}
+                    options={{ headerShown: false }}
                 />
                 <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
                 <AppStack.Screen name="RegistAccpet" component={RegistAccept} />

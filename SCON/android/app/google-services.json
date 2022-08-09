@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "896833183596",
+    "project_id": "lineup-backend",
+    "storage_bucket": "lineup-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896833183596:android:f882cedadc81ca2d20dd49",
+        "android_client_info": {
+          "package_name": "sportist.lineup.andriod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896833183596-6u9heu0kk5f2jil7c0sc7qc30rte2794.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyHCbszZ9hMt5qXZPn1HelCvmS9kNlZ5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896833183596-6u9heu0kk5f2jil7c0sc7qc30rte2794.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
