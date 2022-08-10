@@ -10,18 +10,18 @@ import {
 } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { LineupLogoImage } from '../../Assets/Images'
-import { ApiFetch } from '../../Components/API/ApiFetch'
+import { ApiFetch, FCMmanager } from '../../Components'
 import styles from './Login.styles'
 
 export function LoginPage({ navigation }) {
     const [form, setForm] = useState({
     email: 'player6@gmail.com',
     password: '1234',
+    fcmToken : '',
         // email: 'member1@gmail.com',
         // password: '1234',
         // email: 'admin@gmail.com',
         // password: '1234',
-
     })
     const [validate, setValidate] = useState({
         email: true,
@@ -114,6 +114,7 @@ export function LoginPage({ navigation }) {
                     </TouchableOpacity>
                 </View>
             </View>
+            <FCMmanager form={form} setForm={setForm}/>
         </SafeAreaView>
     )
 }

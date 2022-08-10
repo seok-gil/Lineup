@@ -33,6 +33,7 @@
     "react-native": "0.69.4",
     "react-native-calendar-picker": "^6.1.5",
     "react-native-codegen": "^0.71.0",
+    "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^2.5.0",
     "react-native-image-picker": "^4.8.4",
     "react-native-modal-datetime-picker": "^13.1.2",
