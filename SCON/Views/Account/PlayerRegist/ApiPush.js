@@ -22,7 +22,7 @@ const fetchResourceFromURI = async uri => {
     return blob
 }
 
-export async function ImagePush(photo, setPhoto, type, form, setForm) {
+export async function ApiPush(photo, setPhoto, type, form, setForm) {
     try {
         const img = await fetchResourceFromURI(photo.asset.uri)
         var path = `player-certificate/`
@@ -41,8 +41,6 @@ export async function ImagePush(photo, setPhoto, type, form, setForm) {
                             ['uri']: result,
                         })
                         setForm({...form, [`certificate`] : url})
-                        console.log("kk")
-                        console.log(typeof(temp.name))
                         PlayerRegistApi(temp)
                         return url[0]
                     })

@@ -12,7 +12,7 @@ import {GenderForm} from './GenderForm'
 import {CaptureForm} from './CaptureForm'
 import {PlayerRegistModal} from './PlayerRegistModal'
 import {CheckSmallIcon} from '../../../Assets/Icons'
-import {ImagePush} from './ImagePush'
+import {ApiPush} from './ApiPush'
 
 export function PlayerRegistForm({navigation}) {
     const [modal, setModal] = useState(false)
@@ -59,7 +59,7 @@ export function PlayerRegistForm({navigation}) {
             setButton(true)
     }
     const onSummit = async() => {
-        ImagePush(playerPhoto, setPlayerPhoto, 'player-certificate',form, setForm)
+        ApiPush(playerPhoto, setPlayerPhoto, 'player-certificate',form, setForm)
     }
     return (
         <View style={{flexDirection: 'column'}}>
