@@ -24,7 +24,7 @@ export function InquiryOne({ data }) {
         AsyncStorage.getItem("accessToken")
             .then((thing) => {
                 ApiFetch({
-                    method: 'POST',
+                    method: 'PUT',
                     url: `/admin/inquiry/${data.id}`,
                     headers: {
                         'content-type': 'application/json',

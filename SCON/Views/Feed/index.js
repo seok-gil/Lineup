@@ -10,23 +10,21 @@ export function FeedScreen({route, navigation}) {
     const [data, setData] = useState()
     const [replyFocus, setReplyFocus] = useState(null)
     useEffect(() => {
-        // AsyncStorage.getItem('accessToken').then(thing => {
-        //     ApiFetch({
-        //         method: 'GET',
-        //         url: `/feed/${route.params.feedId}`,
-        //         headers: {
-        //             'content-type': 'application/json',
-        //             Authorization: 'Bearer ' + thing,
-        //         },
-        //         body: null,
-        //     }).then(thing => {
-        //         setData(thing)
-        //     })
-        // })
-        FeedApi(`/feed/${route.params.feedId}`)
+        AsyncStorage.getItem('accessToken').then(thing => {
+            ApiFetch({
+                method: 'GET',
+                url: `/feed/${route.params.feedId}`,
+                headers: {
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer ' + thing,
+                },
+                body: null,
+            }).then(thing => {
+                setData(thing)
+            })
+        })
         .then(thing => {
             setData(thing)
-            console.log(thing)
         })
     }, [])
     if (!data) return <SafeAreaView />

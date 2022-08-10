@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import {ApiFetch} from '../../../Components'
 
 export function AdminNotiRegist({navigation, route}) {
-    var method = route ? 'PUT' : 'POST'
+    var method = route.params ? 'PUT' : 'POST'
     var apiUrl = '/admin/notice'
     const [inputs, setInputs] = useState({
         title: '',

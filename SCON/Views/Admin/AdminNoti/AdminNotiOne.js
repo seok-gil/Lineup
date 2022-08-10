@@ -10,13 +10,12 @@ export function AdminOne({ data, navigation }) {
   const onEdit = () => {
     navigation.navigate('공지사항 등록', { data: data })
   }
-  console.log(data)
   const onDel = () => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
           method: 'DELETE',
-          url: `/admin/notice`,
+          url: `/admin/notice/${data.id}`,
           headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,

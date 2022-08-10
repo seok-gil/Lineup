@@ -10,7 +10,7 @@ function AlertComponent({alert}) {
     if (!alert) return <View />
 
     var alarmId = Number(alert.id)
-    //TODO delete alarmAPI
+
     const onClickX = () => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({

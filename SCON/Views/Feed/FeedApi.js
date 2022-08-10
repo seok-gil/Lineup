@@ -3,6 +3,7 @@ import {ApiFetch} from '../../Components/API/ApiFetch'
 import AsyncStorage from '@react-native-community/async-storage'
 
 export async function FeedApi(url) {
+  var temp
    await AsyncStorage.getItem('accessToken').then(thing => {
     ApiFetch({
       method: 'GET',

@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import {ApiFetch} from '../../../Components'
 
 export function PlayerRegistApi(body) {
-    console.log(body)
+    console.log(typeof(body['name']))
     AsyncStorage.getItem('accessToken').then(thing => {
         ApiFetch({
             method: 'POST',

@@ -15,6 +15,7 @@ export async function ApiFetch({ method, url, headers, body }) {
         }
         else {
             console.log(method, LineUpUrl, 'Request unsuccessful1')
+            console.log('error1', resChecked)
             let data = await resChecked.json()
             console.log('error1', data)
             return (res.status)

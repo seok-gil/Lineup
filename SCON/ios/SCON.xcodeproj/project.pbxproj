@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1FCCA63128A3999C002BA642 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FCCA63028A3999C002BA642 /* GoogleService-Info.plist */; };
 		1FD345B628A38720005B7EB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FD345B528A3871F005B7EB6 /* GoogleService-Info.plist */; };
 		2A2C6EC6D8E25F1E0C637218 /* libPods-SCON-SCONTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3CBD43C419F1067C8BF068 /* libPods-SCON-SCONTests.a */; };
 		47003DB8F3C272E89052D3B1 /* libPods-SCON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C1220BAC30050163E8D376 /* libPods-SCON.a */; };
@@ -38,6 +39,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SCON/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SCON/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SCON/main.m; sourceTree = "<group>"; };
+		1FCCA63028A3999C002BA642 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FD005C228A22A7700C69607 /* SCON.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SCON.entitlements; path = SCON/SCON.entitlements; sourceTree = "<group>"; };
 		1FD345B528A3871F005B7EB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66C1220BAC30050163E8D376 /* libPods-SCON.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SCON.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +98,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				1FD345B528A3871F005B7EB6 /* GoogleService-Info.plist */,
+				1FCCA63028A3999C002BA642 /* GoogleService-Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = SCON;
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				1FCCA63128A3999C002BA642 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				1FD345B628A38720005B7EB6 /* GoogleService-Info.plist in Resources */,
 			);

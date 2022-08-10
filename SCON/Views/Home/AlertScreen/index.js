@@ -50,7 +50,6 @@ export function AlertScreen() {
             })
         })
     }
-
     const view = []
     const alertList = () => {
         for (let i = 0; i < data.length; ++i) {
