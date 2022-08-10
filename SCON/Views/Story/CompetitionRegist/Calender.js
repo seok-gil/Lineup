@@ -1,7 +1,6 @@
 import React, {Component, useState} from 'react'
 import {StyleSheet, Text, View, Modal, TouchableOpacity} from 'react-native'
 import CalendarPicker from 'react-native-calendar-picker' //https://www.npmjs.com/package/react-native-calendar-picker
-import {Time} from '../../../Components/Time'
 
 export function Calendar({
     calendar,
