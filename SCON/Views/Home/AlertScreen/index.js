@@ -17,7 +17,6 @@ export function AlertScreen() {
     const [data, setData] = useState([])
     const [nextFeed, setNextFeed] = useState(10)
     const [lastFeed, setLastFeed] = useState(1)
-    var temp = data
 
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
@@ -57,7 +56,6 @@ export function AlertScreen() {
         }
         return view
     }
-    if (!data) return <SafeAreaView />
     return (
         <SafeAreaView key={'Alert'} style={styles.alertWrapper}>
             <View style={styles.alertTop}>
@@ -66,7 +64,7 @@ export function AlertScreen() {
                     <Text style={styles.alertDeleteAll}>모두 삭제</Text>
                 </TouchableOpacity>
             </View>
-            <ScrollView>{alertList()}</ScrollView>
+            {data && <ScrollView>{alertList()}</ScrollView>}
         </SafeAreaView>
     )
 }
