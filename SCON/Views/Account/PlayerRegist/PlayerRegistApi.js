@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 import {ApiFetch} from '../../../Components'
 
 export function PlayerRegistApi(body) {
-    console.log(typeof(body['name']))
     AsyncStorage.getItem('accessToken').then(thing => {
         ApiFetch({
             method: 'POST',
@@ -13,9 +12,7 @@ export function PlayerRegistApi(body) {
                 'content-type': 'application/json',
                 Authorization: 'Bearer ' + thing,
             },
-            body: JSON.stringify({
-                body
-            }),
+            body: JSON.stringify(body),
         })
     })
 }

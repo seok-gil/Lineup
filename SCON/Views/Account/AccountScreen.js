@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     View,
     Image,
@@ -8,15 +8,17 @@ import {
     SafeAreaView,
 } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
-import {LogoutModal} from './LogoutModal'
-import {ApiFetch} from '../../Components'
-import {DownIcon} from '../../Assets/Icons'
+import { LogoutModal } from './LogoutModal'
+import { ApiFetch } from '../../Components'
+import { DownIcon } from '../../Assets/Icons'
 
 import styles from './Account.styles'
 
-export function AccountScreen({navigation}) {
+export function AccountScreen({ navigation }) {
     const [modal, setModal] = useState(false)
     const [data, setData] = useState()
+    const [role, setRole] = useState("ROLE_PLAYER")
+
     const onLogout = () => {
         setModal(true)
     }
@@ -34,6 +36,9 @@ export function AccountScreen({navigation}) {
             }).then(thing => {
                 setData(thing)
             })
+        })
+        AsyncStorage.getItem('role').then(thing => {
+            setRole(thing)
         })
     }, [])
     if (!data) {
@@ -54,12 +59,14 @@ export function AccountScreen({navigation}) {
                 <Text style={styles.elementText}>비밀번호 변경</Text>
                 <Image style={styles.icon} source={DownIcon} />
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.menuElement}
-                onPress={() => navigation.navigate('PlayerRegist')}>
-                <Text style={styles.elementText}>선수 등록</Text>
-                <Image style={styles.icon} source={DownIcon} />
-            </TouchableOpacity>
+            {role != "ROLE_PLAYER" &&
+                <TouchableOpacity
+                    style={styles.menuElement}
+                    onPress={() => navigation.navigate('PlayerRegist')}>
+                    <Text style={styles.elementText}>선수 등록</Text>
+                    <Image style={styles.icon} source={DownIcon} />
+                </TouchableOpacity>
+            }
             <TouchableOpacity
                 style={styles.menuElement}
                 onPress={() => navigation.navigate('Withdrawal')}>

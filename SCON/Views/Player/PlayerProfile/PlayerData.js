@@ -22,7 +22,6 @@ function PlayerData({data, navigation}) {
             })
         }
     }, [])
-
     return (
         <View style={styles.playerDataWrapper}>
             <TouchableOpacity

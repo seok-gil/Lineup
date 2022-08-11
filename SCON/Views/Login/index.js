@@ -18,7 +18,7 @@ export function LoginPage({ navigation }) {
         fcmToken : '',
     email: 'player6@gmail.com',
     password: '1234',
-        // email: 'member1@gmail.com',
+        // email: 'member3@gmail.com',
         // password: '1234',
         // email: 'admin@gmail.com',
         // password: '1234',

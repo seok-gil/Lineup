@@ -8,7 +8,9 @@ import {FeedBody} from './FeedBody'
 
 export function FeedScreen({route, navigation}) {
     const [data, setData] = useState()
+    const [mount, setMount] = useState(new Date())
     const [replyFocus, setReplyFocus] = useState(null)
+    
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -26,7 +28,8 @@ export function FeedScreen({route, navigation}) {
         .then(thing => {
             setData(thing)
         })
-    }, [])
+    }, [mount])
+
     if (!data) return <SafeAreaView />
     return (
         <SafeAreaView style={{flex: 3, flexDirection: 'column'}}>
@@ -34,17 +37,23 @@ export function FeedScreen({route, navigation}) {
                 data={data}
                 feedId={route.params.feedId}
                 navigation={navigation}
+                setMount={setMount}
             />
-            <CommentRegist feedId={route.params.feedId} />
+                
+            <CommentRegist 
+            feedId={route.params.feedId} 
+            setMount={setMount}/>
             <CommentList
                 feedId={route.params.feedId}
                 setReplyFocus={setReplyFocus}
                 navigation={navigation}
+                setMount={setMount}
             />
             <ReplyRegist
                 feedId={route.params.feedId}
                 replyFocus={replyFocus}
                 setReplyFocus={setReplyFocus}
+                setMount={setMount}
             />
         </SafeAreaView>
     )

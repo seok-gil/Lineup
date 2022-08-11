@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { ApiFetch } from './API/ApiFetch'
 
-export function LikeComponent(ilike, url) {
+export function LikeComponent(ilike, url, setMount) {
     const type = ilike ? 'DELETE' : 'POST'
     var apiUrl = '/like/' + url
     AsyncStorage.getItem('accessToken')
@@ -15,6 +15,7 @@ export function LikeComponent(ilike, url) {
                 },
                 body: null,
             }).then(() => {
+                setMount(new Date())
                 // console.log("Like", thing)
             })
         })

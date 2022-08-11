@@ -11,7 +11,7 @@ import {
 import { CommentModal, Reply } from './'
 import { HeartSEmptyIcon, HeartSFilledIcon, ViewMore } from '../../../Assets/Icons'
 import { TimeRelative, LikeComponent } from '../../../Components'
-export function CommentOne({ data, feedId, setReplyFocus }) {
+export function CommentOne({ data, feedId, setReplyFocus, setMount }) {
   if (!data) return <View />
   const [viewReply, setViewReply] = useState(false)
   var likeUrl = !data.ilike ? `comment/${data.commentId}` : `comment/${data.ilike}`
@@ -32,7 +32,7 @@ export function CommentOne({ data, feedId, setReplyFocus }) {
       </TouchableOpacity>
       <CommentModal modal={modal} setModal={setModal} nick={data.writer.nick} writerId={data.writer.writerId} commentId={data.commentId} />
       <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={() => LikeComponent(data.ilike, likeUrl)}>
+        <TouchableOpacity onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}>
           <Image source={data.ilike ? HeartSFilledIcon : HeartSEmptyIcon} />
           <Text>좋아요{data.likeCnt ? data.likeCnt : 0}개 </Text>
         </TouchableOpacity>

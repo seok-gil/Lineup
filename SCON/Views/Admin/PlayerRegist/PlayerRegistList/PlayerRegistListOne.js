@@ -3,27 +3,26 @@ import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native'
 import {Time} from '../../../../Components/Time'
 
 export function PlayerRegistListOne({navigation, data}) {
-    if (!data) return <SafeAreaView />
-    const Birth =
-    data.Birth.slice(0, 4) + data.Birth.slice(5, 7) + data.Birth.slice(8, 10)
+    const birth =
+    data.birth.slice(0, 4) + data.birth.slice(5, 7) + data.birth.slice(8, 10)
     return (
         <SafeAreaView>
             <TouchableOpacity
                 onPress={() =>
                     navigation.navigate('PlayerReigstDetail', {
-                        PlayerRegistId: data.playerRegistId,
+                        playerRegistId: data.playerRegistId,
                         state: data.state,
                     })
                 }>
                 <View style={{flexDirection: 'row'}}>
                     <Text>{data.name}</Text>
-                    <Text> / {Birth}</Text>
+                    <Text> / {birth}</Text>
                     <Text> / {data.gender}</Text>
                     <Text> / {data.sport}</Text>
                     <Text> / {data.belong}</Text>
                 </View>
                 <Text>
-                    <Time time={data.RegistDateTime} separator="." />
+                    <Time time={data.registDate} separator="." />
                 </Text>
             </TouchableOpacity>
         </SafeAreaView>

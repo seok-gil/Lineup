@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import {View, TouchableOpacity, SafeAreaView, Text, Image} from 'react-native'
+import {View, TouchableOpacity, DeviceEventEmitter, Text, Image} from 'react-native'
 import {CommentIcon, HeartEmptyIcon} from '../../Assets/Icons'
 import {TimeRelative} from '../../Components/Time'
 import AsyncStorage from '@react-native-community/async-storage'
 import {ApiFetch, LikeComponent} from '../../Components/'
-export function FeedBody({data, feedId, navigation}) {
-    // if (!data) return <View />;
+
+export function FeedBody({data, feedId, navigation, setMount}) {
     var likeUrl = !data.ilike ? `feed/${data.feedId}` : `feed/${data.ilike}`
 
     const delFeed = () => {
@@ -18,7 +18,7 @@ export function FeedBody({data, feedId, navigation}) {
                     Authorization: 'Bearer ' + thing,
                 },
                 body: null,
-            }).then(thing => {
+            }).then(() => {
                 navigation.goBack()
             })
         })
@@ -39,7 +39,8 @@ export function FeedBody({data, feedId, navigation}) {
             </Text>
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity
-                    onPress={() => LikeComponent(data.ilike, likeUrl)}
+                setMount={setMount}
+                    onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}
                     style={{flexDirection: 'row'}}>
                     <Image source={data.ilike ? CommentIcon : HeartEmptyIcon} />
                     <Text>{data.likeCnt}</Text>

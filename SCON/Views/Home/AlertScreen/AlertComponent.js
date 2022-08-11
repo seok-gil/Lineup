@@ -21,7 +21,7 @@ function AlertComponent({alert}) {
                     Authorization: 'Bearer ' + thing,
                 },
                 body: JSON.stringify({
-                    alarmId: alarmId,
+                    alarmId: alert.id,
                 }),
             })
         })

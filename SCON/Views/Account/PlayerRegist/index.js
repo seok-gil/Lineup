@@ -31,7 +31,7 @@ export function PlayerRegist({navigation}) {
             })
         })
     }, [])
-    if (code == 404) return <PlayerRegistForm />
-    else if (code == 200) return <PlayerRegistResultPage />
+    if (code == 404) return <PlayerRegistForm navigation={navigation}/>
+    else if (code == 'HOLD') return <PlayerRegistResultPage navigation={navigation} code={2}/>
     else return <SafeAreaView />
 }

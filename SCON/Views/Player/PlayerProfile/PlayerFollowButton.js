@@ -36,7 +36,6 @@ function PlayerFollowButton({ data, navigation, setMount={setMount}}) {
                     },
                     body: null,
                 }).then(thing => {
-                    console.log(thing)
                     setMount(true)
                 })
             })

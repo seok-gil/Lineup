@@ -4,7 +4,7 @@ import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
 import {DefaultProfileImage} from '../../../Assets/Images'
 import AsyncStorage from '@react-native-community/async-storage'
 
-export function ReplyRegist({replyFocus, setReplyFocus, feedId}) {
+export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
   if (replyFocus == null) {
     return <View/>
   }
@@ -29,7 +29,11 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId}) {
           }),
         })
       })
-      .then(setComment(''))
+      .then(() => {
+        setComment('')
+        setReplyFocus(null)
+        setMount(new Date())
+      })
   }
 
   return (

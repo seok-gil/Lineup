@@ -4,7 +4,7 @@ import {View, ScrollView, Text, FlatList} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import {CommentOne} from './CommentOne'
 
-export function CommentList({setReplyFocus, feedId, navigation}) {
+export function CommentList({setReplyFocus, feedId, navigation, setMount}) {
     const [data, setData] = useState([])
     const [size, setSize] = useState(5)
     useEffect(() => {
@@ -38,6 +38,7 @@ export function CommentList({setReplyFocus, feedId, navigation}) {
                         navigation={navigation}
                         feedId={feedId}
                         setReplyFocus={setReplyFocus}
+                        setMount={setMount}
                     />
                 )}
                 // onScroll={onScroll}

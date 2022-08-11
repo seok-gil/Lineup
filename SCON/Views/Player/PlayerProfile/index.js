@@ -30,23 +30,23 @@ function PlayerProfile({ navigation, playerId }) {
             })
         return () => { ismount = false }
     }, [mount])
-    if (!data) {
-        return (<Text>aaa</Text>)
-    }
     return (
         <View style={styles.profileInnerWrapper}>
-                <Image source={{ uri: data.backPic }} style={styles.backgroundImage} />
-                <Image source={{ uri: data.profilePic }} style={styles.profileImage} />
-                <View style={styles.profileBottom}>
-                    <View style={styles.playerInfo}>
-                        <View style={styles.playerInfoLeft}>
-                            <Text style={styles.playerMajor}>{data.sport}</Text>
-                            <Text style={styles.playerSchool}>{data.belong}</Text>
+            {data &&
+                <View>
+                    <Image source={{ uri: data.backPic }} style={styles.backgroundImage} />
+                    <Image source={{ uri: data.profilePic }} style={styles.profileImage} />
+                    <View style={styles.profileBottom}>
+                        <View style={styles.playerInfo}>
+                            <View style={styles.playerInfoLeft}>
+                                <Text style={styles.playerMajor}>{data.sport}</Text>
+                                <Text style={styles.playerSchool}>{data.belong}</Text>
+                            </View>
+                            <PlayerData data={data} navigation={navigation} />
                         </View>
-                        <PlayerData data={data} navigation={navigation} />
+                        <PlayerFollowButton data={data} navigation={navigation} setMount={setMount} />
                     </View>
-                    <PlayerFollowButton data={data} navigation={navigation} setMount={setMount}/>
-            </View>
+                </View>}
         </View>
     )
 }

@@ -3,6 +3,8 @@ import { Text, View } from 'react-native'
 import validator from 'validator'
 
 export function Time({time, separator}) {
+    if (!time)
+        return ('NULL')
     var year = time.slice(0, 4)
     var month = time.slice(5, 7)
     var day = time.slice(8, 10)

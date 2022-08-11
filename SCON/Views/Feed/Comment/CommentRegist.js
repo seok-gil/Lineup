@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
-import {DefaultProfileImage} from '../../../Assets/Images'
+import React, { useEffect, useState } from 'react'
+import { ApiFetch } from '../../../Components/API/ApiFetch'
+import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
+import { DefaultProfileImage } from '../../../Assets/Images'
 import AsyncStorage from '@react-native-community/async-storage'
 
-export function CommentRegist({feedId}) {
+export function CommentRegist({ feedId, setMount }) {
     const [comment, setComment] = useState('')
 
     const onInput = e => {
-        const {text} = e.nativeEvent
+        const { text } = e.nativeEvent
         setComment(text)
     }
 
@@ -27,11 +27,14 @@ export function CommentRegist({feedId}) {
                     }),
                 })
             })
-            .then(setComment(''))
+            .then(() => {
+                setComment('')
+                setMount(new Date())
+            })
     }
 
     return (
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
             <Image source={DefaultProfileImage} />
             <TextInput
                 value={comment}

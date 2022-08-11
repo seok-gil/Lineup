@@ -65,7 +65,15 @@ export function MakeId({ navigation }) {
                 email: form.email,
             }),
         })
+        .then((thing) => {
+        if (thing == 400) {
+            setValidate({
+                ...validate,
+                ['email'] : false
+            })
+        }
         setPost(false)
+        })
     }
 
     const onNext = () => {
@@ -134,7 +142,7 @@ export function MakeId({ navigation }) {
                     <View style={styles.errorMessageWrapper}>
                         {validate.email == false && (
                             <Text style={styles.errorMessage}>
-                                유효하지 않은 이메일 형식입니다.
+                                이미 가입된 이메일 입니다.
                             </Text>
                         )}
                     </View>

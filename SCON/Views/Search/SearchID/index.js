@@ -10,7 +10,6 @@ import {ApiFetch} from '../../../Components/API/ApiFetch'
 function SearchID({inputs, setInputs, data, navigation}) {
     const {search} = inputs
     const [more, setMore] = useState(false)
-    const [nextFeed, setNextFeed] = useState(10)
     const onClickMore = () => {
         if (!more) {
             onEndReached()
@@ -18,14 +17,17 @@ function SearchID({inputs, setInputs, data, navigation}) {
         } else setMore(false)
     }
 
-    const onEndReached = () => {
-        setNextFeed(nextFeed + 5)
+    const onEndReached = (e) => {
+        console.log(e)
+        if (e && e.distnceFormEnd < 0) {
+        console.log(e)
         setMore(false)
         setInputs({
             ...inputs,
-            ['size']: inputs.size + 3,
+            ['size']: inputs.size + 1,
         })
         console.log(inputs.size)
+        }
     }
 
     return (
@@ -42,12 +44,12 @@ function SearchID({inputs, setInputs, data, navigation}) {
                     />
                 )}
                 // onScroll={onScroll}
-                onEndReached={onEndReached}
+                onEndReached={(e) => onEndReached(e)}
                 onEndReachedThreshold={0.01}
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
             />
-            <TouchableOpacity onPress={() => onClickMore()}>
+            <TouchableOpacity onPress={(f) => onClickMore(f)}>
                 <View style={styles.searchExpand}>
                     {more ? (
                         <Text style={styles.expandText}>결과 접기</Text>
