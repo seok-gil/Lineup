@@ -102,6 +102,7 @@ export function Password({ navigation, route }) {
                             value={form.password}
                             placeholder={'비밀번호'}
                             style={styles.input}
+                            secureTextEntry={true}
                             placeholderTextColor="#0E0E0E66"
                             onChange={e => onInput('password', e)}
                         />

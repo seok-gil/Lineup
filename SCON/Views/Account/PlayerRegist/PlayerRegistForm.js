@@ -13,6 +13,7 @@ import {CaptureForm} from './CaptureForm'
 import {PlayerRegistModal} from './PlayerRegistModal'
 import {CheckSmallIcon} from '../../../Assets/Icons'
 import {ApiPush} from './ApiPush'
+import { useIsFocused } from '@react-navigation/native'
 
 export function PlayerRegistForm({navigation}) {
     const [modal, setModal] = useState(false)
@@ -77,8 +78,8 @@ export function PlayerRegistForm({navigation}) {
                 placeholderTextColor="#0E0E0E66"
                 onChange={e => onInput('name', e)}
             />
-            <BirthForm form={form} setForm={setForm} />
-            <GenderForm form={form} setForm={setForm} />
+            <BirthForm form={form} setForm={setForm} validate={validate}/>
+            <GenderForm form={form} setForm={setForm} validate={validate}/>
             <Text>종목</Text>
             <TextInput
                 value={form.sport}
@@ -86,7 +87,7 @@ export function PlayerRegistForm({navigation}) {
                 placeholderTextColor="#0E0E0E66"
                 onChange={e => onInput('sport', e)}
             />
-            <Image source={CheckSmallIcon} />
+            <Image source ={validate.sport ? CheckSmallIcon : CheckSmallIcon}/>
             <Text>소속</Text>
             <TextInput
                 value={form.belong}
@@ -94,7 +95,7 @@ export function PlayerRegistForm({navigation}) {
                 placeholderTextColor="#0E0E0E66"
                 onChange={e => onInput('belong', e)}
             />
-            <Image source={CheckSmallIcon} />
+            <Image source ={validate.belong ? CheckSmallIcon : CheckSmallIcon}/>
             <TouchableOpacity
                 // disabled={!button}
                 onPress={() => onSummit()}>

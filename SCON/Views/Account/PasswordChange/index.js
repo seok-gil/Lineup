@@ -82,6 +82,7 @@ export function PasswordChange({navigation}) {
                             value={form.oldPassword}
                             style={styles.input}
                             placeholder={'현재 비밀번호'}
+                            secureTextEntry={true}
                             placeholderTextColor="#0E0E0E66"
                             onChange={e => onInput('oldPassword', e)}
                         />
@@ -104,6 +105,7 @@ export function PasswordChange({navigation}) {
                     <View style={styles.inputWrapper}>
                         <TextInput
                             value={form.newPassword}
+                            
                             style={styles.input}
                             placeholder={'신규 비밀번호'}
                             placeholderTextColor="#0E0E0E66"

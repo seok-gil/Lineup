@@ -93,6 +93,7 @@ export function LoginPage({ navigation }) {
                         placeholder={'비밀번호 입력'}
                         placeholderTextColor="#0E0E0E66"
                         style={styles.loginInput}
+                        secureTextEntry={true}
                         onChange={e => onInput('password', e)}
                     />
                     <View style={styles.errorMessageWrapper}>

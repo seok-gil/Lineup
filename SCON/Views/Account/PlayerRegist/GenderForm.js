@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import RNPickerSelect from 'react-native-picker-select'
 import {CheckSmallIcon} from '../../../Assets/Icons'
-export function GenderForm({form, setForm}) {
+export function GenderForm({form, setForm, validate}) {
     const onChange = value => {
         var code = 0
         if (value == 'male')
@@ -35,7 +35,7 @@ export function GenderForm({form, setForm}) {
                     {label: 'fmale', value: 'fmale'},
                 ]}
             />
-            <Image source={CheckSmallIcon} />
+            <Image source ={validate.gender ? CheckSmallIcon : CheckSmallIcon}/>
         </View>
     )
 }

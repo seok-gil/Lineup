@@ -84,6 +84,7 @@ export function PasswordReset({navigation, route}) {
               style={styles.input}
               placeholder={'비밀번호'}
               placeholderTextColor="#0E0E0E66"
+              secureTextEntry={true}
               onChange={e => onInput('password', e)}
             />
             <Image
@@ -105,6 +106,7 @@ export function PasswordReset({navigation, route}) {
               value={form.certification}
               style={styles.input}
               placeholder={'비밀번호 확인'}
+              secureTextEntry={true}
               placeholderTextColor="#0E0E0E66"
               onChange={e => onInput('certification', e)}
             />

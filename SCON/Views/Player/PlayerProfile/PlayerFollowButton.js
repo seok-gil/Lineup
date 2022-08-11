@@ -35,7 +35,7 @@ function PlayerFollowButton({ data, navigation, setMount={setMount}}) {
                         'Authorization': 'Bearer ' + thing,
                     },
                     body: null,
-                }).then(thing => {
+                }).then(() => {
                     setMount(true)
                 })
             })

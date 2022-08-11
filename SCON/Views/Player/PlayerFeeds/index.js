@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { View, FlatList, useWindowDimensions } from 'react-native'
+import { View, FlatList } from 'react-native'
 import { ApiFetch } from '../../../Components/API/ApiFetch'
-
+import { useIsFocused } from '@react-navigation/native';
 import { PlayerFeed } from './PlayerFeed'
 import { PlayerFixedFeed } from './PlayerFixedFeeds'
+import PlayerFollowButton from '../PlayerProfile/PlayerFollowButton'
 
 import styles from './PlayerFeeds.styles'
 import PlayerProfile from '../PlayerProfile'
@@ -12,14 +13,14 @@ import AsyncStorage from '@react-native-community/async-storage'
 function PlayerFeeds({ playerId, navigation }) {
     const [data, setData] = useState()
     const [size, setSize] = useState(3)
-    const [mount, setMount] = useState(true)
-    const [lastFeedId, setLastFeedId] = useState(0)
+    const [lastFeedId, setLastFeedId] = useState(1000000)
+    const isFocused = useIsFocused();
     useEffect(() => {
         let abortController = new AbortController()
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
                 method: 'GET',
-                url: `/player-home/${playerId}/feeds?size=${size}&lastFeedId=${100}`,
+                url: `/player-home/${playerId}/feeds?size=${size}&lastFeedId=${lastFeedId}`,
                 headers: {
                     'content-type': 'application/json',
                     Authorization: 'Bearer ' + thing,
@@ -30,11 +31,29 @@ function PlayerFeeds({ playerId, navigation }) {
             })
         }, [])
         return () => abortController.abort();
-    },[])
+    },[size])
+
+    useEffect(() => {
+        let abortController = new AbortController()
+        AsyncStorage.getItem('accessToken').then(thing => {
+            ApiFetch({
+                method: 'GET',
+                url: `/player-home/${playerId}/feeds?size=${size}&lastFeedId=${lastFeedId}`,
+                headers: {
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer ' + thing,
+                },
+                body: null,
+            }).then(thing => {
+                setData(thing.content)
+            })
+        }, [])
+        return () => abortController.abort();
+    },[isFocused])
     
-    const onEndReached = () => {
+    const onEndReached = (info) => {
         setSize(size + 3)
-    // console.log("size!!!!!!!!!!", size)
+        console.log("info", info, size)
     }
 
     if (!data || data.length == 0) {
@@ -68,8 +87,9 @@ function PlayerFeeds({ playerId, navigation }) {
                             />)
                 }}
                 // onScroll={onScroll}
-                onEndReached={onEndReached}
-                onEndReachedThreshold={0.9}
+                onEndReached={(info) => onEndReached(info)}
+                onEndReachedThreshold={0}
+                onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
             />

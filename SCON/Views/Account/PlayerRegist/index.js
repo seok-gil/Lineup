@@ -28,6 +28,7 @@ export function PlayerRegist({navigation}) {
                 body: null,
             }).then(thing => {
                 setCode(thing)
+                console.log("regist code", thing)
             })
         })
     }, [])
