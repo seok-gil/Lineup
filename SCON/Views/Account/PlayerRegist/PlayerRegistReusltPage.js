@@ -3,8 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native'
 
 import {DefaultProfileImage} from '../../../Assets/Images/index'
 
-export function PlayerRegistResultPage({navigation, code}) {
-    const img =
+export function PlayerRegistResultPage({data, navigation, code}) {
     code >= 0
         ? {
             0: DefaultProfileImage,
@@ -34,24 +33,26 @@ export function PlayerRegistResultPage({navigation, code}) {
     ) : (
         <Text />
     )
-
+        console.log(data)
     const content =
     code >= 0 ? (
         {
             0: '심사는 3~5일이 소요됩니다.\n팬들과의 만남이 얼마 남지 않았어요{`><!`}',
             1: '선수 계정만이 가진 특별한 기능을 통해 팬들과 더욱 자유롭게 소통하실 수 있어요! \n\n앞으로 라인업+와 함께 그려나갈 멋진 선수님의 모습 기대할께요^^',
-            2: '반려 사유: 선수 등록 이미지에 확인이 어려워 선명한 이미지로 선수등록을 다시 해주세요',
         }[code]
     ) : (
         <Text />
+        
     )
+    if (code == 2)
+        content = `반려 사유: ${data.refuseContent}`
 
     const onPress = () => {
         navigation.navigate('PlayerRegist')
     }
     return (
         <View style={{flexDirection: 'column'}}>
-            <Image source={img} />
+            <Image source={DefaultProfileImage} />
             <Text>{head}</Text>
             <Text>{board}</Text>
             <Text>{content}</Text>

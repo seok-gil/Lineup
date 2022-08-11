@@ -1,8 +1,9 @@
+import { ConsoleLogger } from '@aws-amplify/core'
 import React, {useEffect, useState} from 'react'
 import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native'
 import {Time} from '../../../../Components/Time'
 
-export function PlayerRegistListOne({navigation, data}) {
+export function PlayerRegistListOne({navigation, data, state}) {
     const birth =
     data.birth.slice(0, 4) + data.birth.slice(5, 7) + data.birth.slice(8, 10)
     return (
@@ -11,7 +12,7 @@ export function PlayerRegistListOne({navigation, data}) {
                 onPress={() =>
                     navigation.navigate('PlayerReigstDetail', {
                         playerRegistId: data.playerRegistId,
-                        state: data.state,
+                        state: state,
                     })
                 }>
                 <View style={{flexDirection: 'row'}}>

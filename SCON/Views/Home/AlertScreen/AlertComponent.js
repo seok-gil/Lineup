@@ -20,9 +20,7 @@ function AlertComponent({alert}) {
                     'content-type': 'application/json',
                     Authorization: 'Bearer ' + thing,
                 },
-                body: JSON.stringify({
-                    alarmId: alert.id,
-                }),
+                body:null
             })
         })
     }

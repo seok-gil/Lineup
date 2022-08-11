@@ -20,7 +20,6 @@ export function AdminMypage({navigation}) {
         },
         body: null,
       }).then(thing => {
-        console.log('thing', thing)
         setData(thing)
       })
     })

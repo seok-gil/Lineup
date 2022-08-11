@@ -30,8 +30,6 @@ export function AlertScreen() {
                 body: null,
             }).then(thing => {
                 setData(thing)
-                console.log(thing)
-
             })
         })
     }, [])

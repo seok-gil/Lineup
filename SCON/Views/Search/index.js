@@ -16,12 +16,6 @@ export function SearchScreen({navigation, }) {
         size: 3,
     })
 
-    useEffect(()=>{
-        setInputs({
-            ...inputs,
-            ['size']:3
-        })
-    },[])
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({

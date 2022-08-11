@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import {TouchableOpacity, View, Text, FlatList} from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { TouchableOpacity, View, Text, FlatList } from 'react-native'
 
 import ViewPlayer from './ViewPlayer'
 
 import styles from './SearchID.styles'
 import AsyncStorage from '@react-native-community/async-storage'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
+import { ApiFetch } from '../../../Components/API/ApiFetch'
 
-function SearchID({inputs, setInputs, data, navigation}) {
-    const {search} = inputs
+function SearchID({ inputs, setInputs, data, navigation }) {
+    const { search } = inputs
     const [more, setMore] = useState(false)
     const onClickMore = () => {
         if (!more) {
@@ -19,15 +19,12 @@ function SearchID({inputs, setInputs, data, navigation}) {
 
     const onEndReached = (e) => {
         console.log(e)
-        if (e && e.distnceFormEnd < 0) {
-        console.log(e)
-        setMore(false)
-        setInputs({
-            ...inputs,
-            ['size']: inputs.size + 1,
-        })
-        console.log(inputs.size)
-        }
+            console.log(e)
+            setMore(false)
+            setInputs({
+                ...inputs,
+                ['size']: inputs.size + 3,
+            })
     }
 
     return (
@@ -36,7 +33,7 @@ function SearchID({inputs, setInputs, data, navigation}) {
                 data={data}
                 snapToAlignment="start"
                 decelerationRate="fast"
-                renderItem={({item, index}) => (
+                renderItem={({ item, index }) => (
                     <ViewPlayer
                         key={`view${index}`}
                         player={item}

@@ -62,9 +62,8 @@ export function PlayerRegistForm({navigation}) {
     const onSummit = async() => {
         ApiPush(playerPhoto, setPlayerPhoto, 'player-certificate',form, setForm)
         .then(() => {
-            console.log("a")
+            navigation.goBack()
         })
-        navigation.goBack()
     }
     return (
         <View style={{flexDirection: 'column'}}>

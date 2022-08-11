@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -7,33 +7,32 @@ import {
   Image,
   StyleSheet,
 } from 'react-native'
-import {TextInput} from 'react-native-gesture-handler'
+import { TextInput } from 'react-native-gesture-handler'
 
-import {ApiFetch} from '../../../../Components/API/ApiFetch'
-import {PlayerRegistRefuse} from './PlayerRegistRefuse'
+import { ApiFetch } from '../../../../Components/API/ApiFetch'
+import { PlayerRegistRefuse } from './PlayerRegistRefuse'
 import AsyncStorage from '@react-native-community/async-storage'
 
-export function PlayerReigstDetail({route, navigation}) {
+export function PlayerReigstDetail({ route, navigation }) {
   const [data, setData] = useState()
-  const gender = ['남자', '여자']
+
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
         ApiFetch({
           method: 'GET',
-          url: `/admin/player-regist/${route.params.playerRegistId}`,
-          headers: { 
+          url: `/admin/player-regist-detail/${route.params.playerRegistId}`,
+          headers: {
             'content-type': 'application/json',
             'Authorization': 'Bearer ' + thing,
           },
           body: null,
         }).then(thing => {
-          setData(thing);
+          console.log(thing)
+          setData(thing)
         })
-  })
+      })
   }, []);
-  // 7B9HWF3
-  console.log(data)
   if (!data) return (<SafeAreaView />)
   return (
     <SafeAreaView>
@@ -43,21 +42,27 @@ export function PlayerReigstDetail({route, navigation}) {
         <Text>{data.email}</Text>
       </View>
       <Text>등록 정보</Text>
-      <Image source={{uri: data.certificate}} style={styles.image} />
+      <Image source={{ uri: data.certificate }} style={styles.image} />
       <Text>이름</Text>
       <Text>{data.name}</Text>
       <Text>생년월일</Text>
-      {/* <Text>
-        {data.birth.slice(0, 4)}년 {data.birth.slice(5, 7)}월{' '}
-        {data.birth.slice(8, 10)}일
-      </Text> */}
+      {data.birth ?
+        <Text>
+          {data.birth.slice(0, 4)}년 {data.birth.slice(5, 7)}월{' '}
+          {data.birth.slice(8, 10)}일
+        </Text>
+        :
+        <Text>
+        생년월일입력을 하지 않았습니다.
+      </Text>
+      }
       <Text>성별</Text>
-      <Text>{gender[data.gender]} </Text>
+      <Text>{data.gender} </Text>
       <Text>종목</Text>
-      <Text>{data.Sport}</Text>
+      <Text>{data.sport}</Text>
       <Text>소속명</Text>
       <Text>{data.belong}</Text>
-      <PlayerRegistRefuse params={route.params} /> */}
+      <PlayerRegistRefuse navigation={navigation} params={route.params} />
     </SafeAreaView>
   )
 }

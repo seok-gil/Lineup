@@ -16,10 +16,10 @@ import styles from './Login.styles'
 export function LoginPage({ navigation }) {
     const [form, setForm] = useState({
         fcmToken : '',
-    email: 'player6@gmail.com',
-    password: '1234',
-        // email: 'member3@gmail.com',
-        // password: '1234',
+    // email: 'player6@gmail.com',
+    // password: '1234',
+        email: 'member11@gmail.com',
+        password: '1234',
         // email: 'admin@gmail.com',
         // password: '1234',
     })

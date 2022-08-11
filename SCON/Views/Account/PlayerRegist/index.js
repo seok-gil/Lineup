@@ -32,7 +32,16 @@ export function PlayerRegist({navigation}) {
             })
         })
     }, [])
-    if (code == 404) return <PlayerRegistForm navigation={navigation}/>
-    else if (code == 'HOLD') return <PlayerRegistResultPage navigation={navigation} code={2}/>
-    else return <SafeAreaView />
+    if (code == 404) { 
+        console.log("1") 
+    return <PlayerRegistForm navigation={navigation}/>
+}
+    else if (code && code.registState === 'HOLD') {
+        console.log("2") 
+    return <PlayerRegistResultPage navigation={navigation} code={1}/>
+    }
+    else if (code && code.registState === 'REFUSE') {
+        console.log("3")
+    return<PlayerRegistResultPage navigation={navigation} code={2} data={code}/>
+    }
 }

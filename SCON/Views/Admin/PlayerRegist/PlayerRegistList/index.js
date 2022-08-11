@@ -4,6 +4,7 @@ import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import {PlayerRegistListOne} from './PlayerRegistListOne'
 
+//route.params.state 대기 0 승인 1 반려 2
 export function PlayerRegistList({navigation, route}) {
   const [data, setData] = useState([])
 
@@ -31,6 +32,7 @@ export function PlayerRegistList({navigation, route}) {
           data={item}
           key={`playerRegistListOne-${index}`}
           navigation={navigation}
+          state={route.params.state}
         />
       ))}
     </SafeAreaView>
