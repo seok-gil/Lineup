@@ -8,15 +8,12 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 function AlertComponent({alert}) {
     if (!alert) return <View />
-
-    var alarmId = Number(alert.id)
-
     const onClickX = () => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
                 method: 'DELETE',
-                url: `/alarm/${alarmId}`,
-                healarmIders: {
+                url: `/alarm/${alert.id}`,
+                headers: {
                     'content-type': 'application/json',
                     Authorization: 'Bearer ' + thing,
                 },

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     View,
     Image,
@@ -10,11 +10,11 @@ import {
 } from 'react-native'
 
 import AsyncStorage from '@react-native-community/async-storage'
-import {ApiFetch} from './../../../Components'
-import {PlayerRegistForm} from './PlayerRegistForm'
-import {PlayerRegistResultPage} from './PlayerRegistReusltPage'
+import { ApiFetch } from './../../../Components'
+import { PlayerRegistForm } from './PlayerRegistForm'
+import { PlayerRegistResultPage } from './PlayerRegistReusltPage'
 
-export function PlayerRegist({navigation}) {
+export function PlayerRegist({ navigation }) {
     const [code, setCode] = useState()
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
@@ -28,20 +28,25 @@ export function PlayerRegist({navigation}) {
                 body: null,
             }).then(thing => {
                 setCode(thing)
-                console.log("regist code", thing)
+                AsyncStorage.getItem('role')
+                .then(setCode)
             })
         })
     }, [])
-    if (code == 404) { 
-        console.log("1") 
-    return <PlayerRegistForm navigation={navigation}/>
-}
-    else if (code && code.registState === 'HOLD') {
-        console.log("2") 
-    return <PlayerRegistResultPage navigation={navigation} code={1}/>
+    
+    if (code == 'ROLE_PLAYER')
+        return <PlayerRegistResultPage navigation={navigation} code={1} />
+    else if (!code)
+        return <SafeAreaView/>
+    else if (!code.registState) {
+        return <PlayerRegistForm navigation={navigation} />
     }
-    else if (code && code.registState === 'REFUSE') {
+    else if (code.registState === 'HOLD') {
+        console.log("2")
+        return <PlayerRegistResultPage navigation={navigation} code={0} />
+    }
+    else if (code.registState === 'REFUSE') {
         console.log("3")
-    return<PlayerRegistResultPage navigation={navigation} code={2} data={code}/>
+        return <PlayerRegistResultPage navigation={navigation} code={2} data={code} />
     }
 }

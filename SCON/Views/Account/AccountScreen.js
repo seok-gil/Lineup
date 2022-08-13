@@ -59,14 +59,12 @@ export function AccountScreen({ navigation }) {
                 <Text style={styles.elementText}>비밀번호 변경</Text>
                 <Image style={styles.icon} source={DownIcon} />
             </TouchableOpacity>
-            {role != "ROLE_PLAYER" &&
                 <TouchableOpacity
                     style={styles.menuElement}
                     onPress={() => navigation.navigate('PlayerRegist')}>
                     <Text style={styles.elementText}>선수 등록</Text>
                     <Image style={styles.icon} source={DownIcon} />
                 </TouchableOpacity>
-            }
             <TouchableOpacity
                 style={styles.menuElement}
                 onPress={() => navigation.navigate('Withdrawal')}>

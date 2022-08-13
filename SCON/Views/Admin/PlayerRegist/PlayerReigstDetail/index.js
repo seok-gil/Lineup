@@ -38,7 +38,7 @@ export function PlayerReigstDetail({ route, navigation }) {
     <SafeAreaView>
       <Text>신청 계정</Text>
       <View>
-        <Text>{data.nickName}</Text>
+        <Text>{data.nickname}</Text>
         <Text>{data.email}</Text>
       </View>
       <Text>등록 정보</Text>
