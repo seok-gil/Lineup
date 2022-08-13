@@ -41,15 +41,12 @@ export function AccountScreen({ navigation }) {
             setRole(thing)
         })
     }, [])
-    if (!data) {
-        return <View />
-    }
     return (
         <SafeAreaView style={styles.accountScreenWrapper}>
             <TouchableOpacity style={styles.menuElement} onPress={onLogout}>
                 <View style={styles.columnView}>
                     <Text style={styles.elementText}>로그아웃</Text>
-                    <Text style={styles.emailText}>{data.email}</Text>
+                    <Text style={styles.emailText}>{data && data.email}</Text>
                 </View>
                 <Image style={styles.icon} source={DownIcon} />
             </TouchableOpacity>
@@ -59,14 +56,12 @@ export function AccountScreen({ navigation }) {
                 <Text style={styles.elementText}>비밀번호 변경</Text>
                 <Image style={styles.icon} source={DownIcon} />
             </TouchableOpacity>
-            {role != "ROLE_PLAYER" &&
                 <TouchableOpacity
                     style={styles.menuElement}
                     onPress={() => navigation.navigate('PlayerRegist')}>
                     <Text style={styles.elementText}>선수 등록</Text>
                     <Image style={styles.icon} source={DownIcon} />
                 </TouchableOpacity>
-            }
             <TouchableOpacity
                 style={styles.menuElement}
                 onPress={() => navigation.navigate('Withdrawal')}>

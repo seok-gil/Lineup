@@ -11,6 +11,7 @@ import {
 import styles from './MakeID.styles'
 import validator from 'validator'
 import { ApiFetch } from '../../../Components'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function MakeId({ navigation }) {
     const [form, setForm] = useState({
@@ -44,9 +45,13 @@ export function MakeId({ navigation }) {
                 setPost(false)
             }
         }
-        if (key == 'certification') {
+        else if (key == 'certification') {
             tempVal['certification'] = true
         }
+        if (form.nickname == '')
+            tempVal['nickname'] = false
+        else
+            tempVal['nickname'] = true
         setValidate(tempVal)
         if (validate.nickname && validate.email && validate.certification)
             setButton(true)
@@ -55,6 +60,10 @@ export function MakeId({ navigation }) {
     }
 
     const pushEmail = () => {
+        setValidate({
+            ...validate,
+            ['email'] : true
+        })
         ApiFetch({
             method: 'POST',
             url: '/email-auth',
@@ -77,7 +86,6 @@ export function MakeId({ navigation }) {
     }
 
     const onNext = () => {
-        var certification
         ApiFetch({
             method: 'POST',
             url: `/email-auth/email-check`,
@@ -89,20 +97,21 @@ export function MakeId({ navigation }) {
                 code: form.certification
             }),
         }).then(res => {
-            certification = res
-            console.log("res", res)
             setValidate({
                 ...validate,
                 ['certification']: res
             })
-            if (res)
+            if (res && form.nickname != '')
                 navigation.navigate('Password', { form: form })
+        })
+        .catch(error => {
+            console.log('catch error', error)
         })
     }
     return (
         <SafeAreaView style={styles.makeIDwrapper}>
             <View style={styles.makeIDInner}>
-                <View style={styles.makeIDTop}>
+                <KeyboardAwareScrollView style={styles.makeIDTop}>
                     <Text style={styles.label}>닉네임을 입력해 주세요.</Text>
                     <TextInput
                         value={form.nickname}
@@ -163,7 +172,7 @@ export function MakeId({ navigation }) {
                             </Text>
                         )}
                     </View>
-                </View>
+                </KeyboardAwareScrollView>
                 <TouchableOpacity
                     disabled={!button}
                     onPress={() => onNext()}

@@ -10,8 +10,11 @@ const DEFAULT_STYLE = {
     photoPickTouchable: {},
 }
 
-export function PhotoPick({ text, photo, setPhoto, styles = DEFAULT_STYLE }) {
+export function PhotoPick({ text, photo, setPhoto, setMount, styles = DEFAULT_STYLE }) {
+    var flag = true
     const onClick = () => {
+        if (flag) {
+        flag = false
         Alert.alert(
             text,
             '',
@@ -19,7 +22,12 @@ export function PhotoPick({ text, photo, setPhoto, styles = DEFAULT_STYLE }) {
                 {
                     text: '앨범에서 선택',
                     onPress: async () => {
-                        const result = await launchImageLibrary()
+                        var result
+                        await launchImageLibrary()
+                        .then((res) => {
+                            result = res
+                            flag = true
+                        })
                         if (result.didCancel) {
                             return null
                         }
@@ -34,9 +42,14 @@ export function PhotoPick({ text, photo, setPhoto, styles = DEFAULT_STYLE }) {
                 {
                     text: '카메라로 찍기',
                     onPress: async () => {
-                        const result = await launchCamera({
+                        var result
+                        await launchCamera({
                             mediaType: 'photo',
                             cameraType: 'back',
+                        })
+                        .then((res) => {
+                            result = res
+                            flag = true
                         })
                         if (result.didCancel) {
                             return null
@@ -51,6 +64,8 @@ export function PhotoPick({ text, photo, setPhoto, styles = DEFAULT_STYLE }) {
             ],
             { cancelable: false },
         )
+        }
+        setMount(new Date())
     }
     return (
         <View style={styles.photoPickWrapper}>

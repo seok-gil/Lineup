@@ -8,6 +8,7 @@ import styles from './SearchScreen.styles'
 import {ViewPlayer} from './SearchID/ViewPlayer'
 import AsyncStorage from '@react-native-community/async-storage'
 import {ApiFetch} from '../../Components/API/ApiFetch'
+
 export function SearchScreen({navigation, }) {
     const [data, setData] = useState()
     const [inputs, setInputs] = useState({

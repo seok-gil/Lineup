@@ -42,7 +42,8 @@ function SearchID({ inputs, setInputs, data, navigation }) {
                 )}
                 // onScroll={onScroll}
                 onEndReached={(e) => onEndReached(e)}
-                onEndReachedThreshold={0.01}
+                onEndReachedThreshold={0.1}
+                onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
             />

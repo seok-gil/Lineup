@@ -16,6 +16,7 @@ import {ApiPush} from './ApiPush'
 import { useIsFocused } from '@react-navigation/native'
 
 export function PlayerRegistForm({navigation}) {
+    const [mount, setMount] = useState()
     const [modal, setModal] = useState(false)
     const [form, setForm] = useState({
         certificate: '',
@@ -69,7 +70,7 @@ export function PlayerRegistForm({navigation}) {
         <View style={{flexDirection: 'column'}}>
             <Text>운동선수 확인을 시작합니다.</Text>
             <Text>확인된 내용이 실제와 다르면 이용이 제한됩니다.</Text>
-            <CaptureForm playerPhoto={playerPhoto} setPlayerPhoto={setPlayerPhoto} />
+            <CaptureForm setMount={setMount} playerPhoto={playerPhoto} setPlayerPhoto={setPlayerPhoto} />
             <Text>이름</Text>
             <TextInput
                 value={form.name}

@@ -3,6 +3,7 @@ import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
 import {DefaultProfileImage} from '../../../Assets/Images'
 import AsyncStorage from '@react-native-community/async-storage'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
   if (replyFocus == null) {
@@ -37,7 +38,7 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
   }
 
   return (
-    <View style={{flexDirection: 'row'}}>
+    <KeyboardAwareScrollView style={{flexDirection: 'row'}}>
       <Image source={DefaultProfileImage} />
       <TextInput
         value={comment}
@@ -48,6 +49,6 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
       <TouchableOpacity onPress={onPress}>
         <Text>게시</Text>
       </TouchableOpacity>
-    </View>
+    </KeyboardAwareScrollView>
   )
 }

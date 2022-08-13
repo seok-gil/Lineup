@@ -5,13 +5,11 @@ import {SafeAreaView, ScrollView, Text} from 'react-native'
 import {AdminOne} from './AdminNotiOne'
 import styles from './AdminNotiListScreen.styles'
 import AsyncStorage from '@react-native-community/async-storage'
+import { useIsFocused } from '@react-navigation/native'
 
 export function AdminNotiListScreen({navigation}) {
     const [data, setData] = useState([])
-    const [lastFeed, setLastFeed] = useState(1)
-    const [nextFeed, setNextFeed] = useState(10)
-    var temp = data
-
+    const isFocused = useIsFocused()
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -26,7 +24,7 @@ export function AdminNotiListScreen({navigation}) {
                 setData(thing)
             })
         })
-    }, [])
+    }, [isFocused])
 
     return (
         <SafeAreaView style={styles.notiScreenWrapper}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Image, Text, TouchableOpacity } from 'react-native'
+import { View, Image, Text, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native'
 import ProfileInfoScreenElement from './ProfileInfoScreenElement'
 import styles from './ProfileInfoScreen.styles'
 import { ApiFetch, PhotoPick } from '../../../Components'
@@ -9,8 +9,11 @@ import {
 } from './MypagePhotoPick.styles'
 import AsyncStorage from '@react-native-community/async-storage'
 import { ImagePush } from './ImagePush'
+import { useIsFocused } from '@react-navigation/native'
 
 export function ProfileInfoScreen({ navigation }) {
+    const [mount, setMount] = useState()
+    const isFocused = useIsFocused()
     const [data, setData] = useState()
     const [role, setRole] = useState('ROLE_MEMBER')
     const [body, setBody] = useState({
@@ -52,7 +55,7 @@ export function ProfileInfoScreen({ navigation }) {
         AsyncStorage.getItem('role').then(role => {
             setRole(role)
         })
-    }, [])
+    }, [isFocused])
 
     const onImagePush = async () => {
         if (userPhoto.set) {
@@ -66,49 +69,54 @@ export function ProfileInfoScreen({ navigation }) {
 
     if (!data) return <View />
     return (
-        <View style={styles.profileScreenWrapper}>
-            <View style={styles.profileImageWrapper}>
-                <View style={styles.profileBackground}>
-                    <Image source={{ uri: backPhoto.uri }} style={styles.backgroundPhoto} />
+        <SafeAreaView>
+            <ScrollView style={styles.profileScreenWrapper}>
+                <View style={styles.profileImageWrapper}>
+                    <View style={styles.profileBackground}>
+                        <Image source={{ uri: backPhoto.uri }} style={styles.backgroundPhoto} />
                         <PhotoPick
                             styles={backgroundPhotoPickStyles}
                             text="배경 이미지 설정"
                             photo={backPhoto}
                             setPhoto={setBackPhoto}
-                        />
-                </View>
-                <View style={styles.profileImage}>
-                    <View style={styles.profileImageRelative}>
-                        <Image source={{ uri: userPhoto.uri }} style={styles.profilePhoto} />
-                        <PhotoPick
-                            styles={profilePhotoPickStyles}
-                            text="프로필 이미지 설정"
-                            photo={userPhoto}
-                            setPhoto={setUserPhoto}
+                            setMount={setMount}
                         />
                     </View>
-                </View>
-            </View>
-            <View style={styles.formSection}>
-                <ProfileInfoScreenElement label="이름" text={data.name} />
-                <ProfileInfoScreenElement label="이메일 계정" text={data.email} />
-                {role == "ROLE_PLAYER" ?
-                    <View>
-                        <ProfileInfoScreenElement label="생년월일" text={data.birth} />
-                        <ProfileInfoScreenElement
-                            label="성별"
-                            text={data.gender == 'MALE' ? '남자' : '여쟈'}
-                        />
-                        <ProfileInfoScreenElement label="종목" text={data.sport} />
-                        <ProfileInfoScreenElement label="소속" text={data.belong} />
+                    <View style={styles.profileImage}>
+                        <View style={styles.profileImageRelative}>
+                            <Image source={{ uri: userPhoto.uri }} style={styles.profilePhoto} />
+                            <PhotoPick
+                                styles={profilePhotoPickStyles}
+                                text="프로필 이미지 설정"
+                                photo={userPhoto}
+                                setPhoto={setUserPhoto}
+                                setMount={setMount}
+
+                            />
+                        </View>
                     </View>
-                    :
-                    <View />
-                }
-                <TouchableOpacity onPress={() => onImagePush()}>
-                    <Text>@@@@@@@@@@저장@@@@@@@</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
+                </View>
+                <View style={styles.formSection}>
+                    <ProfileInfoScreenElement label="이름" text={data.name} />
+                    <ProfileInfoScreenElement label="이메일 계정" text={data.email} />
+                    <TouchableOpacity onPress={() => onImagePush()}>
+                        <Text>@@@@@@@@@@저장@@@@@@@</Text>
+                    </TouchableOpacity>
+                    {role == "ROLE_PLAYER" ?
+                        <View>
+                            <ProfileInfoScreenElement label="생년월일" text={data.birth} />
+                            <ProfileInfoScreenElement
+                                label="성별"
+                                text={data.gender == 'MALE' ? '남자' : '여쟈'}
+                            />
+                            <ProfileInfoScreenElement label="종목" text={data.sport} />
+                            <ProfileInfoScreenElement label="소속" text={data.belong} />
+                        </View>
+                        :
+                        <View />
+                    }
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     )
 }

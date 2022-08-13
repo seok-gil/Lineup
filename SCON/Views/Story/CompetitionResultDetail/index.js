@@ -16,12 +16,10 @@ export function CompetitionResultDetail({navigation, route}) {
     })
     const type = route.params.type
     const eventId = route.params.data.eventId
-    // const [url, setUrl] = useState(`/player/event/record/`)
     useEffect(() => {
         var url = '/player/event/record'
         if (!type) url += `/${eventId}`
         else {
-            // setUrl(() => url + `/detail/${eventId}`)
             url += `/detail/${eventId}`
         }
         AsyncStorage.getItem('accessToken').then(thing => {

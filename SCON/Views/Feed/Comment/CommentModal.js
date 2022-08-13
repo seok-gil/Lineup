@@ -10,7 +10,8 @@ import {
 import styles from './CommentModal.styles'
 import AsyncStorage from "@react-native-community/async-storage"
 import { ApiFetch } from '../../../Components'
-export function CommentModal({ modal, setModal, nick, writerId, commentId }) {
+
+export function CommentModal({ modal, setModal, nick, writerId, commentId, setMount, navigation }) {
     const [report, setReport] = useState({
         text: '댓글 신고',
         method: `POST`,
@@ -49,8 +50,14 @@ export function CommentModal({ modal, setModal, nick, writerId, commentId }) {
                         'Authorization': 'Bearer ' + thing,
                     },
                     body: null,
-                }).then(thing => {
+                }).then((thing) => {
+                    if (thing == 403)
+                        navigation.navigate('ErrorPage', 
+                        {text: "댓글 삭제 권한이 없습니다",
+                            navigation:navigation
+                    })
                     setModal(false)
+                    setMount(new Date())
                 })
             })
     }

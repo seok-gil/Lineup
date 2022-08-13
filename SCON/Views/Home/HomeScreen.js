@@ -3,9 +3,11 @@ import {SafeAreaView} from 'react-native'
 import {Head, Body} from './index'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import AsyncStorage from '@react-native-community/async-storage'
+import { useIsFocused } from '@react-navigation/native'
 
 export function HomeScreen({navigation}) {
     const [data, setData] = useState()
+    const isFocused = useIsFocused()
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -21,7 +23,7 @@ export function HomeScreen({navigation}) {
                 AsyncStorage.setItem('memberId',thing.memberId.toString())
             })
         })
-    }, [])
+    }, [isFocused])
     if (!data) return <SafeAreaView />
     return (
         <SafeAreaView style={{flex: 1}}>
