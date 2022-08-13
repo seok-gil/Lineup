@@ -8,23 +8,25 @@ import AsyncStorage from '@react-native-community/async-storage'
 export function Reports({navigation}) {
   const [data, setData] = useState()
   const [page, setPage] = useState(0)
-  const [size, setSize] = useState(3)
+  const [size, setSize] = useState(100)
   useEffect(() => {
-    AsyncStorage.getItem('accessToken').then(thing => {
-      ApiFetch({
-        method: 'GET',
-        url: `/admin/reports?page=${page}&size=${size}`,
-        headers: {
-          'content-type': 'application/json',
-          Authorization: 'Bearer ' + thing,
-        },
-        body: null,
-      }).then(thing => {
-        console.log('thing', thing.content)
-        setData(thing)
+    AsyncStorage.getItem("accessToken")
+      .then((thing) => {
+        ApiFetch({
+          method: 'GET',
+          url: `/admin/reports?page=${page}&size=${size}`,
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + thing,
+          },
+          body: null,
+        }).then(thing => {
+          console.log(thing.content)
+          setData(thing.content);
+        })
       })
-    })
   }, [size])
+
 
   const onEndReached = () => {
     setSize(size + 5)

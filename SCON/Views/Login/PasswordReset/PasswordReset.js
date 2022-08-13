@@ -11,8 +11,9 @@ import {
 import styles from './PasswordReset.styles'
 import {PasswordChangeModal} from './PasswordChangeModal'
 import {CheckSmallIcon} from '../../../Assets/Icons'
-
-export function PasswordReset({navigation}) {
+import AsyncStorage from "@react-native-community/async-storage"
+import { ApiFetch } from '../../../Components'
+export function PasswordReset({navigation, route}) {
   const [form, setForm] = useState({
     password: '',
     certification: '',
@@ -40,11 +41,9 @@ export function PasswordReset({navigation}) {
 
   async function checkValidate(temp) {
     var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
-    if (form.password.match(reg)) {
+    if (form.password && form.password.match(reg)) {
       temp.password = true
     } else temp.password = false
-
-    console.log(form.certification.length)
     if (form.certification.length == form.password.length) {
       temp.certification = true
     } else temp.certification = false
@@ -54,10 +53,21 @@ export function PasswordReset({navigation}) {
     let temp = validate
     checkValidate(temp).then(setValidate(temp))
   }, [form])
-
+  
   const onPress = () => {
-    console.log('API POST')
-    setModal(true)
+        ApiFetch({
+          method: 'POST',
+          url: `/auth/pw-reset`,
+          headers: { 
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            email : route.params.email,
+            newPw : form.password
+          }),
+        }).then(() => {
+          setModal(true)
+        })
   }
 
   return (
@@ -74,6 +84,7 @@ export function PasswordReset({navigation}) {
               style={styles.input}
               placeholder={'비밀번호'}
               placeholderTextColor="#0E0E0E66"
+              secureTextEntry={true}
               onChange={e => onInput('password', e)}
             />
             <Image
@@ -95,6 +106,7 @@ export function PasswordReset({navigation}) {
               value={form.certification}
               style={styles.input}
               placeholder={'비밀번호 확인'}
+              secureTextEntry={true}
               placeholderTextColor="#0E0E0E66"
               onChange={e => onInput('certification', e)}
             />

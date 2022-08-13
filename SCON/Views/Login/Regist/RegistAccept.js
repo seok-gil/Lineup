@@ -15,10 +15,8 @@ export function RegistAccept({navigation}) {
     var temp = accept
     if (key != 'all') {
       temp[key] = !accept[key]
-      console.log(key, temp)
       if (temp.service && temp.privacy) {
         temp['all'] = true
-        console.log(temp)
       }
     } else if (key == 'all') {
       temp = {

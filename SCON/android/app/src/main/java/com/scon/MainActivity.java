@@ -1,4 +1,4 @@
-package com.scon;
+package kr.co.sportist.lineup;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

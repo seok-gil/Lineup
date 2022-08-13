@@ -6,43 +6,43 @@ import AsyncStorage from '@react-native-community/async-storage'
 import styles from './CompetitionResultButton.styles'
 
 export function CompetitionResultButton({eventId, data, type, navigation}) {
-  const onPress = () => {
-    if (!type) {
-      var result = data
-      delete result['detailName']
-      AsyncStorage.getItem('accessToken').then(thing => {
-        ApiFetch({
-          method: 'POST',
-          url: `/player/event/record/${eventId}`,
-          headers: {
-            'content-type': 'application/json',
-            Authorization: 'Bearer ' + thing,
-          },
-          body: JSON.stringify(result),
-        })
-          .then(thing => {
-            navigation.navigate('StoryScreen')
-          })
-          .catch(error => {
-            console.log('Login ERROR', error)
-          })
-      })
+    const onPress = () => {
+        if (!type) {
+            var result = data
+            delete result['detailName']
+            AsyncStorage.getItem('accessToken').then(thing => {
+                ApiFetch({
+                    method: 'POST',
+                    url: `/player/event/record/${eventId}`,
+                    headers: {
+                        'content-type': 'application/json',
+                        Authorization: 'Bearer ' + thing,
+                    },
+                    body: JSON.stringify(result),
+                })
+                    .then(thing => {
+                        navigation.navigate('StoryScreen')
+                    })
+                    .catch(error => {
+                        console.log('Login ERROR', error)
+                    })
+            })
+        }
+        navigation.navigate('StoryScreen')
     }
-    navigation.navigate('StoryScreen')
-  }
 
-  const buttonStyle =
+    const buttonStyle =
     data.endDate && data.location && data.eventName
-      ? styles.filledButton
-      : styles.notfillButton
+        ? styles.filledButton
+        : styles.notfillButton
 
-  const buttonTextStyle =
+    const buttonTextStyle =
     data.endDate && data.location && data.eventName
-      ? styles.filledText
-      : styles.notfillText
-  return (
-    <TouchableOpacity onPress={() => onPress()} style={buttonStyle}>
-      <Text style={buttonTextStyle}>확인</Text>
-    </TouchableOpacity>
-  )
+        ? styles.filledText
+        : styles.notfillText
+    return (
+        <TouchableOpacity onPress={() => onPress()} style={buttonStyle}>
+            <Text style={buttonTextStyle}>확인</Text>
+        </TouchableOpacity>
+    )
 }

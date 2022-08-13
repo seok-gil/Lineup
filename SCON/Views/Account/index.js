@@ -5,9 +5,9 @@ import {Withdrawal} from './Withdrawal'
 import {PlayerRegistResultPage} from './PlayerRegist/PlayerRegistReusltPage'
 
 export {
-  AccountScreen,
-  PasswordChange,
-  PlayerRegist,
-  Withdrawal,
-  PlayerRegistResultPage,
+    AccountScreen,
+    PasswordChange,
+    PlayerRegist,
+    Withdrawal,
+    PlayerRegistResultPage,
 }

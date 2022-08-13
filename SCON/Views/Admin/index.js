@@ -7,12 +7,12 @@ import {PlayerRegistTabScreen} from './PlayerRegist'
 import {PlayerReigstDetail} from './PlayerRegist/PlayerReigstDetail'
 import {Inquiry} from './Inquiry'
 export {
-  AdminTabScreen,
-  AdminNotiTabScreen,
-  RegistMemberTabScreen,
-  Reports,
-  Reporter,
-  PlayerRegistTabScreen,
-  PlayerReigstDetail,
-  Inquiry,
+    AdminTabScreen,
+    AdminNotiTabScreen,
+    RegistMemberTabScreen,
+    Reports,
+    Reporter,
+    PlayerRegistTabScreen,
+    PlayerReigstDetail,
+    Inquiry,
 }

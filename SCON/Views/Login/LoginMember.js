@@ -42,10 +42,16 @@ export function LoginMember({navigation}) {
       },
       body: JSON.stringify(form),
     })
+<<<<<<< HEAD
+      .then((thing) => {
+        AsyncStorage.setItem("accessToken", thing.accessToken)
+        AsyncStorage.setItem("refreshToken", thing.refreshToken)
+=======
       .then(thing => {
         console.log('login', thing)
         AsyncStorage.setItem('accessToken', thing.accessToken)
         AsyncStorage.setItem('refreshToken', thing.refreshToken)
+>>>>>>> origin
         navigation.navigate('Tab')
       })
       .catch(error => {

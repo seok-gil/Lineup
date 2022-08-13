@@ -4,12 +4,9 @@ import {Text, TouchableOpacity, Image} from 'react-native'
 import styles from './PlayerCard.styles'
 import {AddIcon, MyBadgeIcon} from '../../../Assets/Icons'
 
-function PlayerCard({data, navigation, item}) {
-  if (!item) {
-    return null
-  }
-  if (item.playerId && !item.profilePic) {
-    // Myplayer
+function PlayerCard({data, navigation, item, role, index}) {
+  if (!item) return null;
+  if (index == 0 && role == 'ROLE_PLAYER') { // Myplayer
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
@@ -28,7 +25,7 @@ function PlayerCard({data, navigation, item}) {
         onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
         style={[styles.cardWrapper, styles.playerCardWrapper]}>
         <Image
-          source={{uri: item.profilePic}} //TODO player url
+          source={{uri: item.profilePic}}
           style={styles.playerCardImage}
         />
         <Text style={styles.nameText}>{item.name}</Text>

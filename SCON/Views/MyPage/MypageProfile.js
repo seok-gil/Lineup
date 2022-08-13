@@ -7,40 +7,39 @@ import AsyncStorage from '@react-native-community/async-storage'
 import styles from './MypageProfile.styles'
 
 export function MypageProfile({navigation}) {
-  const [data, setData] = useState()
+    const [data, setData] = useState()
 
-  useEffect(() => {
-    AsyncStorage.getItem('accessToken').then(thing => {
-      ApiFetch({
-        method: 'GET',
-        url: `/my-page`,
-        headers: {
-          'content-type': 'application/json',
-          Authorization: 'Bearer ' + thing,
-        },
-        body: null,
-      }).then(thing => {
-        console.log(thing)
-        setData(thing)
-      })
-    })
-  }, [])
+    useEffect(() => {
+        AsyncStorage.getItem('accessToken').then(thing => {
+            ApiFetch({
+                method: 'GET',
+                url: '/my-page',
+                headers: {
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer ' + thing,
+                },
+                body: null,
+            }).then(thing => {
+                setData(thing)
+            })
+        })
+    }, [])
 
-  if (!data) return <View />
-  return (
-    <View style={styles.profileWrapper}>
-      <View style={styles.profileInnerWrapper}>
-        <Image source={{uri: data.profilePic}} style={styles.profileImage} />
-        <Text style={styles.nickname}>{data.name}</Text>
-        <Text style={styles.email}>{data.email}</Text>
-      </View>
-      <View style={styles.buttonWrapper}>
-        <TouchableOpacity
-          style={styles.modifyButton}
-          onPress={() => navigation.navigate('Profile')}>
-          <Text style={styles.modifyButtonText}>사용자 정보 {'>'}</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  )
+    if (!data) return <View />
+    return (
+        <View style={styles.profileWrapper}>
+            <View style={styles.profileInnerWrapper}>
+                <Image source={{uri: data.profilePic}} style={styles.profileImage} />
+                <Text style={styles.nickname}>{data.name}</Text>
+                <Text style={styles.email}>{data.email}</Text>
+            </View>
+            <View style={styles.buttonWrapper}>
+                <TouchableOpacity
+                    style={styles.modifyButton}
+                    onPress={() => navigation.navigate('Profile')}>
+                    <Text style={styles.modifyButtonText}>사용자 정보 {'>'}</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    )
 }

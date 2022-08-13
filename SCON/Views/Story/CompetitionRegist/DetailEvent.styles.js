@@ -3,36 +3,36 @@ import {StyleSheet} from 'react-native'
 import {colors, globalInputStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
-  detailEventWrapper: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
+    detailEventWrapper: {
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 15,
+    },
 
-  textInputWrapper: {
-    width: '90%',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+    textInputWrapper: {
+        width: '90%',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
 
-  textInputStyle: {
-    ...globalInputStyle,
-    width: '100%',
-  },
+    textInputStyle: {
+        ...globalInputStyle,
+        width: '100%',
+    },
 
-  xIconWrapper: {
-    marginLeft: -20,
-  },
+    xIconWrapper: {
+        marginLeft: -20,
+    },
 
-  addIconWrapper: {
-    marginLeft: 10,
-  },
+    addIconWrapper: {
+        marginLeft: 10,
+    },
 
-  addIcon: {
-    width: 20,
-    resizeMode: 'contain',
-  },
+    addIcon: {
+        width: 20,
+        resizeMode: 'contain',
+    },
 })
 
 export default styles
