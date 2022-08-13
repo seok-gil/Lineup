@@ -39,6 +39,7 @@
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^2.5.0",
     "react-native-image-picker": "^4.8.4",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-material-textfield": "github:javarahulsharma/react-native-material-textfield",
     "react-native-modal-datetime-picker": "^13.1.2",
     "react-native-pager-view": "^5.4.24",

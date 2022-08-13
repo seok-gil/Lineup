@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     SafeAreaView,
     View,
@@ -9,26 +9,29 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { LineupLogoImage } from '../../Assets/Images'
 import { ApiFetch, FCMmanager } from '../../Components'
 import styles from './Login.styles'
+import { useIsFocused } from '@react-navigation/native'
 
 export function LoginPage({ navigation }) {
+    const isFocused = useIsFocused();
     const [form, setForm] = useState({
-        fcmToken : '',
-    // email: 'player8@gmail.com',
-    // password: '1234',
+        fcmToken: '',
+        email: 'player8@gmail.com',
+        password: '1234',
         // email: 'member1@gmail.com',
         // password: '1234',
-        email: 'admin@gmail.com',
-        password: '1234',
+        // email: 'admin@gmail.com',
+        // password: '1234',
     })
     const [validate, setValidate] = useState({
         email: true,
         password: true,
     })
     const onInput = (key, e) => {
-        const {text} = e.nativeEvent
+        const { text } = e.nativeEvent
         setForm({
             ...form,
             [key]: text,
@@ -46,11 +49,10 @@ export function LoginPage({ navigation }) {
         })
             .then((thing) => {
                 if (thing == 401) {
-                    var temp = validate
-                    temp.email = false
-                    temp.password = false
-                    setValidate(temp)
-                    console.log('Login ERROR')
+                    setValidate({
+                        ['email']: false,
+                        ['password']: false
+                    })
                 }
                 else {
                     AsyncStorage.setItem('accessToken', thing.accessToken)
@@ -67,13 +69,20 @@ export function LoginPage({ navigation }) {
             })
     }
 
+    useEffect(() => {
+        setValidate({
+            ['email']: true,
+            ['password']: true
+        })
+    }, [isFocused])
+
     return (
         <SafeAreaView style={styles.loginWrapper}>
             <View style={styles.logoArea}>
                 <Image source={LineupLogoImage} style={styles.logoImage} />
             </View>
             <View style={styles.bottomSection}>
-                <View style={styles.loginSection}>
+                <KeyboardAwareScrollView style={styles.loginSection}>
                     <TextInput
                         value={form.email}
                         placeholder={'이메일 입력'}
@@ -84,7 +93,7 @@ export function LoginPage({ navigation }) {
                     <View style={styles.errorMessageWrapper}>
                         {validate.email == false && (
                             <Text style={styles.errorMessage}>
-                가입 된 정보가 없습니다. 다시 입력해주세요.
+                                가입 된 정보가 없습니다. 다시 입력해주세요.
                             </Text>
                         )}
                     </View>
@@ -104,7 +113,7 @@ export function LoginPage({ navigation }) {
                     <TouchableOpacity onPress={() => onLogin()} style={styles.loginButton}>
                         <Text style={styles.loginButtonText}>로그인</Text>
                     </TouchableOpacity>
-                </View>
+                </KeyboardAwareScrollView>
                 <View style={styles.loginBottom}>
                     <TouchableOpacity onPress={() => navigation.navigate('RegistAccpet')}>
                         <Text style={styles.signup}>회원가입</Text>
@@ -115,7 +124,7 @@ export function LoginPage({ navigation }) {
                     </TouchableOpacity>
                 </View>
             </View>
-            <FCMmanager form={form} setForm={setForm}/>
+            <FCMmanager form={form} setForm={setForm} />
         </SafeAreaView>
     )
 }
