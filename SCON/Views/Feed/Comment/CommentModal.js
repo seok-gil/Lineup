@@ -10,7 +10,7 @@ import {
 import styles from './CommentModal.styles'
 import AsyncStorage from "@react-native-community/async-storage"
 import { ApiFetch } from '../../../Components'
-export function CommentModal({ modal, setModal, nick, writerId, commentId }) {
+export function CommentModal({ modal, setModal, nick, writerId, commentId, setMount }) {
     const [report, setReport] = useState({
         text: '댓글 신고',
         method: `POST`,
@@ -49,8 +49,9 @@ export function CommentModal({ modal, setModal, nick, writerId, commentId }) {
                         'Authorization': 'Bearer ' + thing,
                     },
                     body: null,
-                }).then(thing => {
+                }).then(() => {
                     setModal(false)
+                    setMount(new Date())
                 })
             })
     }

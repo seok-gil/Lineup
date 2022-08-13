@@ -60,6 +60,10 @@ export function MakeId({ navigation }) {
     }
 
     const pushEmail = () => {
+        setValidate({
+            ...validate,
+            ['email'] : true
+        })
         ApiFetch({
             method: 'POST',
             url: '/email-auth',

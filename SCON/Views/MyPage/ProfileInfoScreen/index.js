@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { ImagePush } from './ImagePush'
 
 export function ProfileInfoScreen({ navigation }) {
+    const [mount, setMount] = useState()
     const [data, setData] = useState()
     const [role, setRole] = useState('ROLE_MEMBER')
     const [body, setBody] = useState({
@@ -75,6 +76,7 @@ export function ProfileInfoScreen({ navigation }) {
                             text="배경 이미지 설정"
                             photo={backPhoto}
                             setPhoto={setBackPhoto}
+                            setMount={setMount}
                         />
                 </View>
                 <View style={styles.profileImage}>
@@ -85,6 +87,8 @@ export function ProfileInfoScreen({ navigation }) {
                             text="프로필 이미지 설정"
                             photo={userPhoto}
                             setPhoto={setUserPhoto}
+                            setMount={setMount}
+
                         />
                     </View>
                 </View>

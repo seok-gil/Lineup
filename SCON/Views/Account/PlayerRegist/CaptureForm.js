@@ -10,7 +10,7 @@ import {
 import {PhotoPick, ImagePush} from '../../../Components'
 import {DefaultProfileImage} from '../../../Assets/Images'
 
-export function CaptureForm({playerPhoto, setPlayerPhoto}) {
+export function CaptureForm({playerPhoto, setPlayerPhoto, setMount}) {
     return (
         <View style={{flexDirection: 'column'}}>
             <Image source={{uri: playerPhoto.uri}} />
@@ -18,6 +18,7 @@ export function CaptureForm({playerPhoto, setPlayerPhoto}) {
                 text="선수 이미지"
                 photo={playerPhoto}
                 setPhoto={setPlayerPhoto}
+                setMount={setMount}
             />
         </View>
     )

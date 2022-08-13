@@ -5,11 +5,13 @@ import {View, TouchableOpacity, SafeAreaView, Text, Image} from 'react-native'
 import { FeedApi } from './FeedApi'
 import {CommentRegist, ReplyRegist, CommentList} from './Comment'
 import {FeedBody} from './FeedBody'
+import { useIsFocused } from '@react-navigation/native'
 
 export function FeedScreen({route, navigation}) {
     const [data, setData] = useState()
     const [mount, setMount] = useState(new Date())
     const [replyFocus, setReplyFocus] = useState(null)
+    const isFocused = useIsFocused()
     
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
