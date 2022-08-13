@@ -125,6 +125,7 @@ export function Password({ navigation, route }) {
                             value={form.certification}
                             placeholder={'비밀번호 확인'}
                             style={styles.input}
+                            secureTextEntry={true}
                             placeholderTextColor="#0E0E0E66"
                             onChange={e => onInput('certification', e)}
                         />

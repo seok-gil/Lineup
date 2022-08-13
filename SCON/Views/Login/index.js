@@ -10,10 +10,10 @@ import {
 } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { useIsFocused } from '@react-navigation/native'
 import { LineupLogoImage } from '../../Assets/Images'
 import { ApiFetch, FCMmanager } from '../../Components'
 import styles from './Login.styles'
-import { useIsFocused } from '@react-navigation/native'
 
 export function LoginPage({ navigation }) {
     const isFocused = useIsFocused();
