@@ -3,12 +3,13 @@ import {View, Image, Text} from 'react-native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import AsyncStorage from '@react-native-community/async-storage'
+import { useIsFocused } from '@react-navigation/native'
 
 import styles from './MypageProfile.styles'
 
 export function MypageProfile({navigation}) {
     const [data, setData] = useState()
-
+    const isFocused = useIsFocused()
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -23,7 +24,7 @@ export function MypageProfile({navigation}) {
                 setData(thing)
             })
         })
-    }, [])
+    }, [isFocused])
 
     if (!data) return <View />
     return (

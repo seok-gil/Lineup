@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { LoginPage } from './Views/Login'
 import { RegistAccept, MakeId, Password } from './Views/Login/Regist'
 import { ForgetPassword, PasswordReset } from './Views/Login/PasswordReset'
-import { TabScreen } from './Components'
+import { TabScreen,ErrorModal } from './Components'
 import { NotiScreen } from './Views/Noti'
 import { SettingAlertScreen } from './Views/SettingAlert'
 import { InquiryTabScreen } from './Views/Inquiry'
@@ -106,6 +106,7 @@ export default function App() {
                     component={PlayerReigstDetail}
                 />
                 <AppStack.Screen name="Inquiry" component={Inquiry} />
+                <AppStack.Screen name="ErrorPage" component={ErrorModal} />
             </AppStack.Navigator>
         </NavigationContainer>
     )

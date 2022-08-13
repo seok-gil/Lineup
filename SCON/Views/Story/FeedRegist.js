@@ -24,7 +24,6 @@ export function FeedRegist({navigation, route}) {
         if (type == 'PUT') {
             setFeed(route.params.content)
             setUrl(`/player/feed/${route.params.feedId}`)
-            console.log('url', url)
         }
     }, [])
 

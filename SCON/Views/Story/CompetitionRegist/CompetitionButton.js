@@ -7,7 +7,6 @@ import styles from './CompetitionButton.styles'
 
 function CompetitionButton({data, navigation}) {
     const onPress = () => {
-        console.log(data)
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
                 method: 'POST',
@@ -18,14 +17,15 @@ function CompetitionButton({data, navigation}) {
                 },
                 body: JSON.stringify(data),
             })
-                .then(thing => {
+                .then((thing) => {
+                    if (thing != 400)
                     navigation.navigate('StoryScreen')
                 })
                 .catch(error => {
                     console.log('Login ERROR', error)
                 })
         })
-        navigation.navigate('StoryScreen')
+        // navigation.navigate('StoryScreen')
     }
     const buttonStyle =
     data.endDate && data.location && data.eventName

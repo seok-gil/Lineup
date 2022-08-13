@@ -110,6 +110,13 @@ const styles = StyleSheet.create({
         backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
         flex: 3,
     },
+    submitButtonOff: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomRightRadius: 20,
+        backgroundColor: colors.GRAYC9,
+        flex: 3,
+    },
 
     buttonText: {
         color: colors.TEXT_DARK,

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {
-  ScrollView,
   View,
   TouchableOpacity,
   Text,
@@ -11,7 +10,8 @@ import {
 import { CommentModal, Reply } from './'
 import { HeartSEmptyIcon, HeartSFilledIcon, ViewMore } from '../../../Assets/Icons'
 import { TimeRelative, LikeComponent } from '../../../Components'
-export function CommentOne({ data, feedId, setReplyFocus, setMount }) {
+
+export function CommentOne({ data, feedId, setReplyFocus, setMount, navigation }) {
   if (!data) return <View />
   const [viewReply, setViewReply] = useState(false)
   var likeUrl = !data.ilike ? `comment/${data.commentId}` : `comment/${data.ilike}`
@@ -30,7 +30,7 @@ export function CommentOne({ data, feedId, setReplyFocus, setMount }) {
       <TouchableOpacity onPress={() => setModal(true)}>
         <Image source={ViewMore} />
       </TouchableOpacity>
-      <CommentModal modal={modal} setModal={setModal} nick={data.writer.nick} writerId={data.writer.writerId} commentId={data.commentId} setMount={setMount}/>
+      <CommentModal modal={modal} setModal={setModal} nick={data.writer.nick} writerId={data.writer.writerId} commentId={data.commentId} setMount={setMount} navigation={navigation}/>
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}>
           <Image source={data.ilike ? HeartSFilledIcon : HeartSEmptyIcon} />
@@ -46,8 +46,8 @@ export function CommentOne({ data, feedId, setReplyFocus, setMount }) {
         </TouchableOpacity>
       </View>
       {viewReply == true &&
-        data.reply.map(item => {
-          return <Reply reply={item} feedId={feedId} />
+        data.reply.map((item, index) => {
+          return <Reply key={`reply-${index}`} reply={item} feedId={feedId} />
         })}
     </View>
   )

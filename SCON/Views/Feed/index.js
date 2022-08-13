@@ -27,9 +27,6 @@ export function FeedScreen({route, navigation}) {
                 setData(thing)
             })
         })
-        .then(thing => {
-            setData(thing)
-        })
     }, [mount])
 
     if (!data) return <SafeAreaView />

@@ -15,8 +15,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 export function AlertScreen() {
     const [data, setData] = useState([])
-    const [nextFeed, setNextFeed] = useState(10)
-    const [lastFeed, setLastFeed] = useState(1)
 
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {

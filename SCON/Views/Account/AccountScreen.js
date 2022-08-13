@@ -41,15 +41,12 @@ export function AccountScreen({ navigation }) {
             setRole(thing)
         })
     }, [])
-    if (!data) {
-        return <View />
-    }
     return (
         <SafeAreaView style={styles.accountScreenWrapper}>
             <TouchableOpacity style={styles.menuElement} onPress={onLogout}>
                 <View style={styles.columnView}>
                     <Text style={styles.elementText}>로그아웃</Text>
-                    <Text style={styles.emailText}>{data.email}</Text>
+                    <Text style={styles.emailText}>{data && data.email}</Text>
                 </View>
                 <Image style={styles.icon} source={DownIcon} />
             </TouchableOpacity>

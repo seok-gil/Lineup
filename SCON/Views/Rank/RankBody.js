@@ -7,9 +7,11 @@ import {ApiFetch} from '../../Components/API/ApiFetch'
 import {player} from '../../Assets/Data/Rank.json'
 import styles from './RankBody.styles'
 import AsyncStorage from '@react-native-community/async-storage'
+import { useIsFocused } from '@react-navigation/native'
 
 function RankBody({navigation, route}) {
     var mod = route.params.mode
+    const isFocused = useIsFocused()
     const [page, setPage] = useState(0)
     const [size, setSize] = useState(10)
     const [data, setData] = useState()
@@ -29,7 +31,7 @@ function RankBody({navigation, route}) {
                 setData(data.content)
             })
         })
-    }, [])
+    }, [isFocused])
 
     const onEndReached = () => {
         setNextFeed(nextFeed + 5)

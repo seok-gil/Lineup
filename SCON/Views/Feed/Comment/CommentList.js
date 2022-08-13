@@ -18,6 +18,7 @@ export function CommentList({setReplyFocus, feedId, navigation, setMount}) {
                 },
                 body: null,
             }).then(thing => {
+                console.log(thing.content[0].writer)
                 setData(thing.content)
             })
         })
@@ -41,7 +42,6 @@ export function CommentList({setReplyFocus, feedId, navigation, setMount}) {
                         setMount={setMount}
                     />
                 )}
-                // onScroll={onScroll}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0.1}
                 pagingEnabled
@@ -50,21 +50,3 @@ export function CommentList({setReplyFocus, feedId, navigation, setMount}) {
         </View>
     )
 }
-
-// const view = [];
-// const commentlist = () => {
-// 	if (data) {
-// 		for (let i = 0; i < data.length; ++i) {
-// 			view.push(
-// 				<CommentOne
-// 					key={`player-comment-${i}`}
-// 					comment={data[i]}
-// 					navigation={navigation}
-// 					feedId={feedId}
-// 					setReplyFocus={setReplyFocus}
-// 				/>,
-// 			);
-// 		}
-// 		return view;
-// 	};
-// }

@@ -62,11 +62,10 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
             ['ranking']: rank,
         })
     }
-
     const onSummit = () => {
         var temp = data
         temp.forEach((element, index) => {
-            if (element && element.detailName == result.detailName) {
+            if (element && element.detailId == result.detailId) {
                 temp[index] = result
             }
         })
@@ -162,10 +161,11 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
                         <TouchableOpacity
                             onPress={() => onSummit()}
                             disabled={!validate}
-                            style={styles.submitButton}>
+                            style={validate ? styles.submitButton : styles.submitButtonOff}>
                             <Text style={styles.buttonText}>
                                 {' '}
-                                {validate ? '확인' : '노확인'}{' '}
+                                확인
+                                {' '}
                             </Text>
                         </TouchableOpacity>
                     </View>

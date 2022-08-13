@@ -22,8 +22,12 @@ export function PhotoPick({ text, photo, setPhoto, setMount, styles = DEFAULT_ST
                 {
                     text: '앨범에서 선택',
                     onPress: async () => {
-                        const result = await launchImageLibrary()
-                        flag = true;
+                        var result
+                        await launchImageLibrary()
+                        .then((res) => {
+                            result = res
+                            flag = true
+                        })
                         if (result.didCancel) {
                             return null
                         }
@@ -38,11 +42,15 @@ export function PhotoPick({ text, photo, setPhoto, setMount, styles = DEFAULT_ST
                 {
                     text: '카메라로 찍기',
                     onPress: async () => {
-                        const result = await launchCamera({
+                        var result
+                        await launchCamera({
                             mediaType: 'photo',
                             cameraType: 'back',
                         })
-                        flag = true;
+                        .then((res) => {
+                            result = res
+                            flag = true
+                        })
                         if (result.didCancel) {
                             return null
                         }
