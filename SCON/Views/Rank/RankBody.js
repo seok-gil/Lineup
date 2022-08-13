@@ -60,6 +60,7 @@ function RankBody({navigation, route}) {
                 // onScroll={onScroll}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0.1}
+                onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
             />

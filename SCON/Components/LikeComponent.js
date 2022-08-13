@@ -16,7 +16,6 @@ export function LikeComponent(ilike, url, setMount) {
                 body: null,
             }).then(() => {
                 setMount(new Date())
-                // console.log("Like", thing)
             })
         })
 }

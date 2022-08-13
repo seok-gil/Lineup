@@ -9,8 +9,8 @@ import {
 
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import styles from './FeedRegist.styles'
-import {globalButtonStyle, globalButtonTextStyle} from '../../Styles'
 import AsyncStorage from '@react-native-community/async-storage'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function FeedRegist({navigation, route}) {
     const type = route.params.type
@@ -60,11 +60,13 @@ export function FeedRegist({navigation, route}) {
                         onChange={e => onChange(e)}
                     />
                 </View>
+                <KeyboardAwareScrollView>
                 <TouchableOpacity
                     style={styles.feedRegistButton}
                     onPress={() => onPress()}>
                     <Text style={styles.feedRegistButtonText}> 확인 </Text>
                 </TouchableOpacity>
+                </KeyboardAwareScrollView>
             </View>
         </SafeAreaView>
     )

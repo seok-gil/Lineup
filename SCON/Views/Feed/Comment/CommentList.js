@@ -1,12 +1,16 @@
-import React, {useEffect, useState} from 'react'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, ScrollView, Text, FlatList} from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ApiFetch } from '../../../Components/API/ApiFetch'
+import { View, ScrollView, Text, FlatList } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
-import {CommentOne} from './CommentOne'
+import { CommentOne } from './CommentOne'
+import { CommentRegist } from './CommentRegist'
+import { ReplyRegist } from './ReplyRegist'
 
-export function CommentList({setReplyFocus, feedId, navigation, setMount}) {
+export function CommentList({ feedId, navigation }) {
     const [data, setData] = useState([])
     const [size, setSize] = useState(5)
+    const [mount, setMount] = useState()
+    const [replyFocus, setReplyFocus] = useState(null)
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -18,21 +22,24 @@ export function CommentList({setReplyFocus, feedId, navigation, setMount}) {
                 },
                 body: null,
             }).then(thing => {
-                console.log(thing.content[0].writer)
                 setData(thing.content)
             })
         })
-    }, [size])
-    const onEndReached = () => {
+    }, [size, mount])
+    const onEndReached = (e) => {
+        console.log(e)
         setSize(size + 5)
     }
     return (
         <View>
+            <CommentRegist
+                feedId={feedId}
+                setMount={setMount} />
             <FlatList
                 data={data}
                 snapToAlignment="start"
                 decelerationRate="fast"
-                renderItem={({item, index}) => (
+                renderItem={({ item, index }) => (
                     <CommentOne
                         key={`player-comment-${index}`}
                         data={item}
@@ -42,10 +49,16 @@ export function CommentList({setReplyFocus, feedId, navigation, setMount}) {
                         setMount={setMount}
                     />
                 )}
-                onEndReached={onEndReached}
-                onEndReachedThreshold={0.1}
+                onEndReached={(e) => onEndReached(e)}
+                onEndReachedThreshold={1}
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
+            />
+            <ReplyRegist
+                feedId={feedId}
+                replyFocus={replyFocus}
+                setReplyFocus={setReplyFocus}
+                setMount={setMount}
             />
         </View>
     )

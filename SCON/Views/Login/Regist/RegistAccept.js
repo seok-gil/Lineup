@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native'
 // import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 import CheckBox from '@react-native-community/checkbox'
@@ -10,7 +10,6 @@ export function RegistAccept({navigation}) {
     service: false,
     privacy: false,
   })
-
   const onClick = key => {
     var temp = accept
     if (key != 'all') {
