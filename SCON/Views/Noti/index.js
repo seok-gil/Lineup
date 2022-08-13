@@ -3,12 +3,13 @@ import {View, ScrollView} from 'react-native'
 
 import NotiElement from './NotiElement'
 import {ApiFetch} from '../../Components/API/ApiFetch'
-import {noti as data} from '../../Assets/Data/Noti.json'
+import { useIsFocused } from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
 import styles from './Noti.styles'
 
 export function NotiScreen({navigation}) {
     const [data, setData] = useState([])
+    const isFocused = useIsFocused()
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -23,7 +24,7 @@ export function NotiScreen({navigation}) {
                 setData(thing)
             })
         })
-    }, [])
+    }, [isFocused])
 
     return (
         <View style={styles.notiWrapper}>
