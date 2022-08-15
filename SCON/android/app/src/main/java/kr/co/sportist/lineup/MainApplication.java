@@ -1,5 +1,5 @@
 package kr.co.sportist.lineup;
-import com.facebook.react.BuildConfig;
+import kr.co.sportist.lineup.BuildConfig;
 import com.facebook.react.bridge.JSIModulePackage;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 import android.app.Application;
@@ -18,6 +18,8 @@ import com.facebook.soloader.SoLoader;
 import kr.co.sportist.lineup.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Arrays;
+
 
 public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
