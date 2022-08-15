@@ -13,6 +13,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import io.invertase.firebase.messaging.ReactNativeFirebaseMessagingPackage; 
+import com.reactnativepagerview.PagerViewPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.facebook.soloader.SoLoader;
 import kr.co.sportist.lineup.newarchitecture.MainApplicationReactNativeHost;
@@ -24,7 +25,7 @@ import java.util.Arrays;
 public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
-      new RNCViewPagerPackage(),
+      new PagerViewPackage(),
       new MainReactPackage()
     );
   }
