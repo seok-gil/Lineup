@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 import styles from './InquiryScreen.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from '../../Components'
 import {InquiryModal} from './InquiryModal'
 

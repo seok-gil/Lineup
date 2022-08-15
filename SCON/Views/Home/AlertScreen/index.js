@@ -11,7 +11,7 @@ import {ApiFetch} from '../../../Components/API/ApiFetch'
 import AlertComponent from './AlertComponent'
 import styles from './AlertScreen.styles'
 
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function AlertScreen() {
     const [data, setData] = useState([])

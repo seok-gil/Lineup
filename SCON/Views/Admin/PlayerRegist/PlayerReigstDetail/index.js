@@ -11,7 +11,7 @@ import { TextInput } from 'react-native-gesture-handler'
 
 import { ApiFetch } from '../../../../Components/API/ApiFetch'
 import { PlayerRegistRefuse } from './PlayerRegistRefuse'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function PlayerReigstDetail({ route, navigation }) {
   const [data, setData] = useState()

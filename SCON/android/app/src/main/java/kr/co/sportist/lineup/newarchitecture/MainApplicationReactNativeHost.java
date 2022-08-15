@@ -1,4 +1,4 @@
-package com.scon.newarchitecture;
+package kr.co.sportist.lineup.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -11,20 +11,19 @@ import com.facebook.react.bridge.JSIModulePackage;
 import com.facebook.react.bridge.JSIModuleProvider;
 import com.facebook.react.bridge.JSIModuleSpec;
 import com.facebook.react.bridge.JSIModuleType;
+import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.bridge.JavaScriptContextHolder;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.UIManager;
 import com.facebook.react.fabric.ComponentFactory;
 import com.facebook.react.fabric.CoreComponentsRegistry;
-import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.scon.BuildConfig;
-import com.scon.newarchitecture.components.MainComponentsRegistry;
-import com.scon.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import kr.co.sportist.lineup.BuildConfig;
+import kr.co.sportist.lineup.newarchitecture.components.MainComponentsRegistry;
+import kr.co.sportist.lineup.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * A {@link ReactNativeHost} that helps you load everything needed for the New Architecture, both
  * TurboModule delegates and the Fabric Renderer.

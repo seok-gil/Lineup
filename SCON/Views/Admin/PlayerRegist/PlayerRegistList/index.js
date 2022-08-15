@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../../../Components/API/ApiFetch'
 import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {PlayerRegistListOne} from './PlayerRegistListOne'
 
 //route.params.state 대기 0 승인 1 반려 2

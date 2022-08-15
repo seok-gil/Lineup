@@ -4,7 +4,7 @@ import styles from './AlertComponent.styles'
 import {SmileIcon, ChatBubbleIcon, XIcon} from '../../../Assets/Icons'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {Time} from '../../../Components/Time'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function AlertComponent({alert}) {
     if (!alert) return <View />

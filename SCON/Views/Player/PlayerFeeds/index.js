@@ -8,7 +8,7 @@ import PlayerFollowButton from '../PlayerProfile/PlayerFollowButton'
 
 import styles from './PlayerFeeds.styles'
 import PlayerProfile from '../PlayerProfile'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function PlayerFeeds({ playerId, navigation }) {
     const [data, setData] = useState()

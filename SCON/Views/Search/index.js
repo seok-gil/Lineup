@@ -6,7 +6,7 @@ import SearchID from './SearchID'
 
 import styles from './SearchScreen.styles'
 import {ViewPlayer} from './SearchID/ViewPlayer'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 
 export function SearchScreen({navigation, }) {

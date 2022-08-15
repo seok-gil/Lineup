@@ -11,7 +11,7 @@ import {
 import {ApiFetch} from '../../../Components'
 import {Head} from './Head'
 import {Body} from './Body'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function AdminHome({navigation}) {
     const [data, setData] = useState([])

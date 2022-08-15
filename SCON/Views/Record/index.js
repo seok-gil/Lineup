@@ -6,7 +6,7 @@ import RecordHead from './RecordHead'
 import PlayerCard from './PlayerCard'
 
 import styles from './RecordScreen.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function RecordScreen({route}) {
     const [data, setData] = useState([])

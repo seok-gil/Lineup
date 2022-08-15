@@ -9,7 +9,7 @@ import {
 } from '../../../Assets/Icons'
 import styles from './PlayerFixedFeeds.styles'
 import {TimeRelative} from '../../../Components/Time'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function PlayerFixedFeed({ navigation, playerId }) {
     const [data, setData] = useState()

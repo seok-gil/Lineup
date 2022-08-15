@@ -3,7 +3,7 @@ import { ApiFetch } from '../../../Components/API/ApiFetch'
 import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './AdminNotiOne.styles'
 import { Time } from '../../../Components'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function AdminOne({ data, navigation }) {
   if (!data) return <View />
