@@ -3,7 +3,7 @@ import {SafeAreaView, Text} from 'react-native'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {Followlist} from './Followlist'
 import {Head} from './Head'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function FollowPage({navigation, route}) {
     const [data, setData] = useState()

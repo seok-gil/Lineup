@@ -7,7 +7,7 @@ import {
     backgroundPhotoPickStyles,
     profilePhotoPickStyles,
 } from './MypagePhotoPick.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ImagePush } from './ImagePush'
 import { useIsFocused } from '@react-navigation/native'
 

@@ -9,7 +9,7 @@ import {
 
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import styles from './FeedRegist.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function FeedRegist({navigation, route}) {

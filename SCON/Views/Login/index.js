@@ -8,7 +8,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useIsFocused } from '@react-navigation/native'
 import { LineupLogoImage } from '../../Assets/Images'

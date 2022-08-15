@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {View, TouchableOpacity, DeviceEventEmitter, Text, Image} from 'react-native'
 import {CommentIcon, HeartEmptyIcon} from '../../Assets/Icons'
 import {TimeRelative} from '../../Components/Time'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch, LikeComponent} from '../../Components/'
 
 export function FeedBody({data, feedId, navigation, setMount}) {

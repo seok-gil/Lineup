@@ -3,7 +3,7 @@ import {FlatList, SafeAreaView} from 'react-native'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {ReportOne} from './ReportOne'
 import styles from './Report.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function Reports({navigation}) {
   const [data, setData] = useState()

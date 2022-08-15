@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {ScrollView} from 'react-native'
 import InquiryListElement from './InquiryListElement'
 import {ApiFetch} from '../../../Components/'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './InquiryListScreen.styles'
 
 export function InquiryListScreen() {

@@ -5,7 +5,7 @@ import CompetitionResultModal from './CompetitionResultModal'
 import DetailInfo from './DetailInfo'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
 import styles from './CompetitionResultDetail.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {CompetitionResultButton} from './CompetitionResultButton'
 
 export function CompetitionResultDetail({navigation, route}) {

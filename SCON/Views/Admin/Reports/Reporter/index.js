@@ -12,7 +12,7 @@ import {ApiFetch} from '../../../../Components/API/ApiFetch'
 import {ReporterOne} from './ReporterOne'
 
 import styles from './Reporter.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function Reporter({navigation, route}) {
   const [data, setData] = useState([])

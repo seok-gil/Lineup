@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {SafeAreaView, View, FlatList} from 'react-native'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import {SearchId, SearchInput} from './SearchScreen'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import styles from './FollowScreen.styles'
 

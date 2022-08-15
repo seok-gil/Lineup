@@ -12,7 +12,7 @@ import {
 import styles from './PasswordReset.styles'
 import {PasswordChangeModal} from './PasswordChangeModal'
 import {CheckSmallIcon} from '../../../Assets/Icons'
-import AsyncStorage from "@react-native-community/async-storage"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import { ApiFetch } from '../../../Components'
 export function PasswordReset({navigation, route}) {
   const [form, setForm] = useState({

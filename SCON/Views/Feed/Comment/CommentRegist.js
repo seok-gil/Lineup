@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ApiFetch } from '../../../Components/API/ApiFetch'
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import { DefaultProfileImage } from '../../../Assets/Images'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function CommentRegist({ feedId, setMount }) {

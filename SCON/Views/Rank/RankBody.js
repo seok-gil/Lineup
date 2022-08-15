@@ -6,7 +6,7 @@ import ETC from './ETC'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import {player} from '../../Assets/Data/Rank.json'
 import styles from './RankBody.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useIsFocused } from '@react-navigation/native'
 
 function RankBody({navigation, route}) {
