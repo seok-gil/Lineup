@@ -6,7 +6,7 @@ import {AdminMypageTab} from './AdminMypageTab'
 import {AdminProfile} from './AdminProfile'
 
 import styles from './AdminMypage.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 export function AdminMypage({navigation}) {
   const [data, setData] = useState([])
   useEffect(() => {

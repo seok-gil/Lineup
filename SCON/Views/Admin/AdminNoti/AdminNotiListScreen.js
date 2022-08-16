@@ -4,7 +4,7 @@ import {SafeAreaView, ScrollView, Text} from 'react-native'
 
 import {AdminOne} from './AdminNotiOne'
 import styles from './AdminNotiListScreen.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useIsFocused } from '@react-navigation/native'
 
 export function AdminNotiListScreen({navigation}) {

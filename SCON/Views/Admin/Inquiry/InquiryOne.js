@@ -3,7 +3,7 @@ import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native'
 
 import { DownIcon } from '../../../Assets/Icons'
 import { Time, ApiFetch } from '../../../Components'
-import AsyncStorage from "@react-native-community/async-storage"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import styles from './InquiryOne.styles'
 export function InquiryOne({ data }) {
     if (!data) return <View />

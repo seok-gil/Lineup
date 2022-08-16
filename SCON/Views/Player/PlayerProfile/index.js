@@ -5,7 +5,7 @@ import { ApiFetch } from '../../../Components/API/ApiFetch'
 import PlayerData from './PlayerData'
 import PlayerFollowButton from './PlayerFollowButton'
 import styles from './PlayerProfile.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function PlayerProfile({ navigation, playerId }) {
     const [data, setData] = useState()

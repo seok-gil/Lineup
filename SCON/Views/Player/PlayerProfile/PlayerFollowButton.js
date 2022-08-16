@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import { ApiFetch } from '../../../Components'
 import styles from './PlayerFollowButton.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function PlayerFollowButton({ data, navigation, setMount={setMount}}) {
     const [follow, setFollow] = useState(data.isFollow)

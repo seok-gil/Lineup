@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 import styles from './AdminNotiRegist.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from '../../../Components'
 
 export function AdminNotiRegist({navigation, route}) {

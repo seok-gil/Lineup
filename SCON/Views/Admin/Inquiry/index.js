@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import styles from './Inquiry.styles'
 import {InquiryOne} from './InquiryOne'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ApiFetch } from '../../../Components'
 
 export function Inquiry({navigation}) {

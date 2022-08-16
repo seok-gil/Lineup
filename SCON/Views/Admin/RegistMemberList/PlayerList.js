@@ -5,7 +5,7 @@ import SearchInput from './SearchInput'
 import SearchID from './SearchID'
 
 import styles from './SearchScreen.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from '../../../Components'
 
 export function PlayerList({navigation, }) {

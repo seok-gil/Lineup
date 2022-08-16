@@ -8,7 +8,7 @@ import {
     Modal,
 } from 'react-native'
 import styles from './CommentModal.styles'
-import AsyncStorage from "@react-native-community/async-storage"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import { ApiFetch } from '../../../Components'
 
 export function CommentModal({ modal, setModal, nick, writerId, commentId, setMount, navigation }) {

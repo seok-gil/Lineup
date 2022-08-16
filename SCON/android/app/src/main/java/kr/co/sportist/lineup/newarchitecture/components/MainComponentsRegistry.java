@@ -1,4 +1,4 @@
-package com.scon.newarchitecture.components;
+package kr.co.sportist.lineup.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

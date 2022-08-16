@@ -4,7 +4,7 @@ import { TouchableOpacity, View, Text, FlatList } from 'react-native'
 import ViewPlayer from './ViewPlayer'
 
 import styles from './SearchID.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ApiFetch } from '../../../Components/API/ApiFetch'
 
 function SearchID({ inputs, setInputs, data, navigation }) {

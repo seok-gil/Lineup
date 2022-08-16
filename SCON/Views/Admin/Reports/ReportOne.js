@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, Image, TouchableOpacity} from 'react-native'
 import {ApiFetch, TimeRelative} from '../../../Components'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './ReportOne.styles'
 
 export function ReportOne({data, navigation}) {

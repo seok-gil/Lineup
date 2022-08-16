@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {View, Text, Image, Modal, TouchableOpacity} from 'react-native'
 import {TextInput} from 'react-native-gesture-handler'
 import CheckBox from '@react-native-community/checkbox'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from './../../../Components/API/ApiFetch'
 import styles from './CompetitionResultModal.styles'
 import {

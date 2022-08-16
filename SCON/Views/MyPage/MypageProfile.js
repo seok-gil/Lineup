@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {View, Image, Text} from 'react-native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
 import {ApiFetch} from '../../Components/API/ApiFetch'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useIsFocused } from '@react-navigation/native'
 
 import styles from './MypageProfile.styles'

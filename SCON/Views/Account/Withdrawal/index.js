@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 
 import { WithdrawalModal } from './WithdrawalModal'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ApiFetch } from '../../../Components'
 import { AlertBlueIcon, CheckSmallIcon } from '../../../Assets/Icons'
 import styles from './Withdrawal.styles'

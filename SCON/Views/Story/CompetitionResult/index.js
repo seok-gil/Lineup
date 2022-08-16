@@ -4,7 +4,7 @@ import {SafeAreaView, Text} from 'react-native'
 import CompetitionElement from './CompetitionElement'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
 import styles from './CompetitionResult.styles'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function CompetitionResult({navigation}) {
     const [data, setData] = useState([])
