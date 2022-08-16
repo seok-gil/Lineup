@@ -1,10 +1,11 @@
 package kr.co.sportist.lineup;
 import kr.co.sportist.lineup.BuildConfig;
+
+import com.facebook.react.PackageList;
 import com.facebook.react.bridge.JSIModulePackage;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 import android.app.Application;
 import android.content.Context;
-import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.react.fabric.events.EventBeatManager;
@@ -14,7 +15,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import io.invertase.firebase.messaging.ReactNativeFirebaseMessagingPackage; 
 import com.reactnativepagerview.PagerViewPackage;
-import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.facebook.soloader.SoLoader;
 import kr.co.sportist.lineup.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;

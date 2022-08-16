@@ -5,6 +5,20 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
+
+apply plugin: "com.android.application"
+ project.ext.envConfigFiles = [
+     developdebug: "env/.env.develop",
+     developrelease: "env/.env.develop", 
+     stagedebug: "env/.env.stage",
+     stagerelease: "env/.env.stage",
+     productdebug: "env/.env.product",    
+     productrelease: "env/.env.product",
+     anothercustombuild: ".env",
+ ]
+
+
+
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -81,6 +95,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
  */
 
 project.ext.react = [
+    entryFile: "index.js", ///해당 라인 추가...
     enableHermes: true,  // clean and rebuild if changing
 ]
 
@@ -112,7 +127,6 @@ def enableProguardInReleaseBuilds = false
  * give correct results when using with locales other than en-US.  Note that
  * this variant is about 6MiB larger per architecture than default.
  */
-def jscFlavor = 'org.webkit:android-jsc:+'
 
 /**
  * Whether to enable the Hermes VM.
@@ -131,7 +145,17 @@ def reactNativeArchitectures() {
     return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
 
+def useIntlJsc = false
+def jscFlavor = 'org.webkit:android-jsc:+'
 android {
+    packagingOptions {
+        pickFirst '**/armeabi-v7a/libc++_shared.so'
+        pickFirst '**/x86/libc++_shared.so'
+        pickFirst '**/arm64-v8a/libc++_shared.so'
+        pickFirst '**/x86_64/libc++_shared.so'
+        pickFirst '**/x86/libjsc.so'
+        pickFirst '**/armeabi-v7a/libjsc.so'
+    }
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -271,6 +295,7 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'com.facebook.soloader:soloader:0.10.4+'
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }
@@ -284,12 +309,18 @@ dependencies {
     }
 
     if (enableHermes) {
-        def hermesPath = "../../node_modules/hermes-engine/android/";
-        debugImplementation files(hermesPath + "hermes-debug.aar")
-        releaseImplementation files(hermesPath + "hermes-release.aar")
+       implementation("com.facebook.react:hermes-engine:+") {
+           exclude group:'com.facebook.fbjni'
+       }
     } else {
         implementation jscFlavor
     }
+
+    if (useIntlJsc) {
+     implementation 'org.webkit:android-jsc-intl:+'
+    } else {
+     implementation 'org.webkit:android-jsc:+'
+}
 }
 
 if (isNewArchitectureEnabled()) {

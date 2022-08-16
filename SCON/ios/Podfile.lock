@@ -485,8 +485,6 @@ PODS:
     - React-Core
   - RNCCheckbox (0.5.12):
     - React-Core
-  - RNCMaskedView (0.1.11):
-    - React
   - RNCPicker (1.8.1):
     - React-Core
   - RNDateTimePicker (6.3.1):
@@ -602,7 +600,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCCheckbox (from `../node_modules/@react-native-community/checkbox`)"
-  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNCPicker (from `../node_modules/@react-native-community/picker`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
@@ -718,8 +715,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCCheckbox:
     :path: "../node_modules/@react-native-community/checkbox"
-  RNCMaskedView:
-    :path: "../node_modules/@react-native-community/masked-view"
   RNCPicker:
     :path: "../node_modules/@react-native-community/picker"
   RNDateTimePicker:
@@ -801,7 +796,6 @@ SPEC CHECKSUMS:
   ReactCommon: 8f67bd7e0a6afade0f20718f859dc8c2275f2e83
   RNCAsyncStorage: b2489b49e38c85e10ed45a888d13a2a4c7b32ea1
   RNCCheckbox: ed1b4ca295475b41e7251ebae046360a703b6eb5
-  RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
   RNDateTimePicker: 95e0cb71cba4c2f08c62444029f834e6168a2b96
   RNFBApp: 39904cebc3958e2d377dccf870b5c5d76cb089a9
