@@ -22,11 +22,14 @@ const styles = StyleSheet.create({
     imageWrapper: {
         alignItems: 'center',
     },
-
+    image: {
+        top:10,
+        width:100,
+        height:30
+    },
     alertWrapper: {
         alignItems: 'flex-end',
     },
-
     alertIconWrapper: {
         position: 'relative',
     },

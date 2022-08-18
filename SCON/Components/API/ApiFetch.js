@@ -1,6 +1,6 @@
 export async function ApiFetch({ method, url, headers, body }) {
     const LineUpUrl = 'http://api.sportist.co.kr' + url
-    // console.log(method, url, body, headers)
+    console.log(method, url, body, headers)
     try {
         let res = await fetch(LineUpUrl, {
             method: method,
@@ -18,10 +18,10 @@ export async function ApiFetch({ method, url, headers, body }) {
             console.log('error1', resChecked)
             let data = await resChecked.json()
             console.log('error1', data)
-            return (res.status)
+            return (data)
         }
     }
     catch (err) {
-        console.log('catch', LineUpUrl, err)
+        console.log('catch', method, LineUpUrl, err)
     }
 }

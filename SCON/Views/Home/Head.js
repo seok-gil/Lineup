@@ -27,7 +27,7 @@ export function Head({data, navigation}) {
             <View style={styles.headerWrapper}>
                 <View style={styles.alignment} />
                 <View style={[styles.alignment, styles.imageWrapper]}>
-                    <Image source={LineupLogoImage} />
+                    <Image source={LineupLogoImage} style={styles.image}/>
                 </View>
                 <AlertIcon
                     key={'Alert'}

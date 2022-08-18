@@ -12,13 +12,13 @@ AppRegistry.registerComponent(appName, () => App)
 
 
 ///fire base
-import messaging from '@react-native-firebase/messaging';
+// import messaging from '@react-native-firebase/messaging';
 
 //백그라운드에서 푸시를 받으면 호출됨 
 
-messaging().setBackgroundMessageHandler(async remoteMessage => {
+// messaging().setBackgroundMessageHandler(async remoteMessage => {
 
-console.log('Message handled in the background!', remoteMessage);
+// console.log('Message handled in the background!', remoteMessage);
 
-});
+// });
 /////
