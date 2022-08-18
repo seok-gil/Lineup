@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   label: {
     color: colors.TEXT_DARK,
     fontSize: 14,
+    fontWeight: '700',
   },
 
   inputWrapper: {
