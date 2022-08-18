@@ -6,7 +6,6 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { ApiFetch } from '../../../Components'
 import styles from './ForgetPassword.styles'
 import validator from 'validator'

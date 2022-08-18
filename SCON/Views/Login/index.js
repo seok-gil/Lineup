@@ -20,6 +20,8 @@ export function LoginPage({ navigation }) {
         fcmToken: '',
         email: 'player8@gmail.com',
         password: '1234',
+        // email: 'polkm789@naver.com',
+        // password: 'a12345678@',
         // email: 'member1@gmail.com',
         // password: '1234',
         // email: 'admin@gmail.com',
@@ -36,7 +38,6 @@ export function LoginPage({ navigation }) {
             [key]: text,
         })
     }
-
     const onLogin = () => {
         ApiFetch({
             method: 'POST',
@@ -47,8 +48,7 @@ export function LoginPage({ navigation }) {
             body: JSON.stringify(form),
         })
             .then((thing) => {
-                console.log(thing)
-                if (thing == 401) {
+                if (thing.status == 401) {
                     setValidate({
                         ['email']: false,
                         ['password']: false

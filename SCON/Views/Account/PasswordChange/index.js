@@ -38,6 +38,8 @@ export function PasswordChange({navigation}) {
     if (form.confirmPassword.length == form.newPassword.length) {
       temp.confirmPassword = true
     } else temp.confirmPassword = false
+    if (temp.oldPassword && temp.newPassword && temp.confirmPassword)
+        temp.button = true
   }
 
   useEffect(() => {
@@ -56,7 +58,7 @@ export function PasswordChange({navigation}) {
     const onSummit = () => {
         if (
             PasswordApi({
-                newPassword: form.oldPassword,
+                oldPassword: form.oldPassword,
                 newPassword: form.newPassword,
             })
         ) {
