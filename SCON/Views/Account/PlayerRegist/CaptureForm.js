@@ -1,24 +1,27 @@
 import React, {Component, useState} from 'react'
 import {
-    View,
-    Image,
-    Text,
-    Alert,
-    TextInput,
-    TouchableOpacity,
+  View,
+  Image,
+  Text,
+  Alert,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native'
-import {PhotoPick} from '../../../Components'
+import {ImagePush} from '../../../Components'
+import {PlayerPhotoPick} from './PlayerPhotoPick'
+import {DefaultProfileImage, PlayerCardImage} from '../../../Assets/Images'
+import styles from './CaptureForm.styles'
 
 export function CaptureForm({playerPhoto, setPlayerPhoto, setMount}) {
-    return (
-        <View style={{flexDirection: 'column'}}>
-            <Image source={{uri: playerPhoto.uri}} />
-            <PhotoPick
-                text="선수 이미지"
-                photo={playerPhoto}
-                setPhoto={setPlayerPhoto}
-                setMount={setMount}
-            />
-        </View>
-    )
+  return (
+    <View style={styles.captureWrapper}>
+      <Image source={PlayerCardImage} />
+      <PlayerPhotoPick
+        text="선수 이미지"
+        photo={playerPhoto}
+        setPhoto={setPlayerPhoto}
+        setMount={setMount}
+      />
+    </View>
+  )
 }
