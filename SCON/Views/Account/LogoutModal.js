@@ -24,7 +24,7 @@ export function LogoutModal({ modal, setModal, navigation }) {
                     'Authorization': 'Bearer ' + accessToken,
                 },
                 body: null,
-            }).then(thing => {
+            }).then(() => {
                 AsyncStorage.removeItem(accessToken)
                 navigation.navigate('LoginPage')
                 setModal(false)

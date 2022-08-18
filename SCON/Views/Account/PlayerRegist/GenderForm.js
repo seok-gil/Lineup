@@ -1,18 +1,17 @@
-import React, {Component, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     View,
     Image,
     Text,
-    StyleSheet,
-    TextInput,
-    TouchableOpacity,
 } from 'react-native'
-import RNPickerSelect from 'react-native-picker-select'
-import {CheckSmallIcon} from '../../../Assets/Icons'
-export function GenderForm({form, setForm, validate}) {
-    const onChange = value => {
-        var code = 0
-        if (value == 'male')
+import DropDownPicker from 'react-native-dropdown-picker'
+import { CheckSmallIcon } from '../../../Assets/Icons'
+export function GenderForm({ form, setForm, validate }) {
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+
+    useEffect(() => {
+        if (value == '남자')
             code = 0
         else
             code = 1
@@ -20,22 +19,26 @@ export function GenderForm({form, setForm, validate}) {
             ...form,
             ['gender']: code,
         })
-    }
+    }, [value])
+
     return (
         <View>
             <Text>성별</Text>
-            <RNPickerSelect
-                placeholder={{
-                    label: '여자/남자 선택해주세요',
-                    value: null,
-                }}
-                onValueChange={value => onChange(value)}
+            <DropDownPicker
+                open={open}
+                value={value}
+                defaultIndex={0}
+                setOpen={setOpen}
+                setValue={setValue}
+                placeholder="여자 / 남자 선택해주세요"
+                // containerStyle={{ height: 40 }}
+                onChangeItem={value => console.log("a",value)}
                 items={[
-                    {label: 'male', value: 'male'},
-                    {label: 'fmale', value: 'fmale'},
+                    { label: '남자', value: '남자' },
+                    { label: '여자', value: '여자' },
                 ]}
             />
-            <Image source ={validate.gender ? CheckSmallIcon : CheckSmallIcon}/>
+            <Image source={validate.gender ? CheckSmallIcon : CheckSmallIcon} />
         </View>
     )
 }

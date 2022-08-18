@@ -5,7 +5,7 @@ import styles from './AdminNotiOne.styles'
 import { Time } from '../../../Components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export function AdminOne({ data, navigation }) {
+export function AdminOne({ data, navigation, setMount }) {
   if (!data) return <View />
   const onEdit = () => {
     navigation.navigate('공지사항 등록', { data: data })
@@ -21,9 +21,9 @@ export function AdminOne({ data, navigation }) {
             'Authorization': 'Bearer ' + thing,
           },
           body: JSON.stringify({
-              
           }),
-        }).then(thing => {
+        }).then(() => {
+          setMount(new Date)
         })
       })
   }

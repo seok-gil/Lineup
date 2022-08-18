@@ -6,7 +6,6 @@ import styles from './StoryElement.styles'
 import {DownIcon} from '../../Assets/Icons'
 
 const StoryElement = ({navigation, navlink, props, text, imageSrc}) => {
-    // console.log(props.type)
     return (
         <TouchableOpacity
             style={styles.storyElementWrapper}

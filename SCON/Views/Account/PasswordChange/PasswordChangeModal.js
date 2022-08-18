@@ -14,7 +14,7 @@ export function PasswordChangeModal({modal, setModal, navigation}) {
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                     <View style={styles.modalTop}>
-                        <Image source={CheckBigIcon} style={styles.modalImage} />
+                        {/* <Image source={CheckBigIcon} style={styles.modalImage} /> */}
                         <Text style={styles.modalText}>비밀번호가 변경되었어요.</Text>
                     </View>
                     <TouchableOpacity style={styles.modalBottom} onPress={onPress}>

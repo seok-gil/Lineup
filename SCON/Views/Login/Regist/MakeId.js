@@ -37,11 +37,11 @@ export function MakeId({ navigation }) {
         var tempVal = validate
         if (key == 'email') {
             if (validator.isEmail(form.email)) {
-                tempVal['eamil'] = true
+                tempVal['email'] = true
                 setPost(true)
             }
             else {
-                tempVal['eamil'] = false
+                tempVal['email'] = false
                 setPost(false)
             }
         }
