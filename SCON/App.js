@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import {
     NavigationContainer,
 } from '@react-navigation/native'
-// import FCMContainer from './Components/FCMContainer';
 import { createStackNavigator } from '@react-navigation/stack'
 import { LoginPage } from './Views/Login'
 import { RegistAccept, MakeId, Password } from './Views/Login/Regist'
@@ -28,6 +27,7 @@ import {
     AccountScreen,
     PasswordChange,
     PlayerRegist,
+    PlayerRegistForm,
     Withdrawal,
     PlayerRegistResultPage,
 } from './Views/Account'
@@ -41,9 +41,10 @@ import {
     PlayerReigstDetail,
     Inquiry,
 } from './Views/Admin'
-import { LogBox } from 'react-native';
 
-LogBox.ignoreLogs(['Warning: ...']);
+import { LogBox } from "react-native"
+
+LogBox.ignoreAllLogs(true)
 
 const AppStack = createStackNavigator()
 export default function App() {
@@ -56,7 +57,6 @@ export default function App() {
                     options={{
                         headerShown: false
                     }} />
-
                 <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
                 <AppStack.Screen name="RegistAccpet" component={RegistAccept}
                     options={{
@@ -145,6 +145,10 @@ export default function App() {
                         title: '비밀번호 변경'
                     }} />
                 <AppStack.Screen name="PlayerRegist" component={PlayerRegist}
+                    options={{
+                        title: '선수 인증'
+                    }} />
+                <AppStack.Screen name="PlayerRegistForm" component={PlayerRegistForm}
                     options={{
                         title: '선수 인증'
                     }} />

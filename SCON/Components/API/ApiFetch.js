@@ -10,7 +10,10 @@ export async function ApiFetch({ method, url, headers, body }) {
         let resChecked = res
         if (res.ok) {
             console.log('[',LineUpUrl, '] Request successful')
-            let data = await resChecked.json()
+            let data = null;
+            if (!resChecked)
+                return 
+            data = await resChecked.json()
             return (data)
         }
         else {

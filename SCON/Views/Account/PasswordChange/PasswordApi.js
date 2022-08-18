@@ -3,6 +3,7 @@ import {ApiFetch} from '../../../Components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function PasswordApi(body) {
+    var res = true
     AsyncStorage.getItem('accessToken').then(thing => {
         ApiFetch({
             method: 'PUT',
@@ -14,14 +15,20 @@ export function PasswordApi(body) {
             body: JSON.stringify(body),
         })
             .then(thing => {
-                if (thing == 406)
-                // 비밀번호 불일치
+                if (thing.status == 406) {
+                    // 비밀번호 불일치
+                    res = false
+                    console.log("aa",thing.status)
                     return false
+                }
                 return true
             })
             .catch(() => {
+                console.log("aa321",res)
                 return 'err'
             })
+            .finally(() =>{
+            return (res)
+            })
     })
-    return (true)
 }
