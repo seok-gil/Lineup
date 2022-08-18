@@ -51,13 +51,19 @@ export function CommentModal({ modal, setModal, nick, writerId, commentId, setMo
                     },
                     body: null,
                 }).then((thing) => {
+                    console.log("thing", thing)
                     if (thing == 403)
-                        navigation.navigate('ErrorPage', 
-                        {text: "댓글 삭제 권한이 없습니다",
-                            navigation:navigation
-                    })
+                        navigation.navigate('ModalPage', 
+                        {text: thing.message,
+                            navigation:navigation})
+                    else
+                        navigation.navigate('ModalPage', 
+                        {text: thing.message,
+                            navigation:navigation})
                     setModal(false)
                     setMount(new Date())
+                }).catch((thing) => {
+                    console.log("catch", thing)
                 })
             })
     }

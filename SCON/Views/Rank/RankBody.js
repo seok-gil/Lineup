@@ -28,6 +28,7 @@ function RankBody({navigation, route}) {
                 },
                 body: null,
             }).then(data => {
+                console.log(data)
                 setData(data.content)
             })
         })
@@ -37,13 +38,14 @@ function RankBody({navigation, route}) {
         setNextFeed(nextFeed + 5)
     }
 
+    
     if (!data) return <SafeAreaView />
     return (
         <SafeAreaView style={styles.rankBodyWrapper}>
             <View style={styles.rankMedalWrapper}>
-                <RankMedal player={data[0]} rank={2} navigation={navigation} />
+                <RankMedal player={data[1]} rank={2} navigation={navigation} />
                 <RankMedal player={data[0]} rank={1} navigation={navigation} />
-                <RankMedal player={data[0]} rank={3} navigation={navigation} />
+                <RankMedal player={data[2]} rank={3} navigation={navigation} />
             </View>
             <FlatList
                 data={data}

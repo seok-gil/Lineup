@@ -5,7 +5,6 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    KeyboardAwareScrollView
 } from 'react-native'
 import { ApiFetch } from '../../../Components'
 import styles from './ForgetPassword.styles'
@@ -34,11 +33,11 @@ export function ForgetPassword({ navigation }) {
         var tempVal = validate
         if (key == 'email') {
             if (validator.isEmail(form.email)) {
-                tempVal['eamil'] = true
+                tempVal['email'] = true
                 setPost(true)
             }
             else {
-                tempVal['eamil'] = false
+                tempVal['email'] = false
                 setPost(false)
             }
         }
@@ -74,7 +73,7 @@ export function ForgetPassword({ navigation }) {
                     <Text style={styles.title}>
                         {'라인업 가입 정보를\n다시 확인할게요.'}
                     </Text>
-                    <KeyboardAwareScrollView style={styles.email}>
+                    <View style={styles.email}>
                         <TextInput
                             value={form.email}
                             style={styles.input}
@@ -90,7 +89,7 @@ export function ForgetPassword({ navigation }) {
                                 전송
                             </Text>
                         </TouchableOpacity>
-                    </KeyboardAwareScrollView>
+                        </View>
                     <View style={styles.errorMessageWrapper}>
                         {validate.email == false && (
                             <Text style={styles.errorMessage}>

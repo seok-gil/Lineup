@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
-import {colors} from '../../../Styles'
+import { colors } from '../../../Styles'
 
 const styles = StyleSheet.create({
     headerWrapper: {
@@ -19,7 +19,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
+    alignment: {
+        paddingHorizontal: 20,
+        flexGrow: 1,
+        flexBasis: 1,
+        justifyContent: 'center',
+    },
+    logo: {
+        top: 10,
+        width: 100,
+        height: 30
+    },
     alertWrapper: {
         alignItems: 'flex-end',
     },

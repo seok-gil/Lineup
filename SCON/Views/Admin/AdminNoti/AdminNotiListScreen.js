@@ -9,6 +9,7 @@ import { useIsFocused } from '@react-navigation/native'
 
 export function AdminNotiListScreen({navigation}) {
     const [data, setData] = useState([])
+    const [mount, setMount] = useState()
     const isFocused = useIsFocused()
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
@@ -24,13 +25,13 @@ export function AdminNotiListScreen({navigation}) {
                 setData(thing)
             })
         })
-    }, [isFocused])
+    }, [isFocused, mount])
 
     return (
         <SafeAreaView style={styles.notiScreenWrapper}>
             <ScrollView>
                 {data.map((item, index) => {
-                    return <AdminOne key={index} data={item} navigation={navigation} />
+                    return <AdminOne key={index} data={item} setMount={setMount} navigation={navigation} />
                 })}
             </ScrollView>
         </SafeAreaView>

@@ -9,7 +9,6 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useIsFocused } from '@react-navigation/native'
 import { LineupLogoImage } from '../../Assets/Images'
 import { ApiFetch, FCMmanager } from '../../Components'
@@ -21,6 +20,8 @@ export function LoginPage({ navigation }) {
         fcmToken: '',
         email: 'player8@gmail.com',
         password: '1234',
+        // email: 'polkm789@naver.com',
+        // password: 'a12345678@',
         // email: 'member1@gmail.com',
         // password: '1234',
         // email: 'admin@gmail.com',
@@ -37,7 +38,6 @@ export function LoginPage({ navigation }) {
             [key]: text,
         })
     }
-
     const onLogin = () => {
         ApiFetch({
             method: 'POST',
@@ -48,7 +48,7 @@ export function LoginPage({ navigation }) {
             body: JSON.stringify(form),
         })
             .then((thing) => {
-                if (thing == 401) {
+                if (thing.status == 401) {
                     setValidate({
                         ['email']: false,
                         ['password']: false
@@ -82,7 +82,7 @@ export function LoginPage({ navigation }) {
                 <Image source={LineupLogoImage} style={styles.logoImage} />
             </View>
             <View style={styles.bottomSection}>
-                <KeyboardAwareScrollView style={styles.loginSection}>
+                <View style={styles.loginSection}>
                     <TextInput
                         value={form.email}
                         placeholder={'이메일 입력'}
@@ -113,7 +113,7 @@ export function LoginPage({ navigation }) {
                     <TouchableOpacity onPress={() => onLogin()} style={styles.loginButton}>
                         <Text style={styles.loginButtonText}>로그인</Text>
                     </TouchableOpacity>
-                </KeyboardAwareScrollView>
+                </View>
                 <View style={styles.loginBottom}>
                     <TouchableOpacity onPress={() => navigation.navigate('RegistAccpet')}>
                         <Text style={styles.signup}>회원가입</Text>

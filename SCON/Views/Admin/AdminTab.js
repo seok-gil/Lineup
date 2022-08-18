@@ -1,30 +1,40 @@
-import React, {Component} from 'react'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {useNavigationState} from '@react-navigation/native'
-import {AdminHome} from './AdminHome'
-import {AdminMypage} from './AdminMypage'
+import React, { Component } from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { useNavigationState } from '@react-navigation/native'
+import { Image } from 'react-native'
+import { AdminHome } from './AdminHome'
+import { AdminMypage } from './AdminMypage'
 const AdminTab = createBottomTabNavigator()
+import { TabHomeFocusIcon, TabHomeIcon, TabSearchFocusIcon, TabSearchIcon, TabRankFocusIcon, TabRankIcon, TabETCFocusIcon, TabETCIcon } from '../../Assets/Icons'
 
-export function AdminTabScreen({navigation}) {
+export function AdminTabScreen({ navigation }) {
     const index2 = useNavigationState(state => state.index)
     return (
         <AdminTab.Navigator
             screenOptions={{
-                //   headerStyle: {
-                //     backgroundColor: '#B2F0FA',
-                //   },
                 headerTintColor: 'black',
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     fontSize: 20,
                 },
-                tabBarActiveTintColor: '#17D3F0',
-                tabBarInactiveTintColor: '#848484',
-                //   tabBarInactiveBackgroundColor: '#848484',
-                // headerShown: false,
+                tabBarShowLabel:false,
+
             }}>
-            <AdminTab.Screen name="AdminHomeScreen" component={AdminHome} />
-            <AdminTab.Screen name="AdminMyPageScreen" component={AdminMypage} />
+            <AdminTab.Screen name="AdminHomeScreen" component={AdminHome}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => {
+                        return (<Image source={focused ? TabHomeFocusIcon : TabHomeIcon} style={{ width: 25, height: 25 }} />)
+                    }
+                }} />
+
+            <AdminTab.Screen name="AdminMyPageScreen" component={AdminMypage}
+                options={{
+                    title: '마이페이지',
+                    tabBarIcon: ({ focused }) => {
+                        return (<Image source={focused ? TabETCFocusIcon : TabETCIcon} style={{ width:40, height:40 }} />)
+                    }
+                }} />
         </AdminTab.Navigator>
     )
 }
