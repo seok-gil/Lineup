@@ -28,7 +28,6 @@ function RankBody({navigation, route}) {
                 },
                 body: null,
             }).then(data => {
-                console.log(data)
                 setData(data.content)
             })
         })
@@ -38,8 +37,12 @@ function RankBody({navigation, route}) {
         setNextFeed(nextFeed + 5)
     }
 
-    
+    var etc;
     if (!data) return <SafeAreaView />
+    if (data.length < 3)
+        etc = null
+    else
+        etc = data.slice(3)
     return (
         <SafeAreaView style={styles.rankBodyWrapper}>
             <View style={styles.rankMedalWrapper}>
@@ -48,7 +51,7 @@ function RankBody({navigation, route}) {
                 <RankMedal player={data[2]} rank={3} navigation={navigation} />
             </View>
             <FlatList
-                data={data}
+                data={etc}
                 snapToAlignment="start"
                 decelerationRate="fast"
                 renderItem={({item, index}) => (
