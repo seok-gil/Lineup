@@ -20,9 +20,6 @@ export function TabScreen({ navigation }) {
     return (
         <Tab.Navigator
             screenOptions={{
-                //   headerStyle: {
-                //     backgroundColor: '#B2F0FA',
-                //   },
                 headerTintColor: 'black',
                 headerTitleStyle: {
                     fontWeight: 'bold',
@@ -31,10 +28,6 @@ export function TabScreen({ navigation }) {
                 tabBarActiveTintColor: '#17D3F0',
                 tabBarInactiveTintColor: '#848484',
                 tabBarShowLabel:false,
-                
-                //   tabBarInactiveBackgroundColor: '#848484',
-                // headerShown: false,
-                
             }}>
             <Tab.Screen name="HomeScreen" component={HomeScreen}
                 options={{
