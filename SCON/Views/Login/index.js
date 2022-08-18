@@ -38,6 +38,24 @@ export function LoginPage({ navigation }) {
             [key]: text,
         })
     }
+
+    const goLogin = (response) => {
+        if (response.status == 401) {
+            setValidate({
+                ['email']: false,
+                ['password']: false
+            })
+        }
+        else if (response.accessToken) {
+            AsyncStorage.setItem('accessToken', response.accessToken)
+            AsyncStorage.setItem('refreshToken', response.refreshToken)
+            AsyncStorage.setItem('role', response.role)
+            if (response.role == 'ROLE_ADMIN')
+                navigation.navigate('AdminTab')
+            else
+                navigation.navigate('Tab')
+        }
+    }
     const onLogin = () => {
         ApiFetch({
             method: 'POST',
@@ -48,26 +66,39 @@ export function LoginPage({ navigation }) {
             body: JSON.stringify(form),
         })
             .then((thing) => {
-                if (thing.status == 401) {
-                    setValidate({
-                        ['email']: false,
-                        ['password']: false
-                    })
-                }
-                else {
-                    AsyncStorage.setItem('accessToken', thing.accessToken)
-                    AsyncStorage.setItem('refreshToken', thing.refreshToken)
-                    AsyncStorage.setItem('role', thing.role)
-                    if (thing.role == 'ROLE_ADMIN')
-                        navigation.navigate('AdminTab')
-                    else
-                        navigation.navigate('Tab')
-                }
+                goLogin(thing)
             })
             .catch(error => {
                 console.log('catch error', error)
             })
     }
+
+    useEffect(() => {
+        var acc;
+        var res;
+        AsyncStorage.getItem("accessToken")
+            .then((thing) => {
+                acc = thing;
+                AsyncStorage.getItem("refreshToken")
+                    .then((thing) => {
+                        console.log("res", thing)
+                        res = thing;
+                        ApiFetch({
+                            method: 'POST',
+                            url: '/auth/reissue',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + acc,
+                            },
+                            body: JSON.stringify({
+                                'refreshToken' : res
+                        }),
+                        }).then((thing) => {
+                            goLogin(thing)
+                            })
+                    })
+            })
+    }, [])
 
     useEffect(() => {
         setValidate({

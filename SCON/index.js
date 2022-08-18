@@ -10,7 +10,6 @@ AppRegistry.registerComponent(appName, () => App)
 
 
 
-
 ///fire base
 import messaging from '@react-native-firebase/messaging';
 
