@@ -10,8 +10,9 @@ import {
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {useIsFocused} from '@react-navigation/native'
-import {LineupLogoImage} from '../../Assets/Images'
 import {ApiFetch, FCMmanager} from '../../Components'
+
+import {LineupLogo} from '../../Assets/svgs'
 import styles from './Login.styles'
 
 export function LoginPage({navigation}) {
@@ -31,6 +32,14 @@ export function LoginPage({navigation}) {
     email: true,
     password: true,
   })
+
+  const onInput = (key, e) => {
+    const {text} = e.nativeEvent
+    setForm({
+      ...form,
+      [key]: text,
+    })
+  }
 
   const goLogin = response => {
     if (response.status == 401) {
@@ -98,7 +107,7 @@ export function LoginPage({navigation}) {
   return (
     <SafeAreaView style={styles.loginWrapper}>
       <View style={styles.logoArea}>
-        <Image source={LineupLogoImage} style={styles.logoImage} />
+        <LineupLogo width={300} height={50} />
       </View>
       <View style={styles.bottomSection}>
         <View style={styles.loginSection}>
