@@ -126,11 +126,11 @@ export default function App() {
                     }} />
                 <AppStack.Screen name="InquiryTab" component={InquiryTabScreen}
                     options={{
-                        title: '알림'
+                        title: '문의하기'
                     }} />
                 <AppStack.Screen name="Profile" component={ProfileInfoScreen}
                     options={{
-                        title: '알림'
+                        title: '프로필'
                     }} />
                 <AppStack.Screen name="Noti" component={NotiScreen}
                     options={{

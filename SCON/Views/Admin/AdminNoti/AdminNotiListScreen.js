@@ -22,7 +22,7 @@ export function AdminNotiListScreen({navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                setData(thing)
+                setData(thing.reverse().map(noti => noti))
             })
         })
     }, [isFocused, mount])

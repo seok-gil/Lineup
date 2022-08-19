@@ -9,7 +9,6 @@ export function PlayerRegistResultPage({data, navigation, code}) {
     useEffect(() => {
 
     },[type])
-    console.log("type", type)
     type >= 0
         ? {
             0: DefaultProfileImage,
@@ -39,7 +38,6 @@ export function PlayerRegistResultPage({data, navigation, code}) {
     ) : (
         <Text />
     )
-        console.log(data)
     var content =
     type >= 0 ? (
         {

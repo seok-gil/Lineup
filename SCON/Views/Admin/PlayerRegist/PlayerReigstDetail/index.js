@@ -28,11 +28,11 @@ export function PlayerReigstDetail({ route, navigation }) {
           },
           body: null,
         }).then(thing => {
-          console.log(thing)
           setData(thing)
         })
       })
   }, []);
+  
   if (!data) return (<SafeAreaView />)
   return (
     <SafeAreaView>

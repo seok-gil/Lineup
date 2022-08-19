@@ -65,7 +65,7 @@ export function PhotoPick({ text, photo, setPhoto, setMount, styles = DEFAULT_ST
             { cancelable: false },
         )
         }
-        setMount(new Date())
+        setMount('certificate')
     }
     return (
         <View style={styles.photoPickWrapper}>

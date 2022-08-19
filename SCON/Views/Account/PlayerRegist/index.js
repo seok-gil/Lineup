@@ -43,7 +43,6 @@ export function PlayerRegist({ navigation }) {
         return <PlayerRegistForm navigation={navigation} />
     }
     else if (code.registState === 'HOLD') {
-        console.log("2")
         return <PlayerRegistResultPage navigation={navigation} code={0} />
     }
     else if (code.registState === 'REFUSE') {

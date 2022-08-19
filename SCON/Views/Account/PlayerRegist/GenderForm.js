@@ -5,20 +5,21 @@ import {
     Text,
 } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
-import { CheckSmallIcon } from '../../../Assets/Icons'
-export function GenderForm({ form, setForm, validate }) {
+
+export function GenderForm({ form, setForm, setMount }) {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
 
     useEffect(() => {
         if (value == '남자')
-            code = 0
+            code = '0'
         else
-            code = 1
+            code = '1'
         setForm({
             ...form,
             ['gender']: code,
         })
+        setMount('gender')
     }, [value])
 
     return (
@@ -38,7 +39,6 @@ export function GenderForm({ form, setForm, validate }) {
                     { label: '여자', value: '여자' },
                 ]}
             />
-            <Image source={validate.gender ? CheckSmallIcon : CheckSmallIcon} />
         </View>
     )
 }

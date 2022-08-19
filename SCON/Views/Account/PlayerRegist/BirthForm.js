@@ -10,7 +10,7 @@ import {
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import {CheckSmallIcon} from '../../../Assets/Icons'
 
-export function BirthForm({form, setForm, validate}) {
+export function BirthForm({form, setForm, setMount}) {
     const [pickOn, setPickOn] = useState(false)
     const [text, setText] = useState()
     const showDatePicker = () => {
@@ -24,10 +24,10 @@ export function BirthForm({form, setForm, validate}) {
       '월' +
       date.getDate() +
       '일'
-      console.log(date)
         setText(dateString)
         setForm({...form, ['birth']: date})
         hideDatePicker()
+        setMount('birth')
     }
 
     const hideDatePicker = () => {
@@ -43,7 +43,6 @@ export function BirthForm({form, setForm, validate}) {
                     placeholderTextColor="#0E0E0E66"
                     editable={false}
                 />
-            <Image source ={validate.birth ? CheckSmallIcon : CheckSmallIcon}/>
                 <DateTimePickerModal
                     isVisible={pickOn}
                     mode="date"

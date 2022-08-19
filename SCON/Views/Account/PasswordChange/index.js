@@ -85,7 +85,9 @@ export function PasswordChange({ navigation }) {
                         })
                     }
                     else {
-                        setModal(true)
+                        AsyncStorage.removeItem('accessToken')
+                        navigation.navigate('ModalPage', {text : '비밀번호가 변경되었어요.', page : 'LoginPage'})
+                        // setModal(true)
                     }
                 })
         })

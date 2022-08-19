@@ -32,7 +32,7 @@ export function InquiryScreen({navigation}) {
                 },
                 body: JSON.stringify(inputs),
             }).then(thing => {
-                setModal(true)
+                navigation.navigate('ModalPage', {text : '문의 내용이 전달 됐어요!', page : 'MyPageScreen'})
             })
         })
     }

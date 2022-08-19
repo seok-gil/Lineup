@@ -7,8 +7,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native'
-import {PhotoPick, ImagePush} from '../../../Components'
-import {DefaultProfileImage} from '../../../Assets/Images'
+import {PhotoPick} from '../../../Components'
 
 export function CaptureForm({playerPhoto, setPlayerPhoto, setMount}) {
     return (
