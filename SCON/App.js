@@ -15,6 +15,7 @@ import { PlayerScreen } from './Views/Player'
 import { RecordScreen } from './Views/Record'
 import { FollowScreen, FollowPage } from './Views/Follow'
 import { FeedScreen } from './Views/Feed'
+import SplashScreen from 'react-native-splash-screen';
 import {
     StoryScreen,
     FeedRegist,
@@ -48,6 +49,17 @@ LogBox.ignoreAllLogs(true)
 
 const AppStack = createStackNavigator()
 export default function App() {
+    useEffect(() => {
+        try {
+          setTimeout(() => {
+            SplashScreen.hide(); /** 추가 **/
+          }, 1000); /** 스플래시 시간 조절 (2초) **/
+        } catch(e) {
+          console.warn('에러발생');
+          console.warn(e);
+        }
+      });
+
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{

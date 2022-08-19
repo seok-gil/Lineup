@@ -12,7 +12,7 @@ target 'SCON' do
   pod 'FirebaseCoreInternal', :modular_headers => true
   pod 'Firebase/Messaging', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true
-
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
   config = use_native_modules!
   pod 'GoogleUtilities', :modular_headers => true
   # Flags change depending on the env values.

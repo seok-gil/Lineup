@@ -1,6 +1,6 @@
 package kr.co.sportist.lineup;
 import kr.co.sportist.lineup.BuildConfig;
-
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.bridge.JSIModulePackage;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
@@ -26,7 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
       new PagerViewPackage(),
-      new MainReactPackage()
+      new MainReactPackage(),
+      new SplashScreenReactPackage() 
     );
   }
   private final ReactNativeHost mReactNativeHost =
