@@ -41,11 +41,12 @@ import {
     PlayerReigstDetail,
     Inquiry,
 } from './Views/Admin'
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Warning: ...']);
 
 const AppStack = createStackNavigator()
-
 export default function App() {
-
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{
