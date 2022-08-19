@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import {
     NavigationContainer,
 } from '@react-navigation/native'
-// import FCMContainer from './Components/FCMContainer';
 import { createStackNavigator } from '@react-navigation/stack'
 import { LoginPage } from './Views/Login'
 import { RegistAccept, MakeId, Password } from './Views/Login/Regist'
@@ -16,6 +15,7 @@ import { PlayerScreen } from './Views/Player'
 import { RecordScreen } from './Views/Record'
 import { FollowScreen, FollowPage } from './Views/Follow'
 import { FeedScreen } from './Views/Feed'
+import SplashScreen from 'react-native-splash-screen';
 import {
     StoryScreen,
     FeedRegist,
@@ -28,6 +28,7 @@ import {
     AccountScreen,
     PasswordChange,
     PlayerRegist,
+    PlayerRegistForm,
     Withdrawal,
     PlayerRegistResultPage,
 } from './Views/Account'
@@ -41,12 +42,24 @@ import {
     PlayerReigstDetail,
     Inquiry,
 } from './Views/Admin'
-import { LogBox } from 'react-native';
 
-LogBox.ignoreLogs(['Warning: ...']);
+import { LogBox } from "react-native"
+
+LogBox.ignoreAllLogs(true)
 
 const AppStack = createStackNavigator()
 export default function App() {
+    useEffect(() => {
+        try {
+          setTimeout(() => {
+            SplashScreen.hide(); /** 추가 **/
+          }, 1000); /** 스플래시 시간 조절 (2초) **/
+        } catch(e) {
+          console.warn('에러발생');
+          console.warn(e);
+        }
+      });
+
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{
@@ -56,7 +69,6 @@ export default function App() {
                     options={{
                         headerShown: false
                     }} />
-
                 <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
                 <AppStack.Screen name="RegistAccpet" component={RegistAccept}
                     options={{
@@ -126,11 +138,11 @@ export default function App() {
                     }} />
                 <AppStack.Screen name="InquiryTab" component={InquiryTabScreen}
                     options={{
-                        title: '알림'
+                        title: '문의하기'
                     }} />
                 <AppStack.Screen name="Profile" component={ProfileInfoScreen}
                     options={{
-                        title: '알림'
+                        title: '프로필'
                     }} />
                 <AppStack.Screen name="Noti" component={NotiScreen}
                     options={{
@@ -145,6 +157,10 @@ export default function App() {
                         title: '비밀번호 변경'
                     }} />
                 <AppStack.Screen name="PlayerRegist" component={PlayerRegist}
+                    options={{
+                        title: '선수 인증'
+                    }} />
+                <AppStack.Screen name="PlayerRegistForm" component={PlayerRegistForm}
                     options={{
                         title: '선수 인증'
                     }} />

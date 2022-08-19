@@ -28,7 +28,7 @@ export function PlayerRegistRefuse({ navigation, params }) {
                     },
                     body: null,
                 }).then(() => {
-                    navigation.navigate('AdminMyPageScreen')
+                    navigation.navigate('ModalPage', {text : '승인 처리가 완료되었어요!', page : 'AdminMyPageScreen'})
                 })
             })
     }
@@ -46,13 +46,14 @@ export function PlayerRegistRefuse({ navigation, params }) {
                         refuseContent
                     })
                 }).then(() => {
-                    navigation.navigate('AdminMyPageScreen')
+                    navigation.navigate('ModalPage', {text : '플레이어 등록처리가\n반려되었습니다!', page : 'AdminMyPageScreen'})
                 })
             })
     }
     const onClick = () => {
         setSelection(!isSelected)
     }
+
     return (
         <View>
             {state != 1 ? (

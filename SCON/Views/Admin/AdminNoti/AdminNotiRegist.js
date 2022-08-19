@@ -50,7 +50,7 @@ export function AdminNotiRegist({navigation, route}) {
                 })
                 navigation.navigate('ModalPage', 
                 {text: "공지사항이 등록되었어요.",
-                    navigation:navigation})
+                page:'공지사항 목록'})
             })
         })
     }

@@ -27,7 +27,8 @@ export function Withdrawal({ navigation }) {
     }
     const onPress = () => {
         var accessToken
-        AsyncStorage.getItem('accessToken').then(thing => {
+        AsyncStorage.getItem('accessToken')
+        .then(thing => {
             accessToken = thing
             ApiFetch({
                 method: 'POST',
@@ -39,8 +40,8 @@ export function Withdrawal({ navigation }) {
                 body: JSON.stringify({
                     password: password
                 }),
-            }).then(res => {
-                if (res = 404) // password 불일치
+            }).then((res) => {
+                if (res.status == 406) // password 불일치
                     setValidate(false)
                 else { //password 일치
                     ApiFetch({
@@ -52,12 +53,13 @@ export function Withdrawal({ navigation }) {
                         },
                         body: null
                     }).then(() => {
-                        setModal(true)
                         setValidate(true)
+                        setModal(true)
                     })
                 }
             })
-
+            .catch((thing) => {
+            })
         })
     }
     return (
@@ -75,10 +77,10 @@ export function Withdrawal({ navigation }) {
                     </Text>
                 </View>
                 <Text style={styles.label}>사용 중인 비밀번호</Text>
-
                 <View style={styles.inputWrapper}>
                     <TextInput
                         value={password}
+                        secureTextEntry={true}
                         style={styles.input}
                         placeholder={'비밀번호'}
                         placeholderTextColor="#0E0E0E66"

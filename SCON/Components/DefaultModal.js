@@ -7,13 +7,13 @@ import {
 } from 'react-native'
 import styles from './DefaultModal.styles'
 
-export function DefaultModal({route}) {
+export function DefaultModal({navigation, route}) {
     const [modal, setModal] = useState(true)
     const onPressOn = () => {
         setModal(false)
-        route.params.navigation.goBack()
+        navigation.navigate(route.params.page)
     }
-
+    console.log(route)
     return (
         <Modal visible={modal}>
             <View style={styles.centeredView}>

@@ -4,28 +4,17 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './AdminNotiOne.styles'
 import { Time } from '../../../Components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {AdminNotiDelModal } from "./AdminNotiDelModal"
 
 export function AdminOne({ data, navigation, setMount }) {
+  const [modal, setModal] = useState(false)
   if (!data) return <View />
   const onEdit = () => {
     navigation.navigate('공지사항 등록', { data: data })
   }
   const onDel = () => {
-    AsyncStorage.getItem("accessToken")
-      .then((thing) => {
-        ApiFetch({
-          method: 'DELETE',
-          url: `/admin/notice/${data.id}`,
-          headers: {
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + thing,
-          },
-          body: JSON.stringify({
-          }),
-        }).then(() => {
-          setMount(new Date)
-        })
-      })
+    setModal(true)
+    setMount(new Date())
   }
 
   return (
@@ -43,6 +32,7 @@ export function AdminOne({ data, navigation, setMount }) {
         <TouchableOpacity onPress={() => onDel()} style={styles.notiButton}>
           <Text style={styles.notiButtonText}>삭제</Text>
         </TouchableOpacity>
+        <AdminNotiDelModal modal={modal} setModal={setModal} navigation={navigation} data={data}/>
       </View>
     </View>
   )

@@ -16,6 +16,7 @@ import { PlayerRegistResultPage } from './PlayerRegistReusltPage'
 
 export function PlayerRegist({ navigation }) {
     const [code, setCode] = useState()
+    const [role, setRole] = useState()
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
@@ -29,12 +30,12 @@ export function PlayerRegist({ navigation }) {
             }).then(thing => {
                 setCode(thing)
                 AsyncStorage.getItem('role')
-                .then(setCode)
+                .then(setRole)
             })
         })
     }, [])
     
-    if (code == 'ROLE_PLAYER')
+    if (role == 'ROLE_PLAYER')
         return <PlayerRegistResultPage navigation={navigation} code={1} />
     else if (!code)
         return <SafeAreaView/>
@@ -42,11 +43,9 @@ export function PlayerRegist({ navigation }) {
         return <PlayerRegistForm navigation={navigation} />
     }
     else if (code.registState === 'HOLD') {
-        console.log("2")
         return <PlayerRegistResultPage navigation={navigation} code={0} />
     }
     else if (code.registState === 'REFUSE') {
-        console.log("3")
         return <PlayerRegistResultPage navigation={navigation} code={2} data={code} />
     }
 }
