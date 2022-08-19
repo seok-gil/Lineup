@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SCONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SCONTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1F6F062A28AF866100031F66 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6F062928AF866100031F66 /* Launch Screen.storyboard */; };
-		1FCCA63128A3999C002BA642 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FCCA63028A3999C002BA642 /* GoogleService-Info.plist */; };
+		1F6F063028AF8F8400031F66 /* linup.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6F062F28AF8F8400031F66 /* linup.png */; };
+		1F6F063128AF8F8400031F66 /* linup.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6F062F28AF8F8400031F66 /* linup.png */; };
+		1FB449DA28AF96D400A0BD99 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB449D928AF96D400A0BD99 /* Images.xcassets */; };
+		1FB449DC28AF9D0400A0BD99 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB449DB28AF9D0400A0BD99 /* Launch Screen.storyboard */; };
 		1FD345B628A38720005B7EB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FD345B528A3871F005B7EB6 /* GoogleService-Info.plist */; };
 		93BE17D1421D0676CF7DA665 /* libPods-SCON-SCONTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BD293248592BA82732E69E /* libPods-SCON-SCONTests.a */; };
 		B12AB49C34E454FF23543FDA /* libPods-SCON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 722286DB70603B6F0DD0C760 /* libPods-SCON.a */; };
@@ -35,11 +36,11 @@
 		13B07F961A680F5B00A75B9A /* SCON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SCON/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = SCON/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SCON/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SCON/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SCON/main.m; sourceTree = "<group>"; };
-		1F6F062928AF866100031F66 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		1FCCA63028A3999C002BA642 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F6F062F28AF8F8400031F66 /* linup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linup.png; sourceTree = "<group>"; };
+		1FB449D928AF96D400A0BD99 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SCON/Images.xcassets; sourceTree = "<group>"; };
+		1FB449DB28AF9D0400A0BD99 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1FD005C228A22A7700C69607 /* SCON.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SCON.entitlements; path = SCON/SCON.entitlements; sourceTree = "<group>"; };
 		1FD345B528A3871F005B7EB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		35BD293248592BA82732E69E /* libPods-SCON-SCONTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SCON-SCONTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,11 +96,11 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				1FB449DB28AF9D0400A0BD99 /* Launch Screen.storyboard */,
 				1FD345B528A3871F005B7EB6 /* GoogleService-Info.plist */,
-				1FCCA63028A3999C002BA642 /* GoogleService-Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				1F6F062928AF866100031F66 /* Launch Screen.storyboard */,
+				1F6F062F28AF8F8400031F66 /* linup.png */,
+				1FB449D928AF96D400A0BD99 /* Images.xcassets */,
 			);
 			name = SCON;
 			sourceTree = "<group>";
@@ -244,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F6F063128AF8F8400031F66 /* linup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,9 +253,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FCCA63128A3999C002BA642 /* GoogleService-Info.plist in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				1F6F062A28AF866100031F66 /* Launch Screen.storyboard in Resources */,
+				1F6F063028AF8F8400031F66 /* linup.png in Resources */,
+				1FB449DA28AF96D400A0BD99 /* Images.xcassets in Resources */,
+				1FB449DC28AF9D0400A0BD99 /* Launch Screen.storyboard in Resources */,
 				1FD345B628A38720005B7EB6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,6 +656,8 @@
 			baseConfigurationReference = 81861D06159F8593A392B779 /* Pods-SCON.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SCON/SCON.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -662,6 +666,8 @@
 				DEVELOPMENT_TEAM = 79ALXW2AF7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SCON/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -686,6 +692,8 @@
 			baseConfigurationReference = CCCF2E6AB0AE3012B2C206E5 /* Pods-SCON.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SCON/SCON.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -693,6 +701,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 79ALXW2AF7;
 				INFOPLIST_FILE = SCON/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -715,6 +725,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -787,6 +798,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";

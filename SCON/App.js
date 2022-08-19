@@ -50,6 +50,7 @@ LogBox.ignoreAllLogs(true)
 const AppStack = createStackNavigator()
 export default function App() {
     useEffect(() => {
+        console.log("kk")
         try {
           setTimeout(() => {
             SplashScreen.hide(); /** 추가 **/
