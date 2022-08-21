@@ -1,5 +1,5 @@
-import React, {Component, useState} from 'react'
-import {View, Image, Text, TextInput, TouchableOpacity} from 'react-native'
+import React, {useState} from 'react'
+import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 
 import {ArrowIcon} from '../../../Assets/svgs'

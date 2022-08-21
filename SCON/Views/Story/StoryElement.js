@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, Text, View} from 'react-native'
+import {Text, View} from 'react-native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
 
 import styles from './StoryElement.styles'

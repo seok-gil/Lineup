@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {
   SafeAreaView,
   View,
-  Image,
   Text,
-  Alert,
   TextInput,
   TouchableOpacity,
 } from 'react-native'
@@ -20,8 +18,8 @@ export function LoginPage({navigation}) {
   const [form, setForm] = useState({
     fcmToken: '',
     // email: 'admin@gmail.com',
-    // email: 'player0@gmail.com',
-    email: 'member1@gmail.com',
+    email: 'player0@gmail.com',
+    // email: 'member1@gmail.com',
     // email: 'abcd@teml.net',
     // password: a12345678!,
     password: '1234',

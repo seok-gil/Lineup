@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
-import {DefaultProfileImage} from '../../../Assets/Images'
+import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import {DefaultProfileImage} from '../../../Assets/svgs'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
   if (replyFocus == null) {
-    return <View/>
+    return <View />
   }
   const [comment, setComment] = useState('')
   const onInput = e => {
@@ -39,7 +39,7 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
 
   return (
     <KeyboardAwareScrollView style={{flexDirection: 'row'}}>
-      <Image source={DefaultProfileImage} />
+      <DefaultProfileImage />
       <TextInput
         value={comment}
         placeholder={'답글 쓰기'}

@@ -1,14 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-import {
-  View,
-  Image,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  SafeAreaView,
-  Text,
-} from 'react-native'
+import {View, TextInput, TouchableOpacity, ScrollView} from 'react-native'
 
 import styles from './DetailEvent.styles'
 

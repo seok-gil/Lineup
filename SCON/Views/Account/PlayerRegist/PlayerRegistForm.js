@@ -1,12 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {
-  View,
-  Image,
-  Text,
-  Modal,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 import {BirthForm} from './BirthForm'
 import {GenderForm} from './GenderForm'

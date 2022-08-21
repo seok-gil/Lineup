@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {View, Text, Image, TouchableOpacity} from 'react-native'
+import {View, Text, TouchableOpacity} from 'react-native'
 
 import {RegistAcceptIcon, RegistPendingIcon} from '../Assets'
 import {DeniedIcon} from '../../../Assets/svgs'

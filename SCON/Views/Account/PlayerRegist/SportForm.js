@@ -36,7 +36,7 @@
 핸드볼
 */
 import React, {useEffect, useState} from 'react'
-import {View, Image, Text} from 'react-native'
+import {View, Text} from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 import styles from './SportForm.styles'
 

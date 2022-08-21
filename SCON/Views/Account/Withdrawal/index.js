@@ -1,12 +1,5 @@
 import React, {Component, useState} from 'react'
-import {
-  View,
-  Image,
-  Text,
-  Alert,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 import {WithdrawalModal} from './WithdrawalModal'
 import AsyncStorage from '@react-native-async-storage/async-storage'

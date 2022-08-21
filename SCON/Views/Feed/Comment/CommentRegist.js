@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
-import {DefaultProfileImage} from '../../../Assets/Images'
+import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import {DefaultProfileImage} from '../../../Assets/svgs'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import styles from './CommentRegist.styles'
@@ -38,7 +38,7 @@ export function CommentRegist({feedId, setMount}) {
   return (
     <View style={styles.commentRegistWrapper}>
       <View style={styles.registWrapper}>
-        <Image source={DefaultProfileImage} />
+        <DefaultProfileImage />
         <TextInput
           value={comment}
           placeholder={'댓글 쓰기'}

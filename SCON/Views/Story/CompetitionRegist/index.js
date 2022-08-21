@@ -4,7 +4,6 @@ import {Calendar} from './Calender'
 import {
   View,
   Text,
-  Image,
   TextInput,
   TouchableOpacity,
   SafeAreaView,

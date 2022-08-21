@@ -1,12 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native'
+import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {LogoutModal} from './LogoutModal'
 import {ApiFetch} from '../../Components'
@@ -48,19 +41,19 @@ export function AccountScreen({navigation}) {
           <Text style={styles.elementText}>로그아웃</Text>
           <Text style={styles.emailText}>{data && data.email}</Text>
         </View>
-        <Image style={styles.icon} source={DownIcon} />
+        <ArrowIcon style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.menuElement}
         onPress={() => navigation.navigate('PasswordChange')}>
         <Text style={styles.elementText}>비밀번호 변경</Text>
-        <Image style={styles.icon} source={DownIcon} />
+        <ArrowIcon style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.menuElement}
         onPress={() => navigation.navigate('PlayerRegist')}>
         <Text style={styles.elementText}>선수 등록</Text>
-        <Image style={styles.icon} source={DownIcon} />
+        <ArrowIcon style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.menuElement}
