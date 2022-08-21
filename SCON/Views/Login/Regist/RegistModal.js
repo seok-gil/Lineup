@@ -1,15 +1,8 @@
-import React, {useState} from 'react'
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  View,
-  Text,
-  Image,
-  Modal,
-} from 'react-native'
+import React from 'react'
+import {TouchableOpacity, View, Text, Modal} from 'react-native'
 import styles from './RegistModal.styles'
 
-import {WelcomeImage} from '../../../Assets/svgs'
+import {WelcomeImage} from '../Assets'
 
 export function RegistModal({modal, setModal, navigation}) {
   const onPress = () => {
