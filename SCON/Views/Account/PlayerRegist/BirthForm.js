@@ -1,7 +1,8 @@
 import React, {Component, useState} from 'react'
 import {View, Image, Text, TextInput, TouchableOpacity} from 'react-native'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
-import {DownIcon} from '../../../Assets/Icons'
+
+import {ArrowIcon} from '../../../Assets/svgs'
 import styles from './BirthForm.styles'
 
 export function BirthForm({form, setForm, validate}) {
@@ -35,7 +36,7 @@ export function BirthForm({form, setForm, validate}) {
           <Text style={styles.input}>
             {text ? text : '생년월일을 선택해주세요'}
           </Text>
-          <Image source={DownIcon} style={styles.downIcon} />
+          <ArrowIcon width={11} height={6} style={styles.downIcon} />
         </View>
       </TouchableOpacity>
       <DateTimePickerModal
