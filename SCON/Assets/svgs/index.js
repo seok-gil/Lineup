@@ -1,10 +1,14 @@
 // Frequently Used
-export {default as checkIcon} from './checkIcon.svg'
+export {default as CheckIcon} from './checkIcon.svg'
 export {default as XIcon} from './xIcon.svg'
 export {default as DefaultProfileImage} from './defaultImage.svg'
 export {default as NotiIcon} from './notiIcon.svg'
 export {default as ArrowIcon} from './arrowIcon.svg'
 export {default as CameraIcon} from './cameraIcon.svg'
+export {default as SearchIcon} from './searchIcon.svg'
+export {default as HeartEmptyIcon} from './heartEmpty.svg'
+export {default as HeartFilledIcon} from './heartFilled.svg'
+export {default as CircleAddIcon} from './circleAddIcon.svg'
 
 export {default as MedalIcon} from './medal.svg'
 
