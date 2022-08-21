@@ -37,7 +37,7 @@ export function TabScreen({navigation}) {
             <TabHomeIcon
               width={25}
               height={25}
-              fill={focused ? '#17D3F0' : '#0E0E0E'}
+              fill={focused ? '#17D3F0' : '#0E0E0E66'}
             />
           ),
         }}
@@ -51,7 +51,7 @@ export function TabScreen({navigation}) {
             <TabSearchIcon
               width={25}
               height={25}
-              fill={focused ? '#17D3F0' : '#0E0E0E'}
+              fill={focused ? '#17D3F0' : '#0E0E0E66'}
             />
           ),
         }}
@@ -65,7 +65,7 @@ export function TabScreen({navigation}) {
             <TabRankingIcon
               width={25}
               height={25}
-              fill={focused ? '#17D3F0' : '#0E0E0E'}
+              fill={focused ? '#17D3F0' : '#0E0E0E66'}
             />
           ),
         }}
@@ -79,7 +79,7 @@ export function TabScreen({navigation}) {
             <TabEllipsisIcon
               width={25}
               height={25}
-              fill={focused ? '#17D3F0' : '#0E0E0E'}
+              fill={focused ? '#17D3F0' : '#0E0E0E66'}
             />
           ),
         }}
