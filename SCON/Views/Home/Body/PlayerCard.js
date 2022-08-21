@@ -2,16 +2,17 @@ import React, {useState} from 'react'
 import {Text, TouchableOpacity, Image} from 'react-native'
 
 import styles from './PlayerCard.styles'
-import {AddIcon, MyBadgeIcon} from '../../../Assets/Icons'
+import {BigPlusIcon, MyLabelIcon} from '../Assets'
 
 function PlayerCard({data, navigation, item, role, index}) {
-  if (!item) return null;
-  if (index == 0 && role == 'ROLE_PLAYER') { // Myplayer
+  if (!item) return null
+  if (index == 0 && role == 'ROLE_PLAYER') {
+    // Myplayer
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
         style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
-        <Image source={MyBadgeIcon} style={styles.myBadgeIcon} />
+        <MyLabelIcon style={styles.myBadgeIcon} />
         <Image source={{uri: data.profilePic}} style={styles.playerCardImage} />
         <Text style={styles.nameText}>{item.name}</Text>
         <Text style={styles.subText}>{item.sport}</Text>
@@ -24,10 +25,7 @@ function PlayerCard({data, navigation, item, role, index}) {
       <TouchableOpacity
         onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
         style={[styles.cardWrapper, styles.playerCardWrapper]}>
-        <Image
-          source={{uri: item.profilePic}}
-          style={styles.playerCardImage}
-        />
+        <Image source={{uri: item.profilePic}} style={styles.playerCardImage} />
         <Text style={styles.nameText}>{item.name}</Text>
         <Text style={styles.subText}>{item.sport}</Text>
         <Text style={styles.subText}>{item.belong}</Text>
@@ -39,7 +37,7 @@ function PlayerCard({data, navigation, item, role, index}) {
       <TouchableOpacity
         onPress={() => navigation.navigate('SearchScreen')}
         style={[styles.cardWrapper, styles.emptyCardWrapper]}>
-        <Image source={AddIcon} style={styles.emptyCardImage} />
+        <BigPlusIcon width={100} height={100} style={styles.emptyCardImage} />
       </TouchableOpacity>
     )
   }

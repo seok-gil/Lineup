@@ -1,10 +1,9 @@
-import React, {Component} from 'react'
-import {View, Text, Image, TouchableOpacity} from 'react-native'
+import React from 'react'
+import {View, TouchableOpacity} from 'react-native'
 
 import {NickName} from './index'
 
-import {LineupLogo} from '../../Assets/svgs'
-import {NotiIcon} from '../../Assets/Icons'
+import {LineupLogo, NotiIcon} from '../../Assets/svgs'
 
 import styles from './Head.styles'
 
@@ -13,7 +12,7 @@ function AlertIcon({alert, navigation}) {
     <View style={[styles.alignment, styles.alertWrapper]}>
       <TouchableOpacity onPress={() => navigation.navigate('AlertScreen')}>
         <View style={styles.alertIconWrapper}>
-          <Image source={NotiIcon} />
+          <NotiIcon />
           {alert ? <View style={styles.alertBadge} /> : <></>}
         </View>
       </TouchableOpacity>

@@ -2,6 +2,7 @@
 export {default as checkIcon} from './checkIcon.svg'
 export {default as XIcon} from './xIcon.svg'
 export {default as DefaultProfileImage} from './defaultImage.svg'
+export {default as NotiIcon} from './notiIcon.svg'
 
 export {default as MedalIcon} from './medal.svg'
 
