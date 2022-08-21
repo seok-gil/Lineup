@@ -12,21 +12,21 @@ export function StoryScreen({navigation}) {
       <StoryElement
         navigation={navigation}
         text="피드"
-        imageSrc={FeedIcon}
+        imageSrc={0}
         navlink={'FeedRegist'}
         props={{type: 'POST'}}
       />
       <StoryElement
         navigation={navigation}
         text="대회 일정"
-        imageSrc={ScheduleIcon}
+        imageSrc={1}
         navlink={'CompetitionRegist'}
         props={{type: 'POST'}}
       />
       <StoryElement
         navigation={navigation}
         text="대회 결과"
-        imageSrc={ResultIcon}
+        imageSrc={2}
         navlink={'CompetitionResult'}
         props={{type: 'POST'}}
       />
