@@ -10,8 +10,7 @@ import {
 
 import styles from './PasswordReset.styles'
 import {PasswordChangeModal} from './PasswordChangeModal'
-import {CheckSmallIcon} from '../../../Assets/Icons'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import {CheckIcon} from '../../../Assets/svgs'
 import {ApiFetch} from '../../../Components'
 export function PasswordReset({navigation, route}) {
   const [form, setForm] = useState({
@@ -87,8 +86,9 @@ export function PasswordReset({navigation, route}) {
               secureTextEntry={true}
               onChange={e => onInput('password', e)}
             />
-            <Image
-              source={CheckSmallIcon}
+            <CheckIcon
+              width={15}
+              height={15}
               style={
                 validate.password ? styles.checkIcon : styles.checkIconNotShown
               }
@@ -110,8 +110,9 @@ export function PasswordReset({navigation, route}) {
               placeholderTextColor="#0E0E0E66"
               onChange={e => onInput('certification', e)}
             />
-            <Image
-              source={CheckSmallIcon}
+            <CheckIcon
+              width={15}
+              height={15}
               style={
                 validate.certification
                   ? styles.checkIcon
