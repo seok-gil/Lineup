@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Text, TouchableOpacity, Image} from 'react-native'
+import React from 'react'
+import {Text, View, TouchableOpacity, Image} from 'react-native'
 
 import styles from './PlayerCard.styles'
 import {BigPlusIcon} from '../Assets'
@@ -13,7 +13,9 @@ function PlayerCard({data, navigation, item, role, index}) {
       <TouchableOpacity
         onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
         style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
-        <Label labelText="MY" />
+        <View style={styles.labelAbsoluteWrapper}>
+          <Label labelText="MY" />
+        </View>
         <Image source={{uri: data.profilePic}} style={styles.playerCardImage} />
         <Text style={styles.nameText}>{item.name}</Text>
         <Text style={styles.subText}>{item.sport}</Text>

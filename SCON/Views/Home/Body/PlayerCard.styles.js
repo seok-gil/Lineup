@@ -3,69 +3,75 @@ import {StyleSheet} from 'react-native'
 import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
-    cardWrapper: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 223,
-        height: 307,
-        borderRadius: 10,
-        shadowColor: colors.BLACK,
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.05,
-        shadowRadius: 10,
-        marginHorizontal: 37.5 / 2,
+  cardWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 223,
+    height: 307,
+    borderRadius: 10,
+    shadowColor: colors.BLACK,
+    shadowOffset: {
+      width: 0,
+      height: 0,
     },
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    marginHorizontal: 37.5 / 2,
+  },
 
-    playerMyCardWrapper: {
-        backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
-        position: 'relative',
-    },
+  playerMyCardWrapper: {
+    backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
+    position: 'relative',
+  },
 
-    playerCardWrapper: {
-        backgroundColor: colors.WHITE,
-    },
+  playerCardWrapper: {
+    backgroundColor: colors.WHITE,
+  },
 
-    myBadgeIcon: {
-        width: 40,
-        resizeMode: 'contain',
-        position: 'absolute',
-        top: -20,
-        left: 30,
-        zIndex: 30,
-    },
+  labelAbsoluteWrapper: {
+    position: 'absolute',
+    top: 5,
+    right: 10,
+  },
 
-    playerCardImage: {
-        width: 150,
-        height: 150,
-        justifyContent: 'center',
-        resizeMode: 'contain',
-        marginBottom: 20,
-        borderRadius: 75,
-    },
+  myBadgeIcon: {
+    width: 40,
+    resizeMode: 'contain',
+    position: 'absolute',
+    top: -20,
+    left: 30,
+    zIndex: 30,
+  },
 
-    emptyCardWrapper: {
-        backgroundColor: colors.WHITE,
-    },
+  playerCardImage: {
+    width: 150,
+    height: 150,
+    justifyContent: 'center',
+    resizeMode: 'contain',
+    marginBottom: 20,
+    borderRadius: 75,
+  },
 
-    emptyCardImage: {
-        width: 112,
-        height: 112,
-        justifyContent: 'center',
-        resizeMode: 'contain',
-    },
+  emptyCardWrapper: {
+    backgroundColor: colors.WHITE,
+  },
 
-    nameText: {
-        fontSize: 20,
-        fontWeight: '700',
-        marginBottom: 5,
-    },
+  emptyCardImage: {
+    width: 112,
+    height: 112,
+    justifyContent: 'center',
+    resizeMode: 'contain',
+  },
 
-    subText: {
-        marginBottom: 3,
-    },
+  nameText: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 5,
+  },
+
+  subText: {
+    marginBottom: 3,
+  },
 })
 
 export default styles
