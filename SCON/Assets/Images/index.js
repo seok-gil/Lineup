@@ -1,7 +1,1 @@
-export {default as DefaultProfileImage} from './defaultProfile.png'
-export {default as CalendarImage} from './calendar.png'
-export {default as SwimmingBackground} from './swimmingBackground.png'
 export {default as PlayerCardImage} from './playerCard.png'
-export {default as PlayerRegistCheckingImage} from './playerRegistChecking.png'
-export {default as PlayerRegistDoneImage} from './playerRegistDone.png'
-export {default as PlayerRegistDeniedImage} from './playerRegistDenied.png'
