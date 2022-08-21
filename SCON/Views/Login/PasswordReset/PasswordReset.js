@@ -5,13 +5,11 @@ import {
   View,
   Text,
   TextInput,
-  Image,
 } from 'react-native'
 
 import styles from './PasswordReset.styles'
-import {PasswordChangeModal} from './PasswordChangeModal'
 import {CheckIcon} from '../../../Assets/svgs'
-import {ApiFetch} from '../../../Components'
+import {PasswordChangeModal, ApiFetch} from '../../../Components'
 export function PasswordReset({navigation, route}) {
   const [form, setForm] = useState({
     password: '',
