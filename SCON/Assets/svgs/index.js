@@ -9,6 +9,7 @@ export {default as SearchIcon} from './searchIcon.svg'
 export {default as HeartEmptyIcon} from './heartEmpty.svg'
 export {default as HeartFilledIcon} from './heartFilled.svg'
 export {default as CircleAddIcon} from './circleAddIcon.svg'
+export {default as LabelIcon} from './labelIcon.svg'
 
 export {default as MedalIcon} from './medal.svg'
 export {default as AlertTriangleIcon} from './alertTriangleIcon.svg'

@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import {Text, TouchableOpacity, Image} from 'react-native'
 
 import styles from './PlayerCard.styles'
-import {BigPlusIcon, MyLabelIcon} from '../Assets'
+import {BigPlusIcon} from '../Assets'
+import {Label} from '../../../Components/Label'
 
 function PlayerCard({data, navigation, item, role, index}) {
   if (!item) return null
@@ -12,7 +13,7 @@ function PlayerCard({data, navigation, item, role, index}) {
       <TouchableOpacity
         onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
         style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
-        <MyLabelIcon style={styles.myBadgeIcon} />
+        <Label labelText="MY" />
         <Image source={{uri: data.profilePic}} style={styles.playerCardImage} />
         <Text style={styles.nameText}>{item.name}</Text>
         <Text style={styles.subText}>{item.sport}</Text>
