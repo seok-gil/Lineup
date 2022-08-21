@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {View, Text, TouchableOpacity, Image} from 'react-native'
 
-import {AcceptIcon, AlertIcon, ListIcon} from '../Assets'
+import {AcceptIcon, ListIcon} from '../Assets'
+import {AlertTriangleIcon} from '../../../Assets/svgs'
 import {QnAIcon, MegaphoneIcon, ArrowIcon} from '../../../Assets/svgs'
 
 import styles from './AdminMypageTab.styles'
@@ -41,7 +42,11 @@ export function AdminMypageTab({navigation}) {
         style={styles.mypageElement}
         onPress={() => navigation.navigate('Report')}>
         <View style={styles.elementLeft}>
-          <AlertIcon width={18} height={18} style={styles.elementIcon} />
+          <AlertTriangleIcon
+            width={18}
+            height={18}
+            style={styles.elementIcon}
+          />
           <Text style={styles.elementText}>신고 접수</Text>
         </View>
         <ArrowIcon
