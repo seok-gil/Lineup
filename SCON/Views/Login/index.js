@@ -18,14 +18,14 @@ export function LoginPage({ navigation }) {
     const isFocused = useIsFocused();
     const [form, setForm] = useState({
         fcmToken: '',
-        // email: 'player8ㅉㅈ@gmail.com',
+        // email: 'player8@gmail.com',
         // password: '1234',
         // email: 'polkm789@naver.com',
         // password: 'a12345678@',
-        // email: 'member17@gmail.com',
-        // password: '1234',
-        email: 'admin@gmail.com',
+        email: 'member17@gmail.com',
         password: '1234',
+        // email: 'admin@gmail.com',
+        // password: '1234',
     })
     const [validate, setValidate] = useState({
         email: true,
