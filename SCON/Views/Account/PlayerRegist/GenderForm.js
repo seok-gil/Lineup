@@ -29,7 +29,9 @@ export function GenderForm({form, setForm, setMount}) {
           setOpen={setOpen}
           setValue={setValue}
           placeholder="여자 / 남자 선택해주세요"
-          // containerStyle={{ height: 40 }}
+          dropDownContainerStyle={styles.dropdownContainerStyle}
+          style={styles.dropdownStyle}
+          textStyle={styles.textStyle}
           onChangeItem={value => console.log('a', value)}
           items={[
             {label: '남자', value: '남자'},

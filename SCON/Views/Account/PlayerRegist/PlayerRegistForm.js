@@ -13,12 +13,15 @@ import {GenderForm} from './GenderForm'
 import {CaptureForm} from './CaptureForm'
 import {SportForm} from './SportForm'
 import {PlayerRegistModal} from './PlayerRegistModal'
-import {CheckSmallIcon, PinnedIcon} from '../../../Assets/Icons'
 import {ApiPush} from './ApiPush'
+
+import styles from './PlayerRegistForm.styles'
 
 export function PlayerRegistForm({navigation}) {
   const [mount, setMount] = useState()
   const [modal, setModal] = useState(false)
+  const [button, setButton] = useState(false)
+
   const [form, setForm] = useState({
     certificate: null,
     name: null,
@@ -34,12 +37,12 @@ export function PlayerRegistForm({navigation}) {
     sport: false,
     belong: false,
   })
-  setValidate({
-    ...validate,
-    [key]: true,
+  const [playerPhoto, setPlayerPhoto] = useState({
+    asset: '',
+    set: false,
+    uri: 'https://profile-scon.s3.ap-northeast-2.amazonaws.com/profile/default_profilePic.jpg',
   })
 
-  const [button, setButton] = useState(false)
   const onInput = (key, e) => {
     const {text} = e.nativeEvent
     setForm({
@@ -109,16 +112,9 @@ export function PlayerRegistForm({navigation}) {
               onChange={e => onInput('name', e)}
             />
           </View>
-          <BirthForm form={form} setForm={setForm} validate={validate} />
-          <GenderForm form={form} setForm={setForm} validate={validate} />
-          <Text style={styles.label}>종목</Text>
-          <TextInput
-            value={form.sport}
-            style={styles.input}
-            placeholder={'종목을 선택해주세요'}
-            placeholderTextColor="#0E0E0E66"
-            onChange={e => onInput('sport', e)}
-          />
+          <BirthForm form={form} setForm={setForm} setMount={setMount} />
+          <GenderForm form={form} setForm={setForm} setMount={setMount} />
+          <SportForm form={form} setForm={setForm} setMount={setMount} />
           <Text style={styles.label}>소속</Text>
           <TextInput
             value={form.belong}

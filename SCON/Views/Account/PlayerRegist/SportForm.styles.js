@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
-  genderWrapper: {
+  sportWrapper: {
     flexDirection: 'column',
     width: '100%',
   },
@@ -32,12 +32,14 @@ const styles = StyleSheet.create({
 
   dropdownStyle: {
     borderColor: colors.GRAYE6,
+    height: 10,
   },
 
+  containerStyle: {},
+
   dropdownContainerStyle: {
-    zIndex: 9999999,
     borderColor: colors.GRAYE6,
-    backgroundColor: colors.WHITE,
+    backgroundColor: colors.THEME_SKYBLUE,
   },
 
   textStyle: {
