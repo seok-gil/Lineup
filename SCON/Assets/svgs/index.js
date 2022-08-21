@@ -11,6 +11,8 @@ export {default as HeartFilledIcon} from './heartFilled.svg'
 export {default as CircleAddIcon} from './circleAddIcon.svg'
 
 export {default as MedalIcon} from './medal.svg'
+export {default as AlertTriangleIcon} from './alertTriangleIcon.svg'
+export {default as DeniedIcon} from './deniedIcon.svg'
 
 // Logo
 export {default as LineupLogo} from './lineupLogo.svg'
