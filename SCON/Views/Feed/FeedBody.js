@@ -1,16 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import {
-  View,
-  TouchableOpacity,
-  DeviceEventEmitter,
-  Text,
-  Image,
-} from 'react-native'
-import {CommentIcon, HeartEmptyIcon, HeartIcon} from '../../Assets/Icons'
+import React from 'react'
+import {View, TouchableOpacity, Text} from 'react-native'
+
 import {TimeRelative} from '../../Components/Time'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch, LikeComponent} from '../../Components/'
 
+import {CommentIcon, HeartEmptyIcon, HeartFilledIcon} from '../../Assets/svgs'
 import styles from './FeedBody.styles'
 
 export function FeedBody({data, feedId, navigation, setMount}) {
@@ -55,14 +50,25 @@ export function FeedBody({data, feedId, navigation, setMount}) {
             setMount={setMount}
             onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}
             style={styles.iconWrapper}>
-            <Image
-              style={styles.icon}
-              source={data.ilike ? HeartIcon : HeartEmptyIcon}
-            />
+            {data.ilike ? (
+              <HeartFilledIcon
+                width={20}
+                height={20}
+                fill="#17D3F0"
+                style={styles.icon}
+              />
+            ) : (
+              <HeartEmptyIcon
+                width={20}
+                height={20}
+                fill="#0E0E0E"
+                style={styles.icon}
+              />
+            )}
             <Text style={styles.text}>{data.likeCnt}</Text>
           </TouchableOpacity>
           <View style={styles.iconWrapper}>
-            <Image style={styles.icon} source={CommentIcon} />
+            <CommentIcon width={20} height={20} style={styles.icon} />
             <Text style={styles.text}>{data.commentCnt}</Text>
           </View>
         </View>

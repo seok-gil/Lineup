@@ -1,25 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
+import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native'
+
+import {CommentModal, Reply} from './'
+import {TimeRelative, LikeComponent} from '../../../Components'
+
 import {
-  View,
-  TouchableOpacity,
-  Text,
-  Image,
-  StyleSheet,
-} from 'react-native'
+  HeartEmptyIcon,
+  HeartFilledIcon,
+  TabEllipsisIcon,
+} from '../../../Assets/svgs'
 
-import { CommentModal, Reply } from './'
-import { HeartSEmptyIcon, HeartSFilledIcon, ViewMore } from '../../../Assets/Icons'
-import { TimeRelative, LikeComponent } from '../../../Components'
-
-export function CommentOne({ data, feedId, setReplyFocus, setMount, navigation }) {
+export function CommentOne({
+  data,
+  feedId,
+  setReplyFocus,
+  setMount,
+  navigation,
+}) {
   if (!data) return <View />
   const [viewReply, setViewReply] = useState(false)
-  var likeUrl = !data.ilike ? `comment/${data.commentId}` : `comment/${data.ilike}`
+  var likeUrl = !data.ilike
+    ? `comment/${data.commentId}`
+    : `comment/${data.ilike}`
   const [modal, setModal] = useState(false)
   return (
     <View>
-      <View style={{ flexDirection: 'row' }}>
-        <Image source={{ uri: data.profilePic }} style={styles.image} />
+      <View style={{flexDirection: 'row'}}>
+        <Image source={{uri: data.profilePic}} style={styles.image} />
         <Text>{data.writer.nick} </Text>
         <Text>
           {' '}
@@ -28,12 +35,35 @@ export function CommentOne({ data, feedId, setReplyFocus, setMount, navigation }
       </View>
       <Text>{data.content}</Text>
       <TouchableOpacity onPress={() => setModal(true)}>
-        <Image source={ViewMore} />
+        <TabEllipsisIcon />
       </TouchableOpacity>
-      <CommentModal modal={modal} setModal={setModal} nick={data.writer.nick} writerId={data.writer.writerId} commentId={data.commentId} setMount={setMount} navigation={navigation}/>
-      <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}>
-          <Image source={data.ilike ? HeartSFilledIcon : HeartSEmptyIcon} />
+      <CommentModal
+        modal={modal}
+        setModal={setModal}
+        nick={data.writer.nick}
+        writerId={data.writer.writerId}
+        commentId={data.commentId}
+        setMount={setMount}
+        navigation={navigation}
+      />
+      <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}>
+          {data.ilike ? (
+            <HeartFilledIcon
+              width={20}
+              height={20}
+              fill="#17D3F0"
+              style={styles.icon}
+            />
+          ) : (
+            <HeartEmptyIcon
+              width={20}
+              height={20}
+              fill="#0E0E0E"
+              style={styles.icon}
+            />
+          )}{' '}
           <Text>좋아요{data.likeCnt ? data.likeCnt : 0}개 </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setViewReply(!viewReply)}>
