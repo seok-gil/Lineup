@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   },
 
   index: {
+    width: 35,
     color: colors.TEXT_DARK,
     fontSize: 17,
     fontWeight: '700',
