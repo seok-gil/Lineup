@@ -2,35 +2,46 @@ import {StyleSheet} from 'react-native'
 import {colors, listElementStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
-    inquiryListElementWrapper: {
-        ...listElementStyle,
-        backgroundColor: colors.WHITE,
-    },
+  inquiryListElementWrapper: {
+    ...listElementStyle,
+    backgroundColor: colors.WHITE,
+  },
 
-    inquiryLeft: {
-        flex: 1,
-    },
+  inquiryLeft: {
+    flex: 1,
+  },
 
-    qnaInfo: {
-        marginBottom: 5,
-        color: colors.TEXT_DARK,
-    },
+  title: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
 
-    qnaCreated: {
-        fontSize: 12,
-        color: colors.TEXT_LIGHT,
-    },
+  titleArrow: {
+    marginHorizontal: 5,
+    transform: [{rotateZ: '270deg'}],
+  },
 
-    downIcon: {
-        width: 11,
-        height: 6,
-    },
+  qnaInfo: {
+    color: colors.TEXT_DARK,
+    fontSize: 15,
+  },
 
-    upIcon: {
-        width: 11,
-        height: 6,
-        transform: [{rotateZ: '180deg'}],
-    },
+  qnaCreated: {
+    fontSize: 12,
+    color: colors.TEXT_LIGHT,
+  },
+
+  downIcon: {
+    width: 11,
+    height: 6,
+  },
+
+  upIcon: {
+    width: 11,
+    height: 6,
+    transform: [{rotateZ: '180deg'}],
+  },
 })
 
 export default styles

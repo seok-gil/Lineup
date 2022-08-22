@@ -21,9 +21,18 @@ function InquiryListElement({data}) {
         style={styles.inquiryListElementWrapper}
         onPress={onClick}>
         <View style={styles.inquiryLeft}>
-          <Text style={styles.qnaInfo}>
-            {data.state ? '답변완료' : '접수'} {'>'} {data.title}
-          </Text>
+          <View style={styles.title}>
+            <Text style={styles.qnaInfo}>
+              {data.state ? '답변완료' : '접수'}
+            </Text>
+            <ArrowIcon
+              width={9}
+              height={5}
+              fill="#0E0E0E"
+              style={styles.titleArrow}
+            />
+            <Text style={styles.qnaInfo}>{data.title}</Text>
+          </View>
           <Text style={styles.qnaCreated}>
             <Time time={data.date} separator="-" />
           </Text>
