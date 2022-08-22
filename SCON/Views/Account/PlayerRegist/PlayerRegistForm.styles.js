@@ -3,28 +3,39 @@ import {StyleSheet} from 'react-native'
 import {colors, globalButtonStyle, globalButtonTextStyle} from '../../../Styles'
 
 const styles = StyleSheet.create({
-  forgetWrapper: {
+  registWrapper: {
     flexDirection: 'column',
     backgroundColor: colors.WHITE,
     height: '100%',
   },
 
-  forgetInner: {
+  registInner: {
     padding: 30,
     height: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
 
-  forgetTop: {
+  registTop: {
     width: '100%',
+    flex: 1,
   },
 
   title: {
     fontWeight: '700',
     color: colors.TEXT_DARK,
     fontSize: 23,
-    marginBottom: 30,
+    marginBottom: 20,
+  },
+
+  desc: {
+    color: colors.TEXT_DARK,
+    fontSize: 13,
+    marginBottom: 10,
+  },
+
+  inputWrapper: {
+    position: 'relative',
   },
 
   input: {
@@ -36,38 +47,9 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    fontWeight: '700',
     color: colors.TEXT_DARK,
     fontSize: 14,
-  },
-
-  errorMessageWrapper: {
-    height: 30,
-  },
-
-  errorMessage: {
-    position: 'absolute',
-    top: 2,
-    color: colors.RED,
-    fontSize: 12,
-  },
-
-  email: {
-    position: 'relative',
-  },
-
-  sendButton: {
-    position: 'absolute',
-    top: 11,
-    right: 5,
-    height: 16,
-  },
-
-  sendButtonText: {
-    color: colors.THEME_SKYBLUE,
-  },
-  sendButtonOffText: {
-    color: colors.TEXT_LIGHT,
+    fontWeight: '700',
   },
 
   loginButton: globalButtonStyle,

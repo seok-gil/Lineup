@@ -6,14 +6,13 @@ import {
   Text,
   TextInput,
   Image,
-  KeyboardAwareScrollView
 } from 'react-native'
 
 import styles from './PasswordReset.styles'
 import {PasswordChangeModal} from './PasswordChangeModal'
 import {CheckSmallIcon} from '../../../Assets/Icons'
-import AsyncStorage from "@react-native-async-storage/async-storage"
-import { ApiFetch } from '../../../Components'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import {ApiFetch} from '../../../Components'
 export function PasswordReset({navigation, route}) {
   const [form, setForm] = useState({
     password: '',
@@ -54,21 +53,21 @@ export function PasswordReset({navigation, route}) {
     let temp = validate
     checkValidate(temp).then(setValidate(temp))
   }, [form])
-  
+
   const onPress = () => {
-        ApiFetch({
-          method: 'POST',
-          url: `/auth/pw-reset`,
-          headers: { 
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify({
-            email : route.params.email,
-            newPw : form.password
-          }),
-        }).then(() => {
-          setModal(true)
-        })
+    ApiFetch({
+      method: 'POST',
+      url: `/auth/pw-reset`,
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: route.params.email,
+        newPw: form.password,
+      }),
+    }).then(() => {
+      setModal(true)
+    })
   }
 
   return (
@@ -79,7 +78,7 @@ export function PasswordReset({navigation, route}) {
           <Text style={styles.label}>
             8~16자의 영문, 숫자, 특수기호를 조합하여 사용.
           </Text>
-          <KeyboardAwareScrollView style={styles.inputWrapper}>
+          <View style={styles.inputWrapper}>
             <TextInput
               value={form.password}
               style={styles.input}
@@ -87,7 +86,6 @@ export function PasswordReset({navigation, route}) {
               placeholderTextColor="#0E0E0E66"
               secureTextEntry={true}
               onChange={e => onInput('password', e)}
-
             />
             <Image
               source={CheckSmallIcon}
@@ -95,7 +93,7 @@ export function PasswordReset({navigation, route}) {
                 validate.password ? styles.checkIcon : styles.checkIconNotShown
               }
             />
-          </KeyboardAwareScrollView>
+          </View>
           <View style={styles.errorMessageWrapper}>
             {validate.password == false && (
               <Text style={styles.errorMessage}>
@@ -103,7 +101,7 @@ export function PasswordReset({navigation, route}) {
               </Text>
             )}
           </View>
-          <KeyboardAwareScrollView style={styles.inputWrapper}>
+          <View style={styles.inputWrapper}>
             <TextInput
               value={form.certification}
               style={styles.input}
@@ -120,7 +118,7 @@ export function PasswordReset({navigation, route}) {
                   : styles.checkIconNotShown
               }
             />
-          </KeyboardAwareScrollView>
+          </View>
           <View style={styles.errorMessageWrapper}>
             {validate.certification == false && (
               <Text style={styles.errorMessage}>

@@ -193,7 +193,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				23CA5E94E141EBBA323267AB /* [CP] Embed Pods Frameworks */,
 				F605E77E79BC20EFA19A8DB5 /* [CP] Copy Pods Resources */,
-				8C566C52F847F93CDBECFDE7 /* [CP-User] [RNFB] Core Configuration */,
+				D40171415BAF52B4170352E0 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -350,7 +350,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SCON-SCONTests/Pods-SCON-SCONTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C566C52F847F93CDBECFDE7 /* [CP-User] [RNFB] Core Configuration */ = {
+		D40171415BAF52B4170352E0 /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
