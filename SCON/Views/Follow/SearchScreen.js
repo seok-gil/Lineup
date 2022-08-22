@@ -44,7 +44,12 @@ export function SearchInput() {
 
   return (
     <View style={styles.searchInputWrapper}>
-      <SearchIcon style={styles.searchInputIcon} />
+      <SearchIcon
+        fill="#17D3F0"
+        width={22}
+        height={22}
+        style={styles.searchInputIcon}
+      />
       <TextInput
         value={inputs.search}
         placeholder={'검색'}
