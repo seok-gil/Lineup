@@ -1,8 +1,7 @@
-import React, {Component, useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {
   SafeAreaView,
   View,
-  Image,
   Text,
   Alert,
   TextInput,

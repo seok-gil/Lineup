@@ -29,6 +29,20 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 15,
   },
+
+  dropdownStyle: {
+    borderColor: colors.GRAYE6,
+  },
+
+  dropdownContainerStyle: {
+    zIndex: 9999999,
+    borderColor: colors.GRAYE6,
+    backgroundColor: colors.WHITE,
+  },
+
+  textStyle: {
+    color: colors.TEXT_DARK,
+  },
 })
 
 export default styles

@@ -1,11 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import {View, Text, Image, TouchableOpacity} from 'react-native'
+import {View, Text, TouchableOpacity} from 'react-native'
 
-import {
-  PlayerRegistCheckingImage,
-  PlayerRegistDeniedImage,
-  PlayerRegistDoneImage,
-} from '../../../Assets/Images/index'
+import {RegistAcceptIcon, RegistPendingIcon} from '../Assets'
+import {DeniedIcon} from '../../../Assets/svgs'
 import styles from './PlayerRegistResultPage.styles'
 
 export function PlayerRegistResultPage({data, navigation, code}) {
@@ -13,9 +10,9 @@ export function PlayerRegistResultPage({data, navigation, code}) {
 
   const image =
     {
-      0: PlayerRegistCheckingImage,
-      1: PlayerRegistDoneImage,
-      2: PlayerRegistDeniedImage,
+      0: <RegistPendingIcon width={100} height={100} fill="#17D3F0" />,
+      1: <RegistAcceptIcon width={100} height={100} fill="#17D3F0" />,
+      2: <DeniedIcon width={100} height={100} fill="#17D3F0" />,
     }[code] && null
 
   const head =
@@ -53,7 +50,7 @@ export function PlayerRegistResultPage({data, navigation, code}) {
     <View style={styles.playerRegistResultWrapper}>
       <View style={styles.playerRegistInner}>
         <View style={styles.playerRegistTop}>
-          <Image source={image} />
+          {image}
           <Text style={styles.title}>{head}</Text>
           <Text style={styles.subtitle}>{board}</Text>
           <Text style={styles.content}>{content}</Text>
