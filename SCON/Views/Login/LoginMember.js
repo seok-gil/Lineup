@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {
   SafeAreaView,
   View,
-  Image,
   Text,
-  Alert,
   TextInput,
   TouchableOpacity,
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import {LineupLogoImage} from '../../Assets/Images'
+import {LineupLogo} from '../../Assets/svgs'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import styles from './Login.styles'
 
@@ -42,16 +40,9 @@ export function LoginMember({navigation}) {
       },
       body: JSON.stringify(form),
     })
-<<<<<<< HEAD
-      .then((thing) => {
-        AsyncStorage.setItem("accessToken", thing.accessToken)
-        AsyncStorage.setItem("refreshToken", thing.refreshToken)
-=======
       .then(thing => {
-        console.log('login', thing)
         AsyncStorage.setItem('accessToken', thing.accessToken)
         AsyncStorage.setItem('refreshToken', thing.refreshToken)
->>>>>>> origin
         navigation.navigate('Tab')
       })
       .catch(error => {
@@ -66,7 +57,7 @@ export function LoginMember({navigation}) {
   return (
     <SafeAreaView style={styles.loginWrapper}>
       <View style={styles.logoArea}>
-        <Image source={LineupLogoImage} style={styles.logoImage} />
+        <LineupLogo width={300} height={50} style={styles.logoImage} />
       </View>
       <View style={styles.bottomSection}>
         <View style={styles.loginSection}>

@@ -1,88 +1,83 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
-import { colors } from '../../../Styles'
+import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
-    headerWrapper: {
-        width: '100%',
-        backgroundColor: colors.WHITE,
-        paddingVertical: 10,
-        flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent: 'space-between',
-    },
+  headerWrapper: {
+    width: '100%',
+    backgroundColor: colors.WHITE,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+  },
 
-    imageWrapper: {
-        paddingHorizontal: 20,
-        flexGrow: 1,
-        flexBasis: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    alignment: {
-        paddingHorizontal: 20,
-        flexGrow: 1,
-        flexBasis: 1,
-        justifyContent: 'center',
-    },
-    logo: {
-        top: 10,
-        width: 100,
-        height: 30
-    },
-    alertWrapper: {
-        alignItems: 'flex-end',
-    },
+  alignment: {
+    paddingHorizontal: 20,
+    flexGrow: 1,
+    flexBasis: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
-    alertIconWrapper: {
-        position: 'relative',
-    },
+  logo: {
+    width: 100,
+    height: 30,
+  },
 
-    alertBadge: {
-        position: 'absolute',
-        top: -3,
-        right: -3,
-        backgroundColor: colors.THEME_SKYBLUE,
-        width: 14,
-        height: 14,
-        borderRadius: 7,
-        borderColor: colors.WHITE,
-        borderWidth: 1,
-    },
+  alertWrapper: {
+    alignItems: 'flex-end',
+  },
 
-    viewWrapper: {
-        paddingHorizontal: 30,
-        paddingVertical: 20,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        flexDirection: 'row',
-        backgroundColor: colors.WHITE,
-    },
+  alertIconWrapper: {
+    position: 'relative',
+  },
 
-    image: {
-        width: 64,
-        height: 64,
-        marginRight: 15,
-        resizeMode: 'contain',
-    },
+  alertBadge: {
+    position: 'absolute',
+    top: -3,
+    right: -3,
+    backgroundColor: colors.THEME_SKYBLUE,
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    borderColor: colors.WHITE,
+    borderWidth: 1,
+  },
 
-    viewProfileInfo: {
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-    },
+  viewWrapper: {
+    paddingHorizontal: 30,
+    paddingVertical: 20,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    backgroundColor: colors.WHITE,
+  },
 
-    nameText: {
-        marginBottom: 3,
-        width: 150,
-        fontSize: 20,
-        fontWeight: '700',
-    },
+  image: {
+    width: 64,
+    height: 64,
+    marginRight: 15,
+    resizeMode: 'contain',
+  },
 
-    emailText: {
-        width: 150,
-        color: colors.TEXT_LIGHT,
-    },
+  viewProfileInfo: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+
+  nameText: {
+    marginBottom: 3,
+    width: 150,
+    fontSize: 20,
+    fontWeight: '700',
+  },
+
+  emailText: {
+    width: 150,
+    color: colors.TEXT_LIGHT,
+  },
 })
 
 export default styles
