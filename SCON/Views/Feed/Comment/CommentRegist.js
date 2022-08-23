@@ -4,6 +4,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import {DefaultProfileImage} from '../../../Assets/svgs'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import styles from './CommentRegist.styles'
 
 export function CommentRegist({feedId, setMount}) {

@@ -30,9 +30,8 @@ export function CommentOne({
       <View style={styles.commentTop}>
         <View style={styles.commentTopLeft}>
           <Image source={{uri: data.profilePic}} style={styles.image} />
-          <Text style={styles.commentInfo}>{data.writer.nick}</Text>
           <Text style={styles.commentInfo}>
-            <TimeRelative time={data.createDate} />
+            {data.writer.nick} · <TimeRelative time={data.createDate} />
           </Text>
         </View>
         <TouchableOpacity onPress={() => setModal(true)}>
