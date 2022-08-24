@@ -18,13 +18,11 @@ function SearchID({ inputs, setInputs, data, navigation }) {
     }
 
     const onEndReached = (e) => {
-        console.log(e)
-            console.log(e)
-            setMore(false)
-            setInputs({
-                ...inputs,
-                ['size']: inputs.size + 3,
-            })
+        setMore(false)
+        setInputs({
+            ...inputs,
+            ['size']: inputs.size + 3,
+        })
     }
 
     return (
