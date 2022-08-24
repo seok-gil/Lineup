@@ -1,22 +1,24 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   TextInput,
   View,
   Text,
   TouchableOpacity,
   SafeAreaView,
+  Keyboard
 } from 'react-native'
 
-import {ApiFetch} from '../../Components/API/ApiFetch'
+import { ApiFetch } from '../../Components/API/ApiFetch'
 import styles from './FeedRegist.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-export function FeedRegist({navigation, route}) {
+export function FeedRegist({ navigation, route }) {
   const type = route.params.type
   const [url, setUrl] = useState('/player/feed')
   const [feed, setFeed] = useState('')
   const onChange = e => {
-    const {text} = e.nativeEvent
+    const { text } = e.nativeEvent
     setFeed(text)
   }
   useEffect(() => {
@@ -47,25 +49,27 @@ export function FeedRegist({navigation, route}) {
   }
   return (
     <SafeAreaView style={styles.feedRegistWrapper}>
-      <View style={styles.feedInnerWrapper}>
-        <View style={styles.feedRegistTextWrapper}>
-          <Text style={styles.feedRegistLabel}>내용</Text>
-          <TextInput
-            multiline={true}
-            style={styles.feedRegistTextInput}
-            value={feed}
-            placeholder={'어떤 말을 남기고 싶으신가요?'}
-            placeholderTextColor="#C9C9C9"
-            onChange={e => onChange(e)}
-          />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.feedInnerWrapper}>
+          <View style={styles.feedRegistTextWrapper}>
+            <Text style={styles.feedRegistLabel}>내용</Text>
+            <TextInput
+              multiline={true}
+              style={styles.feedRegistTextInput}
+              value={feed}
+              placeholder={'어떤 말을 남기고 싶으신가요?'}
+              placeholderTextColor="#C9C9C9"
+              onChange={e => onChange(e)}
+            />
+          </View>
         </View>
-        <View>
-          <TouchableOpacity
-            style={styles.feedRegistButton}
-            onPress={() => onPress()}>
-            <Text style={styles.feedRegistButtonText}> 확인 </Text>
-          </TouchableOpacity>
-        </View>
+      </TouchableWithoutFeedback>
+      <View style={styles.feedRegistButtonWrapper}>
+        <TouchableOpacity
+          style={styles.feedRegistButton}
+          onPress={() => onPress()}>
+          <Text style={styles.feedRegistButtonText}> 확인 </Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   )

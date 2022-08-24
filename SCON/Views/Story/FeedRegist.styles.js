@@ -11,10 +11,12 @@ const styles = StyleSheet.create({
     feedRegistWrapper: {
         backgroundColor: colors.WHITE,
         flex: 1,
+        width: '100%',
+        // alignItems: 'center',
     },
 
     feedInnerWrapper: {
-        height: '100%',
+        height: '90%',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -33,7 +35,17 @@ const styles = StyleSheet.create({
 
     feedRegistTextInput: globalLargeInputStyle,
 
-    feedRegistButton: globalButtonStyle,
+    feedRegistButtonWrapper: {
+        alignItems: 'center',
+    },
+    feedRegistButton: {
+        width: 300,
+        height: 40,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.THEME_SKYBLUE,
+    },
 
     feedRegistButtonText: globalButtonTextStyle,
 })
