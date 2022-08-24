@@ -97,13 +97,13 @@ export function SportForm({form, setForm, setMount}) {
       <Text style={styles.label}>종목</Text>
       <View style={styles.inputWrapper}>
         <DropDownPicker
+          zIndex={9}
           open={open}
           value={value}
           defaultIndex={0}
           setOpen={setOpen}
           setValue={setValue}
           placeholder="종목을 선택해주세요"
-          containerStyle={styles.containerStyle}
           dropDownContainerStyle={styles.dropdownContainerStyle}
           style={styles.dropdownStyle}
           textStyle={styles.textStyle}

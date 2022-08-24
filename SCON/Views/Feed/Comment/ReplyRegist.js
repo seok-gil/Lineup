@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
-import {DefaultProfileImage} from '../../../Assets/svgs'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+
+import {XIcon} from '../../../Assets/svgs'
+import styles from './ReplyRegist.styles'
 
 export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
   if (replyFocus == null) {
@@ -38,17 +40,26 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
   }
 
   return (
-    <KeyboardAwareScrollView style={{flexDirection: 'row'}}>
-      <DefaultProfileImage />
-      <TextInput
-        value={comment}
-        placeholder={'답글 쓰기'}
-        placeholderTextColor="#C9C9C9"
-        onChange={e => onInput(e)}
-      />
-      <TouchableOpacity onPress={onPress}>
-        <Text>게시</Text>
-      </TouchableOpacity>
-    </KeyboardAwareScrollView>
+    <View style={styles.replyRegistWrapper}>
+      <KeyboardAwareScrollView contentContainerStyle={styles.replyRegistInner}>
+        <View style={styles.textInputWrapper}>
+          <TextInput
+            value={comment}
+            placeholder={'답글 쓰기'}
+            placeholderTextColor="#C9C9C9"
+            onChange={e => onInput(e)}
+            style={styles.replyInputWrapper}
+          />
+          <TouchableOpacity onPress={onPress} style={styles.replySubmit}>
+            <Text style={styles.replySubmitText}>게시</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => console.log('close')}
+            style={styles.replyClose}>
+            <XIcon width={15} height={15} fill="#0E0E0E" />
+          </TouchableOpacity>
+        </View>
+      </KeyboardAwareScrollView>
+    </View>
   )
 }

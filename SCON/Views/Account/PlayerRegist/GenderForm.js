@@ -23,6 +23,7 @@ export function GenderForm({form, setForm, setMount}) {
       <Text style={styles.label}>성별</Text>
       <View style={styles.inputWrapper}>
         <DropDownPicker
+          zIndex={10}
           open={open}
           value={value}
           defaultIndex={0}
