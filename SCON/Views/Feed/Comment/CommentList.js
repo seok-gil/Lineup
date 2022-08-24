@@ -3,7 +3,6 @@ import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {View, ScrollView, Text, FlatList} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {CommentOne} from './CommentOne'
-import {CommentRegist} from './CommentRegist'
 import {ReplyRegist} from './ReplyRegist'
 
 import styles from './CommentList.styles'
