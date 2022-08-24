@@ -1,15 +1,27 @@
-import React, {useState} from 'react'
-import {SafeAreaViewTouchableOpacity, View, Text, Modal} from 'react-native'
-import {WithdrawalSuccessModal} from './WithdrawalSuccessModal'
-
+import React, { useState } from 'react'
+import { TouchableOpacity, View, Text, Modal } from 'react-native'
+import { WithdrawalSuccessModal } from './WithdrawalSuccessModal'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { ApiFetch } from '../../../Components'
 import styles from './WithdrawalModal.styles'
-
-export function WithdrawalModal({modal, setModal, navigation}) {
+export function WithdrawalModal({ modal, setModal, navigation }) {
   const [success, setSccess] = useState(false)
 
   const onPressOn = () => {
-    setModal(false)
-    setSccess(true)
+    AsyncStorage.getItem('accessToken').then(thing => {
+      ApiFetch({
+        method: 'POST',
+        url: `/unjoin`,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: 'Bearer ' + thing,
+        },
+        body: null,
+      }).then(() => {
+        setModal(false)
+        setSccess(true)
+      })
+    })
   }
   const onPressOff = () => {
     navigation.navigate('LoginPage')
