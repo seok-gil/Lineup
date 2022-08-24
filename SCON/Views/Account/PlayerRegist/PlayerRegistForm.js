@@ -90,7 +90,6 @@ export function PlayerRegistForm({navigation}) {
           <Text style={styles.desc}>
             확인된 내용이 실제와 다르면 이용이 제한됩니다.
           </Text>
-          <Image source={{uri : playerPhoto.uri}}/>
           <CaptureForm
             setMount={setMount}
             playerPhoto={playerPhoto}

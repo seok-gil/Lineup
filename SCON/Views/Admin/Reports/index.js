@@ -9,6 +9,7 @@ export function Reports({navigation}) {
   const [data, setData] = useState()
   const [page, setPage] = useState(0)
   const [size, setSize] = useState(100)
+  const [mount, setMount] = useState(new Date())
   useEffect(() => {
     AsyncStorage.getItem("accessToken")
       .then((thing) => {
@@ -21,11 +22,10 @@ export function Reports({navigation}) {
           },
           body: null,
         }).then(thing => {
-          console.log(thing.content)
           setData(thing.content);
         })
       })
-  }, [size])
+  }, [size, mount])
 
 
   const onEndReached = () => {
@@ -42,6 +42,7 @@ export function Reports({navigation}) {
           <ReportOne
             key={`report-${index}`}
             data={item}
+            setMount={setMount}
             navigation={navigation}
           />
         )}

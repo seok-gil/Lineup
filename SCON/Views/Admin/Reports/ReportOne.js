@@ -4,7 +4,7 @@ import {ApiFetch, TimeRelative} from '../../../Components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './ReportOne.styles'
 
-export function ReportOne({data, navigation}) {
+export function ReportOne({data, setMount, navigation}) {
     if (!data) return <View />
     const onAccept = () => {
         AsyncStorage.getItem('accessToken').then(thing => {
@@ -16,8 +16,9 @@ export function ReportOne({data, navigation}) {
                     Authorization: 'Bearer ' + thing,
                 },
                 body: null,
-            }).then(thing => {
-                console.log('thing', thing)
+            }).then(() => {
+                navigation.navigate('ModalPage', {text : '플레이어 신고처리가 허용되었습니다!'})
+                setMount(new Date())
             })
         })
     }
@@ -33,7 +34,8 @@ export function ReportOne({data, navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                console.log('thing', thing)
+                navigation.navigate('ModalPage', {text : '플레이어 신고처리가 삭제되었습니다!'})
+                setMount(new Date())
             })
         })
     }

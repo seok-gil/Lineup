@@ -5,6 +5,7 @@ import {PlayerPhotoPick} from './PlayerPhotoPick'
 import styles from './CaptureForm.styles'
 
 export function CaptureForm({playerPhoto, setPlayerPhoto, setMount}) {
+  console.log(playerPhoto)
   return (
     <View style={styles.captureWrapper}>
       <Image source={{uri: playerPhoto.uri}} />
