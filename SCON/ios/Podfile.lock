@@ -403,7 +403,7 @@ PODS:
   - React-jsinspector (0.69.4)
   - React-logger (0.69.4):
     - glog
-  - react-native-image-picker (4.8.5):
+  - react-native-image-picker (4.9.0):
     - React-Core
   - react-native-netinfo (9.3.0):
     - React-Core
@@ -499,7 +499,7 @@ PODS:
     - RNFBApp
   - RNGestureHandler (2.5.0):
     - React-Core
-  - RNReanimated (2.9.1):
+  - RNReanimated (2.10.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -783,7 +783,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: a27badbbdbc0ff781813370736a2d1c7261181d4
   React-jsinspector: 8a3d3f5dcd23a91e8c80b1bf0e96902cd1dca999
   React-logger: 1088859f145b8f6dd0d3ed051a647ef0e3e80fad
-  react-native-image-picker: cd420f97f6ed6ff74fc4686d27dbcfdbd051db91
+  react-native-image-picker: ebb7ad7f6ac50248989d6560e8aa07c412a32241
   react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-pager-view: da490aa1f902c9a5aeecf0909cc975ad0e92e53e
   react-native-safe-area-context: b456e1c40ec86f5593d58b275bd0e9603169daca
@@ -806,7 +806,7 @@ SPEC CHECKSUMS:
   RNFBApp: 39904cebc3958e2d377dccf870b5c5d76cb089a9
   RNFBMessaging: 7decac9e31a7eb9f53d9c34ebacea795687f433b
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
-  RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
+  RNReanimated: 7faa787e8d4493fbc95fab2ad331fa7625828cfa
   RNScreens: ee31ecdf23fe81e93c74feaa086cf173d758ab58
   RNSVG: 42a0c731b11179ebbd27a3eeeafa7201ebb476ff
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608

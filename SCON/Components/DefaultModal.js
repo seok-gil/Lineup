@@ -8,7 +8,6 @@ export function DefaultModal({navigation, route}) {
     setModal(false)
     navigation.navigate(route.params.page)
   }
-  console.log(route)
   return (
     <Modal visible={modal}>
       <View style={styles.centeredView}>

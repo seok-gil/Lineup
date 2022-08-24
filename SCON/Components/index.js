@@ -6,5 +6,6 @@ import { ApiFetch, ApiFetchNull } from './API/ApiFetch'
 import {GetUuid } from "./GetUuid"
 import { FCMmanager} from "./FCMmanager"
 import { DefaultModal } from "./DefaultModal"
-export { TabScreen, PhotoPick, Time, TimeRelative, LikeComponent, ApiFetch, GetUuid, FCMmanager, DefaultModal, ApiFetchNull }
+import { PasswordChangeModal} from "./PasswordChangeModal"
+export { TabScreen, PhotoPick, Time, TimeRelative, LikeComponent, ApiFetch, GetUuid, FCMmanager, DefaultModal, ApiFetchNull, PasswordChangeModal }
 

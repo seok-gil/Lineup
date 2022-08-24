@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: colors.WHITE,
     height: '100%',
+    flex:1,
   },
 
   forgetInner: {

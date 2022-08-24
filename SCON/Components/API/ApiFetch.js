@@ -1,5 +1,5 @@
 export async function ApiFetch({ method, url, headers, body }) {
-    const LineUpUrl = 'http://api.sportist.co.kr' + url
+    const LineUpUrl = 'https://api.sportist.co.kr' + url
     // console.log(method, url, body, headers)
     try {
         let res = await fetch(LineUpUrl, {
