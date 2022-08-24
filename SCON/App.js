@@ -94,7 +94,10 @@ export default function App() {
                     options={{
                         title: '알림'
                     }} />
-                <AppStack.Screen name="Player" component={PlayerScreen} />
+                <AppStack.Screen name="Player" component={PlayerScreen}
+                    options={{
+                        title: '플레어'
+                    }} />
                 <AppStack.Screen name="Record" component={RecordScreen}
                     options={{
                         title: '전적'
