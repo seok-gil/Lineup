@@ -32,14 +32,12 @@ const styles = StyleSheet.create({
 
   dropdownStyle: {
     borderColor: colors.GRAYE6,
-    height: 10,
+    zIndex: 9,
   },
-
-  containerStyle: {},
 
   dropdownContainerStyle: {
     borderColor: colors.GRAYE6,
-    backgroundColor: colors.THEME_SKYBLUE,
+    backgroundColor: colors.WHITE,
   },
 
   textStyle: {
