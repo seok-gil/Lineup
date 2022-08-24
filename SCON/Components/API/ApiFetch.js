@@ -1,4 +1,5 @@
 export async function ApiFetch({ method, url, headers, body }) {
+    // const LineUpUrl = 'https://15.165.88.115' + url
     const LineUpUrl = 'https://api.sportist.co.kr' + url
     // console.log(method, url, body, headers)
     try {

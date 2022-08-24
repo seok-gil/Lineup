@@ -4,7 +4,6 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import {DefaultProfileImage} from '../../../Assets/svgs'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import styles from './CommentRegist.styles'
 
 export function CommentRegist({feedId, setMount}) {
@@ -38,19 +37,6 @@ export function CommentRegist({feedId, setMount}) {
 
   return (
     <View style={styles.commentRegistWrapper}>
-      <View style={styles.registWrapper}>
-        <DefaultProfileImage />
-        <TextInput
-          value={comment}
-          placeholder={'댓글 쓰기'}
-          placeholderTextColor="#C9C9C9"
-          onChange={e => onInput(e)}
-        />
-        <TouchableOpacity onPress={onPress}>
-          <Text>게시</Text>
-        </TouchableOpacity>
-      </View>
-
       <View contentContainerStyle={styles.keyboardWrapper}>
         <TextInput
           value={comment}

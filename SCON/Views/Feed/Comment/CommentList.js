@@ -13,6 +13,7 @@ export function CommentList({feedId, navigation}) {
   const [size, setSize] = useState(5)
   const [mount, setMount] = useState()
   const [replyFocus, setReplyFocus] = useState(null)
+  
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -34,7 +35,6 @@ export function CommentList({feedId, navigation}) {
   }
   return (
     <View style={styles.commentListWrapper}>
-      <CommentRegist feedId={feedId} setMount={setMount} />
       <FlatList
         data={data}
         snapToAlignment="start"
