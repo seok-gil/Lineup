@@ -3,6 +3,7 @@ import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   commentListWrapper: {
+    position: 'relative',
     flex: 1,
     marginTop: 10,
     backgroundColor: colors.WHITE,

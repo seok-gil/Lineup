@@ -10,6 +10,8 @@ import {
   TabEllipsisIcon,
 } from '../../../Assets/svgs'
 
+import styles from './CommentOne.styles'
+
 export function CommentOne({
   data,
   feedId,
@@ -24,19 +26,62 @@ export function CommentOne({
     : `comment/${data.ilike}`
   const [modal, setModal] = useState(false)
   return (
-    <View>
-      <View style={{flexDirection: 'row'}}>
-        <Image source={{uri: data.profilePic}} style={styles.image} />
-        <Text>{data.writer.nick} </Text>
-        <Text>
-          {' '}
-          <TimeRelative time={data.createDate} />{' '}
-        </Text>
+    <View style={styles.commentWrapper}>
+      <View style={styles.commentTop}>
+        <View style={styles.commentTopLeft}>
+          <Image source={{uri: data.profilePic}} style={styles.image} />
+          <Text style={styles.commentInfo}>
+            {data.writer.nick} · <TimeRelative time={data.createDate} />
+          </Text>
+        </View>
+        <TouchableOpacity onPress={() => setModal(true)}>
+          <TabEllipsisIcon
+            width={15}
+            height={5}
+            fill="#0E0E0E"
+            style={styles.ellipsis}
+          />
+        </TouchableOpacity>
       </View>
-      <Text>{data.content}</Text>
-      <TouchableOpacity onPress={() => setModal(true)}>
-        <TabEllipsisIcon />
-      </TouchableOpacity>
+      <Text style={styles.commentContent}>{data.content}</Text>
+      <View style={styles.commentBottom}>
+        <TouchableOpacity
+          style={styles.likeWrapper}
+          onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}>
+          {data.ilike ? (
+            <HeartFilledIcon
+              width={15}
+              height={15}
+              fill="#17D3F0"
+              style={styles.icon}
+            />
+          ) : (
+            <HeartEmptyIcon
+              width={15}
+              height={15}
+              fill="#17D3F0"
+              style={styles.icon}
+            />
+          )}
+          <Text style={styles.commentInfoLight}>
+            좋아요 {data.likeCnt ? data.likeCnt : 0}개{' '}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.replyInfoWrapper}
+          onPress={() => setViewReply(!viewReply)}>
+          <Text style={styles.commentInfoLight}>
+            {viewReply ? '답글 숨기기' : `답글 ${data.reply.length}개`}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setReplyFocus(data.commentId)}>
+          <Text style={styles.commentInfoLight}>답글 달기</Text>
+        </TouchableOpacity>
+      </View>
+      {viewReply == true &&
+        data.reply.map((item, index) => {
+          return <Reply key={`reply-${index}`} reply={item} feedId={feedId} />
+        })}
       <CommentModal
         modal={modal}
         setModal={setModal}
@@ -46,47 +91,6 @@ export function CommentOne({
         setMount={setMount}
         navigation={navigation}
       />
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity
-          onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}>
-          {data.ilike ? (
-            <HeartFilledIcon
-              width={20}
-              height={20}
-              fill="#17D3F0"
-              style={styles.icon}
-            />
-          ) : (
-            <HeartEmptyIcon
-              width={20}
-              height={20}
-              fill="#0E0E0E"
-              style={styles.icon}
-            />
-          )}{' '}
-          <Text>좋아요{data.likeCnt ? data.likeCnt : 0}개 </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setViewReply(!viewReply)}>
-          <Text>
-            {viewReply ? '답글 숨기기' : `답글 ${data.reply.length}개`}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setReplyFocus(data.commentId)}>
-          <Text>답글 달기 </Text>
-        </TouchableOpacity>
-      </View>
-      {viewReply == true &&
-        data.reply.map((item, index) => {
-          return <Reply key={`reply-${index}`} reply={item} feedId={feedId} />
-        })}
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  image: {
-    width: '10%',
-    height: '100%',
-    resizeMode: 'contain',
-  },
-})
