@@ -8,8 +8,6 @@ import styles from './Inquiry.styles'
 
 export function Inquiry({navigation}) {
   const [data, setData] = useState([])
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
   var temp = data
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
