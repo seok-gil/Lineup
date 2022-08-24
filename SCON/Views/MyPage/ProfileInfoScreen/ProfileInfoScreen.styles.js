@@ -1,8 +1,14 @@
-import {StyleSheet, Dimensions} from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
-import {colors} from '../../../Styles/constants'
+import { colors } from '../../../Styles/constants'
 
 const screenWidth = Dimensions.get('window').width
+
+import {
+  globalButtonStyle,
+  globalButtonTextStyle,
+  globalLargeInputStyle,
+} from '../../../Styles'
 
 const styles = StyleSheet.create({
   profileScreenWrapper: {
@@ -57,6 +63,12 @@ const styles = StyleSheet.create({
     color: colors.TEXT_DARK,
     fontSize: 14,
   },
+  RegistButtonWrapper: {
+    alignItems: 'center',
+  },
+  RegistButton: globalButtonStyle,
+
+  RegistButtonText: globalButtonTextStyle,
 })
 
 export default styles
