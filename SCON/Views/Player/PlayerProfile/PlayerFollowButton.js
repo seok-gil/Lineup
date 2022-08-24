@@ -32,7 +32,11 @@ function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      }).then(() => {
+      }).then((thing) => {
+        if (thing.status == 403)
+        navigation.navigate('ModalPage', {
+          text: thing.message
+        })
         setMount(true)
       })
     })

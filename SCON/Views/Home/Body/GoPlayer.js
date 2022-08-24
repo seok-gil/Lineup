@@ -1,15 +1,27 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {View, Text, TouchableOpacity, Image, Alert} from 'react-native'
-
+import {ApiFetch} from "../../../Components"
 import styles from './GoPlayer.styles'
 import {AlertIcon} from '../Assets'
 import {XIcon} from '../../../Assets/svgs'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function GoPlayer({setgoPlayer, navigation}) {
   const onClick = () => {
-    setgoPlayer(false)
+    AsyncStorage.getItem('accessToken').then(thing => {
+        ApiFetch({
+            method: 'PUT',
+            url: '/player-regist-reject',
+            headers: {
+                'content-type': 'application/json',
+                Authorization: 'Bearer ' + thing,
+            },
+            body: null,
+        }).then(thing => {
+          setgoPlayer(false)
+        })
+    })
   }
-
   return (
     <View style={styles.goPlayerWrapper}>
       <TouchableOpacity

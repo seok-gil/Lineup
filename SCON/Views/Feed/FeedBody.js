@@ -72,6 +72,7 @@ export function FeedBody({data, feedId, navigation, setMount}) {
             <Text style={styles.text}>{data.commentCnt}</Text>
           </View>
         </View>
+        {data.isMe && 
         <View style={styles.modify}>
           <TouchableOpacity
             onPress={() => editFeed()}
@@ -84,6 +85,7 @@ export function FeedBody({data, feedId, navigation, setMount}) {
             <Text style={styles.text}>삭제</Text>
           </TouchableOpacity>
         </View>
+      }
       </View>
     </View>
   )

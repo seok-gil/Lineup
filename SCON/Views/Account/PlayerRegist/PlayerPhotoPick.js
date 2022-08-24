@@ -55,8 +55,8 @@ export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
         ],
         {cancelable: false},
       )
+      setMount('certificate')
     }
-    setMount(new Date())
   }
   return (
     <View style={styles.photoPickWrapper}>

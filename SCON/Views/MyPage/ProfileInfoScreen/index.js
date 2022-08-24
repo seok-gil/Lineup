@@ -46,7 +46,6 @@ export function ProfileInfoScreen({navigation}) {
         },
         body: null,
       }).then(thing => {
-        console.log('profile', thing)
         setData(thing)
         setUserPhoto({
           ...userPhoto,
@@ -110,9 +109,6 @@ export function ProfileInfoScreen({navigation}) {
         <View style={styles.formSection}>
           <ProfileInfoScreenElement label="이름" text={data.name} />
           <ProfileInfoScreenElement label="이메일 계정" text={data.email} />
-          <TouchableOpacity onPress={() => onImagePush()}>
-            <Text>@@@@@@@@@@저장@@@@@@@</Text>
-          </TouchableOpacity>
           {role == 'ROLE_PLAYER' ? (
             <View>
               <ProfileInfoScreenElement label="생년월일" text={data.birth} />
@@ -127,6 +123,13 @@ export function ProfileInfoScreen({navigation}) {
             <View />
           )}
         </View>
+        <View style={styles.RegistButtonWrapper}>
+        <TouchableOpacity
+          style={styles.RegistButton}
+          onPress={() => onImagePush()}>
+          <Text style={styles.RegistButtonText}> 확인 </Text>
+        </TouchableOpacity>
+      </View>
       </ScrollView>
     </SafeAreaView>
   )

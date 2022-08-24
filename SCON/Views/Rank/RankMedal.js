@@ -10,7 +10,7 @@ function RankMedal({player, rank, navigation}) {
   const isFirst = rank === 1 ? true : false
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Player', {playerId: player.playerId})}
+      onPress={() => navigation.navigate('Player', {name: player.name, playerId: player.playerId})}
       style={styles.rankMedalWrapper}>
       <View style={styles.profileWrapper}>
         {isFirst ? (

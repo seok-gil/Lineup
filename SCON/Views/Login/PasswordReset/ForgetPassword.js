@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  KeyboardAvoidingView
 } from 'react-native'
 import {ApiFetch} from '../../../Components'
 import styles from './ForgetPassword.styles'
@@ -106,36 +105,6 @@ export function ForgetPassword({navigation}) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('certification', e)}
           />
-                    <TextInput
-            value={form.certification}
-            style={styles.input}
-            placeholder={'인증번호 입력'}
-            placeholderTextColor="#0E0E0E66"
-            onChange={e => onInput('certification', e)}
-          />
-                    <TextInput
-            value={form.certification}
-            style={styles.input}
-            placeholder={'인증번호 입력'}
-            placeholderTextColor="#0E0E0E66"
-            onChange={e => onInput('certification', e)}
-          />
-                    <TextInput
-            value={form.certification}
-            style={styles.input}
-            placeholder={'인증번호 입력'}
-            placeholderTextColor="#0E0E0E66"
-            onChange={e => onInput('certification', e)}
-          />
-          <KeyboardAvoidingView  keyboardVerticalOffset={height + 47}  behavior={Platform.select({ios: 'padding'})} >
-              <TextInput
-            style={styl2es.textInputContainer}
-            value={form.certification}
-            placeholder={'keybordavoidtest'}
-            placeholderTextColor="#0E0E0E66"
-            onChange={e => onInput('certification', e)}
-          />
-          </KeyboardAvoidingView>
           <View style={styles.errorMessageWrapper}>
             {validate.certification == false && (
               <Text style={styles.errorMessage}>

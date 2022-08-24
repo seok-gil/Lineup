@@ -5,7 +5,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import {ArrowIcon} from '../../../Assets/svgs'
 import styles from './BirthForm.styles'
 
-export function BirthForm({form, setForm, validate}) {
+export function BirthForm({form, setForm, setMount}) {
   const [pickOn, setPickOn] = useState(false)
   const [text, setText] = useState()
   const showDatePicker = () => {
@@ -19,8 +19,8 @@ export function BirthForm({form, setForm, validate}) {
       '월 ' +
       date.getDate() +
       '일'
-    console.log(date)
     setText(dateString)
+    setMount('birth')
     setForm({...form, ['birth']: date})
     hideDatePicker()
   }

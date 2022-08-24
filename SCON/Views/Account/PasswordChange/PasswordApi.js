@@ -18,13 +18,11 @@ export function PasswordApi(body) {
                 if (thing.status == 406) {
                     // 비밀번호 불일치
                     res = false
-                    console.log("aa",thing.status)
                     return false
                 }
                 return true
             })
             .catch(() => {
-                console.log("aa321",res)
                 return 'err'
             })
             .finally(() =>{

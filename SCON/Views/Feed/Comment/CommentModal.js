@@ -50,7 +50,6 @@ export function CommentModal({
         body: null,
       })
         .then(thing => {
-          console.log(thing)
           if (thing == 403)
             navigation.navigate('ModalPage', {
               text: thing.message,

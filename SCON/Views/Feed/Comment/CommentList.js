@@ -29,7 +29,6 @@ export function CommentList({feedId, navigation}) {
     })
   }, [size, mount])
   const onEndReached = e => {
-    console.log(e)
     setSize(size + 5)
   }
   return (

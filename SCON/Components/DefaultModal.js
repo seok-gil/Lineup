@@ -4,7 +4,6 @@ import styles from './DefaultModal.styles'
 
 export function DefaultModal({navigation, route}) {
   const [modal, setModal] = useState(true)
-  console.log("route",route)
   const onPressOn = () => {
     setModal(false)
     if (route.params.page)
