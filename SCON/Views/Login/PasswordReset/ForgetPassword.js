@@ -5,17 +5,19 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView
 } from 'react-native'
 import {ApiFetch} from '../../../Components'
 import styles from './ForgetPassword.styles'
 import validator from 'validator'
-
+import { useHeaderHeight } from '@react-navigation/elements'
 export function ForgetPassword({navigation}) {
   const [form, setForm] = useState({
     email: '',
     certification: '',
   })
-
+  const height = useHeaderHeight()
   const [validate, setValidate] = useState({
     nickname: true,
     email: true,
@@ -104,6 +106,36 @@ export function ForgetPassword({navigation}) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('certification', e)}
           />
+                    <TextInput
+            value={form.certification}
+            style={styles.input}
+            placeholder={'인증번호 입력'}
+            placeholderTextColor="#0E0E0E66"
+            onChange={e => onInput('certification', e)}
+          />
+                    <TextInput
+            value={form.certification}
+            style={styles.input}
+            placeholder={'인증번호 입력'}
+            placeholderTextColor="#0E0E0E66"
+            onChange={e => onInput('certification', e)}
+          />
+                    <TextInput
+            value={form.certification}
+            style={styles.input}
+            placeholder={'인증번호 입력'}
+            placeholderTextColor="#0E0E0E66"
+            onChange={e => onInput('certification', e)}
+          />
+          <KeyboardAvoidingView  keyboardVerticalOffset={height + 47}  behavior={Platform.select({ios: 'padding'})} >
+              <TextInput
+            style={styl2es.textInputContainer}
+            value={form.certification}
+            placeholder={'keybordavoidtest'}
+            placeholderTextColor="#0E0E0E66"
+            onChange={e => onInput('certification', e)}
+          />
+          </KeyboardAvoidingView>
           <View style={styles.errorMessageWrapper}>
             {validate.certification == false && (
               <Text style={styles.errorMessage}>
@@ -124,3 +156,25 @@ export function ForgetPassword({navigation}) {
     </SafeAreaView>
   )
 }
+
+const styl2es = StyleSheet.create({
+  rootContainer: {
+      flex: 1,
+      backgroundColor: "#ffffff"
+  },
+  commentArea: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#ababab"
+  },
+  textInputContainer: {
+      marginTop: "auto",
+      borderWidth: 1,
+      borderColor: "skyblue",
+      justifyContent: "center",
+      alignItems: "center",
+      padding:15,
+      flex:1
+  }
+})

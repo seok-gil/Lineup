@@ -74,7 +74,6 @@ export function LoginPage({navigation}) {
     AsyncStorage.getItem('accessToken').then(thing => {
       acc = thing
       AsyncStorage.getItem('refreshToken').then(thing => {
-        console.log('res', thing)
         res = thing
         ApiFetch({
           method: 'POST',
@@ -87,7 +86,7 @@ export function LoginPage({navigation}) {
             refreshToken: res,
           }),
         }).then(thing => {
-          // goLogin(thing)
+          goLogin(thing)
         })
       })
     })

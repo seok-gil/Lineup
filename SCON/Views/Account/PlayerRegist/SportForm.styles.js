@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   sportWrapper: {
     flexDirection: 'column',
     width: '100%',
+    zIndex: 9
   },
 
   label: {

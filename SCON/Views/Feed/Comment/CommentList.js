@@ -3,7 +3,6 @@ import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {View, ScrollView, Text, FlatList} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {CommentOne} from './CommentOne'
-import {CommentRegist} from './CommentRegist'
 import {ReplyRegist} from './ReplyRegist'
 
 import styles from './CommentList.styles'
@@ -13,6 +12,7 @@ export function CommentList({feedId, navigation}) {
   const [size, setSize] = useState(5)
   const [mount, setMount] = useState()
   const [replyFocus, setReplyFocus] = useState(null)
+  
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -34,7 +34,6 @@ export function CommentList({feedId, navigation}) {
   }
   return (
     <View style={styles.commentListWrapper}>
-      <CommentRegist feedId={feedId} setMount={setMount} />
       <FlatList
         data={data}
         snapToAlignment="start"

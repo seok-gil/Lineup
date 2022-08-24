@@ -50,16 +50,14 @@ export function CommentModal({
         body: null,
       })
         .then(thing => {
-          console.log('thing', thing)
+          console.log(thing)
           if (thing == 403)
             navigation.navigate('ModalPage', {
               text: thing.message,
-              navigation: navigation,
             })
           else
             navigation.navigate('ModalPage', {
-              text: thing.message,
-              navigation: navigation,
+              text: '정상적으로 신고처리가 되었습니다.'
             })
           setModal(false)
           setMount(new Date())

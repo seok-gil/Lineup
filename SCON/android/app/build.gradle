@@ -159,7 +159,7 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-
+    flavorDimensions "default"
     defaultConfig {
         applicationId "kr.co.sportist.lineup"
         minSdkVersion rootProject.ext.minSdkVersion

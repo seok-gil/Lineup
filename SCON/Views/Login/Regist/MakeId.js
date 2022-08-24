@@ -20,7 +20,7 @@ export function MakeId({navigation}) {
 
   const [validate, setValidate] = useState({
     nickname: true,
-    email: true,
+    email:true,
     certification: true,
   })
   const [post, setPost] = useState(false)
@@ -35,10 +35,8 @@ export function MakeId({navigation}) {
     var tempVal = validate
     if (key == 'email') {
       if (validator.isEmail(form.email)) {
-        tempVal['email'] = true
         setPost(true)
       } else {
-        tempVal['email'] = false
         setPost(false)
       }
     } else if (key == 'certification') {
