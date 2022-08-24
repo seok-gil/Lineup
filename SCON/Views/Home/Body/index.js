@@ -11,14 +11,13 @@ export function Body({data, navigation}) {
   if (!data) return <View />
 
   var [role, setRole] = useState('ROLE_MEMBER')
-  const [goPlayer, setgoPlayer] = useState(true)
+  const [goPlayer, setgoPlayer] = useState(data.homeCheck)
 
   useEffect(() => {
     AsyncStorage.getItem('role').then(role => {
       setRole(role)
     })
   }, [])
-
   return (
     <View style={styles.bodyWrapper}>
       {role === 'ROLE_MEMBER' && goPlayer === true && (
