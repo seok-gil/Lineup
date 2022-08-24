@@ -96,7 +96,7 @@ export default function App() {
                     }} />
                 <AppStack.Screen name="Player" component={PlayerScreen}
                     options={{
-                        title: '플레어'
+                        title: '플레이어'
                     }} />
                 <AppStack.Screen name="Record" component={RecordScreen}
                     options={{

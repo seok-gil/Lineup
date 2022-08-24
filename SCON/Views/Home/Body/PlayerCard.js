@@ -11,7 +11,7 @@ function PlayerCard({data, navigation, item, role, index}) {
     // Myplayer
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
+        onPress={() => navigation.navigate('Player', {name: item.name, playerId: item.playerId})}
         style={[styles.cardWrapper, styles.playerMyCardWrapper]}>
         <View style={styles.labelAbsoluteWrapper}>
           <Label labelText="MY" />
@@ -26,7 +26,7 @@ function PlayerCard({data, navigation, item, role, index}) {
     // Follow Player
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate('Player', {playerId: item.playerId})}
+        onPress={() => navigation.navigate('Player', {name: item.name, playerId: item.playerId})}
         style={[styles.cardWrapper, styles.playerCardWrapper]}>
         <Image source={{uri: item.profilePic}} style={styles.playerCardImage} />
         <Text style={styles.nameText}>{item.name}</Text>
