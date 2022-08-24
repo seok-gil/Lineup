@@ -165,9 +165,8 @@ export function MakeId({navigation}) {
           </View>
         </View>
         <TouchableOpacity
-          disabled={!button}
           onPress={() => onNext()}
-          style={button ? styles.loginButton : styles.loginButtonNotAvailable}>
+          style={styles.loginButton}>
           <Text style={styles.loginButtonText}>다음</Text>
         </TouchableOpacity>
       </View>

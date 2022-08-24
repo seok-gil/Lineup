@@ -27,6 +27,10 @@ export function RegistAccept({navigation}) {
     setAccept(temp)
   }
 
+  const onButton = () => {
+    if (accept.service && accept.privacy)
+      navigation.navigate('MakeId')
+  }
   return (
     <SafeAreaView style={styles.registWrapper}>
       <View style={styles.registTop}>
@@ -67,13 +71,8 @@ export function RegistAccept({navigation}) {
           </View>
         </View>
         <TouchableOpacity
-          disabled={!accept.privacy && !accept.service}
-          onPress={() => navigation.navigate('MakeId')}
-          style={
-            accept.privacy && accept.service
-              ? styles.loginButton
-              : styles.loginButtonNotAvailable
-          }>
+          onPress={() => onButton()}
+          style={ styles.loginButton}>
           <Text style={styles.loginButtonText}>다음</Text>
         </TouchableOpacity>
       </View>

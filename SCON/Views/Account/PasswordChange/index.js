@@ -18,7 +18,7 @@ export function PasswordChange({navigation}) {
     confirmPassword: '',
   })
   const [validate, setValidate] = useState({
-    oldPassword: true,
+    oldPassword: false,
     newPassword: false,
     confirmPassword: false,
   })
@@ -174,8 +174,7 @@ export function PasswordChange({navigation}) {
         </View>
         <TouchableOpacity
           onPress={() => onSummit()}
-          disabled={!button}
-          style={button ? styles.loginButton : styles.loginButtonNotAvailable}>
+          style={styles.loginButton}>
           <Text style={styles.loginButtonText}>확인</Text>
         </TouchableOpacity>
       </View>
