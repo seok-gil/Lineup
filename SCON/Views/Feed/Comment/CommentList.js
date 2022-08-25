@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, ScrollView, Text, FlatList} from 'react-native'
+import {View, FlatList, KeyboardAvoidingView} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {CommentOne} from './CommentOne'
 import {ReplyRegist} from './ReplyRegist'
 
 import styles from './CommentList.styles'
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 export function CommentList({feedId, navigation}) {
   const [data, setData] = useState([])
@@ -33,10 +32,8 @@ export function CommentList({feedId, navigation}) {
     setSize(size + 5)
   }
   return (
-    <KeyboardAwareScrollView
-      style={styles.commentListWrapper}
-      contentContainerStyle={styles.commentListContainer}>
-      <View style={styles.commentListInner}>
+    <>
+      <View style={styles.commentListWrapper}>
         <FlatList
           data={data}
           snapToAlignment="start"
@@ -57,12 +54,14 @@ export function CommentList({feedId, navigation}) {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-      <ReplyRegist
-        feedId={feedId}
-        replyFocus={replyFocus}
-        setReplyFocus={setReplyFocus}
-        setMount={setMount}
-      />
-    </KeyboardAwareScrollView>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={90}>
+        <ReplyRegist
+          feedId={feedId}
+          replyFocus={replyFocus}
+          setReplyFocus={setReplyFocus}
+          setMount={setMount}
+        />
+      </KeyboardAvoidingView>
+    </>
   )
 }

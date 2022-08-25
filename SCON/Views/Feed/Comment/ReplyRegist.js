@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 import {XIcon} from '../../../Assets/svgs'
 import styles from './ReplyRegist.styles'
