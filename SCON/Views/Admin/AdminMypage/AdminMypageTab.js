@@ -6,6 +6,7 @@ import {AlertTriangleIcon} from '../../../Assets/svgs'
 import {QnAIcon, MegaphoneIcon, ArrowIcon} from '../../../Assets/svgs'
 
 import styles from './AdminMypageTab.styles'
+import {LogoutTempButton} from './LogoutTempButton'
 
 export function AdminMypageTab({navigation}) {
   return (
@@ -85,6 +86,7 @@ export function AdminMypageTab({navigation}) {
           style={styles.arrowIcon}
         />
       </TouchableOpacity>
+      <LogoutTempButton navigation={navigation} />
     </View>
   )
 }
