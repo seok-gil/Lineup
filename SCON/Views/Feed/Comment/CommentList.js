@@ -6,13 +6,14 @@ import {CommentOne} from './CommentOne'
 import {ReplyRegist} from './ReplyRegist'
 
 import styles from './CommentList.styles'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 export function CommentList({feedId, navigation}) {
   const [data, setData] = useState([])
   const [size, setSize] = useState(5)
   const [mount, setMount] = useState()
   const [replyFocus, setReplyFocus] = useState(null)
-  
+
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -32,32 +33,36 @@ export function CommentList({feedId, navigation}) {
     setSize(size + 5)
   }
   return (
-    <View style={styles.commentListWrapper}>
-      <FlatList
-        data={data}
-        snapToAlignment="start"
-        decelerationRate="fast"
-        renderItem={({item, index}) => (
-          <CommentOne
-            key={`player-comment-${index}`}
-            data={item}
-            navigation={navigation}
-            feedId={feedId}
-            setReplyFocus={setReplyFocus}
-            setMount={setMount}
-          />
-        )}
-        onEndReached={e => onEndReached(e)}
-        onEndReachedThreshold={1}
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-      />
+    <KeyboardAwareScrollView
+      style={styles.commentListWrapper}
+      contentContainerStyle={styles.commentListContainer}>
+      <View style={styles.commentListInner}>
+        <FlatList
+          data={data}
+          snapToAlignment="start"
+          decelerationRate="fast"
+          renderItem={({item, index}) => (
+            <CommentOne
+              key={`player-comment-${index}`}
+              data={item}
+              navigation={navigation}
+              feedId={feedId}
+              setReplyFocus={setReplyFocus}
+              setMount={setMount}
+            />
+          )}
+          onEndReached={e => onEndReached(e)}
+          onEndReachedThreshold={1}
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
       <ReplyRegist
         feedId={feedId}
         replyFocus={replyFocus}
         setReplyFocus={setReplyFocus}
         setMount={setMount}
       />
-    </View>
+    </KeyboardAwareScrollView>
   )
 }

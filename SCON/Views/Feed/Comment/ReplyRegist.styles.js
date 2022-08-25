@@ -3,21 +3,13 @@ import {colors} from '../../../Styles'
 
 const styles = StyleSheet.create({
   replyRegistWrapper: {
-    position: 'absolute',
     zIndex: 15,
-    bottom: 0,
-    left: 0,
-    width: '100%',
+    flexDirection: 'row',
     borderTopWidth: 1,
     borderColor: colors.GRAYE6,
-    backgroundColor: colors.WHITE,
-  },
-
-  replyRegistInner: {
-    flexDirection: 'row',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    alignItems: 'flex-end',
+    backgroundColor: colors.WHITE,
   },
 
   textInputWrapper: {
