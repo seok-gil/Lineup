@@ -56,6 +56,8 @@ export function PlayerRegistRefuse({navigation, params}) {
     setSelection(!isSelected)
   }
 
+  if (state === 1) return <View />
+
   return (
     <View style={styles.refuseWrapper}>
       {state != 1 && (
