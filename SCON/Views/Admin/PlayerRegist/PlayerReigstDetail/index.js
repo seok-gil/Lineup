@@ -36,7 +36,7 @@ export function PlayerReigstDetail({route, navigation}) {
 
   if (!data) return <SafeAreaView />
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.playerDetailWrapper}>
         <ScrollView contentContainerStyle={styles.scrollWrapper}>
           <Text style={styles.label}>신청 계정</Text>
@@ -76,8 +76,8 @@ export function PlayerReigstDetail({route, navigation}) {
             <Text style={styles.text}>{data.belong}</Text>
           </View>
         </ScrollView>
-        <PlayerRegistRefuse navigation={navigation} params={route.params} />
       </View>
+      <PlayerRegistRefuse navigation={navigation} params={route.params} />
     </SafeAreaView>
   )
 }

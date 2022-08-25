@@ -2,15 +2,19 @@ import {StyleSheet} from 'react-native'
 import {colors, globalTextStyle} from '../../../../Styles'
 
 const styles = StyleSheet.create({
-  playerDetailWrapper: {
-    padding: 30,
+  safeAreaContainer: {
     width: '100%',
     height: '100%',
+  },
+
+  playerDetailWrapper: {
+    width: '100%',
+    flex: 1,
     backgroundColor: colors.WHITE,
   },
 
   scrollWrapper: {
-    flex: 1,
+    padding: 30,
   },
 
   label: {
