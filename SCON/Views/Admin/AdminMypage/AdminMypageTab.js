@@ -45,6 +45,7 @@ export function AdminMypageTab({navigation}) {
           <AlertTriangleIcon
             width={18}
             height={18}
+            fill="#0E0E0E"
             style={styles.elementIcon}
           />
           <Text style={styles.elementText}>신고 접수</Text>
