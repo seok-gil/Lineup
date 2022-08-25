@@ -6,14 +6,28 @@ import {DeniedIcon} from '../../../Assets/svgs'
 import styles from './PlayerRegistResultPage.styles'
 
 export function PlayerRegistResultPage({data, navigation, code}) {
-  const [type, setType] = useState(code)
-
   const image =
     {
-      0: <RegistPendingIcon width={100} height={100} fill="#17D3F0" />,
-      1: <RegistAcceptIcon width={100} height={100} fill="#17D3F0" />,
-      2: <DeniedIcon width={100} height={100} fill="#17D3F0" />,
-    }[code] && null
+      0: (
+        <RegistPendingIcon
+          width={80}
+          height={80}
+          fill="#17D3F0"
+          style={styles.icon}
+        />
+      ),
+      1: (
+        <RegistAcceptIcon
+          width={80}
+          height={80}
+          fill="#17D3F0"
+          style={styles.icon}
+        />
+      ),
+      2: (
+        <DeniedIcon width={80} height={80} fill="#17D3F0" style={styles.icon} />
+      ),
+    }[code] || null
 
   const head =
     code >= 0
@@ -36,7 +50,7 @@ export function PlayerRegistResultPage({data, navigation, code}) {
   const content =
     code >= 0
       ? {
-          0: '심사는 3~5일이 소요됩니다.\n팬들과의 만남이 얼마 남지 않았어요{`><!`}',
+          0: '심사는 3~5일이 소요됩니다.\n팬들과의 만남이 얼마 남지 않았어요 ><!',
           1: '선수 계정만이 가진 특별한 기능을 통해 팬들과 더욱 자유롭게 소통하실 수 있어요! \n\n앞으로 라인업+와 함께 그려나갈 멋진 선수님의 모습 기대할께요^^',
         }[code]
       : ''
