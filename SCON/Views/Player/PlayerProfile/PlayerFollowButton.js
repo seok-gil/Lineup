@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
   const [follow, setFollow] = useState(data.isFollow)
-
+  
   const buttonStyle =
     data.isMe || data.isFollow ? styles.followedButton : styles.followButton
   const buttonTextStyle =
@@ -37,7 +37,7 @@ function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
         navigation.navigate('ModalPage', {
           text: thing.message
         })
-        setMount(true)
+        setMount(new Date())
       })
     })
   }
