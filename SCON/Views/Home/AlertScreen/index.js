@@ -15,6 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function AlertScreen() {
     const [data, setData] = useState([])
+    const [mount, setMount] = useState()
 
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
@@ -30,7 +31,7 @@ export function AlertScreen() {
                 setData(thing)
             })
         })
-    }, [])
+    }, [mount])
 
     const onClickAll = () => {
         AsyncStorage.getItem('accessToken').then(thing => {
@@ -44,13 +45,14 @@ export function AlertScreen() {
                 body: null,
             }).then(thing => {
                 setData(thing)
+                setMount(new Date())
             })
         })
     }
     const view = []
     const alertList = () => {
         for (let i = 0; i < data.length; ++i) {
-            view.push(<AlertComponent key={`alert-${i}`} alert={data[i]} id={'id'} />)
+            view.push(<AlertComponent key={`alert-${i}`} alert={data[i]} setMount={setMount}/>)
         }
         return view
     }

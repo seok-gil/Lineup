@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {
     NavigationContainer,
 } from '@react-navigation/native'
+import { BackHandler, Alert } from "react-native";
 import { createStackNavigator } from '@react-navigation/stack'
 import { LoginPage } from './Views/Login'
 import { RegistAccept, MakeId, Password } from './Views/Login/Regist'
@@ -58,8 +59,26 @@ export default function App() {
           console.warn('에러발생');
           console.warn(e);
         }
-      });
-
+      },[]);
+      // Android 뒤로가기 버튼
+      useEffect(() => {
+        const backAction = () => {
+          Alert.alert("앱을 종료하시겠습니까?", [
+            {
+              text: "취소",
+              onPress: () => null,
+            },
+            { text: "확인", onPress: () => BackHandler.exitApp() }
+          ]);
+          return true;
+        };
+    
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          backAction
+        );
+        return () => backHandler.remove();
+      }, []);
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{
@@ -69,7 +88,7 @@ export default function App() {
                     options={{
                         headerShown: false
                     }} />
-                <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false }} />
+                <AppStack.Screen name="Tab" component={TabScreen} options={{ headerShown: false, gestureEnabled:false }} />
                 <AppStack.Screen name="RegistAccpet" component={RegistAccept}
                     options={{
                         title: '약관 동의'

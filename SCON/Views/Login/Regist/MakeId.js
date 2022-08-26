@@ -65,7 +65,8 @@ export function MakeId({navigation}) {
         email: form.email,
       }),
     }).then(thing => {
-      if (thing == 400) {
+      console.log(thing)
+      if (thing.status == 400) {
         setValidate({
           ...validate,
           ['email']: false,
@@ -88,6 +89,7 @@ export function MakeId({navigation}) {
       }),
     })
       .then(res => {
+        
         setValidate({
           ...validate,
           ['certification']: res,
@@ -165,9 +167,8 @@ export function MakeId({navigation}) {
           </View>
         </View>
         <TouchableOpacity
-          disabled={!button}
           onPress={() => onNext()}
-          style={button ? styles.loginButton : styles.loginButtonNotAvailable}>
+          style={styles.loginButton}>
           <Text style={styles.loginButtonText}>다음</Text>
         </TouchableOpacity>
       </View>

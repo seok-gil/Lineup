@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 
-import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import {SafeAreaView, View, Text, TextInput, TouchableOpacity, Keyboard} from 'react-native'
 
 import styles from './InquiryScreen.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from '../../Components'
 import {InquiryModal} from './InquiryModal'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export function InquiryScreen({navigation}) {
     const [inputs, setInputs] = useState({
@@ -39,6 +40,7 @@ export function InquiryScreen({navigation}) {
 
     return (
         <View style={styles.inquiryScreenWrapper}>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.inquiryScreenInner}>
                 <Text style={styles.inquiryScreenLabel}>제목</Text>
                 <TextInput
@@ -60,6 +62,7 @@ export function InquiryScreen({navigation}) {
                     onChange={e => onChange('content', e)}
                 />
             </View>
+            </TouchableWithoutFeedback>
             <TouchableOpacity onPress={() => onSubmit()} style={styles.inquiryButton}>
                 <Text style={styles.inquiryButtonText}> 제출하기 </Text>
             </TouchableOpacity>

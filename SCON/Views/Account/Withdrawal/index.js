@@ -39,19 +39,10 @@ export function Withdrawal({navigation}) {
             // password 불일치
             setValidate(false)
           else {
-            //password 일치
-            ApiFetch({
-              method: 'POST',
-              url: `/unjoin`,
-              headers: {
-                'content-type': 'application/json',
-                Authorization: 'Bearer ' + accessToken,
-              },
-              body: null,
-            }).then(() => {
               setValidate(true)
               setModal(true)
-            })
+            //password 일치
+            
           }
         })
         .catch(thing => {})

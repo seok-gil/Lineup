@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 
   tag: {
     ...globalTextStyle,
-    fontSize: 11,
+    fontSize: 10,
   },
 })
 

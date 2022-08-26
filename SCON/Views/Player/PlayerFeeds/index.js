@@ -53,7 +53,6 @@ function PlayerFeeds({ playerId, navigation }) {
     
     const onEndReached = (info) => {
         setSize(size + 3)
-        console.log("info", info, size)
     }
 
     if (!data || data.length == 0) {

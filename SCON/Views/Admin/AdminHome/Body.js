@@ -8,7 +8,6 @@ export function Body({data}) {
     var year = today.getFullYear()
     var month = today.getMonth() + 1
     var day = today.getDate()
-    console.log(data)
     return (
         <View style={styles.bodyWrapper}>
             <Text style={styles.insightText}>인사이트</Text>

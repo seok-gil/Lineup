@@ -8,7 +8,7 @@ import {SmileIcon, ChatBubbleIcon} from '../Assets'
 import {XIcon} from '../../../Assets/svgs'
 import styles from './AlertComponent.styles'
 
-function AlertComponent({alert}) {
+function AlertComponent({alert, setMount}) {
   if (!alert) return <View />
   const onClickX = () => {
     AsyncStorage.getItem('accessToken').then(thing => {
@@ -20,6 +20,8 @@ function AlertComponent({alert}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
+      }).then(() => {
+        setMount(new Date())
       })
     })
   }
