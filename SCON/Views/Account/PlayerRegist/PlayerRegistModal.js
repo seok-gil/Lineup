@@ -12,15 +12,15 @@ export function PlayerRegistModal({modal, setModal, navigation}) {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.modalTop}>
-            <View>
-              <Text>선수 인증 신청이 완료되었어요!</Text>
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => onPress()}>
-                <Text>확인</Text>
-              </TouchableOpacity>
-            </View>
+            <Text style={styles.titleStrong}>
+              선수 인증 신청이 완료되었어요!
+            </Text>
           </View>
+          <TouchableOpacity
+            onPress={() => onPress()}
+            style={styles.modalBottom}>
+            <Text style={styles.buttonText}>확인</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>

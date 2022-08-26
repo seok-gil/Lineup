@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../../../Components/API/ApiFetch'
-import {SafeAreaView} from 'react-native'
+import {SafeAreaView, ScrollView} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {PlayerRegistListOne} from './PlayerRegistListOne'
+import styles from './PlayerRegistList.styles'
 
 //route.params.state 대기 0 승인 1 반려 2
 export function PlayerRegistList({navigation, route}) {
@@ -26,15 +27,17 @@ export function PlayerRegistList({navigation, route}) {
 
   if (!data) return <SafeAreaView />
   return (
-    <SafeAreaView>
-      {data.map((item, index) => (
-        <PlayerRegistListOne
-          data={item}
-          key={`playerRegistListOne-${index}`}
-          navigation={navigation}
-          state={route.params.state}
-        />
-      ))}
+    <SafeAreaView style={styles.playerRegistListWrapper}>
+      <ScrollView>
+        {data.map((item, index) => (
+          <PlayerRegistListOne
+            data={item}
+            key={`playerRegistListOne-${index}`}
+            navigation={navigation}
+            state={route.params.state}
+          />
+        ))}
+      </ScrollView>
     </SafeAreaView>
   )
 }

@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   },
 
   errorMessageWrapper: {
+    width: '100%',
     height: 30,
   },
 

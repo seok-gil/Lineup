@@ -34,6 +34,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
+  captureWrapper: {
+    marginTop: 10,
+    width: '100%',
+    alignItems: 'center',
+  },
+
+  captureImage: {
+    width: 180,
+    height: 120,
+    borderRadius: 10,
+    borderColor: colors.THEME_SKYBLUE,
+    borderWidth: 2,
+    resizeMode: 'cover',
+  },
+
   inputWrapper: {
     position: 'relative',
   },
@@ -41,7 +56,7 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     paddingVertical: 10,
-    marginBottom: 10,
+    marginBottom: 20,
     borderBottomColor: colors.GRAYE6,
     borderBottomWidth: 2,
   },
