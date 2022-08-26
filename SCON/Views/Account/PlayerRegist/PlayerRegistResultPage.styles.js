@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  icon: {
+    marginBottom: 30,
+  },
+
   title: {
     fontWeight: '700',
     color: colors.TEXT_DARK,

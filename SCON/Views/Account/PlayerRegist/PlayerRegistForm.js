@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native'
 
 import {BirthForm} from './BirthForm'
 import {GenderForm} from './GenderForm'
@@ -78,18 +85,24 @@ export function PlayerRegistForm({navigation}) {
         setModal(true)
       })
     else
-    navigation.navigate('ModalPage', {
-      text: '입력란을 모두 입력해주세요',
-    })
+      navigation.navigate('ModalPage', {
+        text: '입력란을 모두 입력해주세요',
+      })
   }
   return (
     <View style={styles.registWrapper}>
       <View style={styles.registInner}>
-        <View style={styles.registTop}>
+        <ScrollView style={styles.registTop}>
           <Text style={styles.title}>{'운동선수 확인을\n시작합니다.'}</Text>
           <Text style={styles.desc}>
             확인된 내용이 실제와 다르면 이용이 제한됩니다.
           </Text>
+          <View style={styles.captureWrapper}>
+            <Image
+              source={{uri: playerPhoto.uri}}
+              style={styles.captureImage}
+            />
+          </View>
           <CaptureForm
             setMount={setMount}
             playerPhoto={playerPhoto}
@@ -116,7 +129,7 @@ export function PlayerRegistForm({navigation}) {
             placeholderTextColor="#0E0E0E66"
             onChange={e => onInput('belong', e)}
           />
-        </View>
+        </ScrollView>
         <TouchableOpacity
           // disabled={!button}
           onPress={() => onSummit()}

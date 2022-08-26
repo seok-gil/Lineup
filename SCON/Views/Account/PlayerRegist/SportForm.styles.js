@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   sportWrapper: {
     flexDirection: 'column',
     width: '100%',
-    zIndex: 9
+    zIndex: 9,
   },
 
   label: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     position: 'relative',
     paddingVertical: 10,
-    marginBottom: 10,
+    marginBottom: 20,
     borderBottomWidth: 2,
     borderBottomColor: colors.GRAYE6,
   },

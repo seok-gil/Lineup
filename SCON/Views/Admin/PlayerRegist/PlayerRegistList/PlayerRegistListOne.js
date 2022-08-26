@@ -2,6 +2,8 @@ import React from 'react'
 import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native'
 import {Time} from '../../../../Components/Time'
 
+import styles from './PlayerRegistOne.styles'
+
 export function PlayerRegistListOne({navigation, data, state}) {
   const birth =
     data.birth.slice(0, 4) + data.birth.slice(5, 7) + data.birth.slice(8, 10)
@@ -13,15 +15,14 @@ export function PlayerRegistListOne({navigation, data, state}) {
             playerRegistId: data.playerRegistId,
             state: state,
           })
-        }>
-        <View style={{flexDirection: 'row'}}>
-          <Text>{data.name}</Text>
-          <Text> / {birth}</Text>
-          <Text> / {data.gender}</Text>
-          <Text> / {data.sport}</Text>
-          <Text> / {data.belong}</Text>
+        }
+        style={styles.playerRegistOneWrapper}>
+        <View style={styles.playerRegistOneTop}>
+          <Text style={styles.playerRegistInfo}>
+            {data.name} / {birth} / {data.gender} / {data.sport} / {data.belong}
+          </Text>
         </View>
-        <Text>
+        <Text style={styles.playerRegistTime}>
           <Time time={data.registDate} separator="." />
         </Text>
       </TouchableOpacity>

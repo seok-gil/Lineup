@@ -74,13 +74,23 @@ export function CommentOne({
             {viewReply ? '답글 숨기기' : `답글 ${data.reply.length}개`}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setReplyFocus({id : data.commentId, nick : data.writer.nick})}>
+        <TouchableOpacity
+          onPress={() =>
+            setReplyFocus({id: data.commentId, nick: data.writer.nick})
+          }>
           <Text style={styles.commentInfoLight}>답글 달기</Text>
         </TouchableOpacity>
       </View>
       {viewReply == true &&
         data.reply.map((item, index) => {
-          return <Reply key={`reply-${index}`} reply={item} feedId={feedId} />
+          return (
+            <Reply
+              key={`reply-${index}`}
+              reply={item}
+              feedId={feedId}
+              index={index}
+            />
+          )
         })}
       <CommentModal
         modal={modal}
