@@ -20,7 +20,6 @@ export function CompetitionResult({navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                // console.log("evnet/record/", thing)
                 setData(thing)
             })
         })

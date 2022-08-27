@@ -65,7 +65,7 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
   const onSummit = () => {
     var temp = data
     temp.forEach((element, index) => {
-      if (element && element.detailId == result.detailId) {
+      if (element && element.recordId == result.recordId) {
         temp[index] = result
       }
     })
