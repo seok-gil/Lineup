@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react'
-import {View, Text, SafeAreaView} from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, Text, SafeAreaView } from 'react-native'
 
 import CompetitionResultModal from './CompetitionResultModal'
 import DetailInfo from './DetailInfo'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
+import { ApiFetch } from '../../../Components/API/ApiFetch'
 import styles from './CompetitionResultDetail.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {CompetitionResultButton} from './CompetitionResultButton'
+import { CompetitionResultButton } from './CompetitionResultButton'
 
-export function CompetitionResultDetail({navigation, route}) {
+export function CompetitionResultDetail({ navigation, route }) {
     const [data, setData] = useState()
     const [modal, setModal] = useState({
         open: false,
@@ -78,18 +78,20 @@ export function CompetitionResultDetail({navigation, route}) {
                     )
                 })}
             </View>
+            <View style={styles.competitionButtonWrapper}>
+                <CompetitionResultButton
+                    eventId={eventId}
+                    data={data}
+                    type={type}
+                    navigation={navigation}
+                />
+            </View>
             <CompetitionResultModal
                 modal={modal}
                 openModal={openModal}
                 data={data}
                 setData={setData}
                 type={type}
-            />
-            <CompetitionResultButton
-                eventId={eventId}
-                data={data}
-                type={type}
-                navigation={navigation}
             />
         </SafeAreaView>
     )
