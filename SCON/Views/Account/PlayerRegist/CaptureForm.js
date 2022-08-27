@@ -8,7 +8,6 @@ export function CaptureForm({playerPhoto, setPlayerPhoto, setMount}) {
   console.log(playerPhoto)
   return (
     <View style={styles.captureWrapper}>
-      <Image source={{uri: playerPhoto.uri}} />
       <PlayerPhotoPick
         text="선수 이미지"
         photo={playerPhoto}
