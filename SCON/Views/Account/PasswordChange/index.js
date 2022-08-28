@@ -66,6 +66,9 @@ export function PasswordChange({navigation}) {
           newPassword: form.newPassword,
         }),
       }).then(thing => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
         if (thing && thing.status == 406) {
           // 비밀번호 불일치
           setValidate({

@@ -16,9 +16,14 @@ export function ReportOne({data, setMount, navigation}) {
                     Authorization: 'Bearer ' + thing,
                 },
                 body: null,
-            }).then(() => {
+            }).then((thing) => {
+                if (thing == 401) {
+                    navigation.navigate('RefreshTokenModal', {navigation : navigation})
+                  }
+                else {
                 navigation.navigate('ModalPage', {text : '플레이어 신고처리가 허용되었습니다!'})
                 setMount(new Date())
+                }
             })
         })
     }

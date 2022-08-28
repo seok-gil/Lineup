@@ -28,7 +28,11 @@ function RankBody({navigation, route}) {
         },
         body: null,
       }).then(data => {
-        setData(data.content)
+        if (data == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
+        else
+          setData(data.content)
       })
     })
   }, [isFocused])

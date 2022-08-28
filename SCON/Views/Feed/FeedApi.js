@@ -15,7 +15,11 @@ export async function FeedApi(url) {
       body: null,
     })
     .then((thing) => {
-      temp = thing
+      if (thing == 401) {
+        navigation.navigate('RefreshTokenModal', {navigation : navigation})
+      }
+      else
+        temp = thing
     })
   })
   return temp

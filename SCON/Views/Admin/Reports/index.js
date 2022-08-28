@@ -22,7 +22,10 @@ export function Reports({navigation}) {
           },
           body: null,
         }).then(thing => {
-          setData(thing.content);
+          if (thing == 401) {
+            navigation.navigate('RefreshTokenModal', {navigation : navigation})
+          }
+          else setData(thing.content);
         })
       })
   }, [size, mount])

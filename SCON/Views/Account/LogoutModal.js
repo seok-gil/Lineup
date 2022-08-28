@@ -1,10 +1,10 @@
 import React from 'react'
-import {TouchableOpacity, View, Text, Modal} from 'react-native'
+import { TouchableOpacity, View, Text, Modal } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {ApiFetch} from '../../Components'
+import { ApiFetch } from '../../Components'
 import styles from './Logout.styles'
 
-export function LogoutModal({modal, setModal, navigation}) {
+export function LogoutModal({ modal, setModal, navigation }) {
   var accessToken
   const onPressOn = () => {
     AsyncStorage.getItem('accessToken').then(key => {
@@ -17,10 +17,15 @@ export function LogoutModal({modal, setModal, navigation}) {
           Authorization: 'Bearer ' + accessToken,
         },
         body: null,
-      }).then(() => {
-        AsyncStorage.removeItem(accessToken)
-        navigation.navigate('LoginPage')
-        setModal(false)
+      }).then((thing) => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
+        else {
+          AsyncStorage.removeItem(accessToken)
+          navigation.navigate('LoginPage')
+          setModal(false)
+        }
       })
     })
   }

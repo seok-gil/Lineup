@@ -35,7 +35,10 @@ export function Withdrawal({navigation}) {
         }),
       })
         .then(res => {
-          if (res.status == 406)
+          if (res == 401) {
+            navigation.navigate('RefreshTokenModal', {navigation : navigation})
+          }
+          else if (res.status == 406)
             // password 불일치
             setValidate(false)
           else {

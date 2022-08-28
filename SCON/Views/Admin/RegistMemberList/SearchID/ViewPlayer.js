@@ -5,7 +5,6 @@ import styles from './ViewPlayer.styles'
 import {DefaultProfileImage} from '../../../../Assets/svgs'
 
 function ViewPlayer({player, navigation}) {
-  console.log(player)
   const {name, sport, belong} = player
   return (
     <TouchableOpacity

@@ -17,9 +17,14 @@ export function WithdrawalModal({ modal, setModal, navigation }) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      }).then(() => {
-        setModal(false)
-        setSccess(true)
+      }).then((thing) => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
+        else {
+          setModal(false)
+          setSccess(true)
+        }
       })
     })
   }

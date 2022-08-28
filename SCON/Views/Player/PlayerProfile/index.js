@@ -22,6 +22,9 @@ function PlayerProfile({navigation, playerId}) {
         },
         body: null,
       }).then(thing => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
         if (ismount) {
           setData(thing)
         }

@@ -23,7 +23,16 @@ export function FeedScreen({route, navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing)
+        console.log("err",thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal')
+        }
+        else {
+          console.log("4012",thing)
+          setData(thing)
+        }
+      })
+      .catch(err => {
       })
     })
   }, [mount])

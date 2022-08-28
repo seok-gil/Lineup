@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import {SafeAreaView, View, FlatList} from 'react-native'
-import {ApiFetch} from '../../Components/API/ApiFetch'
-import {SearchId, SearchInput} from './SearchScreen'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, View, FlatList } from 'react-native'
+import { ApiFetch } from '../../Components/API/ApiFetch'
+import { SearchId, SearchInput } from './SearchScreen'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import styles from './FollowScreen.styles'
 
-export function FollowScreen({navigation, route}) {
+export function FollowScreen({ navigation, route }) {
   const [data, setData] = useState()
   const [page, setPage] = useState(0)
   const [size, setSize] = useState(5)
@@ -22,8 +22,11 @@ export function FollowScreen({navigation, route}) {
         },
         body: null,
       }).then(thing => {
-        console.log('follow', thing.content)
-        setData(thing.content)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
+        else
+          setData(thing.content)
       })
     })
   }, [])
@@ -41,7 +44,7 @@ export function FollowScreen({navigation, route}) {
         data={data}
         snapToAlignment="start"
         decelerationRate="fast"
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <SearchId
             data={item}
             key={`Follow-${index}`}

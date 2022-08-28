@@ -21,8 +21,12 @@ export function FeedBody({data, feedId, navigation, setMount}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      }).then(() => {
-        navigation.goBack()
+      }).then((thing) => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
+          navigation.goBack()
       })
     })
   }

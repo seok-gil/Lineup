@@ -6,8 +6,10 @@ export function DefaultModal({navigation, route}) {
   const [modal, setModal] = useState(true)
   const onPressOn = () => {
     setModal(false)
-    if (route.params.page)
+    if (route.params.page) {
+      console.log("page222",route.params)
       navigation.navigate(route.params.page)
+    }
     else
       navigation.goBack()
 

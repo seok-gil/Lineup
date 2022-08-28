@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import {SafeAreaView, ScrollView} from 'react-native'
-import {InquiryOne} from './InquiryOne'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, ScrollView } from 'react-native'
+import { InquiryOne } from './InquiryOne'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {ApiFetch} from '../../../Components'
+import { ApiFetch } from '../../../Components'
 
 import styles from './Inquiry.styles'
 
-export function Inquiry({navigation}) {
+export function Inquiry({ navigation }) {
   const [data, setData] = useState([])
   var temp = data
   useEffect(() => {
@@ -20,7 +20,11 @@ export function Inquiry({navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
+        else
+          setData(thing)
       })
     })
   }, [])

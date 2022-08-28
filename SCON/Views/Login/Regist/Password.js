@@ -81,7 +81,6 @@ export function Password({navigation, route}) {
       },
       body: JSON.stringify(postForm),
     })
-      .then(console.log('post', postForm))
       .then(setModal(true))
       .catch(console.log(Error))
   }

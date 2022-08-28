@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import React, { useState } from 'react'
+import { ApiFetch } from '../../../Components/API/ApiFetch'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import {XIcon} from '../../../Assets/svgs'
+import { XIcon } from '../../../Assets/svgs'
 import styles from './ReplyRegist.styles'
 
-export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
+export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount }) {
   let type = replyFocus ? `@${replyFocus.nick} 답글 쓰기` : '댓글 쓰기'
   const [comment, setComment] = useState('')
   const onInput = e => {
-    const {text} = e.nativeEvent
+    const { text } = e.nativeEvent
     setComment(text)
   }
 
@@ -29,6 +29,10 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
               body: JSON.stringify({
                 content: comment,
               }),
+            }).then(thing => {
+              if (thing == 401) {
+                navigation.navigate('RefreshTokenModal', { navigation: navigation })
+              }
             })
         })
         .then(() => {
@@ -40,6 +44,7 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
       AsyncStorage.getItem('accessToken')
         .then(thing => {
           ApiFetch({
+            navigation: navigation,
             method: 'POST',
             url: `/comment/${feedId}`,
             headers: {
@@ -49,6 +54,10 @@ export function ReplyRegist({replyFocus, setReplyFocus, feedId, setMount}) {
             body: JSON.stringify({
               content: comment,
             }),
+          }).then(thing => {
+            if (thing == 401) {
+              navigation.navigate('RefreshTokenModal', { navigation: navigation })
+            }
           })
         })
         .then(() => {

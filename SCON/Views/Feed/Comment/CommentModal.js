@@ -50,6 +50,9 @@ export function CommentModal({
         body: null,
       })
         .then(thing => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
           if (thing == 403)
             navigation.navigate('ModalPage', {
               text: thing.message,

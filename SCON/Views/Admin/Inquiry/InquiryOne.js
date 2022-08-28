@@ -34,7 +34,11 @@ export function InquiryOne({data}) {
           inquiryId: data.id,
           asnwerContent: answer,
         }),
-      }).then(() => {})
+      }).then((thing) => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+      })
     })
     setState(!state)
   }

@@ -20,7 +20,11 @@ export function PlayerRegist({navigation}) {
         },
         body: null,
       }).then(thing => {
-        setCode(thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
+          setCode(thing)
         AsyncStorage.getItem('role').then(setRole)
       })
     })

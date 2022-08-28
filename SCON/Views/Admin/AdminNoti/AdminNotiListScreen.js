@@ -22,7 +22,11 @@ export function AdminNotiListScreen({navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                setData(thing.reverse().map(noti => noti))
+                if (thing == 401) {
+                    navigation.navigate('RefreshTokenModal', {navigation : navigation})
+                  }
+                else
+                    setData(thing.reverse().map(noti => noti))
             })
         })
     }, [isFocused, mount])

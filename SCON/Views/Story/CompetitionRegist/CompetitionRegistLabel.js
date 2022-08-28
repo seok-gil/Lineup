@@ -5,11 +5,11 @@ import {View, Text} from 'react-native'
 
 import styles from './CompetitionRegistLabel.styles'
 
-const CompetitionRegistLabel = ({text, isAsterisk}) => {
+const CompetitionRegistLabel = ({text}) => {
   return (
     <View style={styles.labelWrapper}>
       <Text style={styles.inputLabelStyle}>{text}</Text>
-      {isAsterisk && <Text style={styles.asterisk}>*</Text>}
+      {<Text style={styles.asterisk}>*</Text>}
     </View>
   )
 }

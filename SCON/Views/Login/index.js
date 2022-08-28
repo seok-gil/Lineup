@@ -53,6 +53,7 @@ export function LoginPage({navigation}) {
   }
   const onLogin = () => {
     ApiFetch({
+      navigation:navigation,
       method: 'POST',
       url: '/auth/login',
       headers: {

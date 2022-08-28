@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Image,
@@ -9,16 +9,16 @@ import {
 } from 'react-native'
 import ProfileInfoScreenElement from './ProfileInfoScreenElement'
 import styles from './ProfileInfoScreen.styles'
-import {ApiFetch, PhotoPick} from '../../../Components'
+import { ApiFetch, PhotoPick } from '../../../Components'
 import {
   backgroundPhotoPickStyles,
   profilePhotoPickStyles,
 } from './MypagePhotoPick.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {ImagePush} from './ImagePush'
-import {useIsFocused} from '@react-navigation/native'
+import { ImagePush } from './ImagePush'
+import { useIsFocused } from '@react-navigation/native'
 
-export function ProfileInfoScreen({navigation}) {
+export function ProfileInfoScreen({ navigation }) {
   const [mount, setMount] = useState()
   const isFocused = useIsFocused()
   const [data, setData] = useState()
@@ -46,15 +46,20 @@ export function ProfileInfoScreen({navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing)
-        setUserPhoto({
-          ...userPhoto,
-          ['uri']: thing.profilePic,
-        })
-        setBackPhoto({
-          ...backPhoto,
-          ['uri']: thing.profileBack,
-        })
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
+        else {
+          setData(thing)
+          setUserPhoto({
+            ...userPhoto,
+            ['uri']: thing.profilePic,
+          })
+          setBackPhoto({
+            ...backPhoto,
+            ['uri']: thing.profileBack,
+          })
+        }
       })
     })
     AsyncStorage.getItem('role').then(role => {
@@ -79,7 +84,7 @@ export function ProfileInfoScreen({navigation}) {
         <View style={styles.profileImageWrapper}>
           <View style={styles.profileBackground}>
             <Image
-              source={{uri: backPhoto.uri}}
+              source={{ uri: backPhoto.uri }}
               style={styles.backgroundPhoto}
             />
             <PhotoPick
@@ -93,7 +98,7 @@ export function ProfileInfoScreen({navigation}) {
           <View style={styles.profileImage}>
             <View style={styles.profileImageRelative}>
               <Image
-                source={{uri: userPhoto.uri}}
+                source={{ uri: userPhoto.uri }}
                 style={styles.profilePhoto}
               />
               <PhotoPick
@@ -124,12 +129,12 @@ export function ProfileInfoScreen({navigation}) {
           )}
         </View>
         <View style={styles.RegistButtonWrapper}>
-        <TouchableOpacity
-          style={styles.RegistButton}
-          onPress={() => onImagePush()}>
-          <Text style={styles.RegistButtonText}> 확인 </Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity
+            style={styles.RegistButton}
+            onPress={() => onImagePush()}>
+            <Text style={styles.RegistButtonText}> 확인 </Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   )

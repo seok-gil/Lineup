@@ -5,7 +5,6 @@ import {View, TextInput, TouchableOpacity, ScrollView} from 'react-native'
 import styles from './DetailEvent.styles'
 
 import {XIcon, CircleAddIcon} from '../../../Assets/svgs'
-import DetailInfo from '../CompetitionResultDetail/DetailInfo'
 
 function DetailEventElement({form, setForm, index, onPlus, onDel}) {
   const [detail, setDetail] = useState(form.detailNames[index])
