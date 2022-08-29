@@ -18,6 +18,7 @@ export function CommentOne({
   setReplyFocus,
   setMount,
   navigation,
+  isMe
 }) {
   if (!data) return <View />
   const [viewReply, setViewReply] = useState(false)
@@ -25,7 +26,6 @@ export function CommentOne({
     ? `comment/${data.commentId}`
     : `comment/${data.ilike}`
   const [modal, setModal] = useState(false)
-  console.log(data)
   return (
     <View style={styles.commentWrapper}>
       <View style={styles.commentTop}>
@@ -101,6 +101,7 @@ export function CommentOne({
         commentId={data.commentId}
         setMount={setMount}
         navigation={navigation}
+        isMe={isMe}
       />
     </View>
   )

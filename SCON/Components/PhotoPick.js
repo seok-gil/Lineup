@@ -38,6 +38,7 @@ export function PhotoPick({
 }
   const onClick = () => {
     if (flag) {
+      requestPermission()
       flag = false
       Alert.alert(
         text,
@@ -51,47 +52,40 @@ export function PhotoPick({
               .then(res => {
                 result = res
                 flag = true
+                if (result.didCancel) {
+                  return null
+                }
+                setPhoto({
+                  ...photo,
+                  asset: result.assets[0],
+                  set: true,
+                  uri: result.assets[0].uri,
+                })
               })
               .catch(err => {
                 console.log("eer", err)
-              })
-              if (result.didCancel) {
-                return null
-              }
-              
-              setPhoto({
-                ...photo,
-                asset: result.assets[0],
-                set: true,
-                uri: result.assets[0].uri,
               })
             },
           },
           {
             text: '카메라로 찍기',
             onPress: async () => {
-              requestPermission()
               var result
               await launchCamera({
-                mediaType: 'photo',
-                maxWidth : 640,
-                maxHeight : 960,
-                cameraType: 'back',
-                mediaType: 'photo',
-                selectionLimit : 0,
                 saveToPhotos:true
               }).then(res => {
                 result = res
                 flag = true
+                if (result.didCancel) {
+                  return null
+                }
+                setPhoto({
+                  asset: result.assets[0],
+                  set: true,
+                  uri: result.assets[0].uri,
+                })
               })
-              if (result.didCancel) {
-                return null
-              }
-              setPhoto({
-                asset: result.assets[0],
-                set: true,
-                uri: result.assets[0].uri,
-              })
+              .catch(err => console.log(err))
             },
           },
           {
