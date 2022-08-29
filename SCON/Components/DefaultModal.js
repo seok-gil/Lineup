@@ -7,7 +7,6 @@ export function DefaultModal({navigation, route}) {
   const onPressOn = () => {
     setModal(false)
     if (route.params.page) {
-      console.log("page222",route.params)
       navigation.navigate(route.params.page)
     }
     else

@@ -4,13 +4,16 @@ import {ApiFetch, LikeComponent} from '../../../Components'
 import {TimeRelative} from '../../../Components/Time'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {Label} from '../../../Components/Label'
+import { useIsFocused } from '@react-navigation/native';
 
-import {CommentIcon, HeartEmptyIcon} from '../../../Assets/svgs'
+import {CommentIcon, HeartEmptyIcon, HeartFilledIcon} from '../../../Assets/svgs'
 import {PinIcon} from '../Assets'
 import styles from './PlayerFixedFeeds.styles'
 
-export function PlayerFixedFeed({navigation, playerId}) {
+export function PlayerFixedFeed({navigation, playerId, mount, setMount}) {
+  const isFocused = useIsFocused();
   const [data, setData] = useState()
+  const [likeUrl, setLikeUrl] = useState()
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -25,14 +28,16 @@ export function PlayerFixedFeed({navigation, playerId}) {
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', { navigation: navigation })
         }
-        else
-        setData(thing[0])
+        else {
+          setData(thing[0])
+          setLikeUrl(!thing[0].ilike ? `feed/${thing[0].feedId}` : `feed/${thing[0].ilike}`)
+        }
       })
     })
-  }, [])
+  }, [mount, isFocused])
   if (!data) return <View />
   const today = new Date().getDate()
-  var dDay = data.data ? data.date.slice(8, 10) - today : 0
+  var dDay = data.date ? today - data.date.slice(8, 10) : 0
   return (
     <TouchableOpacity
       onPress={() =>
@@ -51,9 +56,24 @@ export function PlayerFixedFeed({navigation, playerId}) {
       <Text style={styles.fixedFeedContent}>{data.content}</Text>
       <View style={styles.feedLikedBox}>
         <TouchableOpacity
-          onPress={() => LikeComponent(data.ilike, `feed/${data.feedId}`)}
+          onPress={() => LikeComponent(data.ilike, likeUrl, setMount)}
           style={styles.feedLikedBox}>
-          <HeartEmptyIcon style={styles.likeIcon} />
+            {
+            data.ilike ?
+              <HeartFilledIcon
+                width={15}
+                height={15}
+                fill="#17D3F0"
+                style={styles.likeIcon}
+              />
+              :
+              <HeartEmptyIcon
+                width={15}
+                height={15}
+                fill="#0E0E0E"
+                style={styles.likeIcon}
+              />
+            }
           <Text style={styles.likeText}>{data.likeCnt}</Text>
         </TouchableOpacity>
         <View style={styles.feedLikedBox}>

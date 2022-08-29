@@ -7,10 +7,9 @@ import {ReplyRegist} from './ReplyRegist'
 
 import styles from './CommentList.styles'
 
-export function CommentList({feedId, navigation}) {
+export function CommentList({feedId, navigation, mount, setMount}) {
   const [data, setData] = useState([])
   const [size, setSize] = useState(10)
-  const [mount, setMount] = useState()
   const [replyFocus, setReplyFocus] = useState(null)
 
   useEffect(() => {

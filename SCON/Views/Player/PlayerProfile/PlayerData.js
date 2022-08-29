@@ -9,7 +9,6 @@ function PlayerData({data, navigation}) {
         rank: '0',
     })
     useEffect(() => {
-        console.log(data.rank)
         const ranks = data.rank
         const arr = []
         for (var i in ranks) arr.push([i, ranks[i]])

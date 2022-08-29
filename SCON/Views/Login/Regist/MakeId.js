@@ -65,7 +65,6 @@ export function MakeId({navigation}) {
         email: form.email,
       }),
     }).then(thing => {
-      console.log(thing)
       if (thing.status == 400) {
         setValidate({
           ...validate,

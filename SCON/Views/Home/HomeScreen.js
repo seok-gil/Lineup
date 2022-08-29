@@ -23,7 +23,6 @@ export function HomeScreen({ navigation }) {
 					navigation.navigate('RefreshTokenModal', { navigation: navigation })
 				}
 				else {
-					console.log(thing)
 					setData(thing)
 					AsyncStorage.setItem('memberId', thing.memberId.toString())
 				}

@@ -14,6 +14,7 @@ export async function ApiFetch({method, url, headers, body }) {
             return (data)
         }
         else {
+            console.log("err", res)
             if (res.status == 401) {
                 return (res.status)
             }

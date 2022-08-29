@@ -32,7 +32,6 @@ export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount, navig
                 content: comment,
               }),
             }).then(thing => {
-              console.log("feed", thing)
               if (thing == 401) {
                 navigation.navigate('RefreshTokenModal', { navigation: navigation })
               }
@@ -58,7 +57,6 @@ export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount, navig
               content: comment,
             }),
           }).then(thing => {
-          console.log("tt")
             if (thing == 401) {
               navigation.navigate('RefreshTokenModal', { navigation: navigation })
             }

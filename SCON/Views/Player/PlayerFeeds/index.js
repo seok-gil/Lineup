@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, Text } from 'react-native'
 import { ApiFetch } from '../../../Components/API/ApiFetch'
 import { useIsFocused } from '@react-navigation/native';
 import { PlayerFeed } from './PlayerFeed'
@@ -10,11 +10,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function PlayerFeeds({ playerId, navigation }) {
   const [data, setData] = useState()
-  const [size, setSize] = useState(3)
-  const [lastFeedId, setLastFeedId] = useState(1000000)
+  const [size, setSize] = useState(10)
+  const [lastFeedId, setLastFeedId] = useState(1000)
+  const [mount, setMount] = useState()
   const isFocused = useIsFocused();
   useEffect(() => {
-    let abortController = new AbortController()
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'GET',
@@ -31,31 +31,8 @@ function PlayerFeeds({ playerId, navigation }) {
         else
           setData(thing.content)
       })
-    }, [])
-    return () => abortController.abort();
-  }, [size])
-
-  useEffect(() => {
-    let abortController = new AbortController()
-    AsyncStorage.getItem('accessToken').then(thing => {
-      ApiFetch({
-        method: 'GET',
-        url: `/player-home/${playerId}/feeds?size=${size}&lastFeedId=${lastFeedId}`,
-        headers: {
-          'content-type': 'application/json',
-          Authorization: 'Bearer ' + thing,
-        },
-        body: null,
-      }).then(thing => {
-        if (thing == 401) {
-          navigation.navigate('RefreshTokenModal', { navigation: navigation })
-        }
-        else
-          setData(thing.content)
-      })
-    }, [])
-    return () => abortController.abort();
-  }, [isFocused])
+    })
+  }, [size, isFocused, mount])
 
   const onEndReached = (info) => {
     setSize(size + 3)
@@ -75,11 +52,12 @@ function PlayerFeeds({ playerId, navigation }) {
             return (
               <View>
                 <PlayerProfile navigation={navigation} playerId={playerId} />
-                <PlayerFixedFeed playerId={playerId} navigation={navigation} />
+                <PlayerFixedFeed playerId={playerId} navigation={navigation} mount={mount} setMount={setMount}/>
                 <PlayerFeed
                   key={`player-feed-${index}`}
                   feed={item}
                   navigation={navigation}
+                  setMount={setMount}
                 />
               </View>
             )
@@ -89,6 +67,7 @@ function PlayerFeeds({ playerId, navigation }) {
                 key={`player-feed-${index}`}
                 feed={item}
                 navigation={navigation}
+                setMount={setMount}
               />)
         }}
         onEndReached={(info) => onEndReached(info)}

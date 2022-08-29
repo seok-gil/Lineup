@@ -10,7 +10,6 @@ import styles from './FeedBody.styles'
 
 export function FeedBody({data, feedId, navigation, setMount}) {
   var likeUrl = !data.ilike ? `feed/${data.feedId}` : `feed/${data.ilike}`
-
   const delFeed = () => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -61,7 +60,7 @@ export function FeedBody({data, feedId, navigation, setMount}) {
                 fill="#17D3F0"
                 style={styles.icon}
               />
-            ) : (
+            ) : ( 
               <HeartEmptyIcon
                 width={20}
                 height={20}
