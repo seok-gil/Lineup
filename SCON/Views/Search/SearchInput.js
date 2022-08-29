@@ -5,8 +5,6 @@ import styles from './SearchInput.styles'
 import {SearchIcon} from '../../Assets/svgs'
 
 function SearchInput({inputs, setInputs}) {
-  const searchRef = useRef()
-
   const onChange = (keyvalue, e) => {
     const {text} = e.nativeEvent
     setInputs({
@@ -27,7 +25,6 @@ function SearchInput({inputs, setInputs}) {
         placeholder={'검색'}
         placeholderTextColor="#0E0E0E66"
         onChange={e => onChange('search', e)}
-        onSubmitEditing={() => searchRef.current.focus()}
       />
     </View>
   )

@@ -33,7 +33,6 @@ export function AlertScreen() {
                   }
                 else {
                     setData(thing)
-                    console.log(thing)
                 }
             })
         })

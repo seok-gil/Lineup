@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         height: 50,
         marginRight: 25,
         resizeMode: 'contain',
+        borderRadius: 28,
     },
 
     viewPlayerInfo: {

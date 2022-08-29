@@ -23,7 +23,6 @@ function SearchID({inputs, setInputs, data, navigation}) {
             ...inputs,
             ['size']: inputs.size + 3,
         })
-        console.log(inputs.size)
     }
 
     return (
