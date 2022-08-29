@@ -26,10 +26,23 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  modalBottom: {
     backgroundColor: colors.THEME_SKYBLUE_LIGHT_SOLID,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+
+  modalMid: {
     height: 50,
+    borderTopWidth: 1,
+    borderTopColor: colors.GRAYE6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  modalBottom: {
+    height: 50,
+    borderTopWidth: 1,
+    borderTopColor: colors.GRAYE6,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     justifyContent: 'center',
