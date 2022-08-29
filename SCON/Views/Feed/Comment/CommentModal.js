@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {SafeAreaView, TouchableOpacity, View, Text, Modal} from 'react-native'
+import {TouchableOpacity, View, Text, Modal} from 'react-native'
 import styles from './CommentModal.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from '../../../Components'

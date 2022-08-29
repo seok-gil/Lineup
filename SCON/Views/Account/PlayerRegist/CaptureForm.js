@@ -1,6 +1,5 @@
-import React, {Component, useState} from 'react'
+import React from 'react'
 import {View, Image} from 'react-native'
-import {ImagePush} from '../../../Components'
 import {PlayerPhotoPick} from './PlayerPhotoPick'
 import styles from './CaptureForm.styles'
 

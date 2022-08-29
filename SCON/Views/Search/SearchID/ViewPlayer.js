@@ -1,5 +1,5 @@
 import React from 'react'
-import {TouchableOpacity, View, Image, Text} from 'react-native'
+import {TouchableOpacity, View, Text} from 'react-native'
 
 import styles from './ViewPlayer.styles'
 import {DefaultProfileImage} from '../../../Assets/svgs'

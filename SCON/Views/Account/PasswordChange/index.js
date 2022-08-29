@@ -1,11 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {ApiFetch} from '../../../Components'
-
 import {CheckIcon} from '../../../Assets/svgs'
-import {PasswordChangeModal} from '../../../Components'
-import {PasswordApi} from './PasswordApi'
+import {ApiFetch, PasswordChangeModal} from '../../../Components'
 
 import styles from './PasswordChange.styles'
 import {useIsFocused} from '@react-navigation/native'

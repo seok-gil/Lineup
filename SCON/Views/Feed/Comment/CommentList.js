@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, Text, FlatList, KeyboardAvoidingView, Platform} from 'react-native'
+import {View, FlatList, KeyboardAvoidingView, Platform} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {CommentOne} from './CommentOne'
 import {ReplyRegist} from './ReplyRegist'

@@ -4,8 +4,6 @@ import { ApiFetch } from '../../../Components/API/ApiFetch'
 import { useIsFocused } from '@react-navigation/native';
 import { PlayerFeed } from './PlayerFeed'
 import { PlayerFixedFeed } from './PlayerFixedFeeds'
-import PlayerFollowButton from '../PlayerProfile/PlayerFollowButton'
-
 import styles from './PlayerFeeds.styles'
 import PlayerProfile from '../PlayerProfile'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -93,7 +91,6 @@ function PlayerFeeds({ playerId, navigation }) {
                 navigation={navigation}
               />)
         }}
-        // onScroll={onScroll}
         onEndReached={(info) => onEndReached(info)}
         onEndReachedThreshold={0}
         onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}

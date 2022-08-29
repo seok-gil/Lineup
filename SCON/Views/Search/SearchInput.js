@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import {Button, View, TextInput, Image} from 'react-native'
+import {View, TextInput} from 'react-native'
 
 import styles from './SearchInput.styles'
 import {SearchIcon} from '../../Assets/svgs'

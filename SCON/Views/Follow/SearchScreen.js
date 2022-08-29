@@ -1,4 +1,4 @@
-import React, {Component, useState, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 
 import {View, TouchableOpacity, Text, Image, TextInput} from 'react-native'
 

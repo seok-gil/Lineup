@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, ScrollView, View, Text } from 'react-native'
+import { SafeAreaView, ScrollView, View } from 'react-native'
 import { ApiFetch } from '../../Components/API/ApiFetch'
 
 import RecordHead from './RecordHead'

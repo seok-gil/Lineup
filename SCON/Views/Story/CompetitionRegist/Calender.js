@@ -1,5 +1,5 @@
-import React, {Component, useState} from 'react'
-import {StyleSheet, Text, View, Modal, TouchableOpacity} from 'react-native'
+import React from 'react'
+import {StyleSheet, View, Modal} from 'react-native'
 import CalendarPicker from 'react-native-calendar-picker' //https://www.npmjs.com/package/react-native-calendar-picker
 
 export function Calendar({

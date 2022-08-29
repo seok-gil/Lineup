@@ -24,7 +24,7 @@ export function FollowPage({navigation, route}) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
         else
-        setData(thing)
+          setData(thing)
       })
     })
   }, [])

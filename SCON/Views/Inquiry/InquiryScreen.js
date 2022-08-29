@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native'
 
 import styles from './InquiryScreen.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -37,7 +37,7 @@ export function InquiryScreen({ navigation }) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
         else
-        navigation.navigate('ModalPage', { text: '문의 내용이 전달 됐어요!', page: 'MyPageScreen' })
+          navigation.navigate('ModalPage', { text: '문의 내용이 전달 됐어요!', page: 'MyPageScreen' })
       })
     })
   }

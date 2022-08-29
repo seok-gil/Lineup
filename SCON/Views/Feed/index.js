@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {View, TouchableOpacity, SafeAreaView, Text, Image} from 'react-native'
-import {FeedApi} from './FeedApi'
+import { SafeAreaView} from 'react-native'
 import {CommentList} from './Comment'
 import {FeedBody} from './FeedBody'
 

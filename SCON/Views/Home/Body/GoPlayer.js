@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import {View, Text, TouchableOpacity, Image, Alert} from 'react-native'
+import React from 'react'
+import {View, Text, TouchableOpacity} from 'react-native'
 import {ApiFetch} from "../../../Components"
 import styles from './GoPlayer.styles'
 import {AlertIcon} from '../Assets'

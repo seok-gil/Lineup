@@ -5,7 +5,6 @@ import SearchInput from './SearchInput'
 import SearchID from './SearchID'
 
 import styles from './SearchScreen.styles'
-import { ViewPlayer } from './SearchID/ViewPlayer'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ApiFetch } from '../../Components/API/ApiFetch'
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {Time} from '../../../Components/Time'
+import {Time, ApiFetch} from '../../../Components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import {SmileIcon, ChatBubbleIcon} from '../Assets'

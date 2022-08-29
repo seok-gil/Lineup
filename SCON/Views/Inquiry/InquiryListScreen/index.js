@@ -8,8 +8,6 @@ import {DeniedIcon} from '../../../Assets/svgs'
 
 export function InquiryListScreen() {
   const [data, setData] = useState([])
-  const [lastFeed, setLastFeed] = useState(1)
-  const [nextFeed, setNextFeed] = useState(10)
 
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
