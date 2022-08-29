@@ -14,7 +14,7 @@ export function LikeComponent(ilike, url, setMount) {
                     'Authorization': 'Bearer ' + thing,
                 },
                 body: null,
-            }).then(() => {
+            }).then((thing) => {
                 setMount(new Date())
             })
         })

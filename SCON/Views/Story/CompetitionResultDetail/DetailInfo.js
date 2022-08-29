@@ -6,7 +6,6 @@ import {CircleAddIcon} from '../../../Assets/svgs'
 
 const DetailInfo = ({data, openModal, type}) => {
   if (!data) return <View />
-  // console.log(data)
   var ranking = data.ranking ? data.ranking + '위 ' : ''
   var score = data.score ? data.score : ''
 

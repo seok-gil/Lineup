@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {
   View,
   Text,
-  TouchableOpacity,
   SafeAreaView,
   Image,
   StyleSheet,
 } from 'react-native'
-import {ScrollView, TextInput} from 'react-native-gesture-handler'
+import {ScrollView} from 'react-native-gesture-handler'
 
 import {ApiFetch} from '../../../../Components/API/ApiFetch'
 import {PlayerRegistRefuse} from './PlayerRegistRefuse'
@@ -29,7 +28,10 @@ export function PlayerReigstDetail({route, navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else setData(thing)
       })
     })
   }, [])

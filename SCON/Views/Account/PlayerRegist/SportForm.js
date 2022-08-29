@@ -1,40 +1,4 @@
-/*
-근대5종
-농구
-레슬링
-롤러
-배구
-배드민턴
-복싱
-볼링
-사격
-세팍타크로
-수영
-핀수영
-스쿼시
-씨름
-야구
-소프트볼
-양궁
-역도
-우슈
-유도
-육상
-자전거
-조정
-철인3종
-체조
-축구
-카누
-컬링
-탁구
-태권도
-테니스
-펜싱
-하키
-합기도
-핸드볼
-*/
+
 import React, {useEffect, useState} from 'react'
 import {View, Text} from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'

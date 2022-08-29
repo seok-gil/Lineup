@@ -31,7 +31,6 @@ export async function ImagePush(photo, setPhoto, type, apiUrl) {
             contentType: 'photo',
         })
             .then(res => {
-                console.log('end', res)
                 Storage.get(res.key)
                     .then(result => {
                         setPhoto({

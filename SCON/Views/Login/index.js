@@ -15,13 +15,12 @@ import styles from './Login.styles'
 
 export function LoginPage({navigation}) {
   const isFocused = useIsFocused()
+  const [first, setFirst] = useState(true)
   const [form, setForm] = useState({
     fcmToken: '',
     // email: 'admin@gmail.com',
-    // email: 'player0@gmail.com',
-    email: 'member13@gmail.com',
-    // email: 'abcd@teml.net',
-    // password: a12345678!,
+    // password: '1234',
+    email: 'player0@gmail.com',
     password: '1234',
   })
   const [validate, setValidate] = useState({
@@ -38,11 +37,14 @@ export function LoginPage({navigation}) {
   }
 
   const goLogin = response => {
-    if (response.status == 401) {
-      setValidate({
-        ['email']: false,
-        ['password']: false,
-      })
+    if (response == 401) {
+      if (first)
+        setFirst(false)
+      else
+        setValidate({
+          ['email']: false,
+          ['password']: false,
+        })
     } else if (response.accessToken) {
       AsyncStorage.setItem('accessToken', response.accessToken)
       AsyncStorage.setItem('refreshToken', response.refreshToken)
@@ -53,6 +55,7 @@ export function LoginPage({navigation}) {
   }
   const onLogin = () => {
     ApiFetch({
+      navigation:navigation,
       method: 'POST',
       url: '/auth/login',
       headers: {

@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
 
 import styles from './PlayerData.styles'
-
 function PlayerData({data, navigation}) {
+    const type = {'all' : '전체', 'day' : '일간' , 'month' : '월간' , 'week' : '주간'}
     const [rank, setRank] = useState({
-        type: 'ALL',
+        type: '월간',
         rank: '0',
     })
     useEffect(() => {
@@ -45,7 +45,7 @@ function PlayerData({data, navigation}) {
                 onPress={() =>
                     navigation.navigate('RankScreen', {playerId: data.playerId})
                 }>
-                <Text style={styles.playerDataTitle}>{rank.type.toUpperCase()}</Text>
+                <Text style={styles.playerDataTitle}>{type[rank.type]}</Text>
                 <Text style={styles.playerDataText}>{rank.rank}위</Text>
             </TouchableOpacity>
         </View>

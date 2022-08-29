@@ -1,13 +1,11 @@
-import React, {Component} from 'react'
-
-import {} from 'react-native'
+import React from 'react'
 
 import {InquiryScreen, InquiryListScreen} from '.'
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
 
 const InquiryStack = createMaterialTopTabNavigator()
 
-export function InquiryTabScreen({navigation}) {
+export function InquiryTabScreen({}) {
     return (
         <InquiryStack.Navigator>
             <InquiryStack.Screen name="문의하기" component={InquiryScreen} />

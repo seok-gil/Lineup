@@ -6,8 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native'
-// Warning: Failed prop type: Invalid props.style key `globalTextStyle` supplied to `Text`.
-//86E5W3X
 import styles from './Password.styles'
 
 import {CheckIcon} from '../../../Assets/svgs'
@@ -81,7 +79,6 @@ export function Password({navigation, route}) {
       },
       body: JSON.stringify(postForm),
     })
-      .then(console.log('post', postForm))
       .then(setModal(true))
       .catch(console.log(Error))
   }

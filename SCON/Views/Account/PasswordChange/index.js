@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {ApiFetch} from '../../../Components'
-
 import {CheckIcon} from '../../../Assets/svgs'
-import {PasswordChangeModal} from '../../../Components'
-import {PasswordApi} from './PasswordApi'
+import {ApiFetch, PasswordChangeModal} from '../../../Components'
 
 import styles from './PasswordChange.styles'
 import {useIsFocused} from '@react-navigation/native'
+
 export function PasswordChange({navigation}) {
   const isFocused = useIsFocused()
   const [button, setButton] = useState(false)
@@ -66,6 +64,9 @@ export function PasswordChange({navigation}) {
           newPassword: form.newPassword,
         }),
       }).then(thing => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
         if (thing && thing.status == 406) {
           // 비밀번호 불일치
           setValidate({

@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../Components/API/ApiFetch'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {View, TouchableOpacity, SafeAreaView, Text, Image} from 'react-native'
-import {FeedApi} from './FeedApi'
+import { SafeAreaView} from 'react-native'
 import {CommentList} from './Comment'
 import {FeedBody} from './FeedBody'
 
@@ -23,7 +22,12 @@ export function FeedScreen({route, navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal')
+        }
+        else {
+          setData(thing)
+        }
       })
     })
   }, [mount])
@@ -37,7 +41,7 @@ export function FeedScreen({route, navigation}) {
         navigation={navigation}
         setMount={setMount}
       />
-      <CommentList feedId={route.params.feedId} navigation={navigation} />
+      <CommentList feedId={route.params.feedId} navigation={navigation} mount={mount} setMount={setMount}/>
     </SafeAreaView>
   )
 }

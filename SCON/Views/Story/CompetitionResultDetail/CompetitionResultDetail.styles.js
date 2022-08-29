@@ -9,10 +9,14 @@ const styles = StyleSheet.create({
     },
 
     competitionResultInner: {
-        height: '100%',
+        height: '90%',
         padding: 30,
     },
 
+    competitionButtonWrapper: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     competitionLabels: {
         color: colors.TEXT_DARK,
         marginBottom: 8,

@@ -11,7 +11,6 @@ function PlayerProfile({navigation, playerId}) {
   const [data, setData] = useState()
   const [mount, setMount] = useState()
   useEffect(() => {
-    var ismount = true
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'GET',
@@ -22,20 +21,18 @@ function PlayerProfile({navigation, playerId}) {
         },
         body: null,
       }).then(thing => {
-        if (ismount) {
-          setData(thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
         }
+        setData(thing)
       })
     })
-    return () => {
-      ismount = false
-    }
   }, [mount])
   return (
     <View style={styles.profileInnerWrapper}>
       {data && (
         <View>
-          <Image source={{uri: data.backPic}} style={styles.backgroundImage} />
+          <Image source={{uri: data.profileBack}} style={styles.backgroundImage} />
           <Image source={{uri: data.profilePic}} style={styles.profileImage} />
           <View style={styles.profileBottom}>
             <View style={styles.playerInfo}>

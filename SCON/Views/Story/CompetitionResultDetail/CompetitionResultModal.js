@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, Image, Modal, TouchableOpacity} from 'react-native'
+import {View, Text, Modal, TouchableOpacity} from 'react-native'
 import {TextInput} from 'react-native-gesture-handler'
 import CheckBox from '@react-native-community/checkbox'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -65,7 +65,7 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
   const onSummit = () => {
     var temp = data
     temp.forEach((element, index) => {
-      if (element && element.detailId == result.detailId) {
+      if (element && element.recordId == result.recordId) {
         temp[index] = result
       }
     })

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { ApiFetch } from '../../../Components/API/ApiFetch'
+import React, { useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './AdminNotiOne.styles'
 import { Time } from '../../../Components'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import {AdminNotiDelModal } from "./AdminNotiDelModal"
 
 export function AdminOne({ data, navigation, setMount }) {

@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, {useState} from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
 
 import {ArrowIcon} from '../../Assets/svgs'

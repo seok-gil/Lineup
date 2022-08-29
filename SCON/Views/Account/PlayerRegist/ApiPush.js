@@ -20,7 +20,8 @@ const fetchResourceFromURI = async uri => {
   return blob
 }
 
-export async function ApiPush(photo, setPhoto, type, form, setForm) {
+export async function ApiPush(photo, setPhoto, form, setForm) {
+  // aws file push
   try {
     const img = await fetchResourceFromURI(photo.asset.uri)
     var path = `player-certificate/`
@@ -42,16 +43,8 @@ export async function ApiPush(photo, setPhoto, type, form, setForm) {
             PlayerRegistApi(temp)
             return url[0]
           })
-          .catch(err => {
-            console.log('err0', err)
-          })
-      })
-      .catch(err => {
-        console.log('err0', err)
       })
   } catch {
-    err => {
       console.log('eer1', err)
-    }
   }
 }

@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import {
     NavigationContainer,
 } from '@react-navigation/native'
+import SplashScreen from 'react-native-splash-screen';
 import { BackHandler, Alert } from "react-native";
 import { createStackNavigator } from '@react-navigation/stack'
 import { LoginPage } from './Views/Login'
 import { RegistAccept, MakeId, Password } from './Views/Login/Regist'
 import { ForgetPassword, PasswordReset } from './Views/Login/PasswordReset'
-import { TabScreen, DefaultModal } from './Components'
+import { TabScreen, DefaultModal, RefreshTokenModal } from './Components'
 import { NotiScreen } from './Views/Noti'
 import { SettingAlertScreen } from './Views/SettingAlert'
 import { InquiryTabScreen } from './Views/Inquiry'
@@ -16,7 +17,6 @@ import { PlayerScreen } from './Views/Player'
 import { RecordScreen } from './Views/Record'
 import { FollowScreen, FollowPage } from './Views/Follow'
 import { FeedScreen } from './Views/Feed'
-import SplashScreen from 'react-native-splash-screen';
 import {
     StoryScreen,
     FeedRegist,
@@ -63,13 +63,6 @@ export default function App() {
       // Android 뒤로가기 버튼
       useEffect(() => {
         const backAction = () => {
-          Alert.alert("앱을 종료하시겠습니까?", [
-            {
-              text: "취소",
-              onPress: () => null,
-            },
-            { text: "확인", onPress: () => BackHandler.exitApp() }
-          ]);
           return true;
         };
     
@@ -190,7 +183,6 @@ export default function App() {
                     options={{
                         title: '선수 인증'
                     }} />
-
                 <AppStack.Screen name="Withdrawal" component={Withdrawal}
                     options={{
                         title: '회원 탈퇴'
@@ -214,7 +206,6 @@ export default function App() {
                     options={{
                         title: '신고 접수'
                     }} />
-
                 <AppStack.Screen name="Reporter" component={Reporter}
                     options={{
                         title: '신고자'
@@ -232,6 +223,7 @@ export default function App() {
                     title: '문의 내역'
                 }} />
                 <AppStack.Screen name="ModalPage" component={DefaultModal} />
+                <AppStack.Screen name="RefreshTokenModal" component={RefreshTokenModal} />
             </AppStack.Navigator>
         </NavigationContainer>
     )

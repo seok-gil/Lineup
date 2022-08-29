@@ -4,8 +4,6 @@ import { TouchableOpacity, View, Text, FlatList } from 'react-native'
 import ViewPlayer from './ViewPlayer'
 
 import styles from './SearchID.styles'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { ApiFetch } from '../../../Components/API/ApiFetch'
 
 function SearchID({ inputs, setInputs, data, navigation }) {
     const { search } = inputs
@@ -26,7 +24,7 @@ function SearchID({ inputs, setInputs, data, navigation }) {
     }
 
     return (
-        <View>
+        <View style={styles.searchBodyWrapper}>
             <FlatList
                 data={data}
                 snapToAlignment="start"
@@ -38,7 +36,6 @@ function SearchID({ inputs, setInputs, data, navigation }) {
                         navigation={navigation}
                     />
                 )}
-                // onScroll={onScroll}
                 onEndReached={(e) => onEndReached(e)}
                 onEndReachedThreshold={0.9}
                 onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}

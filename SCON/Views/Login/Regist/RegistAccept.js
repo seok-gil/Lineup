@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native'
-// import DefaultProfile from '../../Assets/Images/ProfileDefault.png'
 import CheckBox from '@react-native-community/checkbox'
 import styles from './RegistAccept.styles'
 

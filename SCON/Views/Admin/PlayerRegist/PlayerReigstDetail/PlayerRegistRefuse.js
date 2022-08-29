@@ -24,7 +24,11 @@ export function PlayerRegistRefuse({navigation, params}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      }).then(() => {
+      }).then((thing) => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
         navigation.navigate('ModalPage', {
           text: '승인 처리가 완료되었어요!',
           page: 'AdminMyPageScreen',

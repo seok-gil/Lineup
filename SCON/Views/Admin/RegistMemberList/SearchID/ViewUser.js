@@ -1,16 +1,14 @@
 import React from 'react'
-import {TouchableOpacity, View, Text} from 'react-native'
+import {TouchableOpacity, View, Text, Image} from 'react-native'
 
-import styles from './ViewPlayer.styles'
+import styles from './ViewUser.styles'
 import {DefaultProfileImage} from '../../../../Assets/svgs'
 
-function ViewPlayer({player, navigation}) {
-  console.log(player)
-  const {name, sport, belong} = player
+function ViewUser({user, navigation}) {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('Player', {playerId: player.playerId})
+        navigation.navigate('FollowPage', {userId: user.memberId})
       }>
       <View style={styles.viewPlayerWrapper}>
         <DefaultProfileImage style={styles.viewPlayerImage} />
@@ -19,13 +17,13 @@ function ViewPlayer({player, navigation}) {
             style={styles.playerName}
             numberOfLines={1}
             ellipsizeMode="tail">
-            {player.nickname}
+            {user.nickname}
           </Text>
           <Text
             style={styles.playerDescription}
             numberOfLines={1}
             ellipsizeMode="tail">
-            {player.nickname}
+            {user.email}
           </Text>
         </View>
       </View>
@@ -33,4 +31,4 @@ function ViewPlayer({player, navigation}) {
   )
 }
 
-export default ViewPlayer
+export default ViewUser

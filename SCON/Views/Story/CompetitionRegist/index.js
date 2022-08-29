@@ -35,7 +35,7 @@ export function CompetitionRegist({navigation}) {
     })
   }
   return (
-    <SafeAreaView style={styles.competitionRegistWrapper}>
+    <SafeAreaView style={styles.competitionRegistWrapper} keyboardShouldPersistTaps='always'>
       <View style={styles.competitionRegistInner}>
         <CompetitionRegistLabel text="대회 기간" isAsterisk />
         <TouchableOpacity
@@ -61,6 +61,7 @@ export function CompetitionRegist({navigation}) {
           <CalendarIcon style={styles.calendarImageStyle} />
         </TouchableOpacity>
         <CompetitionRegistLabel text="대회 장소" isAsterisk />
+        <View>
         <TextInput
           style={styles.inputStyle}
           value={form.location}
@@ -68,6 +69,7 @@ export function CompetitionRegist({navigation}) {
           placeholderTextColor="#0E0E0E66"
           onChange={e => onChange('location', e)}
         />
+        </View>
         <CompetitionRegistLabel text="대회명" isAsterisk />
         <TextInput
           style={styles.inputStyle}

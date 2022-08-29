@@ -19,7 +19,11 @@ export function Reporter({navigation, route}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
+          setData(thing)
       })
     })
   }, [])

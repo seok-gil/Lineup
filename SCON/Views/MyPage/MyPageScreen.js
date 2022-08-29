@@ -1,5 +1,5 @@
 import React from 'react'
-import {SafeAreaView, StyleSheet} from 'react-native'
+import {SafeAreaView} from 'react-native'
 
 import {MypageProfile} from './MypageProfile'
 import {MypageTab} from './MypageTab'

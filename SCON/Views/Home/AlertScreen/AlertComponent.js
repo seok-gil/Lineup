@@ -1,7 +1,6 @@
 import React from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
-import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {Time} from '../../../Components/Time'
+import {Time, ApiFetch} from '../../../Components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import {SmileIcon, ChatBubbleIcon} from '../Assets'
@@ -20,17 +19,17 @@ function AlertComponent({alert, setMount}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      }).then(() => {
+      }).then((thing) => {
         setMount(new Date())
       })
     })
   }
-
+  
   return (
     <View
       style={[
         styles.alertComponentWrapper,
-        alert.check ? styles.alertRead : styles.alertNotRead,
+        alert.readCheck ? styles.alertRead : styles.alertNotRead,
       ]}>
       <View style={styles.alertComponentTop}>
         {alert.type === '댓글' ? (

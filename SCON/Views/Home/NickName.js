@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-import {Button, Text, View, Image} from 'react-native'
+import {Text, View, Image} from 'react-native'
 
 import styles from './NickName.styles'
 

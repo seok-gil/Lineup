@@ -33,6 +33,9 @@ function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
         },
         body: null,
       }).then((thing) => {
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+        }
         if (thing.status == 403)
         navigation.navigate('ModalPage', {
           text: thing.message

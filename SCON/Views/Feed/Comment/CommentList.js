@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, FlatList, KeyboardAvoidingView} from 'react-native'
+import {View, FlatList, KeyboardAvoidingView, Platform} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {CommentOne} from './CommentOne'
 import {ReplyRegist} from './ReplyRegist'
 
 import styles from './CommentList.styles'
 
-export function CommentList({feedId, navigation}) {
+export function CommentList({feedId, navigation, mount, setMount}) {
   const [data, setData] = useState([])
-  const [size, setSize] = useState(5)
-  const [mount, setMount] = useState()
+  const [size, setSize] = useState(10)
   const [replyFocus, setReplyFocus] = useState(null)
 
   useEffect(() => {
@@ -24,7 +23,11 @@ export function CommentList({feedId, navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing.content)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
+          setData(thing.content)
       })
     })
   }, [size, mount])
@@ -54,12 +57,13 @@ export function CommentList({feedId, navigation}) {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={90}>
+      <KeyboardAvoidingView behavior={Platform.OS==='ios' ? "padding" : "height"} keyboardVerticalOffset={ Platform.OS === 'ios' ? 90 : 0}>
         <ReplyRegist
           feedId={feedId}
           replyFocus={replyFocus}
           setReplyFocus={setReplyFocus}
           setMount={setMount}
+          navigation={navigation}
         />
       </KeyboardAvoidingView>
     </>

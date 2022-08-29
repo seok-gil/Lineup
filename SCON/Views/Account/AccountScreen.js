@@ -27,7 +27,11 @@ export function AccountScreen({navigation}) {
         },
         body: null,
       }).then(thing => {
-        setData(thing)
+        if (thing == 401) { // token Error
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
+          setData(thing)
       })
     })
     AsyncStorage.getItem('role').then(thing => {

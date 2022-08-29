@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {TouchableOpacity, View, Text, FlatList} from 'react-native'
 
-import ViewPlayer from './ViewPlayer'
+import ViewUser from './ViewUser'
 
 import styles from './SearchID.styles'
 
 function SearchID({inputs, setInputs, data, navigation}) {
-    const {search} = inputs
     const [more, setMore] = useState(false)
     const [nextFeed, setNextFeed] = useState(10)
     const onClickMore = () => {
@@ -15,7 +14,6 @@ function SearchID({inputs, setInputs, data, navigation}) {
             setMore(true)
         } else setMore(false)
     }
-
     const onEndReached = () => {
         setNextFeed(nextFeed + 5)
         setMore(false)
@@ -23,23 +21,21 @@ function SearchID({inputs, setInputs, data, navigation}) {
             ...inputs,
             ['size']: inputs.size + 3,
         })
-        console.log(inputs.size)
     }
 
     return (
-        <View>
+        <View style={styles.searchBodyWrapper}>
             <FlatList
                 data={data}
                 snapToAlignment="start"
                 decelerationRate="fast"
                 renderItem={({item, index}) => (
-                    <ViewPlayer
+                    <ViewUser
                         key={`view${index}`}
-                        player={item}
+                        user={item}
                         navigation={navigation}
                     />
                 )}
-                // onScroll={onScroll}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0.01}
                 pagingEnabled

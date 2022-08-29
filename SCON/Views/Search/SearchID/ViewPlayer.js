@@ -1,5 +1,5 @@
 import React from 'react'
-import {TouchableOpacity, View, Image, Text} from 'react-native'
+import {Image, TouchableOpacity, View, Text} from 'react-native'
 
 import styles from './ViewPlayer.styles'
 import {DefaultProfileImage} from '../../../Assets/svgs'
@@ -12,7 +12,7 @@ function ViewPlayer({player, navigation}) {
         navigation.navigate('Player', {name:player.name, playerId: player.playerId})
       }>
       <View style={styles.viewPlayerWrapper}>
-        <DefaultProfileImage style={styles.viewPlayerImage} />
+        <Image source={{uri:player.profilePic}} style={styles.viewPlayerImage} />
         <View style={styles.viewPlayerInfo}>
           <Text
             style={styles.playerName}

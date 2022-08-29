@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
     TouchableOpacity,
     View,
@@ -22,8 +22,12 @@ export function AdminNotiDelModal({ data, modal, setModal, navigation }) {
             },
             body: JSON.stringify({
             }),
-          }).then(() => {
-            navigation.goBack()
+          }).then((thing) => {
+            if (thing == 401) {
+                navigation.navigate('RefreshTokenModal', {navigation : navigation})
+              }
+            else
+                navigation.goBack()
           })
         })
     }

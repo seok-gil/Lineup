@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   tag: {
     ...globalTextStyle,
     fontSize: 10,
+    alignItems: 'center',
   },
 })
 

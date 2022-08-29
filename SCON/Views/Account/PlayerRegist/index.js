@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {SafeAreaView} from 'react-native'
-
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from './../../../Components'
 import {PlayerRegistForm} from './PlayerRegistForm'
@@ -20,7 +19,11 @@ export function PlayerRegist({navigation}) {
         },
         body: null,
       }).then(thing => {
-        setCode(thing)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
+          setCode(thing)
         AsyncStorage.getItem('role').then(setRole)
       })
     })
