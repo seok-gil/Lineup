@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   genderWrapper: {
     flexDirection: 'column',
     width: '100%',
-    zIndex: 10,
+    zIndex: 8,
   },
 
   label: {
@@ -21,14 +21,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomWidth: 2,
     borderBottomColor: colors.GRAYE6,
-  },
-
-  downIcon: {
-    position: 'absolute',
-    top: 15,
-    right: 10,
-    resizeMode: 'contain',
-    width: 15,
   },
 
   dropdownStyle: {

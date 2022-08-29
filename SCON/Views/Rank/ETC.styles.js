@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 28,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     marginRight: 20,
   },
 
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginRight: 5,
   },
+
   likes: {
     color: colors.TEXT_DARK,
     fontSize: 17,

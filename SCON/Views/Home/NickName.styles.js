@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 32,
     marginRight: 15,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
 
   viewProfileInfo: {
