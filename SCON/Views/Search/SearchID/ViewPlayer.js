@@ -1,11 +1,10 @@
 import React from 'react'
 import {Image, TouchableOpacity, View, Text} from 'react-native'
-
 import styles from './ViewPlayer.styles'
-import {DefaultProfileImage} from '../../../Assets/svgs'
 
 function ViewPlayer({player, navigation}) {
   const {name, sport, belong} = player
+  console.log(player.profilePic)
   return (
     <TouchableOpacity
       onPress={() =>

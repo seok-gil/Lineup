@@ -39,9 +39,11 @@ export function PasswordChange({navigation}) {
   useEffect(() => {
     let temp = validate
     checkValidate(temp).then(setValidate(temp))
+    console.log(validate)
   }, [form])
 
-  useEffect(() => {}, [validate])
+  useEffect(() => {
+  }, [validate])
 
   const onInput = (key, e) => {
     const {text} = e.nativeEvent
@@ -52,6 +54,8 @@ export function PasswordChange({navigation}) {
   }
 
   const onSummit = () => {
+    setFirst(false)
+    if (validate.newPassword && validate.confirmPassword)
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'PUT',
@@ -65,11 +69,11 @@ export function PasswordChange({navigation}) {
           newPassword: form.newPassword,
         }),
       }).then(thing => {
-        setFirst(false)
+        console.log("pass", thing)
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
-        if (thing && thing.status == 406) {
+        else if (thing && thing.status == 406) {
           // 비밀번호 불일치
           setValidate({
             ...validate,
@@ -82,10 +86,18 @@ export function PasswordChange({navigation}) {
             text: '비밀번호가 변경되었어요.',
             page: 'LoginPage',
           })
-          // setModal(true)
+          setModal(true)
         }
       })
     })
+    else {
+      setValidate({
+        ...validate,
+        ['newPassword']: false,
+        ['confirmPassword']: false,
+        ['buttonn']: false,
+      })
+    }
   }
 
   return (
