@@ -24,12 +24,12 @@ function AlertComponent({alert, setMount}) {
       })
     })
   }
-
+  
   return (
     <View
       style={[
         styles.alertComponentWrapper,
-        alert.check ? styles.alertRead : styles.alertNotRead,
+        alert.readCheck ? styles.alertRead : styles.alertNotRead,
       ]}>
       <View style={styles.alertComponentTop}>
         {alert.type === '댓글' ? (

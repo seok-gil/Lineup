@@ -31,8 +31,10 @@ export function AlertScreen() {
                 if (thing == 401) {
                     navigation.navigate('RefreshTokenModal', {navigation : navigation})
                   }
-                else
-                setData(thing)
+                else {
+                    setData(thing)
+                    console.log(thing)
+                }
             })
         })
     }, [mount])
