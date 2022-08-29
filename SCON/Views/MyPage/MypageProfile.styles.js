@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 10,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
 
   nickname: {

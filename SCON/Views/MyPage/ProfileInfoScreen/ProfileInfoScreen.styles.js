@@ -1,6 +1,6 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import {StyleSheet, Dimensions} from 'react-native'
 
-import { colors } from '../../../Styles/constants'
+import {colors} from '../../../Styles/constants'
 
 const screenWidth = Dimensions.get('window').width
 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: colors.WHITE,
     borderRadius: 40,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
 
   formSection: {

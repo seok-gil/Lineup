@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
 
 import {AcceptIcon, ListIcon} from '../Assets'
-import {AlertTriangleIcon} from '../../../Assets/svgs'
+import {AlertTriangleIcon, LogoutIcon} from '../../../Assets/svgs'
 import {QnAIcon, MegaphoneIcon, ArrowIcon} from '../../../Assets/svgs'
 import {LogoutModal} from '../../Account/LogoutModal'
 
@@ -92,9 +92,15 @@ export function AdminMypageTab({navigation}) {
       </TouchableOpacity>
       <TouchableOpacity style={styles.mypageElement} onPress={onLogout}>
         <View style={styles.elementLeft}>
+          <LogoutIcon width={18} height={18} style={styles.elementIcon} />
           <Text style={styles.elementText}>로그아웃</Text>
         </View>
-        <ArrowIcon style={styles.icon} />
+        <ArrowIcon
+          width={11}
+          height={6}
+          fill="#0E0E0E"
+          style={styles.arrowIcon}
+        />
       </TouchableOpacity>
       <LogoutModal modal={modal} setModal={setModal} navigation={navigation} />
     </View>

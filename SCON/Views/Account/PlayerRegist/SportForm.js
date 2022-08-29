@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from 'react'
 import {View, Text} from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
@@ -65,6 +64,7 @@ export function SportForm({form, setForm, setMount}) {
           open={open}
           value={value}
           defaultIndex={0}
+          dropDownDirection="TOP"
           setOpen={setOpen}
           setValue={setValue}
           placeholder="종목을 선택해주세요"

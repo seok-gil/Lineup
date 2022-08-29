@@ -50,22 +50,22 @@ export function CommentModal({
         body: null,
       })
         .then(thing => {
-        if (thing == 401) {
-          navigation.navigate('RefreshTokenModal', {navigation : navigation})
-        }
+          if (thing == 401) {
+            navigation.navigate('RefreshTokenModal', {navigation: navigation})
+          }
           if (thing == 403)
             navigation.navigate('ModalPage', {
               text: thing.message,
             })
           else {
-            if (report.text =='댓글 신고')
-            navigation.navigate('ModalPage', {
-              text: '정상적으로 신고처리가 되었습니다.'
-            })
+            if (report.text == '댓글 신고')
+              navigation.navigate('ModalPage', {
+                text: '정상적으로 신고처리가 되었습니다.',
+              })
             else
               navigation.navigate('ModalPage', {
-              text: '댓글이 삭제 되었습니다.'
-            })
+                text: '댓글이 삭제 되었습니다.',
+              })
           }
           setModal(false)
           setMount(new Date())
@@ -87,7 +87,7 @@ export function CommentModal({
           </View>
           <View>
             <TouchableOpacity
-              style={styles.modalBottom}
+              style={styles.modalMid}
               onPress={() => onReport()}>
               <Text style={styles.modalText}>{report.text}</Text>
             </TouchableOpacity>
