@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {ApiFetch} from '../../../Components/API/ApiFetch'
-import {View, FlatList, KeyboardAvoidingView} from 'react-native'
+import {View, Text, FlatList, KeyboardAvoidingView, Platform} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {CommentOne} from './CommentOne'
 import {ReplyRegist} from './ReplyRegist'
@@ -9,7 +9,7 @@ import styles from './CommentList.styles'
 
 export function CommentList({feedId, navigation}) {
   const [data, setData] = useState([])
-  const [size, setSize] = useState(5)
+  const [size, setSize] = useState(10)
   const [mount, setMount] = useState()
   const [replyFocus, setReplyFocus] = useState(null)
 
@@ -58,7 +58,7 @@ export function CommentList({feedId, navigation}) {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={90}>
+      <KeyboardAvoidingView behavior={Platform.OS==='ios' ? "padding" : "height"} keyboardVerticalOffset={ Platform.OS === 'ios' ? 90 : 0}>
         <ReplyRegist
           feedId={feedId}
           replyFocus={replyFocus}
