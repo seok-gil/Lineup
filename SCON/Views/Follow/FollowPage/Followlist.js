@@ -5,6 +5,7 @@ import {View, Text, Image} from 'react-native'
 import styles from './Followlist.styles'
 
 export function Followlist({data}) {
+  const type = {'all' : '전체', 'day' : '일간' , 'month' : '월간' , 'week' : '주간'}
   if (!data) return <View />
   const [rank, setRank] = useState({
     type: 'ALL',
@@ -41,12 +42,12 @@ export function Followlist({data}) {
           <Text style={styles.tag}>전적</Text>
         </View>
         <View style={styles.recordWrapper}>
-          <Text style={styles.count}>{rank.rank}위</Text>
-          <Text style={styles.tag}>순위({rank.type.toUpperCase()})</Text>
-        </View>
-        <View style={styles.recordWrapper}>
           <Text style={styles.count}>{data.followerCnt}</Text>
           <Text style={styles.tag}>팬</Text>
+        </View>
+        <View style={styles.recordWrapper}>
+          <Text style={styles.count}>{rank.rank}위</Text>
+          <Text style={styles.tag}>순위 ({type[rank.type]})</Text>
         </View>
       </View>
     </View>
