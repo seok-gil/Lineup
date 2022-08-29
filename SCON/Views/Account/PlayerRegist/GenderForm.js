@@ -29,6 +29,7 @@ export function GenderForm({form, setForm, setMount}) {
           defaultIndex={0}
           setOpen={setOpen}
           setValue={setValue}
+          dropDownDirection="TOP"
           placeholder="여자 / 남자 선택해주세요"
           dropDownContainerStyle={styles.dropdownContainerStyle}
           style={styles.dropdownStyle}

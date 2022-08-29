@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   genderWrapper: {
     flexDirection: 'column',
     width: '100%',
-    zIndex: 10,
+    zIndex: 8,
   },
 
   label: {
