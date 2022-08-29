@@ -37,7 +37,7 @@ export function PlayerFixedFeed({navigation, playerId, mount, setMount}) {
   }, [mount, isFocused])
   if (!data) return <View />
   const today = new Date().getDate()
-  var dDay = data.date ? today - data.date.slice(8, 10) : 0
+  var dDay = data.eventStart ? data.eventStart.slice(8, 10) - today : 0
   return (
     <TouchableOpacity
       onPress={() =>
