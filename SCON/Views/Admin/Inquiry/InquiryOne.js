@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ArrowIcon} from '../../../Assets/svgs'
 import styles from './InquiryOne.styles'
 
-export function InquiryOne({data}) {
+export function InquiryOne({data, setMount}) {
   if (!data) return <View />
 
   const [expand, setExpand] = useState(false)
@@ -31,16 +31,16 @@ export function InquiryOne({data}) {
           Authorization: 'Bearer ' + thing,
         },
         body: JSON.stringify({
-          inquiryId: data.id,
-          asnwerContent: answer,
+          answerContent: answer,
         }),
       }).then((thing) => {
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
+        setMount(new Date())
+        setState(!state)
       })
     })
-    setState(!state)
   }
 
   return (

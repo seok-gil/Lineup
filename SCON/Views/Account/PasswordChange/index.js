@@ -6,6 +6,7 @@ import {ApiFetch, PasswordChangeModal} from '../../../Components'
 
 import styles from './PasswordChange.styles'
 import {useIsFocused} from '@react-navigation/native'
+
 export function PasswordChange({navigation}) {
   const isFocused = useIsFocused()
   const [button, setButton] = useState(false)

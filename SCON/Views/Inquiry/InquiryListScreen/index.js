@@ -23,8 +23,10 @@ export function InquiryListScreen() {
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
-        else
-        setData(thing)
+        else {
+          console.log("inquiry answer", thing)
+          setData(thing)
+        }
       })
     })
   }, [])
