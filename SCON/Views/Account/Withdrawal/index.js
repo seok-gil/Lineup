@@ -35,16 +35,14 @@ export function Withdrawal({navigation}) {
         }),
       })
         .then(res => {
-          if (res == 401) {
+          if (res == 401) { // token error
             navigation.navigate('RefreshTokenModal', {navigation : navigation})
           }
-          else if (res.status == 406)
-            // password 불일치
+          else if (res.status == 406) // password 불일치
             setValidate(false)
-          else {
+          else { //password 일치
               setValidate(true)
               setModal(true)
-            //password 일치
             
           }
         })

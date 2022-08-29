@@ -3,6 +3,8 @@ import {View, Alert, TouchableOpacity, Text} from 'react-native'
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker'
 import styles from './PlayerPhotoPick.styles'
 
+
+//photo type choice ( al
 export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
   var flag = true
   const onClick = () => {

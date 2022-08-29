@@ -27,7 +27,7 @@ export function AccountScreen({navigation}) {
         },
         body: null,
       }).then(thing => {
-        if (thing == 401) {
+        if (thing == 401) { // token Error
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
         else

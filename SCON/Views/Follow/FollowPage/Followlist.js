@@ -47,7 +47,7 @@ export function Followlist({data}) {
         </View>
         <View style={styles.recordWrapper}>
           <Text style={styles.count}>{rank.rank}위</Text>
-          <Text style={styles.tag}>순위 ({type[rank.type]})</Text>
+          <Text style={styles.tag}>{type[rank.type]}</Text>
         </View>
       </View>
     </View>
