@@ -23,14 +23,6 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.GRAYE6,
   },
 
-  downIcon: {
-    position: 'absolute',
-    top: 15,
-    right: 10,
-    resizeMode: 'contain',
-    width: 15,
-  },
-
   dropdownStyle: {
     borderColor: colors.GRAYE6,
     zIndex: 9,

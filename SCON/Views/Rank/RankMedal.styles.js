@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
 
   rankImage: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
 
   playerNameWrapper: {
