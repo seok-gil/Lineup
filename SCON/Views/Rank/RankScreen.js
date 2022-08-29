@@ -10,22 +10,22 @@ export function RankScreen({navigation}) {
     return (
         <RankStack.Navigator>
             <RankStack.Screen
-                name="Day"
+                name="일간"
                 component={RankBody}
                 initialParams={{mode: 3}}
             />
             <RankStack.Screen
-                name="Week"
+                name="주간"
                 component={RankBody}
                 initialParams={{mode: 2}}
             />
             <RankStack.Screen
-                name="Month"
+                name="월간"
                 component={RankBody}
                 initialParams={{mode: 1}}
             />
             <RankStack.Screen
-                name="All"
+                name="전체"
                 component={RankBody}
                 initialParams={{mode: 0}}
             />
