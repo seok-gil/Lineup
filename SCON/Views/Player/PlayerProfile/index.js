@@ -28,7 +28,6 @@ function PlayerProfile({navigation, playerId}) {
       })
     })
   }, [mount])
-  console.log(data)
   return (
     <View style={styles.profileInnerWrapper}>
       {data && (
