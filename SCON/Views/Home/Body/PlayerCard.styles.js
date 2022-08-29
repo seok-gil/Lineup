@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 223,
-    height: 307,
+    height: '90%',
     borderRadius: 10,
     shadowColor: colors.BLACK,
     shadowOffset: {
@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
   },
 
   playerCardImage: {
-    width: 150,
-    height: 150,
+    width: 130,
+    height: 130,
     justifyContent: 'center',
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     marginBottom: 20,
     borderRadius: 75,
   },

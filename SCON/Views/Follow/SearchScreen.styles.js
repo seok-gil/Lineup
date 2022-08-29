@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     marginRight: 25,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
 
   viewPlayerInfo: {
@@ -58,13 +58,3 @@ const styles = StyleSheet.create({
 })
 
 export default styles
-
-// searchScreenWrapper: {
-//     flexDirection: 'column',
-//     backgroundColor: colors.WHITE,
-//     height: '100%',
-//   },
-//   searchScreenTop: {
-//     paddingHorizontal: 25,
-//     paddingVertical: 20,
-//   },

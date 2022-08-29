@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   profileImage: {
     width: 25,
     height: 25,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
 
   elementLeft: {
