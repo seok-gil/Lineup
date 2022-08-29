@@ -18,7 +18,7 @@ export function LoginPage({navigation}) {
   const [first, setFirst] = useState(true)
   const [form, setForm] = useState({
     fcmToken: '',
-    email: 'player0@gmail.com',
+    email: 'admin@gmail.com',
     password: '1234',
   })
   const [validate, setValidate] = useState({

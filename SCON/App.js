@@ -183,7 +183,6 @@ export default function App() {
                     options={{
                         title: '선수 인증'
                     }} />
-
                 <AppStack.Screen name="Withdrawal" component={Withdrawal}
                     options={{
                         title: '회원 탈퇴'
@@ -207,7 +206,6 @@ export default function App() {
                     options={{
                         title: '신고 접수'
                     }} />
-
                 <AppStack.Screen name="Reporter" component={Reporter}
                     options={{
                         title: '신고자'

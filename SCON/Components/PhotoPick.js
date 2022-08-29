@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Alert, TouchableOpacity, Image} from 'react-native'
+import {View, Alert, TouchableOpacity} from 'react-native'
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker'
 import {CameraIcon} from '../Assets/svgs'
 
@@ -64,6 +64,10 @@ export function PhotoPick({
               })
             },
           },
+          {
+            text : '취소',
+            onPress: () => console.log('cancel')
+          }
         ],
         {cancelable: false},
       )

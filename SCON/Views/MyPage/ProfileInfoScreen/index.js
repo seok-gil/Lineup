@@ -23,7 +23,6 @@ export function ProfileInfoScreen({ navigation }) {
   const isFocused = useIsFocused()
   const [data, setData] = useState()
   const [role, setRole] = useState('ROLE_MEMBER')
-  const [body, setBody] = useState({})
   const [userPhoto, setUserPhoto] = useState({
     asset: '',
     set: false,
