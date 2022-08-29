@@ -72,8 +72,10 @@ export function ProfileInfoScreen({ navigation }) {
       .then(() =>{
         if (backPhoto.set) {
           ImagePush(backPhoto, setBackPhoto, 'back', '/my-page/user-back-pic')
-          .then(() =>navigation.goBack())
+          .then(() => navigation.goBack())
         }
+        else
+          navigation.goBack()
       })
     }
     else if (backPhoto.set) {

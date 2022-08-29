@@ -46,8 +46,10 @@ export function PhotoPick({
           {
             text: '앨범에서 선택',
             onPress: async () => {
-              var result = await launchImageLibrary()
+              var result
+              await launchImageLibrary()
               .then(res => {
+                result = res
                 flag = true
               })
               .catch(err => {
@@ -77,19 +79,18 @@ export function PhotoPick({
                 cameraType: 'back',
                 mediaType: 'photo',
                 selectionLimit : 0,
-                saveToPhotos:false,  //to store captured photo via camera to photos or else it will be stored in temp folders and will get deleted on temp clear
-                includeBase64:false,
+                saveToPhotos:true
               }).then(res => {
                 result = res
                 flag = true
-                if (result.didCancel) {
-                  return null
-                }
-                setPhoto({
-                  asset: result.assets[0],
-                  set: true,
-                  uri: result.assets[0].uri,
-                })
+              })
+              if (result.didCancel) {
+                return null
+              }
+              setPhoto({
+                asset: result.assets[0],
+                set: true,
+                uri: result.assets[0].uri,
               })
             },
           },

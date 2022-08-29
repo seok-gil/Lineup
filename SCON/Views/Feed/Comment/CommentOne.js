@@ -25,6 +25,7 @@ export function CommentOne({
     ? `comment/${data.commentId}`
     : `comment/${data.ilike}`
   const [modal, setModal] = useState(false)
+  console.log(data)
   return (
     <View style={styles.commentWrapper}>
       <View style={styles.commentTop}>
