@@ -7,7 +7,11 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         alignItems: 'center',
     },
-
+    searchBodyWrapper: {
+        flexDirection: 'column',
+        height: '95%',
+        backgroundColor: colors.WHITE,
+    },
     expandText: {
         fontSize: 13,
         fontWeight: '500',

@@ -69,11 +69,19 @@ export function ProfileInfoScreen({ navigation }) {
   const onImagePush = async () => {
     if (userPhoto.set) {
       ImagePush(userPhoto, setUserPhoto, 'profile', '/my-page/user-profile-pic')
+      .then(() =>{
+        if (backPhoto.set) {
+          ImagePush(backPhoto, setBackPhoto, 'back', '/my-page/user-back-pic')
+          .then(() =>navigation.goBack())
+        }
+      })
     }
-    if (backPhoto.set) {
+    else if (backPhoto.set) {
       ImagePush(backPhoto, setBackPhoto, 'back', '/my-page/user-back-pic')
+      .then(() => navigation.goBack())
     }
-    navigation.goBack()
+    else 
+      navigation.goBack()
   }
 
   if (!data) return <View />

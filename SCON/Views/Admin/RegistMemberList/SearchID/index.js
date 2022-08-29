@@ -24,7 +24,7 @@ function SearchID({inputs, setInputs, data, navigation}) {
     }
 
     return (
-        <View>
+        <View style={styles.searchBodyWrapper}>
             <FlatList
                 data={data}
                 snapToAlignment="start"

@@ -19,7 +19,7 @@ function AlertComponent({alert, setMount}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      }).then(() => {
+      }).then((thing) => {
         setMount(new Date())
       })
     })
