@@ -20,7 +20,9 @@ export function LoginPage({navigation}) {
     fcmToken: '',
     // email: 'admin@gmail.com',
     // password: '1234',
-    email: 'player0@gmail.com',
+    // email: 'player0@gmail.com',
+    // password: '1234',
+    email: 'member13@gmail.com',
     password: '1234',
   })
   const [validate, setValidate] = useState({
