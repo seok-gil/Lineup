@@ -27,7 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     return Arrays.<ReactPackage>asList(
       new PagerViewPackage(),
       new MainReactPackage(),
-      new SplashScreenReactPackage() 
+      new SplashScreenReactPackage(),
+      new PickerPackage()
     );
   }
   private final ReactNativeHost mReactNativeHost =
