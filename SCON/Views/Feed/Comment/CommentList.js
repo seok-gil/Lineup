@@ -64,6 +64,7 @@ export function CommentList({feedId, navigation}) {
           replyFocus={replyFocus}
           setReplyFocus={setReplyFocus}
           setMount={setMount}
+          navigation={navigation}
         />
       </KeyboardAvoidingView>
     </>

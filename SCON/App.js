@@ -63,13 +63,6 @@ export default function App() {
       // Android 뒤로가기 버튼
       useEffect(() => {
         const backAction = () => {
-          Alert.alert("앱을 종료하시겠습니까?", [
-            {
-              text: "취소",
-              onPress: () => null,
-            },
-            { text: "확인", onPress: () => BackHandler.exitApp() }
-          ]);
           return true;
         };
     

@@ -8,14 +8,14 @@ export function RefreshTokenModal({navigation}) {
   const [modal, setModal] = useState(true)
 
   const onPressOff = () => {
-    navigation.navigate('HomeScreen')
+    navigation.navigate('LoginPage')
     setModal(false)
   }
   const onPressOn = () => {
     AsyncStorage.getItem('accessToken').then(thing => {
       const acc = thing
       AsyncStorage.getItem('refreshToken').then(thing => {
-        const res = thing
+        const ref = thing
         ApiFetch({
           method: 'POST',
           url: '/auth/reissue',
@@ -24,9 +24,10 @@ export function RefreshTokenModal({navigation}) {
             Authorization: 'Bearer ' + acc,
           },
           body: JSON.stringify({
-            refreshToken: res,
+            refreshToken: ref,
           }),
         }).then(thing => {
+          console.log("token", thing)
           if (thing == 401) {
             setModal(false)
             navigation.navigate('ModalPage', {

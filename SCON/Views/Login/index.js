@@ -15,6 +15,7 @@ import styles from './Login.styles'
 
 export function LoginPage({navigation}) {
   const isFocused = useIsFocused()
+  const [first, setFirst] = useState(true)
   const [form, setForm] = useState({
     fcmToken: '',
     // email: 'admin@gmail.com',
@@ -38,11 +39,14 @@ export function LoginPage({navigation}) {
   }
 
   const goLogin = response => {
-    if (response.status == 401) {
-      setValidate({
-        ['email']: false,
-        ['password']: false,
-      })
+    if (response == 401) {
+      if (first)
+        setFirst(false)
+      else
+        setValidate({
+          ['email']: false,
+          ['password']: false,
+        })
     } else if (response.accessToken) {
       AsyncStorage.setItem('accessToken', response.accessToken)
       AsyncStorage.setItem('refreshToken', response.refreshToken)

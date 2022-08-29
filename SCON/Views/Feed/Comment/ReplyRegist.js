@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { XIcon } from '../../../Assets/svgs'
 import styles from './ReplyRegist.styles'
 
-export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount }) {
+export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount, navigation }) {
   let type = replyFocus ? `@${replyFocus.nick} 답글 쓰기` : '댓글 쓰기'
   const [comment, setComment] = useState('')
   const onInput = e => {
@@ -15,6 +15,8 @@ export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount }) {
   }
 
   const onPress = () => {
+    if (!comment)
+      return
     if (replyFocus)
       AsyncStorage.getItem('accessToken')
         .then(thing => {
@@ -30,15 +32,16 @@ export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount }) {
                 content: comment,
               }),
             }).then(thing => {
+              console.log("feed", thing)
               if (thing == 401) {
                 navigation.navigate('RefreshTokenModal', { navigation: navigation })
               }
+              else {
+              setComment('')
+              setReplyFocus(null)
+              setMount(new Date())
+              }
             })
-        })
-        .then(() => {
-          setComment('')
-          setReplyFocus(null)
-          setMount(new Date())
         })
     else {
       AsyncStorage.getItem('accessToken')
@@ -55,14 +58,15 @@ export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount }) {
               content: comment,
             }),
           }).then(thing => {
+          console.log("tt")
             if (thing == 401) {
               navigation.navigate('RefreshTokenModal', { navigation: navigation })
             }
+            else {
+            setComment('')
+            setMount(new Date())
+            }
           })
-        })
-        .then(() => {
-          setComment('')
-          setMount(new Date())
         })
     }
   }
