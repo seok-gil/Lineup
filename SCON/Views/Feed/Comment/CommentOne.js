@@ -51,12 +51,11 @@ export function CommentOne({
       })
     })
   }, [size, mount])
-
   return (
     <View style={styles.commentWrapper}>
       <View style={styles.commentTop}>
         <View style={styles.commentTopLeft}>
-          <Image source={{uri: data.profilePic}} style={styles.image} />
+          <Image source={{uri: data.writer.profilePic}} style={styles.image} />
           <Text style={styles.commentInfo}>
             {data.writer.nick} · <TimeRelative time={data.createDate} />
           </Text>
