@@ -97,7 +97,7 @@ export function CommentOne({
           style={styles.replyInfoWrapper}
           onPress={() => setViewReply(!viewReply)}>
           <Text style={styles.commentInfoLight}>
-            {viewReply ? '답글 숨기기' : `답글 ${reply.length}개`}
+            {viewReply ? '답글 숨기기' : `답글 ${reply ? reply.length : 0}개`}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
