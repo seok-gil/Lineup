@@ -28,6 +28,7 @@ export function AlertScreen() {
                 },
                 body: null,
             }).then(thing => {
+                console.log(thing)
                 if (thing == 401) {
                     navigation.navigate('RefreshTokenModal', {navigation : navigation})
                   }

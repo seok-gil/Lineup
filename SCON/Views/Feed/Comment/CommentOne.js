@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native'
+import {View, TouchableOpacity, Text, Image} from 'react-native'
 
 import {CommentModal, Reply} from './'
-import {TimeRelative, LikeComponent} from '../../../Components'
+import {TimeRelative, LikeComponent, ApiFetch} from '../../../Components'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import {
   HeartEmptyIcon,
@@ -16,6 +17,7 @@ export function CommentOne({
   data,
   feedId,
   setReplyFocus,
+  mount,
   setMount,
   navigation,
   isMe
@@ -26,6 +28,31 @@ export function CommentOne({
     ? `comment/${data.commentId}`
     : `comment/${data.ilike}`
   const [modal, setModal] = useState(false)
+
+  const [reply, setReply] = useState([])
+  const [size, setSize] = useState(10)
+
+  useEffect(() => {
+    AsyncStorage.getItem('accessToken').then(thing => {
+      ApiFetch({
+        method: 'GET',
+        url: `/feed/${feedId}/${data.commentId}?page=${0}&size=${size}`,
+        headers: {
+          'content-type': 'application/json',
+          Authorization: 'Bearer ' + thing,
+        },
+        body: null,
+      }).then(thing => {
+        console.log("re", thing.content)
+        if (thing == 401) {
+          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+        }
+        else
+          setReply(thing.content)
+      })
+    })
+  }, [size, mount])
+
   return (
     <View style={styles.commentWrapper}>
       <View style={styles.commentTop}>
@@ -72,7 +99,7 @@ export function CommentOne({
           style={styles.replyInfoWrapper}
           onPress={() => setViewReply(!viewReply)}>
           <Text style={styles.commentInfoLight}>
-            {viewReply ? '답글 숨기기' : `답글 ${data.reply.length}개`}
+            {viewReply ? '답글 숨기기' : `답글 ${reply.length}개`}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -83,7 +110,7 @@ export function CommentOne({
         </TouchableOpacity>
       </View>
       {viewReply == true &&
-        data.reply.map((item, index) => {
+        reply.map((item, index) => {
           return (
             <Reply
               key={`reply-${index}`}

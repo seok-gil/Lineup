@@ -48,6 +48,7 @@ export function CommentList({feedId, navigation, mount, setMount, isMe}) {
               navigation={navigation}
               feedId={feedId}
               setReplyFocus={setReplyFocus}
+              mount={mount}
               setMount={setMount}
               isMe={isMe}
             />
