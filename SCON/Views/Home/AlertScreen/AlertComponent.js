@@ -8,28 +8,27 @@ import {XIcon} from '../../../Assets/svgs'
 import styles from './AlertComponent.styles'
 
 function AlertComponent({alert, setMount, navigation}) {
-  console.log(alert)
   const goFeed = () => {
     navigation.navigate('FeedScreen', { feedId: `${alert.feedId}` })
   }
-
   const onClickX = () => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'DELETE',
-        url: `/alarm/${alert.id}`,
+        url: `/alarm/${alert.alarmId}`,
         headers: {
           'content-type': 'application/json',
           Authorization: 'Bearer ' + thing,
         },
         body: null,
       }).then((thing) => {
+        console.log(thing)
         setMount(new Date())
       })
     })
   }
   return (
-    <TouchableOpacity onPress={goFeed}
+    <View
       style={[
         styles.alertComponentWrapper,
         alert.check ? styles.alertNotRead : styles.alertRead,
@@ -44,7 +43,7 @@ function AlertComponent({alert, setMount, navigation}) {
           {alert.type === 'COMMENT' ? '댓글 알림' : '선수 대회 알림'}
         </Text>
       </View>
-      <View style={styles.alertComponentMiddle}>
+      <TouchableOpacity onPress={goFeed} style={styles.alertComponentMiddle}>
         <Text style={styles.alertContent}>{alert.content}</Text>
         <View style={styles.alertComponentBottom}>
           <Text style={styles.alertCreatedAt}>
@@ -54,8 +53,8 @@ function AlertComponent({alert, setMount, navigation}) {
             <XIcon style={styles.alertXIcon} />
           </TouchableOpacity>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   )
 }
 
