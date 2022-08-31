@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 import {Time, ApiFetch} from '../../../Components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {ArrowIcon} from '../../../Assets/svgs'
+import {ArrowIcon, UpIcon} from '../../../Assets/svgs'
 import styles from './InquiryOne.styles'
 
 export function InquiryOne({data, setMount}) {
@@ -33,9 +33,9 @@ export function InquiryOne({data, setMount}) {
         body: JSON.stringify({
           answerContent: answer,
         }),
-      }).then((thing) => {
+      }).then(thing => {
         if (thing == 401) {
-          navigation.navigate('RefreshTokenModal', {navigation : navigation})
+          navigation.navigate('RefreshTokenModal', {navigation: navigation})
         }
         setMount(new Date())
         setState(!state)
@@ -56,12 +56,11 @@ export function InquiryOne({data, setMount}) {
             <Time time={data.date} separator="-" />
           </Text>
         </View>
-        <ArrowIcon
-          width={11}
-          height={6}
-          fill="#0E0E0E"
-          style={expand ? styles.upIcon : styles.downIcon}
-        />
+        {expand ? (
+          <UpIcon width={11} height={6} fill="#0E0E0E" />
+        ) : (
+          <ArrowIcon width={11} height={6} fill="#0E0E0E" />
+        )}
       </TouchableOpacity>
       {expand && (
         <View style={styles.inquiryQnAWrapper}>
