@@ -72,9 +72,6 @@ export function PlayerRegistForm({navigation}) {
     }
     setValidate(temp)
     setMount('button')
-    console.log(validate)
-    console.log(form)
-    console.log(mount)
   }, [mount])
 
   const onSummit = async () => {

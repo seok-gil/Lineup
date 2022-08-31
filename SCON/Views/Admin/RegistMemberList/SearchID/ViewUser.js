@@ -2,10 +2,8 @@ import React from 'react'
 import {TouchableOpacity, View, Text, Image} from 'react-native'
 
 import styles from './ViewUser.styles'
-import {DefaultProfileImage} from '../../../../Assets/svgs'
 
 function ViewUser({user, navigation}) {
-  console.log(user.profilePic)
   return (
     <TouchableOpacity
       onPress={() =>

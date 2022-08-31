@@ -4,7 +4,6 @@ import styles from './ViewPlayer.styles'
 
 function ViewPlayer({player, navigation}) {
   const {name, sport, belong} = player
-  console.log(player.profilePic)
   return (
     <TouchableOpacity
       onPress={() =>

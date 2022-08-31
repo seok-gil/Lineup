@@ -8,9 +8,8 @@ import {XIcon} from '../../../Assets/svgs'
 import styles from './AlertComponent.styles'
 
 function AlertComponent({alert, setMount, navigation}) {
-  
+  console.log(alert)
   const goFeed = () => {
-    console.log(alert)
     navigation.navigate('FeedScreen', { feedId: `${alert.feedId}` })
   }
 
@@ -33,7 +32,7 @@ function AlertComponent({alert, setMount, navigation}) {
     <TouchableOpacity onPress={goFeed}
       style={[
         styles.alertComponentWrapper,
-        !alert.check ? styles.alertRead : styles.alertNotRead,
+        alert.check ? styles.alertNotRead : styles.alertRead,
       ]}>
       <View style={styles.alertComponentTop}>
         {alert.type === '댓글' ? (
@@ -42,7 +41,7 @@ function AlertComponent({alert, setMount, navigation}) {
           <SmileIcon style={styles.alertComponentImage} />
         )}
         <Text style={styles.alertTitle}>
-          {alert.type === '댓글' ? '댓글 알림' : '선수 대회 알림'}
+          {alert.type === 'COMMENT' ? '댓글 알림' : '선수 대회 알림'}
         </Text>
       </View>
       <View style={styles.alertComponentMiddle}>

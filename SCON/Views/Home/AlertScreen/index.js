@@ -16,8 +16,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export function AlertScreen({navigation}) {
     const [data, setData] = useState([])
     const [mount, setMount] = useState()
-    const [size, setSize] = useState(10)
-    const [lastId, setLastId] = useState(100)
+    const [size, setSize] = useState(100)
+    const [lastId, setLastId] = useState(1000)
 
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
@@ -30,7 +30,6 @@ export function AlertScreen({navigation}) {
                 },
                 body: null,
             }).then(thing => {
-                console.log(thing.content)
                 if (thing == 401) {
                     navigation.navigate('RefreshTokenModal', {navigation : navigation})
                   }
