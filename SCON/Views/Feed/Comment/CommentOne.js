@@ -43,7 +43,6 @@ export function CommentOne({
         },
         body: null,
       }).then(thing => {
-        console.log("re", thing.content)
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }

@@ -7,8 +7,13 @@ import {SmileIcon, ChatBubbleIcon} from '../Assets'
 import {XIcon} from '../../../Assets/svgs'
 import styles from './AlertComponent.styles'
 
-function AlertComponent({alert, setMount}) {
-  if (!alert) return <View />
+function AlertComponent({alert, setMount, navigation}) {
+  
+  const goFeed = () => {
+    console.log(alert)
+    navigation.navigate('FeedScreen', { feedId: `${alert.feedId}` })
+  }
+
   const onClickX = () => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -24,12 +29,11 @@ function AlertComponent({alert, setMount}) {
       })
     })
   }
-  
   return (
-    <View
+    <TouchableOpacity onPress={goFeed}
       style={[
         styles.alertComponentWrapper,
-        alert.readCheck ? styles.alertRead : styles.alertNotRead,
+        !alert.check ? styles.alertRead : styles.alertNotRead,
       ]}>
       <View style={styles.alertComponentTop}>
         {alert.type === '댓글' ? (
@@ -52,7 +56,7 @@ function AlertComponent({alert, setMount}) {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
