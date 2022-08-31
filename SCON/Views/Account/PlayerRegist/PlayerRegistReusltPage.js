@@ -6,7 +6,7 @@ import {DeniedIcon} from '../../../Assets/svgs'
 import styles from './PlayerRegistResultPage.styles'
 
 export function PlayerRegistResultPage({data, navigation, code}) {
-  const image =
+  var image =
     {
       0: (
         <RegistPendingIcon
@@ -29,7 +29,7 @@ export function PlayerRegistResultPage({data, navigation, code}) {
       ),
     }[code] || null
 
-  const head =
+  var head =
     code >= 0
       ? {
           0: '선수 등록 정보를\n심사하고 있습니다.',
@@ -38,7 +38,7 @@ export function PlayerRegistResultPage({data, navigation, code}) {
         }[code]
       : ''
 
-  const board =
+  var board =
     code >= 0
       ? {
           0: '잠시만 기다려주세요!',
@@ -47,7 +47,7 @@ export function PlayerRegistResultPage({data, navigation, code}) {
         }[code]
       : ''
 
-  const content =
+  var content =
     code >= 0
       ? {
           0: '심사는 3~5일이 소요됩니다.\n팬들과의 만남이 얼마 남지 않았어요 ><!',
@@ -58,7 +58,7 @@ export function PlayerRegistResultPage({data, navigation, code}) {
   if (code == 2) content = `반려 사유: ${data.refuseContent}`
 
   const onPress = () => {
-    navigation.navigate('PlayerRegist')
+    navigation.navigate('PlayerRegistForm')
   }
   return (
     <View style={styles.playerRegistResultWrapper}>
