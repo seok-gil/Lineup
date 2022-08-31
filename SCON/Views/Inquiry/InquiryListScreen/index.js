@@ -24,7 +24,6 @@ export function InquiryListScreen() {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
         else {
-          console.log("inquiry answer", thing)
           setData(thing)
         }
       })

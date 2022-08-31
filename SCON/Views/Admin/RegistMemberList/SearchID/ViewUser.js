@@ -2,7 +2,6 @@ import React from 'react'
 import {TouchableOpacity, View, Text, Image} from 'react-native'
 
 import styles from './ViewUser.styles'
-import {DefaultProfileImage} from '../../../../Assets/svgs'
 
 function ViewUser({user, navigation}) {
   return (
@@ -11,7 +10,7 @@ function ViewUser({user, navigation}) {
         navigation.navigate('FollowPage', {userId: user.memberId})
       }>
       <View style={styles.viewPlayerWrapper}>
-        <DefaultProfileImage style={styles.viewPlayerImage} />
+        <Image source={{uri:user.profilePic}} style={styles.viewPlayerImage}/>
         <View style={styles.viewPlayerInfo}>
           <Text
             style={styles.playerName}

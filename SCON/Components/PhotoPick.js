@@ -1,5 +1,5 @@
-import React from 'react'
-import {View, Alert, TouchableOpacity} from 'react-native'
+import React, {useState} from 'react'
+import {View, Alert, TouchableOpacity, Platform, PermissionsAndroid} from 'react-native'
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker'
 import {CameraIcon} from '../Assets/svgs'
 
@@ -17,8 +17,28 @@ export function PhotoPick({
   styles = DEFAULT_STYLE,
 }) {
   var flag = true
+  async function requestPermission() {
+    if (Platform.OS === "android") {
+        await PermissionsAndroid.requestMultiple([
+            PermissionsAndroid.PERMISSIONS.CAMERA,
+            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+            PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        ]).then((result)=>{
+            if (result['android.permission.CAMERA']
+            && result['android.permission.WRITE_EXTERNAL_STORAGE']
+            && result['android.permission.READ_EXTERNAL_STORAGE']
+            === 'granted') {
+                console.log("모든 권한 획득");
+            } else{
+                console.log("권한거절");
+            }
+        })
+      
+    }
+  }
   const onClick = () => {
     if (flag) {
+      requestPermission()
       flag = false
       Alert.alert(
         text,
@@ -28,18 +48,22 @@ export function PhotoPick({
             text: '앨범에서 선택',
             onPress: async () => {
               var result
-              await launchImageLibrary().then(res => {
+              await launchImageLibrary()
+              .then(res => {
                 result = res
                 flag = true
+                if (result.didCancel) {
+                  return null
+                }
+                setPhoto({
+                  ...photo,
+                  asset: result.assets[0],
+                  set: true,
+                  uri: result.assets[0].uri,
+                })
               })
-              if (result.didCancel) {
-                return null
-              }
-              setPhoto({
-                ...photo,
-                asset: result.assets[0],
-                set: true,
-                uri: result.assets[0].uri,
+              .catch(err => {
+                console.log("eer", err)
               })
             },
           },
@@ -48,20 +72,20 @@ export function PhotoPick({
             onPress: async () => {
               var result
               await launchCamera({
-                mediaType: 'photo',
-                cameraType: 'back',
+                saveToPhotos:true
               }).then(res => {
                 result = res
                 flag = true
+                if (result.didCancel) {
+                  return null
+                }
+                setPhoto({
+                  asset: result.assets[0],
+                  set: true,
+                  uri: result.assets[0].uri,
+                })
               })
-              if (result.didCancel) {
-                return null
-              }
-              setPhoto({
-                asset: result.assets[0],
-                set: true,
-                uri: result.assets[0].uri,
-              })
+              .catch(err => console.log(err))
             },
           },
           {

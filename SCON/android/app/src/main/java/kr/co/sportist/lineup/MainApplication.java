@@ -13,6 +13,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
+import com.imagepicker.ImagePickerPackage;
 import io.invertase.firebase.messaging.ReactNativeFirebaseMessagingPackage; 
 import com.reactnativepagerview.PagerViewPackage;
 import com.facebook.soloader.SoLoader;
@@ -27,7 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
     return Arrays.<ReactPackage>asList(
       new PagerViewPackage(),
       new MainReactPackage(),
-      new SplashScreenReactPackage() 
+      new SplashScreenReactPackage(),
+      new ImagePickerPackage()
     );
   }
   private final ReactNativeHost mReactNativeHost =

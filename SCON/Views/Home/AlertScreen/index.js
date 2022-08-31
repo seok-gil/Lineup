@@ -13,15 +13,17 @@ import styles from './AlertScreen.styles'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export function AlertScreen() {
+export function AlertScreen({navigation}) {
     const [data, setData] = useState([])
     const [mount, setMount] = useState()
+    const [size, setSize] = useState(100)
+    const [lastId, setLastId] = useState(1000)
 
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then(thing => {
             ApiFetch({
                 method: 'GET',
-                url: '/alarm',
+                url: `/alarm?size=${size}&lastId=${lastId}`,
                 headers: {
                     'content-type': 'application/json',
                     Authorization: 'Bearer ' + thing,
@@ -32,7 +34,7 @@ export function AlertScreen() {
                     navigation.navigate('RefreshTokenModal', {navigation : navigation})
                   }
                 else {
-                    setData(thing)
+                    setData(thing.content)
                 }
             })
         })
@@ -57,7 +59,7 @@ export function AlertScreen() {
     const view = []
     const alertList = () => {
         for (let i = 0; i < data.length; ++i) {
-            view.push(<AlertComponent key={`alert-${i}`} alert={data[i]} setMount={setMount}/>)
+            view.push(<AlertComponent navigation={navigation} key={`alert-${i}`} alert={data[i]} setMount={setMount}/>)
         }
         return view
     }

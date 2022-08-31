@@ -9,6 +9,7 @@ import {useIsFocused} from '@react-navigation/native'
 
 export function PasswordChange({navigation}) {
   const isFocused = useIsFocused()
+  const [first, setFirst] = useState(true)
   const [button, setButton] = useState(false)
   const [form, setForm] = useState({
     oldPassword: '',
@@ -28,7 +29,7 @@ export function PasswordChange({navigation}) {
     if (form.newPassword && form.newPassword.match(reg)) {
       temp.newPassword = true
     } else temp.newPassword = false
-    if (form.confirmPassword.length == form.newPassword.length) {
+    if (form.confirmPassword.length != 0 && form.confirmPassword.length == form.newPassword.length) {
       temp.confirmPassword = true
     } else temp.confirmPassword = false
     if (temp.oldPassword && temp.newPassword && temp.confirmPassword)
@@ -38,9 +39,11 @@ export function PasswordChange({navigation}) {
   useEffect(() => {
     let temp = validate
     checkValidate(temp).then(setValidate(temp))
+    console.log(validate)
   }, [form])
 
-  useEffect(() => {}, [validate])
+  useEffect(() => {
+  }, [validate])
 
   const onInput = (key, e) => {
     const {text} = e.nativeEvent
@@ -51,6 +54,8 @@ export function PasswordChange({navigation}) {
   }
 
   const onSummit = () => {
+    setFirst(false)
+    if (validate.newPassword && validate.confirmPassword)
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'PUT',
@@ -64,10 +69,11 @@ export function PasswordChange({navigation}) {
           newPassword: form.newPassword,
         }),
       }).then(thing => {
+        console.log("pass", thing)
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
-        if (thing && thing.status == 406) {
+        else if (thing && thing.status == 406) {
           // 비밀번호 불일치
           setValidate({
             ...validate,
@@ -80,10 +86,18 @@ export function PasswordChange({navigation}) {
             text: '비밀번호가 변경되었어요.',
             page: 'LoginPage',
           })
-          // setModal(true)
+          setModal(true)
         }
       })
     })
+    else {
+      setValidate({
+        ...validate,
+        ['newPassword']: false,
+        ['confirmPassword']: false,
+        ['buttonn']: false,
+      })
+    }
   }
 
   return (
@@ -114,7 +128,7 @@ export function PasswordChange({navigation}) {
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {!validate.oldPassword && (
+            {!first && !validate.oldPassword && (
               <Text style={styles.errorMessage}>
                 현재 비밀번호와 일치하지 않습니다.
               </Text>
@@ -140,7 +154,7 @@ export function PasswordChange({navigation}) {
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {!validate.newPassword && (
+            {!first && !validate.newPassword && (
               <Text style={styles.errorMessage}>
                 올바른 비밀번호가 아닙니다.
               </Text>
@@ -166,7 +180,7 @@ export function PasswordChange({navigation}) {
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {!validate.confirmPassword && (
+            {!first && !validate.confirmPassword && (
               <Text style={styles.errorMessage}>
                 상단 비밀번호와 일치하지 않습니다.
               </Text>

@@ -9,6 +9,7 @@ import styles from './ReplyRegist.styles'
 export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount, navigation }) {
   let type = replyFocus ? `@${replyFocus.nick} 답글 쓰기` : '댓글 쓰기'
   const [comment, setComment] = useState('')
+  const [loading, setLoading] = useState(false)
   const onInput = e => {
     const { text } = e.nativeEvent
     setComment(text)
@@ -17,13 +18,41 @@ export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount, navig
   const onPress = () => {
     if (!comment)
       return
-    if (replyFocus)
-      AsyncStorage.getItem('accessToken')
-        .then(thing => {
-          if (replyFocus)
+    if (!loading) {
+      setLoading(true)
+      if (replyFocus)
+        AsyncStorage.getItem('accessToken')
+          .then(thing => {
+            if (replyFocus)
+              ApiFetch({
+                method: 'POST',
+                url: `/comment/${feedId}/${replyFocus.id}`,
+                headers: {
+                  'content-type': 'application/json',
+                  Authorization: 'Bearer ' + thing,
+                },
+                body: JSON.stringify({
+                  content: comment,
+                }),
+              }).then(thing => {
+                setLoading(false)
+                if (thing == 401) {
+                  navigation.navigate('RefreshTokenModal', { navigation: navigation })
+                }
+                else {
+                  setComment('')
+                  setReplyFocus(null)
+                  setMount(new Date())
+                }
+              })
+          })
+      else {
+        AsyncStorage.getItem('accessToken')
+          .then(thing => {
             ApiFetch({
+              navigation: navigation,
               method: 'POST',
-              url: `/comment/${feedId}/${replyFocus.id}`,
+              url: `/comment/${feedId}`,
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer ' + thing,
@@ -32,40 +61,17 @@ export function ReplyRegist({ replyFocus, setReplyFocus, feedId, setMount, navig
                 content: comment,
               }),
             }).then(thing => {
+              setLoading(false)
               if (thing == 401) {
                 navigation.navigate('RefreshTokenModal', { navigation: navigation })
               }
               else {
-              setComment('')
-              setReplyFocus(null)
-              setMount(new Date())
+                setComment('')
+                setMount(new Date())
               }
             })
-        })
-    else {
-      AsyncStorage.getItem('accessToken')
-        .then(thing => {
-          ApiFetch({
-            navigation: navigation,
-            method: 'POST',
-            url: `/comment/${feedId}`,
-            headers: {
-              'content-type': 'application/json',
-              Authorization: 'Bearer ' + thing,
-            },
-            body: JSON.stringify({
-              content: comment,
-            }),
-          }).then(thing => {
-            if (thing == 401) {
-              navigation.navigate('RefreshTokenModal', { navigation: navigation })
-            }
-            else {
-            setComment('')
-            setMount(new Date())
-            }
           })
-        })
+      }
     }
   }
 

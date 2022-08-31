@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import {TouchableOpacity, View, Text, Modal} from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { TouchableOpacity, View, Text, Modal } from 'react-native'
 import styles from './CommentModal.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {ApiFetch} from '../../../Components'
+import { ApiFetch } from '../../../Components'
 
 export function CommentModal({
   modal,
@@ -12,6 +12,7 @@ export function CommentModal({
   commentId,
   setMount,
   navigation,
+  isMe
 }) {
   const [report, setReport] = useState({
     text: '댓글 신고',
@@ -20,22 +21,22 @@ export function CommentModal({
   })
   var temp = report
   useEffect(() => {
-    AsyncStorage.getItem('memberId').then(memberId => {
-      if (memberId == writerId) {
-        temp.text = '댓글 삭제'
-        temp.method = `DELETE`
-        temp.url = `/comment/${commentId}`
-      }
-      setReport(temp)
-    })
-    AsyncStorage.getItem('role').then(role => {
-      if (role == 'ROLE_PLAYER') {
-        temp.text = '댓글 삭제'
-        temp.method = `DELETE`
-        temp.url = `/comment/${commentId}`
-      }
-      setReport(temp)
-    })
+    if (isMe) {
+      temp.text = '댓글 삭제'
+      temp.method = `DELETE`
+      temp.url = `/comment/${commentId}`
+    }
+
+    else {
+      AsyncStorage.getItem('memberId').then(memberId => {
+        if (memberId == writerId) {
+          temp.text = '댓글 삭제'
+          temp.method = `DELETE`
+          temp.url = `/comment/${commentId}`
+        }
+      })
+    }
+    setReport(temp)
   }, [])
 
   const onReport = () => {
@@ -50,10 +51,10 @@ export function CommentModal({
         body: null,
       })
         .then(thing => {
-          if (thing == 401) {
-            navigation.navigate('RefreshTokenModal', {navigation: navigation})
+          if (thing.status == 401) {
+            navigation.navigate('RefreshTokenModal', { navigation: navigation })
           }
-          if (thing == 403)
+          if (thing.status == 403)
             navigation.navigate('ModalPage', {
               text: thing.message,
             })

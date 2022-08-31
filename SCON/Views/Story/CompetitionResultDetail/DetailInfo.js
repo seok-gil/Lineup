@@ -8,7 +8,6 @@ const DetailInfo = ({data, openModal, type}) => {
   if (!data) return <View />
   var ranking = data.ranking ? data.ranking + '위 ' : ''
   var score = data.score ? data.score : ''
-
   if (!type)
     return (
       <View style={styles.detailWrapper}>

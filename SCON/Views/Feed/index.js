@@ -41,7 +41,7 @@ export function FeedScreen({route, navigation}) {
         navigation={navigation}
         setMount={setMount}
       />
-      <CommentList feedId={route.params.feedId} navigation={navigation} mount={mount} setMount={setMount}/>
+      <CommentList feedId={route.params.feedId} navigation={navigation} mount={mount} setMount={setMount} isMe={data.isMe}/>
     </SafeAreaView>
   )
 }

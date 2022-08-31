@@ -25,16 +25,21 @@ export function PlayerFixedFeed({navigation, playerId, mount, setMount}) {
         },
         body: null,
       }).then(thing => {
-        if (thing == 401) {
+        if (!thing) {
+          return 
+        }
+        else if (thing == 401) {
           navigation.navigate('RefreshTokenModal', { navigation: navigation })
         }
         else {
           setData(thing[0])
-          setLikeUrl(!thing[0].ilike ? `feed/${thing[0].feedId}` : `feed/${thing[0].ilike}`)
+          if (thing[0])
+            setLikeUrl(!thing[0].ilike ? `feed/${thing[0].feedId}` : `feed/${thing[0].ilike}`)
         }
       })
     })
   }, [mount, isFocused])
+
   if (!data) return <View />
   const today = new Date().getDate()
   var dDay = data.eventStart ? data.eventStart.slice(8, 10) - today : 0

@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   upIcon: {
     width: 11,
     height: 6,
-    transform: [{rotateZ: '180deg'}],
+    // transform: [{rotateZ: '180deg'}],
   },
 })
 
