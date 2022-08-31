@@ -8,7 +8,9 @@ import {Time} from '../../Components/Time'
 function NotiElement({data}) {
   const [expand, setExpand] = useState(false)
   const onClick = () => {
-    setExpand(!expand)
+    var temp = !expand
+    console.log(temp)
+    setExpand(temp)
   }
   if (!data) return <View />
   return (
@@ -29,11 +31,13 @@ function NotiElement({data}) {
           />
         </View>
       </TouchableOpacity>
-      {expand && (
+      {expand?  
         <View style={styles.expanded}>
           <Text style={styles.expandedContent}>{data.content}</Text>
         </View>
-      )}
+        :
+        <View/>
+      }
     </View>
   )
 }

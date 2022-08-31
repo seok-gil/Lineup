@@ -10,8 +10,15 @@ function DetailEventElement({form, setForm, index, onPlus, onDel}) {
   const [detail, setDetail] = useState(form.detailNames[index])
   const onInput = e => {
     const {text} = e.nativeEvent
-    setDetail(text)
-    form.detailNames[index] = text
+    if (text)
+      setDetail(text)
+    console.log(form)
+    var temp = form
+    temp.detailNames[index] = text
+    // setForm({
+    //   ...form,
+    //   temp
+    // })
   }
 
   return (

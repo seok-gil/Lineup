@@ -65,7 +65,7 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
   const onSummit = () => {
     var temp = data
     temp.forEach((element, index) => {
-      if (element && element.recordId == result.recordId) {
+      if (element && element.detailId == result.detailId) {
         temp[index] = result
       }
     })
@@ -117,7 +117,6 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
               <TouchableOpacity onPress={() => onMedal('3')}>
                 <ScoreMedal rank={3} isMedalSelected={'3' == result.ranking} />
               </TouchableOpacity>
-
               <View>
                 <Text style={styles.rankTitle}>직접입력</Text>
                 <TextInput

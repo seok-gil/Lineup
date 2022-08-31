@@ -54,13 +54,14 @@ export function PlayerRegistForm({navigation}) {
 
   useEffect(() => {
     var temp = validate
+    temp[mount] = true
     if (form[mount] != null) {
       temp[mount] = true
     } else temp[mount] = false
     if (
       playerPhoto.asset &&
       temp.name &&
-      temp.birth &&
+      form.birth &&
       temp.gender &&
       temp.sport &&
       temp.belong
@@ -71,6 +72,9 @@ export function PlayerRegistForm({navigation}) {
     }
     setValidate(temp)
     setMount('button')
+    console.log(validate)
+    console.log(form)
+    console.log(mount)
   }, [mount])
 
   const onSummit = async () => {
@@ -78,7 +82,6 @@ export function PlayerRegistForm({navigation}) {
       ApiPush(
         playerPhoto,
         setPlayerPhoto,
-        'player-certificate',
         form,
         setForm,
       ).then(() => {

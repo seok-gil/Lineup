@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View, Alert, TouchableOpacity, Platform,PermissionsAndroid} from 'react-native'
+import {View, Alert, TouchableOpacity, Platform, PermissionsAndroid} from 'react-native'
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker'
 import {CameraIcon} from '../Assets/svgs'
 
@@ -35,7 +35,7 @@ export function PhotoPick({
         })
       
     }
-}
+  }
   const onClick = () => {
     if (flag) {
       requestPermission()

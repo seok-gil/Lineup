@@ -24,6 +24,8 @@ import kr.co.sportist.lineup.newarchitecture.components.MainComponentsRegistry;
 import kr.co.sportist.lineup.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
+
+
 /**
  * A {@link ReactNativeHost} that helps you load everything needed for the New Architecture, both
  * TurboModule delegates and the Fabric Renderer.

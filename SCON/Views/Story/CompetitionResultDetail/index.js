@@ -64,6 +64,7 @@ export function CompetitionResultDetail({ navigation, route }) {
         modal_item: '',
       })
   }
+  console.log(data)
   if (!data) return <SafeAreaView />
   return (
     <SafeAreaView style={styles.competitionResultWrapper}>

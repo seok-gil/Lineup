@@ -1,13 +1,35 @@
 import React from 'react'
-import {View, Alert, TouchableOpacity, Text} from 'react-native'
+import {View, Alert, TouchableOpacity, Text, Platform, PermissionsAndroid} from 'react-native'
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker'
 import styles from './PlayerPhotoPick.styles'
 
 //photo type choice
 export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
   var flag = true
+
+  async function requestPermission() {
+    if (Platform.OS === "android") {
+        await PermissionsAndroid.requestMultiple([
+            PermissionsAndroid.PERMISSIONS.CAMERA,
+            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+            PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        ]).then((result)=>{
+            if (result['android.permission.CAMERA']
+            && result['android.permission.WRITE_EXTERNAL_STORAGE']
+            && result['android.permission.READ_EXTERNAL_STORAGE']
+            === 'granted') {
+                console.log("모든 권한 획득");
+            } else{
+                console.log("권한거절");
+            }
+        })
+      
+    }
+  }
+
   const onClick = () => {
     if (flag) {
+      requestPermission()
       flag = false
       Alert.alert(
         text,
@@ -40,6 +62,7 @@ export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
                 mediaType: 'photo',
                 cameraType: 'back',
               }).then(res => {
+                console.log(res)
                 result = res
                 flag = true
               })

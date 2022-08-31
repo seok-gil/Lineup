@@ -21,11 +21,9 @@ export function LoginPage({navigation}) {
     email: '',
     password: '',
     // email: 'admin@gmail.com',
-    // password: '1234',
     email: 'player0@gmail.com',
+    // email: 'member17@gmail.com',
     password: '1234',
-    // email: 'member15@gmail.com',
-    // password: '1234',
   })
   const [validate, setValidate] = useState({
     email: true,
