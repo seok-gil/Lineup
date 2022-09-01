@@ -27,6 +27,7 @@ function RankBody({navigation, route}) {
         },
         body: null,
       }).then(data => {
+        console.log(data.content)
         if (data == 401) {
           navigation.navigate('RefreshTokenModal', { navigation: navigation })
         }
@@ -37,7 +38,6 @@ function RankBody({navigation, route}) {
   }, [isFocused, size])
 
   const onEndReached = (e) => {
-    console.log(e)
     setSize(size + 5)
   }
 
