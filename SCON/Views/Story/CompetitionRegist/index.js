@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Calendar} from './Calender'
 
 import {
@@ -18,6 +18,7 @@ import CompetitionButton from './CompetitionButton'
 export function CompetitionRegist({navigation}) {
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
+  const [mount, setMount] = useState('')
   const [form, setForm] = useState({
     startDate: '',
     endDate: '',
@@ -26,7 +27,9 @@ export function CompetitionRegist({navigation}) {
     detailNames: [''],
   })
   const [calendar, setCalender] = useState(false)
-
+  useEffect(() => {
+    
+  },[mount])
   const onChange = (key, e) => {
     const {text} = e.nativeEvent
     setForm({
@@ -80,7 +83,7 @@ export function CompetitionRegist({navigation}) {
         />
         <View style={styles.borderLine} />
         <CompetitionRegistLabel text="세부 종목" isAsterisk />
-        <DetailEvent form={form} setForm={setForm} />
+        <DetailEvent form={form} setForm={setForm} mount={mount} setMount={setMount}/>
       </View>
       <CompetitionButton data={form} navigation={navigation} />
       <Calendar
