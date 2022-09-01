@@ -27,8 +27,7 @@
 ```
 #### IOS
 ```
-1. Xcode file open
+ 1. Xcode file open
   ios/SCON.xcworkspace 실행
-2. Product/Archive
-
+ 2. Product/Archive
 ```
