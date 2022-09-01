@@ -1,82 +1,71 @@
 import {StyleSheet} from 'react-native'
 import {
-    colors,
-    globalButtonStyle,
-    globalButtonTextStyle,
-    globalLargeInputStyle,
-    listElementStyle,
+  colors,
+  globalButtonStyle,
+  globalButtonTextStyle,
+  globalLargeInputStyle,
+  listElementStyle,
 } from '../../../Styles'
 
 const styles = StyleSheet.create({
-    inquiryListElementWrapper: {
-        ...listElementStyle,
-        backgroundColor: colors.WHITE,
-    },
+  inquiryListElementWrapper: {
+    ...listElementStyle,
+    backgroundColor: colors.WHITE,
+  },
 
-    inquiryLeft: {
-        flex: 1,
-    },
+  inquiryLeft: {
+    flex: 1,
+  },
 
-    qnaInfo: {
-        marginBottom: 5,
-        color: colors.TEXT_DARK,
-    },
+  qnaInfo: {
+    marginBottom: 5,
+    color: colors.TEXT_DARK,
+  },
 
-    qnaCreated: {
-        fontSize: 12,
-        color: colors.TEXT_LIGHT,
-    },
+  qnaCreated: {
+    fontSize: 12,
+    color: colors.TEXT_LIGHT,
+  },
 
-    downIcon: {
-        width: 11,
-        height: 6,
-    },
+  inquiryQnAWrapper: {
+    backgroundColor: colors.GRAYF6,
+  },
 
-    upIcon: {
-        width: 11,
-        height: 6,
-        transform: [{rotateZ: '180deg'}],
-    },
+  inquiryQuestion: {
+    padding: 30,
+  },
 
-    inquiryQnAWrapper: {
-        backgroundColor: colors.GRAYF6,
-    },
+  letter: {
+    color: colors.TEXT_DARK,
+    fontWeight: '700',
+    fontSize: 17,
+    marginBottom: 8,
+  },
 
-    inquiryQuestion: {
-        padding: 30,
-    },
+  content: {
+    color: colors.TEXT_DARK,
+    fontWeight: '500',
+  },
 
-    letter: {
-        color: colors.TEXT_DARK,
-        fontWeight: '700',
-        fontSize: 17,
-        marginBottom: 8,
-    },
+  inquiryInput: {
+    ...globalLargeInputStyle,
+    backgroundColor: colors.WHITE,
+    marginBottom: 10,
+  },
 
-    content: {
-        color: colors.TEXT_DARK,
-        fontWeight: '500',
-    },
+  buttonWrapper: {
+    width: '100%',
+    alignItems: 'flex-end',
+  },
 
-    inquiryInput: {
-        ...globalLargeInputStyle,
-        backgroundColor: colors.WHITE,
-        marginBottom: 10,
-    },
+  button: {
+    ...globalButtonStyle,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 100,
+  },
 
-    buttonWrapper: {
-        width: '100%',
-        alignItems: 'flex-end',
-    },
-
-    button: {
-        ...globalButtonStyle,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 100,
-    },
-
-    buttonText: globalButtonTextStyle,
+  buttonText: globalButtonTextStyle,
 })
 
 export default styles

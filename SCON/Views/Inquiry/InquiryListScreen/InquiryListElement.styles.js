@@ -31,17 +31,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: colors.TEXT_LIGHT,
   },
-
-  downIcon: {
-    width: 11,
-    height: 6,
-  },
-
-  upIcon: {
-    width: 11,
-    height: 6,
-    // transform: [{rotateZ: '180deg'}],
-  },
 })
 
 export default styles
