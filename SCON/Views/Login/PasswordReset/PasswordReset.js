@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -8,9 +8,10 @@ import {
 } from 'react-native'
 
 import styles from './PasswordReset.styles'
-import {CheckIcon} from '../../../Assets/svgs'
-import {PasswordChangeModal, ApiFetch} from '../../../Components'
-export function PasswordReset({navigation, route}) {
+import { CheckIcon } from '../../../Assets/svgs'
+import { PasswordChangeModal, ApiFetch } from '../../../Components'
+export function PasswordReset({ navigation, route }) {
+  const [first, setFirst] = useState(true)
   const [form, setForm] = useState({
     password: '',
     certification: '',
@@ -29,7 +30,7 @@ export function PasswordReset({navigation, route}) {
   const [modal, setModal] = useState(false)
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent
+    const { text } = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
@@ -41,7 +42,7 @@ export function PasswordReset({navigation, route}) {
     if (form.password && form.password.match(reg)) {
       temp.password = true
     } else temp.password = false
-    if (form.certification.length == form.password.length) {
+    if (form.certification.length != 0 && form.certification.length == form.password.length) {
       temp.certification = true
     } else temp.certification = false
   }
@@ -52,19 +53,28 @@ export function PasswordReset({navigation, route}) {
   }, [form])
 
   const onPress = () => {
-    ApiFetch({
-      method: 'POST',
-      url: `/auth/pw-reset`,
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: route.params.email,
-        newPw: form.password,
-      }),
-    }).then(() => {
-      setModal(true)
-    })
+    setFirst(false)
+    if (form.password != form.certification) {
+      setValidate({
+        ...validate,
+        ['certification']: false
+      })
+    }
+    else {
+      ApiFetch({
+        method: 'POST',
+        url: `/auth/pw-reset`,
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: route.params.email,
+          newPw: form.password,
+        }),
+      }).then(() => {
+        setModal(true)
+      })
+    }
   }
 
   return (
@@ -93,7 +103,7 @@ export function PasswordReset({navigation, route}) {
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {validate.password == false && (
+            {!first && validate.password == false && (
               <Text style={styles.errorMessage}>
                 올바른 비밀번호가 아닙니다.
               </Text>
@@ -119,7 +129,7 @@ export function PasswordReset({navigation, route}) {
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {validate.certification == false && (
+            {!first && validate.certification == false && (
               <Text style={styles.errorMessage}>
                 상단 비밀번호와 일치하지 않습니다.
               </Text>

@@ -62,7 +62,6 @@ export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
                 mediaType: 'photo',
                 cameraType: 'back',
               }).then(res => {
-                console.log(res)
                 result = res
                 flag = true
               })

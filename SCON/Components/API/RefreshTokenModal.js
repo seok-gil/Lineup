@@ -27,7 +27,6 @@ export function RefreshTokenModal({navigation}) {
             refreshToken: ref,
           }),
         }).then(thing => {
-          console.log("token", thing)
           if (thing == 401) {
             setModal(false)
             navigation.navigate('ModalPage', {
