@@ -37,7 +37,7 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
     const {text} = e.nativeEvent
     setResult({
       ...result,
-      ['noAnswer']: true,
+      ['noAnswer']: false,
       [key]: text,
     })
   }
@@ -51,9 +51,9 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
   }, [modal])
 
   useEffect(() => {
-    if (!isSelected && (result.ranking == '' || result.score == ''))
+    if (!isSelected && result.ranking == '')
       setValidate(false)
-    else if (result.ranking != '' && result.score != '') setValidate(true)
+    else if (result.ranking != '') setValidate(true)
   }, [result])
 
   const onMedal = rank => {
@@ -62,10 +62,14 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
       ['ranking']: rank,
     })
   }
+
   const onSummit = () => {
     var temp = data
     temp.forEach((element, index) => {
-      if (element && element.detailId == result.detailId) {
+      if (type && element && element.recordId == result.recordId) {
+        temp[index] = result
+      }
+      else if (!type && element && element.detailId == result.detailId) {
         temp[index] = result
       }
     })
@@ -75,6 +79,7 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
       score: result.score,
       noAnswer: result.noAnswer,
     }
+    console.log(api)
     if (type) {
       AsyncStorage.getItem('accessToken').then(thing => {
         ApiFetch({
@@ -92,9 +97,18 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
   }
 
   const onAnswer = () => {
-    setSelection(!isSelected)
-    if (!isSelected) setValidate(true)
-    else if (result.ranking == '' || result.score == '') setValidate(false)
+    var temp = !isSelected
+    setSelection(temp)
+    setResult({
+      ...result,
+      ['noAnswer'] : temp,
+    })
+    if (temp) {
+      setValidate(true)
+    }
+    else if (result.ranking == '' || result.score == '') {
+      setValidate(false)
+    }
   }
 
   return (
