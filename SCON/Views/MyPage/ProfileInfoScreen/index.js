@@ -160,7 +160,7 @@ export function ProfileInfoScreen({ navigation }) {
               <ProfileInfoScreenElement label="생년월일" text={data.birth} />
               <ProfileInfoScreenElement
                 label="성별"
-                text={data.gender == 'MALE' ? '남자' : '여쟈'}
+                text={data.gender == 'MALE' ? '남자' : '여자'}
               />
               <ProfileInfoScreenElement label="종목" text={data.sport} />
               <ProfileInfoScreenElement label="소속" text={data.belong} />
