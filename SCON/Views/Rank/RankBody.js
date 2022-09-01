@@ -15,7 +15,6 @@ function RankBody({navigation, route}) {
   const [page, setPage] = useState(0)
   const [size, setSize] = useState(10)
   const [data, setData] = useState()
-  const [nextFeed, setNextFeed] = useState(10)
 
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
@@ -35,10 +34,11 @@ function RankBody({navigation, route}) {
           setData(data.content)
       })
     })
-  }, [isFocused])
+  }, [isFocused, size])
 
-  const onEndReached = () => {
-    setNextFeed(nextFeed + 5)
+  const onEndReached = (e) => {
+    console.log(e)
+    setSize(size + 5)
   }
 
   var etc
@@ -65,8 +65,8 @@ function RankBody({navigation, route}) {
           />
         )}
         // onScroll={onScroll}
-        onEndReached={onEndReached}
-        onEndReachedThreshold={0.1}
+        onEndReached={e => onEndReached(e)}
+        onEndReachedThreshold={0.9}
         onMomentumScrollBegin={() => {
           this.onEndReachedCalledDuringMomentum = false
         }}
