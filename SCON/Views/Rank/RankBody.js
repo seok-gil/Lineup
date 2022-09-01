@@ -27,7 +27,6 @@ function RankBody({navigation, route}) {
         },
         body: null,
       }).then(data => {
-        console.log(data.content)
         if (data == 401) {
           navigation.navigate('RefreshTokenModal', { navigation: navigation })
         }
