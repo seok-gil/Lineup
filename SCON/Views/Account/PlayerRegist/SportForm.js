@@ -3,8 +3,8 @@ import {View, Text} from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 import styles from './SportForm.styles'
 
-export function SportForm({form, setForm, setMount}) {
-  const [open, setOpen] = useState(false)
+export function SportForm({form, setForm, setMount, open, setOpen}) {
+  // const [open, setOpen] = useState(false)
   const [value, setValue] = useState(null)
   const sport = [
     '근대5종',
@@ -54,12 +54,18 @@ export function SportForm({form, setForm, setMount}) {
     })
     setMount('sport')
   }, [value])
+  // export type ListModeType = 'DEFAULT' | 'FLATLIST' | 'SCROLLVIEW' | 'MODAL';
 
   return (
     <View style={styles.sportWrapper}>
       <Text style={styles.label}>종목</Text>
       <View style={styles.inputWrapper}>
         <DropDownPicker
+          listMode="MODAL"
+          scrollViewProps={{
+            nestedScrollEnabled: true,
+          }}
+          scrollEnabled={open}
           zIndex={9}
           open={open}
           value={value}

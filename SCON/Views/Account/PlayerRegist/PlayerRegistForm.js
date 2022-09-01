@@ -21,6 +21,7 @@ export function PlayerRegistForm({navigation}) {
   const [mount, setMount] = useState()
   const [modal, setModal] = useState(false)
   const [button, setButton] = useState(false)
+  const [open, setOpen] = useState(false)
 
   const [form, setForm] = useState({
     certificate: null,
@@ -92,7 +93,7 @@ export function PlayerRegistForm({navigation}) {
   return (
     <View style={styles.registWrapper}>
       <View style={styles.registInner}>
-        <ScrollView style={styles.registTop}>
+        <ScrollView style={styles.registTop} scrollEnabled={!open} nestedScrollEnabled = {true}>
           <Text style={styles.title}>{'운동선수 확인을\n시작합니다.'}</Text>
           <Text style={styles.desc}>
             확인된 내용이 실제와 다르면 이용이 제한됩니다.
@@ -120,7 +121,7 @@ export function PlayerRegistForm({navigation}) {
           </View>
           <BirthForm form={form} setForm={setForm} setMount={setMount} />
           <GenderForm form={form} setForm={setForm} setMount={setMount} />
-          <SportForm form={form} setForm={setForm} setMount={setMount} />
+          <SportForm open={open} setOpen={setOpen} form={form} setForm={setForm} setMount={setMount} />
           <Text style={styles.label}>소속</Text>
           <TextInput
             value={form.belong}
