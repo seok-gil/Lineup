@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import {View, Text, TouchableOpacity} from 'react-native'
 
-import {ArrowIcon} from '../../../Assets/svgs'
+import {ArrowIcon, UpIcon} from '../../../Assets/svgs'
 
 import {Time} from '../../../Components/Time'
 import InquiryListElementQnA from './InquiryListElementQnA'
@@ -37,12 +37,11 @@ function InquiryListElement({data}) {
             <Time time={data.date} separator="-" />
           </Text>
         </View>
-        <ArrowIcon
-          width={11}
-          height={6}
-          fill="#0E0E0E"
-          style={expand ? styles.upIcon : styles.downIcon}
-        />
+        {expand ? (
+          <UpIcon width={11} height={6} fill="#0E0E0E" />
+        ) : (
+          <ArrowIcon width={11} height={6} fill="#0E0E0E" />
+        )}
       </TouchableOpacity>
       <View>{expand && <InquiryListElementQnA data={data} />}</View>
     </View>
