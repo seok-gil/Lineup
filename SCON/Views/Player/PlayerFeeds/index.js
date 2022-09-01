@@ -74,7 +74,6 @@ function PlayerFeeds({ playerId, navigation }) {
         onEndReached={(info) => onEndReached(info)}
         onEndReachedThreshold={0}
         onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
       />
     </View>

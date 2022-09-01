@@ -69,7 +69,6 @@ function RankBody({navigation, route}) {
         onMomentumScrollBegin={() => {
           this.onEndReachedCalledDuringMomentum = false
         }}
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
       />
     </SafeAreaView>

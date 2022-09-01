@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {ScrollView, Text, View} from 'react-native'
+import {FlatList, Text, View} from 'react-native'
 import InquiryListElement from './InquiryListElement'
 import {ApiFetch} from '../../../Components/'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -8,12 +8,14 @@ import {DeniedIcon} from '../../../Assets/svgs'
 
 export function InquiryListScreen() {
   const [data, setData] = useState([])
+  const [size, setSize] = useState(10)
+  const [lastId, setLastId] = useState(1000)
 
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'GET',
-        url: '/inquiry',
+        url: `/inquiry?size=${size}&lastId=${lastId}`,
         headers: {
           'content-type': 'application/json',
           Authorization: 'Bearer ' + thing,
@@ -24,11 +26,11 @@ export function InquiryListScreen() {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
         else {
-          setData(thing)
+          setData(thing.content)
         }
       })
     })
-  }, [])
+  }, [size])
 
   if (!data || data.length === 0)
     return (
@@ -37,12 +39,28 @@ export function InquiryListScreen() {
         <Text style={styles.text}>문의 내역이 없습니다.</Text>
       </View>
     )
-
+    const onEndReached = () => {
+      setSize(size + 5)
+    }
   return (
-    <ScrollView style={styles.inquiryScreenWrapper}>
-      {data.map((item, index) => {
+    <View style={styles.inquiryScreenWrapper}>
+      {/* {data.map((item, index) => {
         return <InquiryListElement key={index} data={item} />
-      })}
-    </ScrollView>
+      })} */}
+      <FlatList
+          data={data}
+          snapToAlignment="start"
+          decelerationRate="fast"
+          renderItem={({item, index}) => (
+            <InquiryListElement
+              key={`player-inquiry-${index}`}
+              data={item}
+            />
+          )}
+          onEndReached={e => onEndReached(e)}
+          onEndReachedThreshold={0.9}
+          showsHorizontalScrollIndicator={false}
+        />
+    </View>
   )
 }

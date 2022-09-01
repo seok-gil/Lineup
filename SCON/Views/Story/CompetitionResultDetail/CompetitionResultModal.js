@@ -79,7 +79,6 @@ const CompetitionResultModal = ({modal, openModal, data, setData, type}) => {
       score: result.score,
       noAnswer: result.noAnswer,
     }
-    console.log(api)
     if (type) {
       AsyncStorage.getItem('accessToken').then(thing => {
         ApiFetch({

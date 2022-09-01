@@ -41,7 +41,6 @@ export function InquiryOne({data, setMount}) {
       })
     })
   }
-  console.log(data)
 
   return (
     <View>
@@ -66,7 +65,7 @@ export function InquiryOne({data, setMount}) {
         <View style={styles.inquiryQnAWrapper}>
           <View style={styles.inquiryQuestion}>
             <Text style={styles.letter}>Q.</Text>
-            <Text style={styles.content}>- </Text>
+            <Text style={styles.content}>-{data.writerName} </Text>
             <Text style={styles.content}>{data.inquiryContent} </Text>
           </View>
           <View style={styles.inquiryQuestion}>

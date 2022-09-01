@@ -99,7 +99,6 @@ export function DetailEvent({form, setFormDetail, mount, setMount}) {
 
   useEffect(() => {
     makeView()
-    console.log("form",form)
   }, [data])
 
   return <ScrollView>{view}</ScrollView>

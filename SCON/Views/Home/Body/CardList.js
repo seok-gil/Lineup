@@ -56,7 +56,6 @@ export function CardList({data, role, navigation}) {
           />
         )}
         onScroll={onScroll}
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
         snapToInterval={pageWidth + gap}
         contentContainerStyle={{

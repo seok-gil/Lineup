@@ -55,7 +55,6 @@ export function CommentList({feedId, navigation, mount, setMount, isMe}) {
           )}
           onEndReached={e => onEndReached(e)}
           onEndReachedThreshold={1}
-          pagingEnabled
           showsHorizontalScrollIndicator={false}
         />
       </View>

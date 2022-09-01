@@ -10,7 +10,6 @@ function CompetitionButton({ data, navigation }) {
   const checkNull = () => {
     var res = []
     for (var i = 0; i < data.detailNames.length; i++) {
-      console.log(data.detailNames[i])
       if (data.detailNames[i] != '')
         res.push(data.detailNames[i])
     }
