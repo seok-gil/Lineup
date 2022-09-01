@@ -49,9 +49,9 @@ function DetailEventElement({data, mount, dataOne, onDetail, index, onPlus, onDe
   )
 }
 
-export function DetailEvent({form, setForm, mount, setMount}) {
+export function DetailEvent({form, setFormDetail, mount, setMount}) {
   const [view, setView] = useState([])
-  var data = form.detailNames
+  let data = form.detailNames
   
   const onDel = index => {
     if (data.length <= 1) 
@@ -93,15 +93,13 @@ export function DetailEvent({form, setForm, mount, setMount}) {
           onPlus={onPlus}
         />,
       )
-    setForm({
-      ...form,
-      ['detailNames'] : data
-    })
+    setFormDetail(data)
     setView(view)
   }
 
   useEffect(() => {
     makeView()
+    console.log("form",form)
   }, [data])
 
   return <ScrollView>{view}</ScrollView>

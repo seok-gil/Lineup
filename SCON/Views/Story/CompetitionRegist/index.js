@@ -19,6 +19,7 @@ export function CompetitionRegist({navigation}) {
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [mount, setMount] = useState('')
+  const [detail, setFormDetail] = useState([''])
   const [form, setForm] = useState({
     startDate: '',
     endDate: '',
@@ -28,7 +29,10 @@ export function CompetitionRegist({navigation}) {
   })
   const [calendar, setCalender] = useState(false)
   useEffect(() => {
-    
+    setForm({
+      ...form,
+      ['detailNames']:detail
+    })
   },[mount])
   const onChange = (key, e) => {
     const {text} = e.nativeEvent
@@ -83,7 +87,7 @@ export function CompetitionRegist({navigation}) {
         />
         <View style={styles.borderLine} />
         <CompetitionRegistLabel text="세부 종목" isAsterisk />
-        <DetailEvent form={form} setForm={setForm} mount={mount} setMount={setMount}/>
+        <DetailEvent form={form} setFormDetail={setFormDetail} mount={mount} setMount={setMount}/>
       </View>
       <CompetitionButton data={form} navigation={navigation} />
       <Calendar

@@ -4,12 +4,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SafeAreaView} from 'react-native'
 import {CommentList} from './Comment'
 import {FeedBody} from './FeedBody'
+import { useIsFocused } from '@react-navigation/native';
 
 import styles from './Feed.styles'
 
 export function FeedScreen({route, navigation}) {
   const [data, setData] = useState()
   const [mount, setMount] = useState(new Date())
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
@@ -30,7 +32,7 @@ export function FeedScreen({route, navigation}) {
         }
       })
     })
-  }, [mount])
+  }, [mount, isFocused])
 
   if (!data) return <SafeAreaView />
   return (
