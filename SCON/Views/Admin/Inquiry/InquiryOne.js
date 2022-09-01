@@ -8,10 +8,10 @@ import styles from './InquiryOne.styles'
 
 export function InquiryOne({data, setMount}) {
   if (!data) return <View />
-
+  console.log(data)
   const [expand, setExpand] = useState(false)
-  const [answer, setAnswer] = useState(data.AnswerContent)
-  const [state, setState] = useState(false)
+  const [answer, setAnswer] = useState(data.answerContent)
+  const [state, setState] = useState(data.state)
 
   const onExpand = () => {
     setExpand(!expand)

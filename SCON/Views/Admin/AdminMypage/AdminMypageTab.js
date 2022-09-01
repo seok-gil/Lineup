@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View, Text, TouchableOpacity} from 'react-native'
+import {View, ScrollView, Text, TouchableOpacity} from 'react-native'
 
 import {AcceptIcon, ListIcon} from '../Assets'
 import {AlertTriangleIcon, LogoutIcon} from '../../../Assets/svgs'
@@ -14,7 +14,7 @@ export function AdminMypageTab({navigation}) {
     setModal(true)
   }
   return (
-    <View style={styles.mypageTabWrapper}>
+    <ScrollView style={styles.mypageTabWrapper}>
       <TouchableOpacity
         style={styles.mypageElement}
         onPress={() => navigation.navigate('RegistMemberTab')}>
@@ -103,6 +103,6 @@ export function AdminMypageTab({navigation}) {
         />
       </TouchableOpacity>
       <LogoutModal modal={modal} setModal={setModal} navigation={navigation} />
-    </View>
+    </ScrollView>
   )
 }

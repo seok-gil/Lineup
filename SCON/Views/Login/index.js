@@ -74,6 +74,11 @@ export function LoginPage({navigation}) {
   }
 
   useEffect(() => {
+    setForm({
+      fcmToken: '',
+      email: '',
+      password: '',
+    })
     var acc
     var res
     AsyncStorage.getItem('accessToken').then(thing => {
