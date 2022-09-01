@@ -9,7 +9,6 @@ function NotiElement({data}) {
   const [expand, setExpand] = useState(false)
   const onClick = () => {
     var temp = !expand
-    console.log(temp)
     setExpand(temp)
   }
   if (!data) return <View />

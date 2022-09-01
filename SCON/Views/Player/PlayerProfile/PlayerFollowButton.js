@@ -11,7 +11,6 @@ function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
     data.isMe || data.isFollow ? styles.followedButton : styles.followButton
   const buttonTextStyle =
     data.isMe || data.isFollow ? styles.followedText : styles.followText
-
   useEffect(() => {
     AsyncStorage.getItem('role').then(res => {})
   }, [])

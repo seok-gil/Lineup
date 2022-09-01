@@ -8,7 +8,10 @@ const DEFAULT_STYLE = {
   photoPickImage: {},
   photoPickTouchable: {},
 }
-
+/*
+default profile uri: 'https://profile-scon.s3.ap-northeast-2.amazonaws.com/profile/default_profilePic.jpg',
+default back uri: 'https://profile-scon.s3.ap-northeast-2.amazonaws.com/back/default_backPic.jpg',
+*/
 export function PhotoPick({
   text,
   photo,
@@ -36,6 +39,7 @@ export function PhotoPick({
       
     }
   }
+
   const onClick = () => {
     if (flag) {
       requestPermission()
@@ -87,6 +91,18 @@ export function PhotoPick({
               })
               .catch(err => console.log(err))
             },
+          },
+          {
+            text : '기본 사진으로 전환',
+            onPress: () => {
+              text
+            setPhoto({
+              asset: null,
+              set: true,
+              uri: text == '프로필 이미지 설정' ? 'https://profile-scon.s3.ap-northeast-2.amazonaws.com/profile/default_profilePic.jpg' : 
+              'https://profile-scon.s3.ap-northeast-2.amazonaws.com/back/default_backPic.jpg',
+            })
+          }
           },
           {
             text : '취소',

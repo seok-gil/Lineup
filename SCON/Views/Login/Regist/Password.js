@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   SafeAreaView,
   View,
@@ -8,11 +8,11 @@ import {
 } from 'react-native'
 import styles from './Password.styles'
 
-import {CheckIcon} from '../../../Assets/svgs'
-import {RegistModal} from './RegistModal'
-import {ApiFetch} from '../../../Components'
+import { CheckIcon } from '../../../Assets/svgs'
+import { RegistModal } from './RegistModal'
+import { ApiFetch } from '../../../Components'
 
-export function Password({navigation, route}) {
+export function Password({ navigation, route }) {
   if (!route) navigation.navigate('LoginPage')
   const [postForm, setPostForm] = useState({
     nickname: route.params.form.nickname,
@@ -57,7 +57,7 @@ export function Password({navigation, route}) {
   }, [form])
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent
+    const { text } = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
@@ -70,18 +70,26 @@ export function Password({navigation, route}) {
   }
   const [modal, setModal] = useState(false)
   const onPress = () => {
-    setModal(true)
-    ApiFetch({
-      method: 'POST',
-      url: '/auth/signup',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(postForm),
-    })
-      .then(setModal(true))
-      .catch(console.log(Error))
+    if (form.password != form.certification)
+      setValidate({
+        ...validate,
+        ['certification']: false
+      })
+    else {
+      setModal(true)
+      ApiFetch({
+        method: 'POST',
+        url: '/auth/signup',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postForm),
+      })
+        .then(setModal(true))
+        .catch(console.log(Error))
+    }
   }
+  //7lNy5sf
   return (
     <SafeAreaView style={styles.passwordWrapper}>
       <View style={styles.passwordInner}>

@@ -12,13 +12,8 @@ function DetailEventElement({form, setForm, index, onPlus, onDel}) {
     const {text} = e.nativeEvent
     if (text)
       setDetail(text)
-    console.log(form)
     var temp = form
     temp.detailNames[index] = text
-    // setForm({
-    //   ...form,
-    //   temp
-    // })
   }
 
   return (

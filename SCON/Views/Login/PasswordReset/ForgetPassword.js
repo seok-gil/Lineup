@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import {
   SafeAreaView,
   View,
@@ -7,16 +7,14 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native'
-import {ApiFetch} from '../../../Components'
+import { ApiFetch } from '../../../Components'
 import styles from './ForgetPassword.styles'
 import validator from 'validator'
-import { useHeaderHeight } from '@react-navigation/elements'
-export function ForgetPassword({navigation}) {
+export function ForgetPassword({ navigation }) {
   const [form, setForm] = useState({
     email: '',
     certification: '',
   })
-  const height = useHeaderHeight()
   const [validate, setValidate] = useState({
     nickname: true,
     email: true,
@@ -26,7 +24,7 @@ export function ForgetPassword({navigation}) {
   const [button, setButton] = useState(false)
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent
+    const { text } = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
@@ -59,10 +57,42 @@ export function ForgetPassword({navigation}) {
       },
       body: JSON.stringify({
         email: form.email,
-      }),
+      })
+      ,
     })
-    setPost(false)
+      .then((thing) => {
+        if (thing.status == 404)
+          setValidate({
+            ...validate,
+            ['email']: false
+          })
+        else
+          setPost(false)
+      })
   }
+  const validateCheck = () => {
+    ApiFetch({
+      method: 'POST',
+      url: '/email-auth/email-check',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: form.email,
+        code : form.certification
+      })
+    })
+    .then((thing) =>{
+      if (thing)
+        navigation.navigate('PasswordReset', { email: form.email })
+      else
+        setValidate({
+          ...validate,
+          ['certification']: false
+        })
+    })
+  }
+
 
   return (
     <SafeAreaView style={styles.forgetWrapper}>
@@ -115,7 +145,7 @@ export function ForgetPassword({navigation}) {
         </View>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('PasswordReset', {email: form.email})
+            validateCheck()
           }
           disabled={!button}
           style={button ? styles.loginButton : styles.loginButtonNotAvailable}>
@@ -128,22 +158,22 @@ export function ForgetPassword({navigation}) {
 
 const styl2es = StyleSheet.create({
   rootContainer: {
-      flex: 1,
-      backgroundColor: "#ffffff"
+    flex: 1,
+    backgroundColor: "#ffffff"
   },
   commentArea: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#ababab"
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ababab"
   },
   textInputContainer: {
-      marginTop: "auto",
-      borderWidth: 1,
-      borderColor: "skyblue",
-      justifyContent: "center",
-      alignItems: "center",
-      padding:15,
-      flex:1
+    marginTop: "auto",
+    borderWidth: 1,
+    borderColor: "skyblue",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 15,
+    flex: 1
   }
 })

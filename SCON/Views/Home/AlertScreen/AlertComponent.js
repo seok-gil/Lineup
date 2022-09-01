@@ -22,7 +22,6 @@ function AlertComponent({alert, setMount, navigation}) {
         },
         body: null,
       }).then((thing) => {
-        console.log(thing)
         setMount(new Date())
       })
     })

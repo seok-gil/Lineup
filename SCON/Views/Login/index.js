@@ -21,9 +21,9 @@ export function LoginPage({navigation}) {
     email: '',
     password: '',
     // email: 'admin@gmail.com',
-    email: 'player0@gmail.com',
+    // email: 'player0@gmail.com',
     // email: 'member17@gmail.com',
-    password: '1234',
+    // password: '1234',
   })
   const [validate, setValidate] = useState({
     email: true,
@@ -74,6 +74,11 @@ export function LoginPage({navigation}) {
   }
 
   useEffect(() => {
+    setForm({
+      fcmToken: '',
+      email: '',
+      password: '',
+    })
     var acc
     var res
     AsyncStorage.getItem('accessToken').then(thing => {

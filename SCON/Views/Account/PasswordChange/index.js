@@ -39,7 +39,6 @@ export function PasswordChange({navigation}) {
   useEffect(() => {
     let temp = validate
     checkValidate(temp).then(setValidate(temp))
-    console.log(validate)
   }, [form])
 
   useEffect(() => {
@@ -55,7 +54,7 @@ export function PasswordChange({navigation}) {
 
   const onSummit = () => {
     setFirst(false)
-    if (validate.newPassword && validate.confirmPassword)
+    if ((form.newPassword == form.confirmPassword) && validate.newPassword && validate.confirmPassword) {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'PUT',
@@ -69,7 +68,6 @@ export function PasswordChange({navigation}) {
           newPassword: form.newPassword,
         }),
       }).then(thing => {
-        console.log("pass", thing)
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
@@ -89,7 +87,7 @@ export function PasswordChange({navigation}) {
           setModal(true)
         }
       })
-    })
+    })}
     else {
       setValidate({
         ...validate,

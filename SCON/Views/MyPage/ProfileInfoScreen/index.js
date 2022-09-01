@@ -17,6 +17,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ImagePush } from './ImagePush'
 import { useIsFocused } from '@react-navigation/native'
+import { ImagePushAPI } from './ImagePushAPI'
 
 export function ProfileInfoScreen({ navigation }) {
   const [mount, setMount] = useState()
@@ -68,22 +69,50 @@ export function ProfileInfoScreen({ navigation }) {
 
   const onImagePush = async () => {
     if (userPhoto.set) {
-      ImagePush(userPhoto, setUserPhoto, 'profile', '/my-page/user-profile-pic')
-      .then(() =>{
-        if (backPhoto.set) {
-          ImagePush(backPhoto, setBackPhoto, 'back', '/my-page/user-back-pic')
-          .then(() => navigation.goBack())
-        }
-        else
-          navigation.goBack()
-      })
+      if (userPhoto.asset) {
+        ImagePush(userPhoto, setUserPhoto, 'profile', '/my-page/user-profile-pic')
+        .then(() =>{
+          if (backPhoto.set) {
+            if (backPhoto.asset)
+            ImagePush(backPhoto, setBackPhoto, 'back', '/my-page/user-back-pic')
+            .then(() => navigation.goBack())
+            else
+              ImagePushAPI(backPhoto.uri, '/my-page/user-back-pic')
+              navigation.goBack()
+          }
+          else
+            navigation.goBack()
+        })
+      }
+      else {
+        ImagePushAPI(userPhoto.uri, '/my-page/user-profile-pic')
+          if (backPhoto.set) {
+            if (backPhoto.asset) {
+            ImagePush(backPhoto, setBackPhoto, 'back', '/my-page/user-back-pic')
+            navigation.goBack()
+            }
+            else {
+              ImagePushAPI(backPhoto.uri, '/my-page/user-back-pic')
+              navigation.goBack()
+            }
+          }
+          else
+            navigation.goBack()
+      }
     }
     else if (backPhoto.set) {
+      if (backPhoto.asset) {
       ImagePush(backPhoto, setBackPhoto, 'back', '/my-page/user-back-pic')
       .then(() => navigation.goBack())
+      }
+      else {
+        ImagePushAPI(backPhoto.uri, '/my-page/user-back-pic')
+        navigation.goBack()
+      }
     }
     else 
       navigation.goBack()
+      
   }
 
   if (!data) return <View />

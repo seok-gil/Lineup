@@ -54,12 +54,12 @@ export function SportForm({form, setForm, setMount}) {
     })
     setMount('sport')
   }, [value])
-
   return (
     <View style={styles.sportWrapper}>
       <Text style={styles.label}>종목</Text>
       <View style={styles.inputWrapper}>
         <DropDownPicker
+          listMode='MODAL'
           zIndex={9}
           open={open}
           value={value}
