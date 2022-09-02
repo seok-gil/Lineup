@@ -8,11 +8,11 @@ import {
 const styles = StyleSheet.create({
   refuseWrapper: {
     width: '100%',
-    height: '30%',
+    minHeight: '25%',
     justifyContent: 'space-between',
     backgroundColor: colors.GRAYF6,
     padding: 30,
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
 
   refuseTop: {

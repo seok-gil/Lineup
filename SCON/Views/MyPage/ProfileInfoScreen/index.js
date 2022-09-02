@@ -24,6 +24,7 @@ export function ProfileInfoScreen({ navigation }) {
   const isFocused = useIsFocused()
   const [data, setData] = useState()
   const [role, setRole] = useState('ROLE_MEMBER')
+  const [loading, setLoading] = useState(false)
   const [userPhoto, setUserPhoto] = useState({
     asset: '',
     set: false,
@@ -62,12 +63,14 @@ export function ProfileInfoScreen({ navigation }) {
         }
       })
     })
+    setLoading(false)
     AsyncStorage.getItem('role').then(role => {
       setRole(role)
     })
   }, [isFocused])
 
   const onImagePush = async () => {
+    setLoading(true)
     if (userPhoto.set) {
       if (userPhoto.asset) {
         ImagePush(userPhoto, setUserPhoto, 'profile', '/my-page/user-profile-pic')
@@ -157,7 +160,7 @@ export function ProfileInfoScreen({ navigation }) {
               <ProfileInfoScreenElement label="생년월일" text={data.birth} />
               <ProfileInfoScreenElement
                 label="성별"
-                text={data.gender == 'MALE' ? '남자' : '여쟈'}
+                text={data.gender == 'MALE' ? '남자' : '여자'}
               />
               <ProfileInfoScreenElement label="종목" text={data.sport} />
               <ProfileInfoScreenElement label="소속" text={data.belong} />
@@ -169,6 +172,7 @@ export function ProfileInfoScreen({ navigation }) {
         <View style={styles.RegistButtonWrapper}>
           <TouchableOpacity
             style={styles.RegistButton}
+            disabled={loading}
             onPress={() => onImagePush()}>
             <Text style={styles.RegistButtonText}> 확인 </Text>
           </TouchableOpacity>

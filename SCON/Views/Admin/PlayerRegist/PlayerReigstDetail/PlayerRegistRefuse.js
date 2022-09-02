@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform} from 'react-native'
 import CheckBox from '@react-native-community/checkbox'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ApiFetch} from '../../../../Components'

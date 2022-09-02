@@ -52,7 +52,6 @@ export function Reports({navigation}) {
         // onScroll={onScroll}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.1}
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
       />
     </SafeAreaView>

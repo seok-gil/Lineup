@@ -38,7 +38,6 @@ function SearchID({inputs, setInputs, data, navigation}) {
                 )}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0.01}
-                pagingEnabled
                 showsHorizontalScrollIndicator={false}
             />
             <TouchableOpacity onPress={() => onClickMore()}>

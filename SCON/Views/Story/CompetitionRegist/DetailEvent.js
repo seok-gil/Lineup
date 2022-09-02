@@ -6,22 +6,25 @@ import styles from './DetailEvent.styles'
 
 import {XIcon, CircleAddIcon} from '../../../Assets/svgs'
 
-function DetailEventElement({form, setForm, index, onPlus, onDel}) {
-  const [detail, setDetail] = useState(form.detailNames[index])
+function DetailEventElement({data, mount, dataOne, onDetail, index, onPlus, onDel}) {
+  const [elemnt, setElement] = useState()
+  
+  useEffect(() => {
+    setElement(dataOne)
+  },[mount])
+  
   const onInput = e => {
     const {text} = e.nativeEvent
-    if (text)
-      setDetail(text)
-    var temp = form
-    temp.detailNames[index] = text
+    data[index] = text
+    setElement(text)
   }
-
+  
   return (
     <View style={styles.detailEventWrapper}>
       <View style={styles.textInputWrapper}>
         <TextInput
           style={styles.textInputStyle}
-          value={detail}
+          value={elemnt}
           placeholder={'예) 100m 달리기'}
           placeholderTextColor="#0E0E0E66"
           onChange={e => onInput(e)}
@@ -32,7 +35,7 @@ function DetailEventElement({form, setForm, index, onPlus, onDel}) {
           <XIcon width={10} height={10} />
         </TouchableOpacity>
       </View>
-      {index === form.detailNames.length - 1 && (
+      {index === data.length - 1&& (
         <TouchableOpacity onPress={onPlus} style={styles.addIconWrapper}>
           <CircleAddIcon
             width={20}
@@ -46,55 +49,57 @@ function DetailEventElement({form, setForm, index, onPlus, onDel}) {
   )
 }
 
-export function DetailEvent({form, setForm}) {
-  const [index, setIndex] = useState(
-    form.detailNames.length > 0 ? form.detailNames.length : 1,
-  )
+export function DetailEvent({form, setFormDetail, mount, setMount}) {
   const [view, setView] = useState([])
-
+  let data = form.detailNames
+  
   const onDel = index => {
-    var res = []
-    var temp = form
-    for (var i = 0; i < index; ++i) res.push(form.detailNames[i])
-    for (var i = index + 1; i < form.detailNames.length; ++i)
-      res.push(form.detailNames[i])
-    temp.detail = res
-    setForm(form => {
-      return temp
-    })
+    if (data.length <= 1) 
+      return ;
+    var del = []
+    for (var i = 0; i < index; ++i) {
+      del.push(data[i])
+    }
+    for (var i = index + 1; i < data.length; ++i)
+      del.push(data[i])
+    data = del
     makeView()
+    setMount(new Date())
   }
 
-  const onPluss = () => {
-    var res = form.detailNames
-    res.push('')
-    setForm(form => {
-      return {...form, ['detailNames']: res}
-    })
+  const onPlus = () => {
+    data.push('')
     makeView()
+    setMount(new Date())
+  }
+
+  const onDetail = (index, text) => {
+    data[index] = text
   }
 
   const makeView = () => {
-    var temp = []
-    for (var i = 0; i < form.detailNames.length; ++i)
-      temp.push(
+    var view = []
+    var length = data.length > 0 ? data.length : 1
+    for (var i = 0; i < length; ++i)
+      view.push(
         <DetailEventElement
           key={`competition-${i}`}
-          form={form}
-          setForm={setForm}
+          dataOne={data[i]}
+          data={data}
+          onDetail={onDetail}
           index={i}
+          mount={mount}
           onDel={onDel}
-          onPlus={onPluss}
+          onPlus={onPlus}
         />,
       )
-    setView(() => {
-      return temp
-    })
+    setFormDetail(data)
+    setView(view)
   }
 
   useEffect(() => {
     makeView()
-  }, [])
+  }, [data])
 
   return <ScrollView>{view}</ScrollView>
 }

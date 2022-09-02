@@ -36,7 +36,7 @@ function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
           navigation.navigate('RefreshTokenModal', { navigation: navigation })
         }
         if (thing.status == 403)
-        navigation.navigate('ModalPage', {
+          navigation.navigate('ModalPage', {
           text: thing.message
         })
         setMount(new Date())

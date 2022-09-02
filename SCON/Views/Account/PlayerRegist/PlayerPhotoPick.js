@@ -75,6 +75,10 @@ export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
               })
             },
           },
+          {
+            text : '취소',
+            onPress: () => console.log('cancel')
+          }
         ],
         {cancelable: false},
       )

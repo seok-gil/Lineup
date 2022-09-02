@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, ScrollView } from 'react-native'
 
 import CompetitionElement from './CompetitionElement'
 import { ApiFetch } from '../../../Components/API/ApiFetch'
@@ -30,6 +30,7 @@ export function CompetitionResult({ navigation }) {
 
   return (
     <SafeAreaView style={styles.competitionResultWrapper}>
+      <ScrollView>
       {data &&
         data.map((item, index) => {
           return (
@@ -40,6 +41,7 @@ export function CompetitionResult({ navigation }) {
             />
           )
         })}
+        </ScrollView>
     </SafeAreaView>
   )
 }

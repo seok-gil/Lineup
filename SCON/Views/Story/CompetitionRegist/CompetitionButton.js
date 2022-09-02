@@ -6,7 +6,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './CompetitionButton.styles'
 
 function CompetitionButton({ data, navigation }) {
+
+  const checkNull = () => {
+    var res = []
+    for (var i = 0; i < data.detailNames.length; i++) {
+      if (data.detailNames[i] != '')
+        res.push(data.detailNames[i])
+    }
+    return (res)
+  }
+
   const onPress = () => {
+    data.detailNames = checkNull()
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'POST',
@@ -32,7 +43,6 @@ function CompetitionButton({ data, navigation }) {
           console.log('Login ERROR', error)
         })
     })
-    // navigation.navigate('StoryScreen')
   }
   const buttonStyle =
     data.endDate && data.location && data.eventName

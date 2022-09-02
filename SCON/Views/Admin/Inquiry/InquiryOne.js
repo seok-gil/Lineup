@@ -8,7 +8,6 @@ import styles from './InquiryOne.styles'
 
 export function InquiryOne({data, setMount}) {
   if (!data) return <View />
-  console.log(data)
   const [expand, setExpand] = useState(false)
   const [answer, setAnswer] = useState(data.answerContent)
   const [state, setState] = useState(data.state)
@@ -66,6 +65,7 @@ export function InquiryOne({data, setMount}) {
         <View style={styles.inquiryQnAWrapper}>
           <View style={styles.inquiryQuestion}>
             <Text style={styles.letter}>Q.</Text>
+            <Text style={styles.content}>-{data.writerName} </Text>
             <Text style={styles.content}>{data.inquiryContent} </Text>
           </View>
           <View style={styles.inquiryQuestion}>

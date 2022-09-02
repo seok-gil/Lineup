@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   Image,
   StyleSheet,
+  KeyboardAvoidingView, 
+  Platform
 } from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 
@@ -39,7 +41,8 @@ export function PlayerReigstDetail({route, navigation}) {
   if (!data) return <SafeAreaView />
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
-      <View style={styles.playerDetailWrapper}>
+    <KeyboardAvoidingView behavior={Platform.OS==='ios' ? "padding" : "height"} keyboardVerticalOffset={ Platform.OS === 'ios' ? 90 : 0} style={styles.playerDetailWrapper}>
+      {/* <View style={styles.playerDetailWrapper}> */}
         <ScrollView contentContainerStyle={styles.scrollWrapper}>
           <Text style={styles.label}>신청 계정</Text>
           <View style={styles.accountWrapper}>
@@ -78,8 +81,9 @@ export function PlayerReigstDetail({route, navigation}) {
             <Text style={styles.text}>{data.belong}</Text>
           </View>
         </ScrollView>
-      </View>
+      {/* </View> */}
       <PlayerRegistRefuse navigation={navigation} params={route.params} />
+      </KeyboardAvoidingView>
     </SafeAreaView>
   )
 }

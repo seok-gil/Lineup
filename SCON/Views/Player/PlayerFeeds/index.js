@@ -14,6 +14,7 @@ function PlayerFeeds({ playerId, navigation }) {
   const [lastFeedId, setLastFeedId] = useState(1000)
   const [mount, setMount] = useState()
   const isFocused = useIsFocused();
+  
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -73,7 +74,6 @@ function PlayerFeeds({ playerId, navigation }) {
         onEndReached={(info) => onEndReached(info)}
         onEndReachedThreshold={0}
         onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
       />
     </View>
