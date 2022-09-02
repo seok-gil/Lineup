@@ -101,7 +101,6 @@ export function MakeId({ navigation }) {
         nickname: form.nickname,
       })
     }).then((res) => {
-      console.log("nick-check",res)
       if (res.status == 400) {
       setValidate({
         ...validate,
@@ -121,7 +120,6 @@ export function MakeId({ navigation }) {
         }),
       })
         .then(res => {
-          console.log("email-check",res)
           validate['certification'] = res
           if (res && form.nickname != '')
             navigation.navigate('Password', { form: form })
