@@ -60,7 +60,9 @@ export function CommentOne({
             {data.writer.nick} · <TimeRelative time={data.createDate} />
           </Text>
         </View>
-        <TouchableOpacity onPress={() => setModal(true)}>
+        <TouchableOpacity 
+        hitSlop={{ top: 25, bottom: 25, left: 20, right: 20}}
+        onPress={() => setModal(true)}>
           <TabEllipsisIcon
             width={15}
             height={5}
