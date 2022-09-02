@@ -11,6 +11,7 @@ import { ApiFetch } from '../../../Components'
 import styles from './ForgetPassword.styles'
 import validator from 'validator'
 export function ForgetPassword({ navigation }) {
+  const [first, setFirst] = useState(true)
   const [form, setForm] = useState({
     email: '',
     certification: '',
@@ -20,7 +21,8 @@ export function ForgetPassword({ navigation }) {
     email: true,
     certification: true,
   })
-  const [post, setPost] = useState(false)
+  const [post, setPost] = useState(true)
+  const [postFirst, setPostFirst] = useState(true)
   const [button, setButton] = useState(false)
 
   const onInput = (key, e) => {
@@ -49,6 +51,8 @@ export function ForgetPassword({ navigation }) {
   }
 
   const pushEmail = () => {
+    setPostFirst(false)
+    setPost(false)
     ApiFetch({
       method: 'POST',
       url: '/email-auth/pw-reset',
@@ -61,16 +65,19 @@ export function ForgetPassword({ navigation }) {
       ,
     })
       .then((thing) => {
+        console.log(thing)
         if (thing.status == 404)
           setValidate({
             ...validate,
             ['email']: false
           })
         else
-          setPost(false)
+          setPost(true)
       })
   }
+
   const validateCheck = () => {
+    setFirst(false)
     ApiFetch({
       method: 'POST',
       url: '/email-auth/email-check',
@@ -83,6 +90,7 @@ export function ForgetPassword({ navigation }) {
       })
     })
     .then((thing) =>{
+      console.log(thing)
       if (thing)
         navigation.navigate('PasswordReset', { email: form.email })
       else
@@ -114,7 +122,7 @@ export function ForgetPassword({ navigation }) {
               onPress={() => pushEmail()}>
               <Text
                 style={post ? styles.sendButtonText : styles.sendButtonOffText}>
-                전송
+                {postFirst ? '전송' : '재전송'}
               </Text>
             </TouchableOpacity>
           </View>
@@ -136,7 +144,7 @@ export function ForgetPassword({ navigation }) {
             onChange={e => onInput('certification', e)}
           />
           <View style={styles.errorMessageWrapper}>
-            {validate.certification == false && (
+            {!first && validate.certification == false && (
               <Text style={styles.errorMessage}>
                 인증번호가 일치하지 않습니다.
               </Text>

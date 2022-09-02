@@ -61,6 +61,7 @@ export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
               await launchCamera({
                 mediaType: 'photo',
                 cameraType: 'back',
+                presentationStyle:'fullScreen'
               }).then(res => {
                 result = res
                 flag = true

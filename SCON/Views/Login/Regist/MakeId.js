@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   SafeAreaView,
   View,
@@ -9,9 +9,10 @@ import {
 } from 'react-native'
 import styles from './MakeID.styles'
 import validator from 'validator'
-import {ApiFetch} from '../../../Components'
+import { ApiFetch } from '../../../Components'
 
-export function MakeId({navigation}) {
+export function MakeId({ navigation }) {
+  const [first, setFirst] = useState(true)
   const [form, setForm] = useState({
     nickname: '',
     email: '',
@@ -20,41 +21,42 @@ export function MakeId({navigation}) {
 
   const [validate, setValidate] = useState({
     nickname: true,
-    email:true,
+    email: true,
     certification: true,
   })
   const [post, setPost] = useState(false)
-  const [button, setButton] = useState(false)
+  const [postFirst, setPostFirst] = useState(true)
+
+  useEffect(() => {
+  }, [validate])
 
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent
+    setValidate({
+      ...validate,
+      ['nickname']: true
+    })
+    const { text } = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
     })
     var tempVal = validate
     if (key == 'email') {
+      setPostFirst(true)
       if (validator.isEmail(form.email)) {
         setPost(true)
       } else {
         setPost(false)
       }
-    } else if (key == 'certification') {
-      tempVal['certification'] = true
     }
-    if (form.nickname == '') tempVal['nickname'] = false
-    else tempVal['nickname'] = true
-    setValidate(tempVal)
-    if (validate.nickname && validate.email && validate.certification)
-      setButton(true)
-    else setButton(false)
+    else {
+      tempVal[key] = true
+    }
   }
 
   const pushEmail = () => {
-    setValidate({
-      ...validate,
-      ['email']: true,
-    })
+    setPost(false)
+    setPostFirst(false)
     ApiFetch({
       method: 'POST',
       url: '/email-auth',
@@ -71,35 +73,63 @@ export function MakeId({navigation}) {
           ['email']: false,
         })
       }
-      setPost(false)
+      else
+        setValidate({
+          ...validate,
+          ['email']: true,
+        })
+      setPost(true)
     })
   }
 
   const onNext = () => {
+    setFirst(false)
+    if (form.nickname == '') {
+      setValidate({
+        ...validate,
+        ['nickname']: false
+      })
+      return;
+    }
     ApiFetch({
       method: 'POST',
-      url: `/email-auth/email-check`,
+      url: `/auth/nick-check`,
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        email: form.email,
-        code: form.certification,
-      }),
-    })
-      .then(res => {
-        
-        setValidate({
-          ...validate,
-          ['certification']: res,
+        nickname: form.nickname,
+      })
+    }).then((res) => {
+      if (res.status == 400) {
+      setValidate({
+        ...validate,
+        ['nickname']: false
+      })
+      return ;
+      }
+      ApiFetch({
+        method: 'POST',
+        url: `/email-auth/email-check`,
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: form.email,
+          code: form.certification,
+        }),
+      })
+        .then(res => {
+          validate['certification'] = res
+          if (res && form.nickname != '')
+            navigation.navigate('Password', { form: form })
         })
-        if (res && form.nickname != '')
-          navigation.navigate('Password', {form: form})
-      })
-      .catch(error => {
-        console.log('catch error', error)
-      })
+        .catch(error => {
+          console.log('catch error', error)
+        })
+    })
   }
+
   return (
     <SafeAreaView style={styles.makeIDwrapper}>
       <View style={styles.makeIDInner}>
@@ -113,7 +143,7 @@ export function MakeId({navigation}) {
             onChange={e => onInput('nickname', e)}
           />
           <View style={styles.errorMessageWrapper}>
-            {validate.nickname == false && (
+            {!first && validate.nickname == false && (
               <Text style={styles.errorMessage}>
                 사용하실 수 있는 닉네임이 아닙니다.
               </Text>
@@ -136,7 +166,7 @@ export function MakeId({navigation}) {
               style={styles.sendButton}>
               <Text
                 style={post ? styles.sendButtonText : styles.sendButtonOffText}>
-                전송
+                {postFirst ? '전송' : '재전송'}
               </Text>
             </TouchableOpacity>
           </View>
@@ -158,7 +188,7 @@ export function MakeId({navigation}) {
             onChange={e => onInput('certification', e)}
           />
           <View style={styles.errorMessageWrapper}>
-            {validate.certification == false && (
+            {!first && validate.certification == false && (
               <Text style={styles.errorMessage}>
                 인증번호가 일치하지 않습니다.
               </Text>
@@ -174,3 +204,5 @@ export function MakeId({navigation}) {
     </SafeAreaView>
   )
 }
+
+

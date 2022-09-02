@@ -17,15 +17,8 @@ export function PasswordReset({ navigation, route }) {
     certification: '',
   })
 
-  const [validate, setValidate] = useState({
-    password: false,
-    certification: false,
-  })
-
-  const [validateError, setValidateError] = useState({
-    password: true,
-    certification: true,
-  })
+  const [valPassword, setValPassword] = useState(false)
+  const [valCertification, setValCertification] = useState(false)
 
   const [modal, setModal] = useState(false)
 
@@ -37,28 +30,25 @@ export function PasswordReset({ navigation, route }) {
     })
   }
 
-  async function checkValidate(temp) {
+  async function checkValidate() {
     var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
     if (form.password && form.password.match(reg)) {
-      temp.password = true
-    } else temp.password = false
-    if (form.certification.length != 0 && form.certification.length == form.password.length) {
-      temp.certification = true
-    } else temp.certification = false
+      setValPassword(true)
+    } else setValPassword(false)
+    if (form.certification.length != 0 && (form.certification.length == form.password.length)) {
+      setValCertification(true)
+    } else setValCertification(false)
   }
 
   useEffect(() => {
-    let temp = validate
-    checkValidate(temp).then(setValidate(temp))
+    if (form.password.length != 0)
+      checkValidate()
   }, [form])
 
   const onPress = () => {
     setFirst(false)
     if (form.password != form.certification) {
-      setValidate({
-        ...validate,
-        ['certification']: false
-      })
+      setValCertification(false)
     }
     else {
       ApiFetch({
@@ -98,12 +88,12 @@ export function PasswordReset({ navigation, route }) {
               width={15}
               height={15}
               style={
-                validate.password ? styles.checkIcon : styles.checkIconNotShown
+                valPassword ? styles.checkIcon : styles.checkIconNotShown
               }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {!first && validate.password == false && (
+            {!first && valPassword == false && (
               <Text style={styles.errorMessage}>
                 올바른 비밀번호가 아닙니다.
               </Text>
@@ -122,14 +112,14 @@ export function PasswordReset({ navigation, route }) {
               width={15}
               height={15}
               style={
-                validate.certification
+                valCertification
                   ? styles.checkIcon
                   : styles.checkIconNotShown
               }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {!first && validate.certification == false && (
+            {!first && valCertification == false && (
               <Text style={styles.errorMessage}>
                 상단 비밀번호와 일치하지 않습니다.
               </Text>
@@ -138,11 +128,7 @@ export function PasswordReset({ navigation, route }) {
         </View>
         <TouchableOpacity
           onPress={() => onPress()}
-          style={
-            validateError.password && validateError.certification
-              ? styles.loginButton
-              : styles.loginButtonNotAvailable
-          }>
+          style={styles.loginButton}>
           <Text style={styles.loginButtonText}>확인</Text>
         </TouchableOpacity>
       </View>

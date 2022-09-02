@@ -24,25 +24,25 @@ export function PasswordChange({navigation}) {
 
   const [modal, setModal] = useState(false)
 
-  async function checkValidate(temp) {
+
+  const [valPassword, setValPassword] = useState(false)
+  const [valCertification, setValCertification] = useState(false)
+
+  async function checkValidate() {
     var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
     if (form.newPassword && form.newPassword.match(reg)) {
-      temp.newPassword = true
-    } else temp.newPassword = false
-    if (form.confirmPassword.length != 0 && form.confirmPassword.length == form.newPassword.length) {
-      temp.confirmPassword = true
-    } else temp.confirmPassword = false
-    if (temp.oldPassword && temp.newPassword && temp.confirmPassword)
-      setButton(true)
+      setValPassword(true)
+    } else setValPassword(false)
+    if (form.confirmPassword.length != 0 && (form.confirmPassword.length == form.newPassword.length)) {
+      setValCertification(true)
+    } else setValCertification(false)
   }
 
   useEffect(() => {
-    let temp = validate
-    checkValidate(temp).then(setValidate(temp))
+    if (form.newPassword.length != 0)
+      checkValidate()
   }, [form])
 
-  useEffect(() => {
-  }, [validate])
 
   const onInput = (key, e) => {
     const {text} = e.nativeEvent
@@ -54,7 +54,7 @@ export function PasswordChange({navigation}) {
 
   const onSummit = () => {
     setFirst(false)
-    if ((form.newPassword == form.confirmPassword) && validate.newPassword && validate.confirmPassword) {
+    if ((form.newPassword == form.confirmPassword) && valPassword && valCertification) {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: 'PUT',
@@ -68,6 +68,7 @@ export function PasswordChange({navigation}) {
           newPassword: form.newPassword,
         }),
       }).then(thing => {
+        console.log(thing)
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }
@@ -80,10 +81,10 @@ export function PasswordChange({navigation}) {
           })
         } else {
           AsyncStorage.removeItem('accessToken')
-          navigation.navigate('ModalPage', {
-            text: '비밀번호가 변경되었어요.',
-            page: 'LoginPage',
-          })
+          // navigation.navigate('ModalPage', {
+          //   text: '비밀번호가 변경되었어요.',
+          //   page: 'LoginPage',
+          // })
           setModal(true)
         }
       })
@@ -145,14 +146,14 @@ export function PasswordChange({navigation}) {
               width={15}
               height={15}
               style={
-                validate.newPassword
+                valPassword
                   ? styles.checkIcon
                   : styles.checkIconNotShown
               }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {!first && !validate.newPassword && (
+            {!first && !valPassword && (
               <Text style={styles.errorMessage}>
                 올바른 비밀번호가 아닙니다.
               </Text>
@@ -171,14 +172,14 @@ export function PasswordChange({navigation}) {
               width={15}
               height={15}
               style={
-                validate.confirmPassword
+                valCertification
                   ? styles.checkIcon
                   : styles.checkIconNotShown
               }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {!first && !validate.confirmPassword && (
+            {!first && !valCertification && (
               <Text style={styles.errorMessage}>
                 상단 비밀번호와 일치하지 않습니다.
               </Text>

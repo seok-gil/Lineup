@@ -1,24 +1,24 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
-import {View, TextInput, TouchableOpacity, ScrollView} from 'react-native'
+import { View, TextInput, TouchableOpacity } from 'react-native'
 
 import styles from './DetailEvent.styles'
 
-import {XIcon, CircleAddIcon} from '../../../Assets/svgs'
+import { XIcon, CircleAddIcon } from '../../../Assets/svgs'
 
-function DetailEventElement({data, mount, dataOne, onDetail, index, onPlus, onDel}) {
+function DetailEventElement({ data, mount, dataOne, onDetail, index, onPlus, onDel }) {
   const [elemnt, setElement] = useState()
-  
+
   useEffect(() => {
     setElement(dataOne)
-  },[mount])
-  
+  }, [mount])
+
   const onInput = e => {
-    const {text} = e.nativeEvent
+    const { text } = e.nativeEvent
     data[index] = text
     setElement(text)
   }
-  
+
   return (
     <View style={styles.detailEventWrapper}>
       <View style={styles.textInputWrapper}>
@@ -30,13 +30,16 @@ function DetailEventElement({data, mount, dataOne, onDetail, index, onPlus, onDe
           onChange={e => onInput(e)}
         />
         <TouchableOpacity
+          hitSlop={{ top: 25, bottom: 25, left: 25, right: 25 }}
           onPress={() => onDel(index)}
           style={styles.xIconWrapper}>
           <XIcon width={10} height={10} />
         </TouchableOpacity>
       </View>
-      {index === data.length - 1&& (
-        <TouchableOpacity onPress={onPlus} style={styles.addIconWrapper}>
+      {index === data.length - 1 && (
+        <TouchableOpacity
+          hitSlop={{ top: 25, bottom: 25, left: 25, right: 25 }}
+          onPress={onPlus} style={styles.addIconWrapper}>
           <CircleAddIcon
             width={20}
             height={20}
@@ -49,13 +52,13 @@ function DetailEventElement({data, mount, dataOne, onDetail, index, onPlus, onDe
   )
 }
 
-export function DetailEvent({form, setFormDetail, mount, setMount}) {
+export function DetailEvent({ form, setFormDetail, mount, setMount }) {
   const [view, setView] = useState([])
   let data = form.detailNames
-  
+
   const onDel = index => {
-    if (data.length <= 1) 
-      return ;
+    if (data.length <= 1)
+      return;
     var del = []
     for (var i = 0; i < index; ++i) {
       del.push(data[i])
@@ -101,5 +104,5 @@ export function DetailEvent({form, setFormDetail, mount, setMount}) {
     makeView()
   }, [data])
 
-  return <ScrollView>{view}</ScrollView>
+  return <View>{view}</View>
 }

@@ -76,7 +76,8 @@ export function PhotoPick({
             onPress: async () => {
               var result
               await launchCamera({
-                saveToPhotos:true
+                saveToPhotos:true,
+                presentationStyle:'fullScreen'
               }).then(res => {
                 result = res
                 flag = true

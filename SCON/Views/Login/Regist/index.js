@@ -1,4 +1,4 @@
-import {RegistAccept} from './RegistAccept'
+import {RegistAccept} from './Accept/RegistAccept'
 import {MakeId} from './MakeId'
 import {Password} from './Password'
 
