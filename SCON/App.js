@@ -45,6 +45,7 @@ import {
 } from './Views/Admin'
 
 import { LogBox } from "react-native"
+import { HeaderBackButton } from 'react-navigation-stack';
 
 LogBox.ignoreAllLogs(true)
 
@@ -100,7 +101,8 @@ export default function App() {
                     }} />
                 <AppStack.Screen name="PasswordReset" component={PasswordReset}
                     options={{
-                        title: '비밀번호 재설정'
+                        title: '비밀번호 재설정',
+                        headerBackAccessibilityLabel
                     }} />
                 <AppStack.Screen name="AlertScreen" component={AlertScreen}
                     options={{
