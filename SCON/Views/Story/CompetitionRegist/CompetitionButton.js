@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ApiFetch } from '../../../Components/API/ApiFetch'
 import { TouchableOpacity, Text, View } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './CompetitionButton.styles'
 
 function CompetitionButton({ data, navigation }) {
-
+  const [loading, setLoading] = useState(false)
   const checkNull = () => {
     var res = []
     for (var i = 0; i < data.detailNames.length; i++) {
@@ -17,6 +17,9 @@ function CompetitionButton({ data, navigation }) {
   }
 
   const onPress = () => {
+    if (loading)
+      return;
+    setLoading(true)
     data.detailNames = checkNull()
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -29,6 +32,7 @@ function CompetitionButton({ data, navigation }) {
         body: JSON.stringify(data),
       })
         .then((thing) => {
+          setLoading(false)
           if (thing == 401) {
             navigation.navigate('RefreshTokenModal', { navigation: navigation })
           }
@@ -54,7 +58,10 @@ function CompetitionButton({ data, navigation }) {
       ? styles.filledText
       : styles.notfillText
   return (
-    <TouchableOpacity onPress={() => onPress()} style={buttonStyle}>
+    <TouchableOpacity
+      onPress={() => onPress()}
+      disabled={loading}
+      style={buttonStyle}>
       <Text style={buttonTextStyle}>확인</Text>
     </TouchableOpacity>
   )
