@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   SafeAreaView,
   View,
@@ -9,9 +9,9 @@ import {
 } from 'react-native'
 import styles from './MakeID.styles'
 import validator from 'validator'
-import {ApiFetch} from '../../../Components'
+import { ApiFetch } from '../../../Components'
 
-export function MakeId({navigation}) {
+export function MakeId({ navigation }) {
   const [first, setFirst] = useState(true)
   const [form, setForm] = useState({
     nickname: '',
@@ -19,11 +19,9 @@ export function MakeId({navigation}) {
     certification: '',
   })
 
-
-
   const [validate, setValidate] = useState({
     nickname: true,
-    email:true,
+    email: true,
     certification: true,
   })
   const [post, setPost] = useState(false)
@@ -31,9 +29,9 @@ export function MakeId({navigation}) {
 
   useEffect(() => {
   }, [validate])
-  
+
   const onInput = (key, e) => {
-    const {text} = e.nativeEvent
+    const { text } = e.nativeEvent
     setForm({
       ...form,
       [key]: text,
@@ -72,45 +70,57 @@ export function MakeId({navigation}) {
         })
       }
       else
-      setValidate({
-        ...validate,
-        ['email']: true,
-      })
+        setValidate({
+          ...validate,
+          ['email']: true,
+        })
       setPost(true)
     })
   }
 
   const onNext = () => {
     setFirst(false)
-    if (form.nickname == ''){
+    if (form.nickname == '') {
       setValidate({
         ...validate,
-        ['nickname'] : false
+        ['nickname']: false
       })
-      return ;
+      return;
     }
     ApiFetch({
       method: 'POST',
-      url: `/email-auth/email-check`,
+      url: `/auth/nick-check`,
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        email: form.email,
-        code: form.certification,
-      }),
+        nickname: form.nickname,
+      })
+    }).then((res) => {
+      console.log(res)
+      // ApiFetch({
+      //   method: 'POST',
+      //   url: `/email-auth/email-check`,
+      //   headers: {
+      //     'content-type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     email: form.email,
+      //     code: form.certification,
+      //   }),
+      // })
+      //   .then(res => {
+      //     console.log("res", res)
+      //     validate['certification'] = res
+      //     if (res && form.nickname != '')
+      //       navigation.navigate('Password', { form: form })
+      //   })
+      //   .catch(error => {
+      //     console.log('catch error', error)
+      //   })
     })
-      .then(res => {
-        console.log("res",res)
-        validate['certification'] = res
-        if (res && form.nickname != '')
-          navigation.navigate('Password', {form: form})
-      })
-      .catch(error => {
-        console.log('catch error', error)
-      })
   }
-  
+
   return (
     <SafeAreaView style={styles.makeIDwrapper}>
       <View style={styles.makeIDInner}>
