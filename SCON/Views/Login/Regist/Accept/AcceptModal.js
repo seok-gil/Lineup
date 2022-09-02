@@ -1,9 +1,8 @@
 import React from 'react'
 import { TouchableOpacity, SafeAreaView, ScrollView, View, Text, Modal, Touchable } from 'react-native'
-import CheckBox from '@react-native-community/checkbox'
 import { Privacy } from './Assets/Privacy'
 import { Service } from './Assets/Service'
-export function AcceptModal({ modal, setModal, value, setValue, accept }) {
+export function AcceptModal({ modal, setModal, accept }) {
   
   const onPress = () => {
     setModal(false)
@@ -18,12 +17,6 @@ export function AcceptModal({ modal, setModal, value, setValue, accept }) {
           <Text style={{ flexShrink: 1, flexWrap: 'wrap' }}>
             {accept == 'service' ? <Service type={'body'}/> : <Privacy type={'body'}/>}
           </Text>
-            <Text>동의</Text>
-            <CheckBox
-              value={value}
-              boxType="square"
-              onValueChange={() => setValue(!value)}
-            />
             <TouchableOpacity onPress={() => onPress()}>
               <Text>X</Text>
             </TouchableOpacity>

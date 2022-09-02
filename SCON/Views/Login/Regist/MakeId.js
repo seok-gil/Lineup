@@ -97,27 +97,32 @@ export function MakeId({ navigation }) {
         nickname: form.nickname,
       })
     }).then((res) => {
-      console.log(res)
-      // ApiFetch({
-      //   method: 'POST',
-      //   url: `/email-auth/email-check`,
-      //   headers: {
-      //     'content-type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     email: form.email,
-      //     code: form.certification,
-      //   }),
-      // })
-      //   .then(res => {
-      //     console.log("res", res)
-      //     validate['certification'] = res
-      //     if (res && form.nickname != '')
-      //       navigation.navigate('Password', { form: form })
-      //   })
-      //   .catch(error => {
-      //     console.log('catch error', error)
-      //   })
+      if (res.status == 400) {
+      setValidate({
+        ...validate,
+        ['nickname']: false
+      })
+      return ;
+      }
+      ApiFetch({
+        method: 'POST',
+        url: `/email-auth/email-check`,
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: form.email,
+          code: form.certification,
+        }),
+      })
+        .then(res => {
+          validate['certification'] = res
+          if (res && form.nickname != '')
+            navigation.navigate('Password', { form: form })
+        })
+        .catch(error => {
+          console.log('catch error', error)
+        })
     })
   }
 

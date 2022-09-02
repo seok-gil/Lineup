@@ -13,15 +13,10 @@ import { RegistModal } from './RegistModal'
 import { ApiFetch } from '../../../Components'
 
 export function Password({ navigation, route }) {
-  // if (!route) navigation.navigate('LoginPage')
-  // const [postForm, setPostForm] = useState({
-  //   nickname: route.params.form.nickname,
-  //   email: route.params.form.email,
-  //   password: '',
-  // })
+  if (!route) navigation.navigate('LoginPage')
   const [postForm, setPostForm] = useState({
-    nickname: 'route.params.form.nic3232322kname',
-    email: 'route.params.form.email',
+    nickname: route.params.form.nickname,
+    email: route.params.form.email,
     password: '',
   })
   const [form, setForm] = useState({
@@ -75,7 +70,6 @@ export function Password({ navigation, route }) {
       body: JSON.stringify(postForm),
     })
       .then(thing => {
-        console.log('thing', thing)
         setModal(true)
       })
       .catch("err", console.log(Error))
