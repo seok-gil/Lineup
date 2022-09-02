@@ -13,47 +13,38 @@ import { RegistModal } from './RegistModal'
 import { ApiFetch } from '../../../Components'
 
 export function Password({ navigation, route }) {
-  if (!route) navigation.navigate('LoginPage')
+  // if (!route) navigation.navigate('LoginPage')
+  // const [postForm, setPostForm] = useState({
+  //   nickname: route.params.form.nickname,
+  //   email: route.params.form.email,
+  //   password: '',
+  // })
   const [postForm, setPostForm] = useState({
-    nickname: route.params.form.nickname,
-    email: route.params.form.email,
+    nickname: 'route.params.form.nic3232322kname',
+    email: 'route.params.form.email',
     password: '',
   })
   const [form, setForm] = useState({
     password: '',
     certification: '',
   })
+  const [first, setFirst] = useState(true)
+  const [valPassword, setValPassword] = useState(false)
+  const [valCertification, setValCertification] = useState(false)
 
-  const [validate, setValidate] = useState({
-    password: true,
-    certification: true,
-  })
-
-  const [button, setButton] = useState(false)
-  const [checkIcon, setCheckIcon] = useState({
-    password: false,
-    certification: false,
-  })
-
-  async function checkValidate(temp) {
+  async function checkValidate() {
     var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/
     if (form.password && form.password.match(reg)) {
-      temp.password = true
-    } else temp.password = false
-    if (form.certification.length == form.password.length) {
-      temp.certification = true
-    } else temp.certification = false
-    return temp
+      setValPassword(true)
+    } else setValPassword(false)
+    if (form.certification.length != 0 && (form.certification.length == form.password.length)) {
+      setValCertification(true)
+    } else setValCertification(false)
   }
+
   useEffect(() => {
-    let temp = validate
     if (form.password.length != 0)
-      checkValidate(temp).then(temp => {
-        setValidate(temp)
-        setCheckIcon(temp)
-      })
-    if (validate.password && validate.certification) setButton(true)
-    else setButton(false)
+      checkValidate()
   }, [form])
 
   const onInput = (key, e) => {
@@ -70,26 +61,25 @@ export function Password({ navigation, route }) {
   }
   const [modal, setModal] = useState(false)
   const onPress = () => {
-    if (form.password != form.certification)
-      setValidate({
-        ...validate,
-        ['certification']: false
-      })
-    else {
-      setModal(true)
-      ApiFetch({
-        method: 'POST',
-        url: '/auth/signup',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(postForm),
-      })
-        .then(setModal(true))
-        .catch(console.log(Error))
+    setFirst(false)
+    if (form.password != form.certification) {
+      setValCertification(false)
+      return ;
     }
+    ApiFetch({
+      method: 'POST',
+      url: '/auth/signup',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postForm),
+    })
+      .then(thing => {
+        console.log('thing', thing)
+        setModal(true)
+      })
+      .catch("err", console.log(Error))
   }
-  //7lNy5sf
   return (
     <SafeAreaView style={styles.passwordWrapper}>
       <View style={styles.passwordInner}>
@@ -111,12 +101,12 @@ export function Password({ navigation, route }) {
               width={15}
               height={15}
               style={
-                checkIcon.password ? styles.checkIcon : styles.checkIconNotShown
+                valPassword ? styles.checkIcon : styles.checkIconNotShown
               }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {validate.password == false && (
+            {!first && valPassword == false && (
               <Text style={styles.errorMessage}>
                 올바른 비밀번호가 아닙니다.
               </Text>
@@ -135,14 +125,14 @@ export function Password({ navigation, route }) {
               width={15}
               height={15}
               style={
-                checkIcon.certification
+                valCertification
                   ? styles.checkIcon
                   : styles.checkIconNotShown
               }
             />
           </View>
           <View style={styles.errorMessageWrapper}>
-            {validate.certification == false && (
+            {!first && valCertification == false && (
               <Text style={styles.errorMessage}>
                 상단 비밀번호와 일치하지 않습니다.
               </Text>
@@ -151,8 +141,7 @@ export function Password({ navigation, route }) {
         </View>
         <TouchableOpacity
           onPress={() => onPress()}
-          disabled={!button}
-          style={button ? styles.loginButton : styles.loginButtonNotAvailable}>
+          style={styles.loginButton}>
           <Text style={styles.loginButtonText}>확인</Text>
         </TouchableOpacity>
       </View>

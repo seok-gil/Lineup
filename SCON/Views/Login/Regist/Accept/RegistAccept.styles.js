@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {colors, globalButtonStyle, globalButtonTextStyle} from '../../../Styles'
+import {colors, globalButtonStyle, globalButtonTextStyle} from '../../../../Styles'
 
 const styles = StyleSheet.create({
     registWrapper: {
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 
     checkWrapperSmall: {
         flexDirection: 'row',
-        alignItems: 'center',
+        // alignItems: 'center',
         paddingHorizontal: 25,
         paddingVertical: 10,
     },
