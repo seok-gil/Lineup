@@ -20,11 +20,6 @@ export function PasswordReset({ navigation, route }) {
   const [valPassword, setValPassword] = useState(false)
   const [valCertification, setValCertification] = useState(false)
 
-  const [validateError, setValidateError] = useState({
-    password: true,
-    certification: true,
-  })
-
   const [modal, setModal] = useState(false)
 
   const onInput = (key, e) => {

@@ -55,6 +55,7 @@ export function RegistAccept({ navigation }) {
         <View style={styles.registMiddleTop}>
           <View style={styles.checkWrapper}>
             <CheckBox
+              hitSlop={{ top: 25, bottom: 25, left: 25, right: 25 }}
               value={all}
               boxType="square"
               onValueChange={() => onClick('all')}
@@ -64,6 +65,7 @@ export function RegistAccept({ navigation }) {
           </View>
           <View style={styles.checkWrapperSmall}>
             <CheckBox
+              hitSlop={{ top: 25, bottom: 25, left: 25, right: 25 }}
               value={service}
               boxType="square"
               style={styles.checkbox}
@@ -77,6 +79,7 @@ export function RegistAccept({ navigation }) {
           </View >
           <View style={styles.checkWrapperSmall}>
             <CheckBox
+              hitSlop={{ top: 25, bottom: 25, left: 25, right: 25 }}
               value={privacy}
               boxType="square"
               style={styles.checkbox}

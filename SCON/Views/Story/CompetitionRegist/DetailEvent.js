@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, TextInput, TouchableOpacity } from 'react-native'
 
 import styles from './DetailEvent.styles'
 
@@ -104,5 +104,5 @@ export function DetailEvent({ form, setFormDetail, mount, setMount }) {
     makeView()
   }, [data])
 
-  return <ScrollView>{view}</ScrollView>
+  return <View>{view}</View>
 }

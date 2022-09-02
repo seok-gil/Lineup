@@ -5,6 +5,7 @@ import {
   View,
   Text,
   TextInput,
+  ScrollView,
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native'
@@ -43,7 +44,7 @@ export function CompetitionRegist({navigation}) {
   }
   return (
     <SafeAreaView style={styles.competitionRegistWrapper} keyboardShouldPersistTaps='always'>
-      <View style={styles.competitionRegistInner}>
+      <ScrollView style={styles.competitionRegistInner}>
         <CompetitionRegistLabel text="대회 기간" isAsterisk />
         <TouchableOpacity
           style={styles.dateRangeWrapper}
@@ -88,7 +89,7 @@ export function CompetitionRegist({navigation}) {
         <View style={styles.borderLine} />
         <CompetitionRegistLabel text="세부 종목" isAsterisk />
         <DetailEvent form={form} setFormDetail={setFormDetail} mount={mount} setMount={setMount}/>
-      </View>
+      </ScrollView>
       <CompetitionButton data={form} navigation={navigation} />
       <Calendar
         calendar={calendar}
