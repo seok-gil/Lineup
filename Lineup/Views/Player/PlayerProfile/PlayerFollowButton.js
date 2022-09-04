@@ -6,11 +6,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
   const [follow, setFollow] = useState(data.isFollow)
-  
+
   const buttonStyle =
-    data.isMe || data.isFollow ? styles.followedButton : styles.followButton
+    !data.isMe && data.isFollow ? styles.followedButton : styles.followButton
   const buttonTextStyle =
-    data.isMe || data.isFollow ? styles.followedText : styles.followText
+    !data.isMe && data.isFollow ? styles.followedText : styles.followText
   useEffect(() => {
     AsyncStorage.getItem('role').then(res => {})
   }, [])
@@ -31,14 +31,14 @@ function PlayerFollowButton({data, navigation, setMount = {setMount}}) {
           Authorization: 'Bearer ' + thing,
         },
         body: null,
-      }).then((thing) => {
+      }).then(thing => {
         if (thing == 401) {
-          navigation.navigate('RefreshTokenModal', { navigation: navigation })
+          navigation.navigate('RefreshTokenModal', {navigation: navigation})
         }
         if (thing.status == 403)
           navigation.navigate('ModalPage', {
-          text: thing.message
-        })
+            text: thing.message,
+          })
         setMount(new Date())
       })
     })
