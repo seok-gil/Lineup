@@ -5,6 +5,7 @@ import {colors} from '../../../Styles'
 const styles = StyleSheet.create({
   cardListWrapper: {
     width: '100%',
+    height: '80%',
     alignItems: 'center',
     justifyContent: 'center',
   },
