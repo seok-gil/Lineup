@@ -21,25 +21,22 @@ export function AcceptModal({modal, setModal, accept}) {
     <Modal visible={modal}>
       <SafeAreaView style={styles.centeredView}>
         <View style={styles.modalWrapper}>
+          <Text style={styles.title}>
+            {accept == 'service' ? (
+              <Service type={'title'} />
+            ) : (
+              <Privacy type={'title'} />
+            )}
+          </Text>
           <ScrollView style={styles.modalInnerScroll}>
             {accept == 'service' ? (
-              <>
-                <Text style={styles.title}>
-                  <Service type={'title'} />
-                </Text>
-                <Text style={styles.body}>
-                  <Service type={'body'} />
-                </Text>
-              </>
+              <Text style={styles.body}>
+                <Service type={'body'} />
+              </Text>
             ) : (
-              <>
-                <Text style={styles.title}>
-                  <Privacy type={'title'} />
-                </Text>
-                <Text style={styles.body}>
-                  <Privacy type={'body'} />
-                </Text>
-              </>
+              <Text style={styles.body}>
+                <Privacy type={'body'} />
+              </Text>
             )}
           </ScrollView>
           <TouchableOpacity
