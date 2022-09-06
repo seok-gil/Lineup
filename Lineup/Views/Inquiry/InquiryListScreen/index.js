@@ -9,7 +9,7 @@ import {DeniedIcon} from '../../../Assets/svgs'
 export function InquiryListScreen() {
   const [data, setData] = useState([])
   const [size, setSize] = useState(10)
-  const [lastId, setLastId] = useState(1000)
+  const [lastId, setLastId] = useState(100000)
 
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {

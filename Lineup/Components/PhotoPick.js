@@ -41,6 +41,8 @@ export function PhotoPick({
   }
 
   const onClick = () => {
+    const maxHeight = text == '배경 이미지 설정' ? 800 : 500
+    const maxWidth = text == '배경 이미지 설정' ? 800 : 500
     if (flag) {
       requestPermission()
       flag = false
@@ -52,7 +54,11 @@ export function PhotoPick({
             text: '앨범에서 선택',
             onPress: async () => {
               var result
-              await launchImageLibrary()
+              await launchImageLibrary({
+                quality: 0.7,
+                maxWidth: maxWidth,
+                maxHeight: maxHeight
+              })
               .then(res => {
                 result = res
                 flag = true
@@ -77,6 +83,9 @@ export function PhotoPick({
               var result
               await launchCamera({
                 saveToPhotos:true,
+                quality: 0.7,
+                maxWidth: maxWidth,
+                maxHeight: maxHeight,
                 presentationStyle:'fullScreen'
               }).then(res => {
                 result = res
