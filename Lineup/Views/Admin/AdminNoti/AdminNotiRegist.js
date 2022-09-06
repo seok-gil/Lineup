@@ -5,15 +5,19 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import styles from './AdminNotiRegist.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ApiFetch } from '../../../Components'
+import { useIsFocused } from '@react-navigation/native';
 
 export function AdminNotiRegist({ navigation, route }) {
+  const isFocused = useIsFocused();
   var method = route.params ? 'PUT' : 'POST'
-  var apiUrl = '/admin/notice'
+  const [apiUrl, setApiUrl] = useState('/admin/notice')
+  // var apiUrl = '/admin/notice'
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
   })
 
+  // console.log("id", route.params.data.id)
   useEffect(() => {
     if (route && route.params && route.params.data) {
       setInputs({
@@ -21,9 +25,9 @@ export function AdminNotiRegist({ navigation, route }) {
         content: route.params.data.content,
       })
       method = 'PUT'
-      apiUrl += `/${route.params.noticeId}`
+      setApiUrl(`/admin/notice/${route.params.data.id}`)
     }
-  }, [route])
+  }, [route.params])
 
   const onChange = (keyvalue, e) => {
     const { text } = e.nativeEvent

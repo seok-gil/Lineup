@@ -21,6 +21,7 @@ function SearchInput({inputs, setInputs}) {
         style={styles.searchInputIcon}
       />
       <TextInput
+        style={styles.input}
         hitSlop={{ top: 100, bottom: 100, left: 1000, right: 1000 }}  
         value={inputs.search}
         placeholder={'검색'}

@@ -68,7 +68,6 @@ export function PasswordChange({navigation}) {
           newPassword: form.newPassword,
         }),
       }).then(thing => {
-        console.log(thing)
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal', {navigation : navigation})
         }

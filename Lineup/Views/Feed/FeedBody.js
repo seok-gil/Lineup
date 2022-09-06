@@ -31,6 +31,7 @@ export function FeedBody({data, feedId, navigation, setMount}) {
   }
 
   const editFeed = () => {
+    setMount(new Date())
     navigation.navigate('FeedRegist', {
       content: data.content,
       feedId: data.feedId,
