@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderColor: colors.THEME_SKYBLUE,
         borderWidth: 2,
+        zIndex : -1,
     },
 
     searchInputIcon: {
@@ -23,8 +24,8 @@ const styles = StyleSheet.create({
         height: 50,
         width: 200,
         margin: 12,
-        borderWidth: 1,
         padding: 10,
+        zIndex : 10
     },
 })
 
