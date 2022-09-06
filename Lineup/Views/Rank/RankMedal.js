@@ -10,7 +10,6 @@ import styles from './RankMedal.styles'
 function RankMedal({player, rank, navigation}) {
   const isFirst = rank === 1 ? true : false
   const defaultProfile =  'https://profile-scon.s3.ap-northeast-2.amazonaws.com/profile/default_profilePic.jpg'
-  console.log(rank)
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('Player', {name: player.name, playerId: player.playerId})}

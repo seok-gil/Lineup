@@ -65,7 +65,6 @@ export function ForgetPassword({ navigation }) {
       ,
     })
       .then((thing) => {
-        console.log(thing)
         if (thing.status == 404)
           setValidate({
             ...validate,
@@ -90,7 +89,6 @@ export function ForgetPassword({ navigation }) {
       })
     })
     .then((thing) =>{
-      console.log(thing)
       if (thing)
         navigation.navigate('PasswordReset', { email: form.email })
       else

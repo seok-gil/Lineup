@@ -38,7 +38,6 @@ export function AdminNotiRegist({ navigation, route }) {
   }
 
   const onSumit = () => {
-    console.log(method, apiUrl)
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
         method: method,

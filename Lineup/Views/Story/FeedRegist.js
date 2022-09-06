@@ -41,7 +41,8 @@ export function FeedRegist({ navigation, route }) {
           content: feed,
         }),
       })
-        .then(navigation.goBack())
+        .then(() => {
+          navigation.goBack()})
         .catch(error => {
           console.log('Feed Regist ERROR', error)
         })
