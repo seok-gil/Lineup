@@ -6,10 +6,13 @@ import PlayerData from './PlayerData'
 import PlayerFollowButton from './PlayerFollowButton'
 import styles from './PlayerProfile.styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useIsFocused } from '@react-navigation/native';
 
 function PlayerProfile({navigation, playerId}) {
   const [data, setData] = useState()
   const [mount, setMount] = useState()
+  const isFocused = useIsFocused();
+
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -27,7 +30,7 @@ function PlayerProfile({navigation, playerId}) {
         setData(thing)
       })
     })
-  }, [mount])
+  }, [mount, isFocused])
   return (
     <View style={styles.profileInnerWrapper}>
       {data && (
