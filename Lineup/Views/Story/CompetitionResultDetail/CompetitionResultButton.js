@@ -21,6 +21,7 @@ export function CompetitionResultButton({eventId, data, type, navigation}) {
           body: JSON.stringify(result),
         })
           .then(thing => {
+            console.log(thing)
             if (thing == 401) {
               navigation.navigate('RefreshTokenModal', {navigation: navigation})
             } else navigation.navigate('StoryScreen')

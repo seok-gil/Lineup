@@ -11,7 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 function PlayerFeeds({ playerId, navigation }) {
   const [data, setData] = useState()
   const [size, setSize] = useState(10)
-  const [lastFeedId, setLastFeedId] = useState(1000)
+  const [lastFeedId, setLastFeedId] = useState(1000000)
   const [mount, setMount] = useState()
   const isFocused = useIsFocused();
   
