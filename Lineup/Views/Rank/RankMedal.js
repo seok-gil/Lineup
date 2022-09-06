@@ -6,8 +6,11 @@ import {HeartFilledIcon} from '../../Assets/svgs'
 
 import styles from './RankMedal.styles'
 
+
 function RankMedal({player, rank, navigation}) {
   const isFirst = rank === 1 ? true : false
+  const defaultProfile =  'https://profile-scon.s3.ap-northeast-2.amazonaws.com/profile/default_profilePic.jpg'
+  console.log(rank)
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('Player', {name: player.name, playerId: player.playerId})}
@@ -19,13 +22,13 @@ function RankMedal({player, rank, navigation}) {
           <Text style={styles.rank}>{rank}</Text>
         )}
         <Image
-          source={{uri: player.profilePic}}
+          source={{uri: player ? player.profilePic : defaultProfile}}
           style={isFirst ? styles.rankFirstImage : styles.rankImage}
         />
       </View>
       <View style={styles.playerNameWrapper}>
-        <Text style={styles.boldText}>{player.name}</Text>
-        <Text style={styles.playerMajor}>({player.sport})</Text>
+        <Text style={styles.boldText}>{player ? player.name : ''}</Text>
+        <Text style={styles.playerMajor}>({player ? player.sport : ''})</Text>
       </View>
       <Text style={styles.playerFrom}>소속</Text>
       <View style={styles.likes}>
@@ -35,7 +38,7 @@ function RankMedal({player, rank, navigation}) {
           fill="#17D3F0"
           style={styles.heart}
         />
-        <Text style={styles.boldText}>{player.followerCnt}</Text>
+        <Text style={styles.boldText}>{player ? player.followerCnt : '0'}</Text>
       </View>
     </TouchableOpacity>
   )
