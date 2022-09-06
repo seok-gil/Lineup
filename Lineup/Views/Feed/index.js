@@ -13,7 +13,6 @@ export function FeedScreen({route, navigation}) {
   const [mount, setMount] = useState(new Date())
   const isFocused = useIsFocused();
 
-  console.log("is", isFocused)
   useEffect(() => {
     AsyncStorage.getItem('accessToken').then(thing => {
       ApiFetch({
@@ -25,7 +24,6 @@ export function FeedScreen({route, navigation}) {
         },
         body: null,
       }).then(thing => {
-        console.log("ffeedd",thing)
         if (thing == 401) {
           navigation.navigate('RefreshTokenModal')
         }
