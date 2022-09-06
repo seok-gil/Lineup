@@ -39,7 +39,11 @@ export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
             text: '앨범에서 선택',
             onPress: async () => {
               var result
-              await launchImageLibrary().then(res => {
+              await launchImageLibrary({
+                quality: 0.7,
+                maxWidth: 500,
+                maxHeight: 500,
+              }).then(res => {
                 result = res
                 flag = true
               })
@@ -61,7 +65,10 @@ export function PlayerPhotoPick({text, photo, setPhoto, setMount}) {
               await launchCamera({
                 mediaType: 'photo',
                 cameraType: 'back',
-                presentationStyle:'fullScreen'
+                presentationStyle:'fullScreen',
+                quality: 0.7,
+                maxWidth: 300,
+                maxHeight: 300,
               }).then(res => {
                 result = res
                 flag = true

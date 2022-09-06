@@ -52,7 +52,11 @@ export function PhotoPick({
             text: '앨범에서 선택',
             onPress: async () => {
               var result
-              await launchImageLibrary()
+              await launchImageLibrary({
+                quality: 0.7,
+                maxWidth: 500,
+                maxHeight: 500,
+              })
               .then(res => {
                 result = res
                 flag = true
@@ -77,6 +81,9 @@ export function PhotoPick({
               var result
               await launchCamera({
                 saveToPhotos:true,
+                quality: 0.7,
+                maxWidth: 500,
+                maxHeight: 500,
                 presentationStyle:'fullScreen'
               }).then(res => {
                 result = res
