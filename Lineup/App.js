@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import SplashScreen from 'react-native-splash-screen'
-import {BackHandler, Alert} from 'react-native'
+import {BackHandler, Alert, StatusBar} from 'react-native'
 import {createStackNavigator} from '@react-navigation/stack'
 import {LoginPage} from './Views/Login'
 import {RegistAccept, MakeId, Password} from './Views/Login/Regist'
@@ -73,6 +73,7 @@ export default function App() {
   }, [])
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor="#ffffff" />
       <AppStack.Navigator
         screenOptions={{
           headerBackTitleVisible: false,
