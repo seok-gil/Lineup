@@ -28,6 +28,7 @@
 ```
 
 Error : Duplicate resources 해결법
+
 /node_modules/react-native/react.gradle
 ```
 doFist 
