@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, ScrollView, FlatList, View } from 'react-native'
+import { SafeAreaView, FlatList } from 'react-native'
 import { ApiFetch } from '../../Components/API/ApiFetch'
 
 import RecordHead from './RecordHead'
@@ -38,8 +38,7 @@ export function RecordScreen({ route }) {
   if (!data) return <SafeAreaView />
   return (
     <SafeAreaView style={styles.recordScreenWrapper}>
-      <ScrollView>
-        <RecordHead data={data} />
+        <RecordHead playerId={route.params.playerId} />
         <FlatList
           data={data}
           snapToAlignment="start"
@@ -55,7 +54,6 @@ export function RecordScreen({ route }) {
           onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}
           showsHorizontalScrollIndicator={false}
         />
-      </ScrollView>
     </SafeAreaView>
   )
 }
