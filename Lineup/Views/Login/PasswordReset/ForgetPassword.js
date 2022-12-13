@@ -125,11 +125,10 @@ export function ForgetPassword({ navigation }) {
             </TouchableOpacity>
           </View>
           <View style={styles.errorMessageWrapper}>
-            {validate.email == false && (
-              <Text style={styles.errorMessage}>
-                가입 된 정보가 없습니다. 다시 입력해주세요.
-              </Text>
-            )}
+            {
+                validate.email == false && postFirst === false &&
+                (<Text style={styles.errorMessage}>가입 된 정보가 없습니다. 다시 입력해주세요.</Text>)
+            }
           </View>
           <Text style={styles.label}>
             메일 확인 후 인증번호를 입력해주세요.
