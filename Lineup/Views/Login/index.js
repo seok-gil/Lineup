@@ -115,12 +115,14 @@ export function LoginPage({navigation}) {
       </View>
       <View style={styles.bottomSection}>
         <View style={styles.loginSection}>
+          {/*로그인 페이지 이메일 입력*/}
           <TextInput
-            value={form.email}
-            placeholder={'이메일 입력'}
-            placeholderTextColor="#0E0E0E66"
-            style={styles.loginInput}
-            onChange={e => onInput('email', e)}
+              autoCapitalize="none"
+              value={form.email}
+              placeholder={'이메일 입력'}
+              placeholderTextColor="#0E0E0E66"
+              style={styles.loginInput}
+              onChange={e => onInput('email', e)}
           />
           <View style={styles.errorMessageWrapper}>
             {validate.email == false && (
