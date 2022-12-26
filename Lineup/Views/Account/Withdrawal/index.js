@@ -93,7 +93,7 @@ export function Withdrawal({navigation}) {
         </View>
       </View>
       <TouchableOpacity onPress={onPress} style={styles.loginButton}>
-        <Text style={styles.loginButtonText}>버튼</Text>
+        <Text style={styles.loginButtonText}>확인</Text>
       </TouchableOpacity>
       <WithdrawalModal
         modal={modal}
