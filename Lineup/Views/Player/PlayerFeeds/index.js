@@ -7,6 +7,7 @@ import { PlayerFixedFeed } from './PlayerFixedFeeds'
 import styles from './PlayerFeeds.styles'
 import PlayerProfile from '../PlayerProfile'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {DeniedIcon} from "../../../Assets/svgs";
 
 function PlayerFeeds({ playerId, navigation }) {
   const [data, setData] = useState()
@@ -40,7 +41,15 @@ function PlayerFeeds({ playerId, navigation }) {
   }
 
   if (!data || data.length == 0) {
-    return <PlayerProfile navigation={navigation} playerId={playerId} />
+    return (
+        <View>
+            <PlayerProfile navigation={navigation} playerId={playerId}/>
+            <View style={styles.emptyArea}>
+                <DeniedIcon width={80} height={80} fill="#0E0E0E" />
+                <Text style={styles.emptyText}>게시물이 없습니다.</Text>
+            </View>
+        </View>
+    )
   }
   return (
     <View style={styles.playerFeedsWrapper}>
